@@ -1,0 +1,66 @@
+﻿@model IEnumerable<data.pipeline.fourth.com.Models.Configs.Store.RevelStoreConfig>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Revel Store Configs Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table id="order-listing" class="table table-dark">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EstablishmentID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EstablishmentResourceUri)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StoreIntegration)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Active)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WhenCreatedUTC)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WhenUpdatedUTC)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EstablishmentID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EstablishmentResourceUri)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StoreIntegration.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Active)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WhenCreatedUTC)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WhenUpdatedUTC)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

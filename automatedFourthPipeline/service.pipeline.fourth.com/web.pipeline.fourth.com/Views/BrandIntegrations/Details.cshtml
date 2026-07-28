@@ -1,0 +1,49 @@
+﻿@model data.pipeline.fourth.com.Models.BrandIntegration
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>BrandIntegration</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Brand)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Brand.Id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IntegrationType)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IntegrationType)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IntegrationSubType)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IntegrationSubType)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.StartBatchQueryTimeUTC)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.StartBatchQueryTimeUTC)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Active)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Active)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -1,0 +1,359 @@
+﻿@model IEnumerable<Revel._808nd.com.Classes.OrderItem>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.catering_complete)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.commission)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.course_number)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.created_by)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.created_date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.crv_value)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cup_qty)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cup_weight)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.deleted)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dining_option)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.discount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.discount_amount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.discount_reason)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.discount_rule_amount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.discount_taxed)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.exchange_discount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.exchanged)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.initial_price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.is_cold)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.is_coupon)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.is_gift)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.modifier_amount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.modifier_cost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.modifieritems)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.on_hold)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.order)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.order_local_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.printed)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.product)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.product_name_override)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.resource_uri)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.shared)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.special_request)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.split_parts)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.split_type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.split_with_seat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.station)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tax_amount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tax_rate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tax_rebate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.taxed_flag)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.temp_sort)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.updated_by)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.updated_date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.uuid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.voided_reason)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.weight)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.total_price_after_tax)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.total_price_after_discount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.parent_order_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.product_id)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.catering_complete)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.commission)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.course_number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.created_by)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.created_date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.crv_value)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cup_qty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cup_weight)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.deleted)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dining_option)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.discount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.discount_amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.discount_reason)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.discount_rule_amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.discount_taxed)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.exchange_discount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.exchanged)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.initial_price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.is_cold)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.is_coupon)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.is_gift)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.modifier_amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.modifier_cost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.modifieritems)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.on_hold)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.order)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.order_local_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.printed)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.product)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.product_name_override)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.resource_uri)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.shared)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.special_request)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.split_parts)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.split_type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.split_with_seat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.station)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tax_amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tax_rate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tax_rebate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.taxed_flag)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.temp_sort)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.updated_by)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.updated_date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.uuid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.voided_reason)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.weight)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.total_price_after_tax)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.total_price_after_discount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.parent_order_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.product_id)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+                @Html.ActionLink("Details", "Details", new { id=item.id }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.id })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

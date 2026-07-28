@@ -1,0 +1,112 @@
+Row Type,Class,Name,SKU,Barcode,Product Category,Product Subcategory,Qty,Voids,Comps,Weight,Total Sales,Tax,COGS
+Product,Bar,Chilli Mojito*,,100000030462,Bar,Guest Cocktails,2,0,0,,14.17,2.83,0.00
+Product,Bar,Cider*,100000010129,100000009703,Bar,Beers & Wines,7,0,0,,23.33,4.67,0.00
+Product,Bar,Clover Club*,11121,1000000017,Bar,Classic Cocktails,5,0,0,,35.42,7.08,0.00
+Product,Bar,Corona*,11115,1000000042,Bar,Beers & Wines,15,0,0,,50.00,10.00,21.00
+Product,Bar,Drinki £5 Espresso Martini*,,100000018668,Bar,Coffee Cocktails,6,0,0,,25.00,5.00,0.00
+Product,Bar,Espresso Martini*,10000000155,10000000081,Bar,Coffee Cocktails,9,0,0,,63.75,8.50,0.00
+Product,Bar,Espresso Old Fashioned*,,100000013236,Bar,Coffee Cocktails,1,0,0,,7.08,1.42,0.00
+Product,Bar,Gins*,100000010358,100000005231,Bar,Spirits,5,0,0,,35.83,7.17,0.00
+Product,Bar,Indy*,,100000014912,Bar,Beers & Wines,8,0,0,,30.00,6.00,0.00
+Product,Bar,Juicebox ipa*,,100000014929,Bar,Beers & Wines,6,0,0,,25.00,4.50,0.00
+Product,Bar,Peroni*,11116,1000000041,Bar,Beers & Wines,6,0,0,,20.00,4.00,7.14
+Product,Bar,Sparkling & Rose*,100000010433,100000005293,Bar,Beers & Wines,10,0,0,,54.17,10.83,0.00
+Product,Bar,Strawberry Fields*,,100000030493,Bar,Guest Cocktails,2,0,0,,14.17,2.83,0.00
+Product,Bar,Tommys Margarita*,,100000005682,Bar,Classic Cocktails,2,0,0,,14.17,2.83,4.58
+Product,Coffee/Hot Drinks,Beetroot*,,100000030257,Drinks,Coffee,1,0,0,,2.50,0.50,0.00
+Product,Coffee/Hot Drinks,Cappucci*,11180,1000000227,Drinks,Coffee,53,0,0,,142.67,28.53,0.00
+Product,Coffee/Hot Drinks,Cortado*,,100000013595,Drinks,Coffee,2,0,0,,4.33,0.87,0.00
+Product,Coffee/Hot Drinks,Earl     Grey*,11206,1000000230,Drinks,Tea,2,0,0,,4.58,0.92,0.00
+Product,Coffee/Hot Drinks,English Breakfast*,11207,1000000102,Drinks,Tea,5,0,0,,11.46,2.29,0.00
+Product,Coffee/Hot Drinks,Espresso*,11181,1000000095,Drinks,Coffee,14,0,0,,26.83,5.37,0.00
+Product,Coffee/Hot Drinks,Filter Coffee*,,100000018705,Drinks,Coffee,8,0,0,,16.88,3.38,0.00
+Product,Coffee/Hot Drinks,Flat White*,11185,1000000196,Drinks,Coffee,55,0,0,,142.08,28.42,0.00
+Product,Coffee/Hot Drinks,Fresh Mint*,11208,1000000132,Drinks,Tea,1,0,0,,2.29,0.46,0.00
+Product,Coffee/Hot Drinks,Hot Choc*,11188,1000000097,Drinks,Coffee,3,0,0,,8.00,1.60,0.00
+Product,Coffee/Hot Drinks,Ice London Fog*,,100000028094,Drinks,Coffee,2,0,0,,5.17,1.03,0.00
+Product,Coffee/Hot Drinks,Iced Black*,,100000010884,Drinks,Coffee,19,0,0,,61.00,2.20,0.00
+Product,Coffee/Hot Drinks,Iced Coffee*,11189,1000000098,Drinks,Coffee,142,0,0,,452.55,23.05,0.00
+Product,Coffee/Hot Drinks,Iced Filter*,100000029015,100000030172,Drinks,Coffee,6,0,0,,15.00,3.00,0.00
+Product,Coffee/Hot Drinks,Iced Mocha*,,10000000050,Drinks,Coffee,5,1,0,,13.42,0.58,0.00
+Product,Coffee/Hot Drinks,Iced Tea*,,100000010822,Drinks,Tea,12,0,0,,27.50,5.50,0.00
+Product,Coffee/Hot Drinks,Jasmine*,11210,1000000134,Drinks,Tea,1,0,0,,2.29,0.46,0.00
+Product,Coffee/Hot Drinks,Latte*,11191,1000000094,Drinks,Coffee,53,3,0,,137.83,26.35,0.00
+Product,Coffee/Hot Drinks,Lemongrass Ginger*,11211,1000000103,Drinks,Tea,1,0,0,,2.29,0.46,0.00
+Product,Coffee/Hot Drinks,Long Black*,11192,1000000096,Drinks,Coffee,29,0,0,,61.71,12.35,0.00
+Product,Coffee/Hot Drinks,Macch*,11182,1000000163,Drinks,Coffee,5,0,0,,10.42,2.08,0.00
+Product,Coffee/Hot Drinks,Matcha*,100000026359,100000027530,Drinks,Coffee,12,0,0,,30.00,6.00,0.00
+Product,Coffee/Hot Drinks,Mocha*,11196,1000000099,Drinks,Coffee,4,0,0,,10.50,2.10,0.00
+Product,Coffee/Hot Drinks,Nitro Cold Brew*,,100000011942,Drinks,Coffee,17,0,0,,58.33,1.17,0.00
+Product,Coffee/Hot Drinks,Piccolo*,11197,1000000164,Drinks,Coffee,3,0,0,,6.50,1.30,0.00
+Product,Coffee/Hot Drinks,Short Black*,11199,1000000074,Drinks,Coffee,4,0,0,,7.67,1.53,0.00
+Product,Coffee/Hot Drinks,Staff Coffee*,20010,1000000228,Drinks,Coffee,39,1,0,,0.42,0.08,0.00
+Product,Coffee/Hot Drinks,Turmeric*,100000026366,100000027547,Drinks,Coffee,1,0,0,,2.50,0.50,0.00
+Product,Extra Items,0.25*,,,,,1,0,0,,0.21,0.04,0.00
+Product,Food,2 Poached Eggs Side*,,100000013342,Kitchen,Breakfast Sides,2,0,0,,4.17,0.83,0.00
+Product,Food,2 Sausages Side*,,100000013403,Kitchen,Breakfast Sides,2,0,0,,4.17,0.83,0.00
+Product,Food,Almond Croissant*,11226,1000000117,Counter,Breakfast,8,0,0,,21.93,0.47,0.00
+Product,Food,Bacon Side*,,100000013328,Kitchen,Breakfast Sides,2,0,0,,3.33,0.67,0.00
+Product,Food,Banana Bread*,100000009994,101000009919,Kitchen,Breakfast,5,0,0,,20.83,4.17,0.00
+Product,Food,Berry Yoghurt Pot*,100000009963,100000009628,Counter,Breakfast,3,0,0,,7.50,1.50,0.00
+Product,Food,Breakfast Focaccia*,,100000010839,Kitchen,Breakfast,11,0,0,,64.17,12.25,0.00
+Product,Food,C & Tom(Cold)*,100000010372,100000005217,Counter,Breakfast,1,0,0,,2.08,0.42,0.00
+Product,Food,C & Tom(Hot)*,100000010471,100000005309,Counter,Breakfast,3,0,0,,7.38,1.48,0.00
+Product,Food,DEL Bacon Side*,,100000016572,Deliveroo,Sides,3,0,0,,7.50,1.50,0.00
+Product,Food,DEL Banana Bread*,,100000015490,Deliveroo,Breakfast,2,0,0,,8.33,1.67,0.00
+Product,Food,DEL Feta Cheese Side*,,100000016602,Deliveroo,Sides,2,0,0,,5.00,1.00,0.00
+Product,Food,DEL Mushroom Side*,,100000017333,Deliveroo,Sides,2,0,0,,5.00,1.00,0.00
+Product,Food,DEL Porridge*,,100000015506,Deliveroo,Breakfast,2,0,0,,9.17,1.83,0.00
+Product,Food,DEL Scrambled Eggs Side*,,100000016596,Deliveroo,Sides,2,0,0,,5.00,1.00,0.00
+Product,Food,DEL Smashed Avo*,,100000015537,Deliveroo,Breakfast,12,0,0,,82.08,16.42,0.00
+Product,Food,"DEL Smoked Salmon, Eggs*",,100000015551,Deliveroo,Breakfast,1,0,0,,7.50,1.50,0.00
+Product,Food,DEL Smoothie Bowl*,,100000015520,Deliveroo,Breakfast,1,0,0,,5.42,1.08,0.00
+Product,Food,DEL The Grind*,,100000015568,Deliveroo,Breakfast,2,0,0,,18.33,3.67,0.00
+Product,Food,"DEL Toast, Jam*",,100000015483,Deliveroo,Breakfast,2,0,0,,5.83,1.17,0.00
+Product,Food,DEL White Pudding Side*,,100000016619,Deliveroo,Sides,1,0,0,,2.08,0.42,0.00
+Product,Food,"DEL Yoghurt, Seeds*",,100000015513,Deliveroo,Breakfast,1,0,0,,4.58,0.92,0.00
+Product,Food,Extra Toast*,,100000013489,Kitchen,Breakfast Sides,3,0,0,,5.00,0.67,0.00
+Product,Food,Full English*,100000010150,101000009925,Kitchen,Breakfast,10,0,0,,83.33,16.67,0.00
+Product,Food,Ham & C (Cold)*,100000010303,100000005422,Counter,Breakfast,4,0,0,,9.53,0.87,0.00
+Product,Food,Ham & C (Hot)*,100000010488,100000005330,Counter,Breakfast,13,0,0,,34.12,6.83,0.00
+Product,Food,Muffin*,11245,1000000139,Counter,Cakes,7,0,0,,14.67,0.73,0.00
+Product,Food,Mushroom Side*,,100000013458,Kitchen,Breakfast Sides,1,0,0,,0.83,0.17,0.00
+Product,Food,Olives*,,100000013304,Kitchen,Evening,1,0,0,,2.92,0.58,0.00
+Product,Food,Pain au Choc*,11227,1000000118,Counter,Breakfast,8,0,0,,17.23,0.37,0.00
+Product,Food,Pain au Raisin*,11228,1000000119,Counter,Breakfast,6,0,0,,12.10,1.10,0.00
+Product,Food,Pastel De Nata*,11247,1000000141,Counter,Cakes,25,0,0,,44.40,0.60,0.00
+Product,Food,Plain Croissant*,11229,1000000120,Counter,Breakfast,8,0,0,,13.80,0.60,0.00
+Product,Food,Porridge*,100000010006,101000009920,Kitchen,Breakfast,4,0,0,,15.00,3.00,0.00
+Product,Food,Quinoa Eggs*,100000010198,101000009928,Kitchen,Breakfast,9,0,0,,48.75,9.48,0.00
+Product,Food,Raw Breakfast Salad*,100000010167,101000009926,Kitchen,Breakfast,6,0,0,,37.50,6.88,0.00
+Product,Food,"Seeds, Yoghurt*",100000010013,101000009921,Kitchen,Breakfast,5,0,0,,18.75,3.75,0.00
+Product,Food,Smashed Avocado ONLY*,100000010112,101000009922,Kitchen,Breakfast,87,0,0,,572.92,114.58,0.00
+Product,Food,Smoked Salmon Side*,,100000013472,Kitchen,Breakfast Sides,2,0,0,,5.00,0.50,0.00
+Product,Food,"Smoked Salmon, Eggs*",100000010099,101000009923,Kitchen,Breakfast,17,0,0,,113.33,22.67,0.00
+Product,Food,Smoothie Bowl*,,100000015209,Kitchen,Breakfast,9,0,0,,48.75,9.75,0.00
+Product,Food,"Toast, Jam*",100000009987,101000009918,Kitchen,Breakfast,5,0,0,,10.42,2.08,0.00
+Product,Food,Vegan Chia Pots*,,100000022436,Counter,Breakfast,4,0,0,,10.00,2.00,0.00
+Product,Food,£1 Pasteries*,,100000011928,Counter,Other,3,0,0,,2.50,0.50,0.00
+Product,Juice,Amber Juice*,,100000011201,Drinks,Juice & Smoothies,23,0,0,,91.04,17.42,0.00
+Product,Juice,Amber Smoothie*,,100000013557,Drinks,Juice & Smoothies,12,0,0,,61.00,0.00,0.00
+Product,Juice,DEL Amber Juice*,,100000015827,Deliveroo,Juices & Smoothies,2,0,0,,8.33,1.67,0.00
+Product,Juice,DEL Amber Smoothie*,,100000015865,Deliveroo,Juices & Smoothies,4,0,0,,18.33,3.67,0.00
+Product,Juice,DEL Green Juice*,,100000015834,Deliveroo,Juices & Smoothies,1,0,0,,4.17,0.83,0.00
+Product,Juice,DEL Green Smoothie*,,100000015872,Deliveroo,Juices & Smoothies,3,0,0,,13.75,2.75,0.00
+Product,Juice,DEL Orange Juice*,,100000015841,Deliveroo,Juices & Smoothies,4,0,0,,13.33,2.67,0.00
+Product,Juice,DEL Red Juice*,,100000015803,Deliveroo,Juices & Smoothies,2,0,0,,8.33,1.67,0.00
+Product,Juice,DEL Red Smoothie*,,100000015858,Deliveroo,Juices & Smoothies,1,0,0,,4.58,0.92,0.00
+Product,Juice,Green Juice*,,100000011225,Drinks,Juice & Smoothies,13,0,0,,51.46,10.29,0.00
+Product,Juice,Green Smoothie*,,100000013540,Drinks,Juice & Smoothies,8,1,0,,35.00,0.00,0.00
+Product,Juice,Orange Juice*,,100000011218,Drinks,Juice & Smoothies,34,0,0,,99.17,19.83,0.00
+Product,Juice,Red Juice*,,100000011232,Drinks,Juice & Smoothies,4,0,0,,15.83,3.17,0.00
+Product,Juice,Red Smoothie*,,100000013564,Drinks,Juice & Smoothies,8,0,0,,40.00,0.00,0.00
+Product,Soft Drinks,Coke*,11286,1000000161,Drinks,Soft Drinks,12,0,0,,16.00,3.07,0.00
+Product,Soft Drinks,Cold Brew Bottle*,,100000015353,Drinks,Soft Drinks,3,0,0,,9.88,1.98,0.00
+Product,Soft Drinks,DEL Diet Coke*,,100000015711,Deliveroo,Softs,1,0,0,,1.67,0.33,0.00
+Product,Soft Drinks,Diet Coke*,11287,1000000162,Drinks,Soft Drinks,4,0,0,,5.33,1.07,0.00
+Product,Soft Drinks,Garden*,,100000020050,Drinks,Juice & Smoothies,2,0,0,,9.58,1.92,0.00
+Product,Soft Drinks,Ginger Beer*,100000010563,100000009864,Drinks,Soft Drinks,2,0,0,,4.33,0.87,0.00
+Product,Soft Drinks,Grove*,,100000020067,Drinks,Juice & Smoothies,3,0,0,,14.38,2.87,0.00
+Product,Soft Drinks,Sparkling*,11290,1000000193,Drinks,Soft Drinks,7,0,0,,9.33,1.60,0.00
+Product,Soft Drinks,Still*,11291,1000000194,Drinks,Soft Drinks,12,0,0,,16.00,3.20,0.00
+Product,Soft Drinks,Tonic*,,100000013816,Drinks,Soft Drinks,1,0,0,,2.17,0.43,0.00

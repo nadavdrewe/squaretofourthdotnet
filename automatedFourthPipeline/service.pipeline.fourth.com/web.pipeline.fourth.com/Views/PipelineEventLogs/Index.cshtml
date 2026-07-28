@@ -1,0 +1,48 @@
+@model IEnumerable<data.pipeline.fourth.com.Models.PipelineEventLog>
+
+@{
+    ViewData["Title"] = "Pipeline Event Logs";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Pipeline Event Logs</h1>
+
+<table id="order-listing" class="table table-dark">
+    <thead>
+        <tr>
+            <th>Created UTC</th>
+            <th>Correlation</th>
+            <th>Brand</th>
+            <th>Store</th>
+            <th>Data Type</th>
+            <th>Stage</th>
+            <th>Event</th>
+            <th>Status</th>
+            <th>Items</th>
+            <th>Rows</th>
+            <th>HTTP</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.WhenCreatedUTC</td>
+                <td>@item.CorrelationId</td>
+                <td>@item.BrandName</td>
+                <td>@item.StoreName</td>
+                <td>@item.DataType</td>
+                <td>@item.Stage</td>
+                <td>@item.EventType</td>
+                <td>@item.Status</td>
+                <td>@item.ItemCount</td>
+                <td>@item.RowCount</td>
+                <td>@item.HttpStatusCode</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

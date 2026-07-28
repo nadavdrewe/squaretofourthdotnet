@@ -1,0 +1,98 @@
+﻿@using Revel._808nd.com.Classes
+@model IEnumerable<string>
+@{
+
+    var cards = (List<RewardsCardNew>)ViewBag.Top10;
+    ViewBag.Title = "Grind Back of House";
+
+}
+
+@Html.Partial("~/PartialViews/BreadcrumbBarPartial.cshtml")
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Please select an option from the side menu</h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li>
+                                <a href="#">Config option 1</a>
+                            </li>
+                            <li>
+                                <a href="#">Config option 2</a>
+                            </li>
+                        </ul>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+
+                    <img src="~/Images/Lg.jpg" class="img-responsive" />
+
+                    @*
+                        @if (User.Identity.IsAuthenticated)
+                        {
+
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <i class="fa fa-bell fa-fw"></i> Top @cards.Count.ToString() Spenders
+                                </div>
+
+
+
+
+                                <!-- /.panel-heading -->
+                               <div class="panel-body">
+                                    <div class="list-group">
+
+
+
+                                        @foreach (var card in cards)
+                                            {
+                                                <a href="#" class="list-group-item">
+                                                    <i class="fa fa-comment fa-fw"></i>Card Number:@card.number
+                                                    @if (card.Customer != null)
+                                                    {
+                                                        <span>|| Customer:@card.Customer.FirstName  @card.Customer.LastName || Email: @card.Customer.Email</span>
+
+                                                    }
+
+                                                    <span class="pull-right text-muted small">
+                                                        <em>Current Points:@card.current_points All Time: @card.total_points</em>
+                                                    </span>
+                                                </a>
+                                            }
+
+
+                                    </div>
+                                    <!-- /.list-group -->
+                                    <a href="#" class="btn btn-default btn-block">View All Alerts</a>
+                                </div>
+                                <!-- /.panel-body -->
+                            </div>
+                                <!-- /.panel .chat-panel -->
+
+
+
+                        }
+                    *@
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>

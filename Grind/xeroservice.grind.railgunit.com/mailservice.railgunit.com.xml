@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>mailservice.railgunit.com</name>
+    </assembly>
+    <members>
+        <member name="T:mailservice.railgunit.com.Interfaces.IMailClient">
+            <summary>
+            Mail Client Interface
+            </summary>
+        </member>
+        <member name="M:mailservice.railgunit.com.Interfaces.IMailClient.Send(System.String,System.String,System.String,System.Collections.Generic.IEnumerable{Aspose.Email.Mail.Attachment})">
+            <summary>
+            Send to single receipient
+            </summary>
+            <param name="sendAddress"></param>
+            <param name="subject"></param>
+            <param name="htmlBody"></param>
+            <param name="attachments"></param>
+        </member>
+        <member name="T:mailservice.railgunit.com.LessSecureGmailClient.GmailClient">
+            <summary>
+            A client that uses Gmail defaults - Less Secure Apps Must Be Enabled In Gmail
+            </summary>
+        </member>
+        <member name="M:mailservice.railgunit.com.LessSecureGmailClient.GmailClient.#ctor(System.String,System.String)">
+            <summary>
+            Ctor
+            </summary>
+            <param name="fromEmailAddress"></param>
+            <param name="gmailPassword"></param>
+        </member>
+        <member name="M:mailservice.railgunit.com.LessSecureGmailClient.GmailClient.Send(System.String,System.String,System.String,System.Collections.Generic.IEnumerable{Aspose.Email.Mail.Attachment})">
+            <summary>
+            Send to a single user
+            </summary>
+            <param name="sendAddress"></param>
+            <param name=""></param>
+        </member>
+        <member name="M:mailservice.railgunit.com.LessSecureGmailClient.GmailClient.Send(System.Collections.Generic.IEnumerable{System.String},System.String,System.String,System.Collections.Generic.IEnumerable{Aspose.Email.Mail.Attachment})">
+            <summary>
+            Send to multiple users
+            </summary>
+        </member>
+    </members>
+</doc>

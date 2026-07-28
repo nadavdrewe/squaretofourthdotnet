@@ -1,0 +1,97 @@
+﻿@model IEnumerable<Revel._808nd.com.ReportingModel.TopSeller>
+@{
+    
+    
+}
+@*<h3>Top Sellers</h3>*@
+<table id="topSellersTable"  class="table  table-primary">
+    <thead>
+        <tr>
+            <th>
+                Staff Member
+            </th>
+            <th>
+                Sales
+            </th>
+            <th>
+                Number of items
+            </th>
+            <th>
+                Average Sale
+            </th>
+@*
+            <th>
+               Hot Drinks
+            </th>
+            <th>
+              Food
+            </th>
+            <th>
+              Soft Drinks
+            </th>
+            <th>
+              Alcohol
+            </th>*@
+        </tr>
+    </thead>
+
+    <tbody>
+    @{
+        foreach (var userSummary in Model)
+        {
+            <tr>
+                <td>@userSummary.Name</td>
+                <td>£@Decimal.Round(userSummary.ValuePounds)</td>
+                <td>@userSummary.NumberOfItems</td>
+                <td>
+                    @{
+                        var compareSales = Decimal.Round(userSummary.ValuePounds);
+                        var compareItems = Convert.ToInt32(userSummary.NumberOfItems);
+
+                        if (compareItems > 0 && compareSales > 0)
+                        {
+                            @("£")@(Decimal.Round(compareSales/compareItems, 2))
+                        }
+                        else
+                        {
+                            @("£")@Html.Raw("0")
+
+                        }
+                    }
+                </td>
+@*
+
+                <td>£@Decimal.Round(userSummary.Breakdown.HotDrinkItems.Sum(x=>x.pure_sales))</td>
+                <td>£@Decimal.Round(userSummary.Breakdown.FoodItems.Sum(x => x.pure_sales))</td>
+                <td>£@Decimal.Round(userSummary.Breakdown.SoftDrinkItems.Sum(x => x.pure_sales))</td>
+                <td>£@Decimal.Round(userSummary.Breakdown.AlcoholItems.Sum(x => x.pure_sales))</td>
+            *@
+
+            </tr>
+                        }
+
+                  
+    }
+
+    </tbody>
+</table>
+
+
+
+<script type="text/javascript">
+
+
+    $('#topSellersTable').DataTable(
+        {
+            "pageLength": 50,
+            "scrollX": true,
+               "order": [[ 3, "desc" ]]
+
+        }
+        );
+
+
+        
+
+
+</script>

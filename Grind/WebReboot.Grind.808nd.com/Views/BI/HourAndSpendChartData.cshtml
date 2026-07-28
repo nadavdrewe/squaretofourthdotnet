@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Revel._808nd.com.ReportingModel.ChartModels.ChartData>
+
+@{
+
+    var dates = Model.Select(x => x.WeekStart).Distinct().OrderByDescending(x => x.Date).ToList();
+    var hours = Model.Select(x => x.Name).Distinct().OrderBy(x => Convert.ToInt32(x)).ToList();
+}
+
+<table id="hourAndSpendTable" class="table table-primary myDatatable">
+    <thead>
+    <tr>
+        <th>
+            Date
+        </th>
+        @foreach (var hour in hours)
+        {
+            <th>
+                <b> @hour</b>
+            </th>
+        }
+
+
+        @*<th></th>*@
+    </tr>
+    </thead>
+
+    <tbody>
+        @{
+            foreach (var date in dates)
+            {
+                <tr>
+                    <td><b>@date.ToString("dd/MM/yy")</b></td>
+                    @{
+                        var itemsToCycle = Model.Where(x => x.WeekStart == date).OrderBy(x => Convert.ToInt32(x.Name));
+
+                        foreach (var hourAndSpend in itemsToCycle)
+                        {
+                            <td>£@Decimal.Round(hourAndSpend.Value)</td>
+
+                        }
+                    }
+
+
+                </tr>
+                        }
+        }
+    </tbody>
+</table>
+
+<script>
+/*
+    $('#hourAndSpendTable').DataTable(
+    {
+        "pageLength": 50,
+        "scrollX": true
+    }
+    );*/
+
+</script>

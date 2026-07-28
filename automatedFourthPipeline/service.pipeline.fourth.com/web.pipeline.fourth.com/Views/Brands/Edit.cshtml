@@ -1,0 +1,161 @@
+﻿@model data.pipeline.fourth.com.Models.Brand
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>Brand</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ContactEmail" class="control-label">Contact Email</label>
+                <input asp-for="ContactEmail" class="form-control" />
+                <span asp-validation-for="ContactEmail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ContactName" class="control-label">Contact Name</label>
+                <input asp-for="ContactName" class="form-control" />
+                <span asp-validation-for="ContactName" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Active" /> @Html.DisplayNameFor(model => model.Active)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="InitalSetupSytemType" class="control-label">Inital Setup Sytem Type</label>
+                <select asp-for="InitalSetupSytemType" disabled asp-items="Html.GetEnumSelectList<shared.pipeline.fouth.com.Enums.CredentialTypes>()" class="form-control"></select>
+                <span asp-validation-for="InitalSetupSytemType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Region" class="control-label"></label>
+                <select asp-for="Region" asp-items="Html.GetEnumSelectList<data.pipeline.fourth.com.Enums.Regions>()" class="form-control"></select>
+                <span asp-validation-for="Region" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Currency" class="control-label"></label>
+                <select asp-for="Currency" asp-items="Html.GetEnumSelectList<data.pipeline.fourth.com.Enums.CurrencyType>()" class="form-control"></select>
+                <span asp-validation-for="Currency" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="table-responsive">
+    <h4>Stores For Brand</h4>
+    <table id="order-listing3" class="table table-dark">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Active</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Stores ?? new List<data.pipeline.fourth.com.Models.Store>())
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Active </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<br />
+<div class="table-responsive">
+    <h4>Integrations For Brand</h4>
+    <table id="order-listing" class="table table-dark">
+        <thead>
+            <tr>
+                <th>Integration Type</th>
+                <th>Active</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.BrandIntegrations ?? new List<data.pipeline.fourth.com.Models.BrandIntegration>())
+            {
+                <tr>
+                    <td>@item.IntegrationType</td>
+                    <td>@item.Active </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<br />
+<div class="table-responsive">
+    <h4>Credentials For Brand</h4>
+    <table id="order-listing2" class="table table-dark">
+        <thead>
+            <tr>
+                <th>Cred Type</th>
+                <th>Active</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.BrandCredentials ?? new List<data.pipeline.fourth.com.Models.Credentials.BaseCredential>())
+            {
+                <tr>
+                    <td>@item.CredentialType</td>
+                    <td>@item.Active </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $('#order-listing2').DataTable({
+            "aLengthMenu": [
+                [5, 10, 15, -1],
+                [5, 10, 15, "All"]
+            ],
+            "iDisplayLength": 10,
+            "language": {
+                search: "Search"
+            }
+        });
+
+        $('#order-listing3').DataTable({
+            "aLengthMenu": [
+                [5, 10, 15, -1],
+                [5, 10, 15, "All"]
+            ],
+            "iDisplayLength": 10,
+            "language": {
+                search: "Search"
+            }
+        });
+
+        console.log("ready!");
+    });
+</script>

@@ -1,0 +1,35 @@
+@model data.pipeline.fourth.com.Models.Mappings.SquareEmployeeMapping
+
+@{
+    ViewData["Title"] = "Square Employee Mapping Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Square Employee Mapping</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">Brand</dt>
+        <dd class="col-sm-9">@Model.StoreIntegration?.Store?.Brand?.Name</dd>
+        <dt class="col-sm-3">Store</dt>
+        <dd class="col-sm-9">@Model.StoreIntegration?.Store?.Name</dd>
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.SquareTeamMemberId)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.SquareTeamMemberId)</dd>
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.SquareDisplayName)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.SquareDisplayName)</dd>
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.FourthEmployeeNumber)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.FourthEmployeeNumber)</dd>
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Active)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Active)</dd>
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.WhenCreatedUTC)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.WhenCreatedUTC)</dd>
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.WhenUpdatedUTC)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.WhenUpdatedUTC)</dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

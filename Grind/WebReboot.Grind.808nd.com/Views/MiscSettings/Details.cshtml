@@ -1,0 +1,34 @@
+﻿@model Revel._808nd.com.Classes.MiscSettings
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>MiscSettings</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.LateOpeningStoreNotifier)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LateOpeningStoreNotifier)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LateOpeningStoreMinutesWindow)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LateOpeningStoreMinutesWindow)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

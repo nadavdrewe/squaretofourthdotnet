@@ -1,0 +1,67 @@
+﻿@using Revel._808nd.com.Classes.PaymentSummaries
+@model Revel._808nd.com.Classes.PaymentSummaries.PaymentSummaryGroup
+
+
+<h2> <b>Payments</b> - @Model.PaymentSummaryGroupRequestType Breakdown - @Model.Start.ToLongDateString() : @Model.End.ToLongDateString() - @Model.PaymentSummaries.Count Total Records for
+    @{
+        var names = Model.PaymentSummaries.Select(x => x.Establishment).Distinct().ToList();
+
+        foreach (var grind in names)
+        {
+            @Html.Raw(grind + " ")
+
+        }       
+    } establishments</h2>
+
+
+<table id="summaries" class="uk-table-striped">
+    <thead>
+    <tr>
+        <th style="color:red">
+            Grind
+        </th>
+        <th>
+            Date Range
+        </th>
+        <th>
+            Payment Amount Gross £
+        </th>
+        <th>
+            Payment Amount NET £
+        </th>   
+    </tr>>
+    </thead>
+
+    <tbody>
+    @foreach (var summary in Model.PaymentSummaries)
+    {
+        <tr>
+            <td>@summary.Establishment</td>
+            @if (Model.PaymentSummaryGroupRequestType == PaymentSummaryGroupRequestType.Hours)
+            {
+                <td>@summary.StartDate.ToString("dd/MM/yyyy hh:mm:ss") - @summary.EndDate.ToString("dd/MM/yyyy hh:mm:ss")</td>
+            }
+            else
+            {
+                <td>@summary.StartDate.ToString("dd/MM/yyyy") - @summary.EndDate.ToString("dd/MM/yyyy")</td>
+            }
+            
+            <td>@Decimal.Round(summary.Amount, 2)</td>
+            <td>@Decimal.Round(summary.Amount- summary.TaxAmount, 2)</td>            
+        </tr>
+    }   
+    </tbody>
+</table>
+
+
+<script>
+    $(document).ready(function() {
+        $('#summaries').dataTable({
+            "pageLength": 50,
+            dom: 'Bfrtip',
+            buttons: [
+                'copy', 'csv', 'excel', 'pdf', 'print'
+            ]
+        });
+    });    
+</script>

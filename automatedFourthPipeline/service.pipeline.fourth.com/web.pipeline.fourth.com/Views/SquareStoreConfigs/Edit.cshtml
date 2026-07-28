@@ -1,0 +1,55 @@
+﻿@model data.pipeline.fourth.com.Models.Configs.Store.SquareStoreConfig
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>Square Store Config</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="LocationId" class="control-label"></label>
+                <input asp-for="LocationId" class="form-control" />
+                <span asp-validation-for="LocationId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StoreIntegrationId" class="control-label"></label>
+                <select asp-for="StoreIntegrationId" class="form-control" asp-items="ViewBag.StoreIntegrationId"></select>
+                <span asp-validation-for="StoreIntegrationId" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Active" /> @Html.DisplayNameFor(model => model.Active)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="WhenCreatedUTC" class="control-label"></label>
+                <input asp-for="WhenCreatedUTC" class="form-control" />
+                <span asp-validation-for="WhenCreatedUTC" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WhenUpdatedUTC" class="control-label"></label>
+                <input asp-for="WhenUpdatedUTC" class="form-control" />
+                <span asp-validation-for="WhenUpdatedUTC" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,10 @@
+﻿{
+  "profiles": {
+    "squareservice.pipeline.fourth.com": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}

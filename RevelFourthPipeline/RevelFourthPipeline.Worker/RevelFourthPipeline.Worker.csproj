@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>dotnet-RevelFourthPipeline.Worker-7713b74b-2995-4482-bcd3-2066cb3f142a</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="10.0.6" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.WindowsServices" Version="10.0.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RevelFourthPipeline.Domain\RevelFourthPipeline.Domain.csproj" />
+    <ProjectReference Include="..\RevelFourthPipeline.Infrastructure\RevelFourthPipeline.Infrastructure.csproj" />
+  </ItemGroup>
+</Project>

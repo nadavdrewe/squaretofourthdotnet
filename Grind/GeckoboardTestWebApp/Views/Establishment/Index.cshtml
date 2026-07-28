@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Revel._808nd.com.Classes.Establishment>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RevelOrganiationName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.api_key)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RevelOrganiationName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.api_key)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.establishment_id }) |
+                @Html.ActionLink("Details", "Details", new { id=item.establishment_id }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.establishment_id })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

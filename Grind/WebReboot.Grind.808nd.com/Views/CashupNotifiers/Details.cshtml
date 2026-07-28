@@ -1,0 +1,49 @@
+﻿@model Revel._808nd.com.Classes.CashupNotifier
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+   
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Establishment.theAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Establishment.theAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NotificationAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NotificationAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Enabled)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Enabled)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UniversalContact)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UniversalContact)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

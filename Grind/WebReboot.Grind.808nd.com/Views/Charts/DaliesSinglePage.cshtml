@@ -1,0 +1,448 @@
+﻿@using System.Drawing
+@using Revel._808nd.com.ReportingModel
+@using Revel._808nd.com.ReportingModel.ChartModels
+
+
+
+@{
+
+
+    ViewBag.Title = "Dalies Sales Breakdown";
+    Layout = "~/Views/Shared/_InspinaLayout.cshtml";
+
+    var dateShowing = ViewBag.DateShowing;
+    var ests = ViewBag.EstablishmentsSelect as List<SelectListItem>;
+    var hasFired = ViewBag.HasFired;
+    var establishment = ViewBag.Establishment;
+
+
+    if (dateShowing != null && establishment != null)
+    {
+        ViewBag.Title = establishment + " Grind on " + dateShowing.ToString("dd/MM/yy");
+    }
+
+    //charts
+    var currentHourAndSpend = ViewBag.CurrentHourAndSpend as List<ChartData>;
+    var comparisonHourAndSpend = ViewBag.ComparisonHourAndSpend as List<ChartData>;
+    var comparisonHourAndSpendTwoWeeksBack = ViewBag.ComparisonTwoWeeksBackHourAndSpend as List<ChartData>;
+    var comparisonHourAndSpendThreeWeeksBack = ViewBag.comparisonTHreeWeeksBackHourAndSpend as List<ChartData>;
+    var comparisonHourAndSpendFourWeeksBack = ViewBag.comparisonFourWeeksBackHourAndSpend as List<ChartData>;
+    var comparisonHourAndSpendFiveWeeksBack = ViewBag.comparisonFiveWeeksBackHourAndSpend as List<ChartData>;
+
+
+    var salesTodayGrouping = ViewBag.SalesTodayStackedColumnData as StackedChartItemGrouping;
+
+    var salesTodayAvgSpend = ViewBag.SalesAverageSpendByCategoryChart as StackedChartItemGrouping;
+
+
+    //tables
+    var topSellers = ViewBag.TopSellers as List<TopSeller>;
+    var topProducts = ViewBag.TopProducts as OrderItemProductGroupingComparisonList;
+
+
+
+    List<string> randomColoursList = new List<string>();
+
+    Random random;
+    for (int i = 0; i < 50; i++)
+    {
+        random = new Random(i);
+        var color = String.Format("#{0:X6}", random.Next(0x1000000));
+        randomColoursList.Add(color);
+    }
+
+    Random randomGen = new Random();
+    KnownColor[] names = (KnownColor[])Enum.GetValues(typeof(KnownColor));
+
+
+    List<string> colorNames = names.Select(x => x.ToString()).ToList();
+    int numColors = colorNames.Count();
+
+
+}
+
+@Html.EJ().ScriptManager()
+
+@*BEGIN HEADER*@
+
+
+
+@Html.Partial("~/PartialViews/BreadcrumbBarPartial.cshtml")
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                   
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li>
+                                <a href="#">Config option 1</a>
+                            </li>
+                            <li>
+                                <a href="#">Config option 2</a>
+                            </li>
+                        </ul>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+
+
+                    <div style="margin-top: 5px" class="page-header">
+
+                        <div class="row">
+                            <!-- Page header, center on small screens -->
+                            @*<h1 class="col-xs-12 col-sm-4 text-center text-left-sm">
+                                    <i class="fa fa-globe page-header-icon"></i>&nbsp;&nbsp; @if (hasFired != null)
+                                    {
+                                        @Html.Raw(establishment + " Grind on " + dateShowing.ToString("dd/MM/yy"))
+                                    }
+                                    else
+                                    {
+                                        @("Dashboard");
+                                    }
+                                </h1>*@
+                            <div class="col-xs-12 col-sm-8">
+                                <div class="row">
+                                    <hr class="visible-xs no-grid-gutter-h">
+                                    <!-- "Create project" button, width=auto on desktops -->
+                                    @using (Html.BeginForm("DaliesSinglePage", "Charts", FormMethod.Post, new { id = "mainForm" }))
+                                    {
+                                        <div class="pull-right col-lg-12">
+                                            <div class="col-lg-2 col-xs-8">
+                                                @Html.DropDownList("EstablishmentId", ests, new { @class = "form-control", required = true })
+                                            </div>
+                                            <input type="submit" value="Go" class="btn btn-circle btn-success" />
+
+
+                                        </div>
+                    <!-- Margin -->
+                                        @* <div class="visible-xs clearfix form-group-margin"></div>
+                                            <!-- Go button -->
+                                            <div class="pull-right col-xs-12 col-sm-auto">
+
+                                                @Html.DropDownList("EstablishmentId", ests, new { @class = "form-control datepicker", required = true })
+
+
+                                            </div>*@
+
+                                    }
+                                    <!-- Margin -->
+                                    <div class="hidden-xs hidden-sm clearfix form-group-margin"></div>
+                                    <!-- Search field -->
+                                    @* <form action="#" class="hidden-xs hidden-sm pull-right col-xs-12 col-sm-6">
+                                            <div class="input-group no-margin">
+                                                <span class="input-group-addon" style="border:none;background: #fff;background: rgba(0,0,0,.05);"><i class="fa fa-search"></i></span>
+                                                <input type="text" placeholder="Search..." class="form-control no-padding-hr" style="border:none;background: #fff;background: rgba(0,0,0,.05);">
+                                            </div>
+                                        </form>*@
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- / .page-header -->
+
+                    <div class="row">
+
+                        @*BEGIN BODY*@
+
+
+
+                        @if (hasFired != null)
+                        {
+
+                            @*HOUR AND SPEND*@
+
+
+                            <div class="col-md-4">
+
+                                <div class="row">
+                                    <div class="panel panel-danger panel-dark">
+                                        <div class="panel-heading">
+                                            <span class="panel-title">@establishment Grind - Hour And Spend</span>
+                                        </div>
+                                        <div class="panel-body">
+                                            @(Html.EJ().Chart("hourAndSpend").IsResponsive(true).Size(sz => sz.Height("300"))
+
+                                  .PrimaryXAxis(
+                                      //Use categorical scale in primary X axis
+                                      px => px.ValueType(AxisValueType.Category))
+                                  .PrimaryYAxis(pry => pry.LabelFormat("£{value}").Title(tl => tl.Text("Sales (£)").Font(ft => ft.Color("grey").FontWeight(ChartFontWeight.Bold)
+                                      .FontFamily("Segoe UI")
+                                      .Size("16px"))))
+                                  .CommonSeriesOptions(cso => cso.Type(SeriesType.Line).EnableAnimation(true))
+                                  .Legend(lgn => lgn.Visible(true))
+                                  .Title(tl => tl.Text("Hour And Spend"))
+                                  .Series(sr =>
+                                  {
+                                      //line series
+                                      sr.Points(pt =>
+                                      {
+                                          foreach (var data in currentHourAndSpend)
+                                          {
+                                              pt.X(data.Name).Y(Convert.ToDouble(data.Value)).Add();
+                                          }
+                                      }).Name("Current").Add();
+
+                                      sr.Points(pt =>
+                                      {
+                                          foreach (var data in comparisonHourAndSpend)
+                                          {
+                                              pt.X(data.Name).Y(Convert.ToDouble(data.Value)).Add();
+                                          }
+                                      }).Name("Last Week").Add();
+
+                                      sr.Points(pt =>
+                                      {
+                                          foreach (var data in comparisonHourAndSpendTwoWeeksBack)
+                                          {
+                                              pt.X(data.Name).Y(Convert.ToDouble(data.Value)).Add();
+                                          }
+                                      }).Name("Two Week Previous").Add();
+
+                                      sr.Points(pt =>
+                                      {
+                                          foreach (var data in comparisonHourAndSpendThreeWeeksBack)
+                                          {
+                                              pt.X(data.Name).Y(Convert.ToDouble(data.Value)).Add();
+                                          }
+                                      }).Name("Three Week Previous").Add();
+
+                                      sr.Points(pt =>
+                                      {
+                                          foreach (var data in comparisonHourAndSpendFourWeeksBack)
+                                          {
+                                              pt.X(data.Name).Y(Convert.ToDouble(data.Value)).Add();
+                                          }
+                                      }).Name("Four Week Previous").Add();
+
+                                      sr.Points(pt =>
+                                      {
+                                          foreach (var data in comparisonHourAndSpendFiveWeeksBack)
+                                          {
+                                              pt.X(data.Name).Y(Convert.ToDouble(data.Value)).Add();
+                                          }
+                                      }).Name("Five Week Previous").Add();
+
+                                  }))
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                @*SALES TODAY ITEM BREAKDOWN*@
+                                <div class="row">
+                                    <div class="panel panel-success panel-dark">
+                                        <div class="panel-heading">
+                                            <span class="panel-title">@establishment Grind - Sales Today</span>
+                                        </div>
+                                        <div class="panel-body">
+                                            @(Html.EJ().Chart("salesTodayStackedColumn").IsResponsive(true).Size(sz => sz.Height("300"))
+                                  .PrimaryXAxis(
+                                      //Use categorical scale in primary X axis
+                                      px => px.ValueType(AxisValueType.Category).Title(tl => tl.Text("Category").Font(ft => ft.Color("grey").FontWeight(ChartFontWeight.Bold)
+                                          .FontFamily("Segoe UI")
+                                          .Size("16px"))))
+                                  .PrimaryYAxis(pry => pry.Title(tl => tl.Text("Sales (£)").Font(ft => ft.Color("grey").FontWeight(ChartFontWeight.Bold)
+                                      .FontFamily("Segoe UI")
+                                      .Size("16px"))).LabelFormat("£{value}"))
+
+
+                                  .CommonSeriesOptions(cso => cso.Type(SeriesType.StackingColumn).EnableAnimation(true))
+                                  .Legend(lgn => lgn.Visible(true))
+                                  .Title(tl => tl.Text("Sales Today"))
+                                  .Series(sr =>
+                                  {
+                                      //Stacked colums series
+                                      var randy = new Random();
+                                      var seed = randy.Next(0, 300);
+
+                                      foreach (var currentType in salesTodayGrouping.Types)
+                                      {
+                                          seed++;
+                                          random = new Random(seed);
+
+                                          var dataOfThisType = salesTodayGrouping.Data.Where(x => x.Name == currentType).OrderBy(x => x.WeekStart).ToList();
+                                          sr.Points(pt =>
+                                          {
+                                              foreach (var data in dataOfThisType)
+                                              {
+                                                  pt.X(data.WeekStart.ToString("dd/MM")).Y((Convert.ToDouble(Decimal.Round(data.Value)))).Add();
+                                              }
+                                          })
+                                          /* .Marker(mr => mr.Visible(true).Shape(ChartShape.Circle).DataLabel(dl => dl
+                               //Set text alignment to data label text
+                               .Visible(true)
+                              .Font(x => x.Size("16"))
+                               .HorizontalTextAlignment(Syncfusion.JavaScript.DataVisualization.TextAlignment.Near)
+                               .VerticalTextAlignment(Syncfusion.JavaScript.DataVisualization.TextAlignment.Near)))*/
+                                          .Name(currentType).Fill(colorNames[random.Next(0, numColors)]).Add();
+                                      }
+
+
+                                  }))
+                                        </div>
+                                    </div>
+                                </div>
+
+                                @*AVG SPEND ITEM BREAKDOWN*@
+                                <div class="row">
+                                    <div class="panel panel-primary">
+                                        <div class="panel-heading">
+                                            <span class="panel-title">@establishment Grind - Avg Basket Size</span>
+                                        </div>
+                                        <div class="panel-body">
+                                            @(Html.EJ().Chart("salesTodayAvgSpendStackedColumn").IsResponsive(true).Size(sz => sz.Height("300"))
+                              .PrimaryXAxis(
+                                  //Use categorical scale in primary X axis
+                                  px => px.ValueType(AxisValueType.Category).Title(tl => tl.Text("Category").Font(ft => ft.Color("grey").FontWeight(ChartFontWeight.Bold)
+                                      .FontFamily("Segoe UI")
+                                      .Size("16px"))))
+                              .PrimaryYAxis(pry => pry.Title(tl => tl.Text("Sales (£)").Font(ft => ft.Color("grey").FontWeight(ChartFontWeight.Bold)
+                                  .FontFamily("Segoe UI")
+                                  .Size("16px"))).LabelFormat("£{value}"))
+
+
+                              .CommonSeriesOptions(cso => cso.Type(SeriesType.StackingColumn).EnableAnimation(true))
+                              .Legend(lgn => lgn.Visible(true))
+                              .Title(tl => tl.Text("Avg Basket Size"))
+                              .Series(sr =>
+                              {
+                                  //Stacked colums series
+                                  var randy = new Random();
+                                  var seed = randy.Next(0, 300);
+
+                                  foreach (var currentType in salesTodayAvgSpend.Types)
+                                  {
+                                      seed++;
+                                      random = new Random(seed);
+
+                                      var dataOfThisType = salesTodayAvgSpend.Data.Where(x => x.Name == currentType).OrderBy(x => x.WeekStart).ToList();
+
+
+                                      sr.Points(pt =>
+                                      {
+
+
+                                          foreach (var data in dataOfThisType)
+                                          {
+                                              pt.X(data.WeekStart.ToString("dd/MM")).Y(Convert.ToDouble(Decimal.Round(data.Value, 2))).Add();
+                                          }
+                                      })
+                                          /*  .Marker(mr => mr.Visible(true).Shape(ChartShape.Diamond).DataLabel(dl => dl
+                                          //Set text alignment to data label text
+                                          .Visible(true)
+                                         .Font(x => x.Size("16"))
+                                          .HorizontalTextAlignment(Syncfusion.JavaScript.DataVisualization.TextAlignment.Near)
+                                          .VerticalTextAlignment(Syncfusion.JavaScript.DataVisualization.TextAlignment.Near)))*/
+                                          .Name(currentType).Fill(colorNames[random.Next(0, numColors)]).Add();
+                                  }
+
+
+                              }))
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-8">
+                                @*   <div class="row">
+                                        <div class="panel panel-warning panel-dark">
+                                            <div class="panel-heading">
+                                                <span class="panel-title">@establishment Grind - Hour and Spend</span>
+                                            </div>
+                                            <div class="panel-body">
+                                                @Html.Partial("~/Views/BI/HourAndSpendChartData.cshtml", currentHourAndSpend.Concat(comparisonHourAndSpend))
+                                            </div>
+                                        </div>
+                                    </div>*@
+
+
+
+
+                                <div class="row">
+                                    <div class="panel panel-info panel-dark">
+                                        <div class="panel-heading">
+                                            <span class="panel-title">@establishment Grind - Staff Leaderboard</span>
+                                        </div>
+                                        <div class="panel-body">
+                                            @Html.Partial("~/Views/BI/TopSellersPartial.cshtml", topSellers.OrderByDescending(x => x.ValuePounds))
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="panel panel-warning panel-dark">
+                                        <div class="panel-heading">
+                                            <span class="panel-title">@establishment Grind - Product Watch</span>
+                                        </div>
+                                        <div class="panel-body">
+                                            @Html.Partial("~/Views/BI/TopProductsVsComparison.cshtml", topProducts)
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+
+                        
+
+                        }
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+
+    function refreshPageData() {
+        console.log("Timer expired - Submitting form");
+        $('#mainForm').submit();
+
+    }
+
+    var hasFired = '@hasFired';
+
+    console.log(hasFired);
+
+
+    console.log("Setting Timer");
+    setInterval("refreshPageData();", 95000);
+
+
+
+    $(document).ready(function () {
+
+        if (hasFired === "") {
+            console.log("This is the first time page has loaded");
+            refreshPageData();
+        }
+
+
+
+
+
+    });
+
+
+
+</script>

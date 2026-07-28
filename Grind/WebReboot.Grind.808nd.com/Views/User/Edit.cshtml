@@ -1,0 +1,90 @@
+﻿@model Web.Grind._808nd.com.Models.UserRoleViewModel
+@using Web.Grind._808nd.com.Models;
+
+@{
+    ViewBag.Title = "Edit User";
+
+    var roles = (List<AspNetRole>)ViewBag.Roles;
+}
+
+@Html.Partial("~/PartialViews/BreadcrumbBarPartial.cshtml")
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>@ViewBag.Title</h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li>
+                                <a href="#">Config option 1</a>
+                            </li>
+                            <li>
+                                <a href="#">Config option 2</a>
+                            </li>
+                        </ul>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-horizontal">
+                            <h4>User</h4>
+                            <hr />
+                            @Html.ValidationSummary(true)
+                            @Html.HiddenFor(model => model.Id)
+
+                            <div class="form-group">
+                                <label class="control-label col-md-2">User Name</label>
+                              <div class="col-md-10">
+                                    @Html.EditorFor(model => model.UserName)
+                                    @Html.ValidationMessageFor(model => model.UserName)
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-2">Permission Group </label>
+                                <div class="col-md-10">
+                                    @Html.DropDownListFor(model => model.Role.Id, new SelectList(roles, "Id", "Name"), new { id = "roleDDL", @class = "form-control"})
+                                    @Html.ValidationMessageFor(model => model.Role.Name)
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Save" class="btn btn-default" />
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+    @if(Model.Role != null)
+    {
+
+        @Html.Raw("$('#roleDDL').val('Model.Role.Id')")
+    }
+
+</script>

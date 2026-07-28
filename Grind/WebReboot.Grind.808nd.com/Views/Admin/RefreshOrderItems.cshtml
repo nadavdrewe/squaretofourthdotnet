@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "RefreshOrders";
+}
+
+
+@using (Html.BeginForm("RefreshOrderItems", "Admin"))
+{
+
+    <h2>Refresh Order Items - MAKE SURE YOU HAVE DELETED RANGE FIRST!!!</h2>
+
+    <label>Start</label>
+    <input name="start" type="date" />
+    <label>End</label>
+    <input name="end" type="date" />
+
+                <input type="submit" />
+
+}
+
+
+@if (ViewBag.Done != null)
+{
+    <h1>WE DONE BRUV!!!!!</h1>
+}
+

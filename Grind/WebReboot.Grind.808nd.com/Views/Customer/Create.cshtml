@@ -1,0 +1,157 @@
+﻿@using System.Windows.Forms
+@using Revel._808nd.com.Classes;
+@model Revel._808nd.com.Classes.Customer
+
+@{
+    ViewBag.Title = "Create";
+
+    var Customer = Model;
+
+    AjaxOptions options = new AjaxOptions
+    {
+        InsertionMode = InsertionMode.Replace,
+        LoadingElementId = "spinner",
+        OnSuccess = "alert('Customer created!');",
+
+
+    };
+    
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="form-horizontal">
+                <h4>Customer</h4>
+                <hr />
+                @Html.ValidationSummary(true)
+
+                
+                @*CUSTOMER*@
+                @Html.Hidden("Customer.Active", true)
+                @Html.Hidden("Customer.CreatedBy", "/enterprise/User/203/")
+                @Html.Hidden("Customer.CreatedDate", DateTime.Now)
+                @Html.Hidden("Customer.UpdatedDate", DateTime.Now)
+                @Html.Hidden("Customer.UpdatedBy", "/enterprise/User/203/")
+
+
+
+                <table>
+                    <tr>
+                        <td>
+
+
+                            <div class="row">
+                                <div class="col-lg-12">
+
+                                    <div class="col-md-3">
+                                        <label>Email</label>
+                                        <br />
+                                        <input type="text" name="Customer.Email" />
+                                    </div>
+
+
+
+                                    <div class="col-md-3">
+                                        <label>DoB</label>
+                                        <br />
+                                        <input type="text" name="Customer.BirthDate" class="datepicker" />
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label>First Name</label>
+                                        <br />
+                                        <input type="text" name="Customer.FirstName" />
+
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label>Last Name</label>
+                                        <br />
+                                        <input type="text" name="Customer.LastName" />
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <div class="row">
+                                <div class="col-lg-12">
+
+                                    <div class="col-md-3">
+                                        <label>Address Line 1</label>
+                                        <br />
+
+                                        <input type="text" name="Customer.Address" />
+
+
+                                    </div>
+
+
+
+                                    <div class="col-md-3">
+                                        <label>City</label>
+                                        <br />
+
+                                        <input type="text" name="Customer.City" />
+
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label>Postcode</label>
+                                        <br />
+
+                                        <input type="text" name="Customer.Zipcode" />
+
+                                    </div>
+
+
+                                    <div class="col-md-3">
+                                        <label style="color:red">CARD NUMBER</label>
+
+                                        <input type="text" name="Customer.LicNumber" />
+                                        <br />
+
+                                     
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <div class="row">
+                                <div class="col-lg-13">
+                                    <div class="col-md-12">
+                                        <br />
+                                        <input type="submit" value="Save" class="btn btn-default" />
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+}
+

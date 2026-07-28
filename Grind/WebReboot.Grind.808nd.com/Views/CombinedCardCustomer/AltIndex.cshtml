@@ -1,0 +1,273 @@
+﻿@model List<Revel._808nd.com.Classes.RewardsCardNew>
+@using WebReboot.Grind._808nd.com.LoyaltyCardUI.UICardAdaptor;
+    @{
+        ViewBag.Title = "Card Index";
+
+        var message = "";
+
+        if (ViewBag.Message != null)
+        {
+            message = ViewBag.Message.ToString();
+        }
+    }
+
+    @Html.Partial("~/PartialViews/BreadcrumbBarPartial.cshtml")
+
+
+
+    @if (message != "")
+    {
+        <h3 id="message" style="color:red">@message</h3>
+    }
+
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>VIP Cards</h5>
+                        <div class="ibox-tools">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <i class="fa fa-wrench"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-user">
+                                <li>
+                                    <a href="#">Config option 1</a>
+                                </li>
+                                <li>
+                                    <a href="#">Config option 2</a>
+                                </li>
+                            </ul>
+                            <a class="close-link">
+                                <i class="fa fa-times"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <table class="table" id="example">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Revel ID
+                                    </th>
+                                    <th>
+                                        First Name
+                                    </th>
+                                    <th>
+                                        Last Name
+                                    </th>
+                                    <th>
+                                        Email address
+                                    </th>
+                                    <th>
+                                        Created
+                                    </th>
+                                    <th>
+                                        Current Points
+                                    </th>
+                                    <th>
+                                        Card Number
+                                    </th>
+                                    <th>
+                                        Lifetime Points
+                                    </th>
+                                    <th>
+                                        Total Purchases
+                                    </th>
+                                    <th>
+                                        Visits
+                                    </th>
+                                    <th>
+                                        Last Visit (days ago)
+                                    </th>
+                                    <th>
+                                      Refreshable Card
+                                    </th>
+                                    @*<th>
+                                        Red Card
+                                    </th>*@
+                                    <th>
+                                        Red Card Expiry
+                                    </th>
+                                    <th>
+                                        Points Refresh
+                                    </th>
+                                    <th>
+                                        Notes
+                                    </th>
+                                    <th>
+                                        Stores Visited
+                                    </th>
+
+                                    <th></th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+
+                                    var loyaltyType = LoyaltyCardAdaptorUIService.GetUICardType(item);
+                                    var loyaltyString = LoyaltyCardAdaptorUIService.MapUICardTypeToOptionText(loyaltyType);
+
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Revelid)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Customer.FirstName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Customer.LastName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Customer.Email)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.created_date)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.current_points)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.number)
+                                        </td>
+                                        @* <td>
+                                                    @Html.DisplayFor(modelItem => item.customer_revel)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.establishment)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Revelid)
+                                                </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.number)
+                                            </td>
+                                            @* <td>
+                                                    @Html.DisplayFor(modelItem => item.payment_type)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.resource_uri)
+                                                </td>*@
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.total_points)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.total_purchases)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.total_visits)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.days_since_last_visit)
+                                        </td>
+                                        @*   <td>
+                                                @Html.DisplayFor(modelItem => item.updated_by)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.updated_date)
+                                            </td>*@
+                                        @* <td>
+                                                @Html.DisplayFor(modelItem => item.customer_revel_id)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.establishment_id)
+                                            </td>*@
+                                        @*<td>
+                                            @Html.DisplayFor(modelItem => item.LoyaltyCardType.name)
+                                        </td>*@
+                                        <td>
+                                            @loyaltyString
+                                            @*@Html.DisplayFor(modelItem => item.is_vip_card)*@
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.ExpiryDate)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.vip_points_last_refreshed)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.notes)
+                                        </td>
+                                        <td>
+                                            @{
+                                                var val = item.StoresVisted;
+                                                if (!String.IsNullOrEmpty(val))
+                                                {
+                                                    val = val.Remove(val.Length - 1);
+                                                }
+                                                @val
+
+                                            }
+
+                                        </td>
+
+                                        @*     <td>
+                                                @Html.DisplayFor(modelItem => item.theAddress)
+                                            </td>*@
+                                        <td>
+                                            @Html.ActionLink("Edit", "Edit", new { id = item.DBKEY_rewardscardnew_id })
+                                            @*       @Html.ActionLink("Details", "Details", new { id = item.DBKEY_rewardscardnew_id }) |
+                                                @Html.ActionLink("Delete", "Delete", new { id = item.DBKEY_rewardscardnew_id })*@
+                                        </td>
+                                    </tr>
+                                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script type="text/javascript">
+
+
+    $(document).ready(function () {
+
+        $('#example').DataTable(
+        {
+            "pageLength": 50,
+            "order": [[0, "desc"]],
+            "deferRender": true,
+            responsive: true,
+            dom: '<"html5buttons"B>lTfgitp',
+            buttons: [
+                   { extend: 'copy' },
+                   { extend: 'csv' },
+                   { extend: 'excel', title: '@ViewBag.Title' },
+                   { extend: 'pdf', title: '@ViewBag.Title' },
+
+                   {
+                       extend: 'print',
+                       customize: function (win) {
+                           $(win.document.body).addClass('white-bg');
+                           $(win.document.body).css('font-size', '10px');
+
+                           $(win.document.body).find('table')
+                                   .addClass('compact')
+                                   .css('font-size', 'inherit');
+                       }
+                   }
+            ]
+        }
+        );
+
+
+        $('#message').fadeIn(2000);
+        $('#message').delay(2000);
+        $('#message').fadeOut(2000);
+
+    });
+
+
+
+    </script>
+
+

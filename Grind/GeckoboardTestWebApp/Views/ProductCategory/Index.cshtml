@@ -1,0 +1,143 @@
+﻿@model IEnumerable<Revel._808nd.com.Classes.ProductCategory>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.active)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.brand)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.color_code)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.created_by)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.created_date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.establishment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.film)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.lock_enable)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.parent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.resource_uri)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.sorting)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.updated_by)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.updated_date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.brand_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.parent_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.establishment_id)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.active)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.brand)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.color_code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.created_by)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.created_date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.establishment)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.film)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.lock_enable)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.parent)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.resource_uri)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sorting)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.updated_by)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.updated_date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.brand_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.parent_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.establishment_id)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+                @Html.ActionLink("Details", "Details", new { id=item.id }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.id })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

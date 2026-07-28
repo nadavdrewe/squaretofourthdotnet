@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mailservice.railgunit.com", "mailservice.railgunit.com.csproj", "{D751F98B-F0FC-4459-8CC7-C1FE1E4036BE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tests.railgunit.com", "tests.railgunit.com\tests.railgunit.com.csproj", "{34AD0876-E319-40A3-99DD-4B0194242262}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D751F98B-F0FC-4459-8CC7-C1FE1E4036BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D751F98B-F0FC-4459-8CC7-C1FE1E4036BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D751F98B-F0FC-4459-8CC7-C1FE1E4036BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D751F98B-F0FC-4459-8CC7-C1FE1E4036BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34AD0876-E319-40A3-99DD-4B0194242262}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34AD0876-E319-40A3-99DD-4B0194242262}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34AD0876-E319-40A3-99DD-4B0194242262}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34AD0876-E319-40A3-99DD-4B0194242262}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

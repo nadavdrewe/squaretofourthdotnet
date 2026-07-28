@@ -1,0 +1,100 @@
+﻿@model IEnumerable<data.pipeline.fourth.com.Models.Credentials.BaseCredential>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Api Credentials Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table id="order-listing" class="table table-dark">
+    <thead>
+        <tr>
+            <th></th>
+            <th>
+                @Html.DisplayNameFor(model => model.Store)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Brand)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CredentialType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Active)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ClientId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LatestAccessToken)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RefreshToken)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BaseEndpoint)
+            </th>
+            <th>
+                OAuth Scope
+            </th>
+            <th>
+                OAuth Token Endpoint
+            </th>
+
+
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Store.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Brand.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CredentialType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Active)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Username)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClientId)
+            </td>
+            <td>
+                @(string.IsNullOrWhiteSpace(item.LatestAccessToken) ? "" : "Stored")
+            </td>
+            <td>
+                @(string.IsNullOrWhiteSpace(item.RefreshToken) ? "" : "Stored")
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BaseEndpoint)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SupplimentalData2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SupplimentalData1)
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

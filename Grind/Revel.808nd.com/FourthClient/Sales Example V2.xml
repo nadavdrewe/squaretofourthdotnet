@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" ?>
+<FourthHeader>
+	<OrganisationHeader>
+		<OrganisationID>77HE-HEKE-MKM7-IJDJ-7676</OrganisationID>
+		<UserName>UserName</UserName>
+		<Password>Password</Password>
+		<SalesHeader>
+			<SalesDate>17/07/2008</SalesDate>
+			<Location>224</Location>
+			<RevenueCentre>4</RevenueCentre>
+			<SalesTransaction>
+				<PLU>10</PLU>
+				<Group>2756</Group>
+				<Description>and Tonic</Description>
+				<NetSalesPrice>1.06</NetSalesPrice>
+				<GrossSalesPrice>1.25</GrossSalesPrice>
+				<Quantity>18</Quantity>
+				<NetSales>19.15</NetSales>
+				<GrossSales>22.5</GrossSales>
+				<VAT>3.35</VAT>
+				<SaleType>1</SaleType>
+			</SalesTransaction>
+			<SalesTransaction>
+				<PLU>172</PLU>
+				<Group>2755</Group>
+				<Description>Pint Carling</Description>
+				<NetSalesPrice>2.21</NetSalesPrice>
+				<GrossSalesPrice>2.6</GrossSalesPrice>
+				<Quantity>18</Quantity>
+				<NetSales>44.26</NetSales>
+				<GrossSales>52</GrossSales>
+				<VAT>7.74</VAT>
+				<SaleType>1</SaleType>
+			</SalesTransaction>
+			<SalesTransaction>
+				<PLU>329</PLU>
+				<Group>2726</Group>
+				<Description>Chablis Grand Cru</Description>
+				<NetSalesPrice>36.17</NetSalesPrice>
+				<GrossSalesPrice>42.5</GrossSalesPrice>
+				<Quantity>23</Quantity>
+				<NetSales>831.91</NetSales>
+				<GrossSales>977.5</GrossSales>
+				<VAT>145.59</VAT>
+				<SaleType>1</SaleType>
+			</SalesTransaction>
+		</SalesHeader>
+		<SalesHeader>
+			<SalesDate>17/07/2008</SalesDate>
+			<Location>224</Location>
+			<RevenueCentre>2</RevenueCentre>
+			<SalesTransaction>
+				<PLU>329</PLU>
+				<Group>2726</Group>
+				<Description>Chablis Grand Cru</Description>
+				<NetSalesPrice>36.17</NetSalesPrice>
+				<GrossSalesPrice>42.5</GrossSalesPrice>
+				<Quantity>23</Quantity>
+				<NetSales>831.91</NetSales>
+				<GrossSales>977.5</GrossSales>
+				<VAT>145.59</VAT>
+				<SaleType>1</SaleType>
+			</SalesTransaction>
+		</SalesHeader>
+	</OrganisationHeader>	
+	<OrganisationHeader>
+		<OrganisationID>KJ53-9823-8737-KL56-8765</OrganisationID>
+		<UserName>UserName</UserName>
+		<Password>Password</Password>
+		<SalesHeader>
+			<SalesDate>17/07/2008</SalesDate>
+			<Location>224</Location>
+			<RevenueCentre>4</RevenueCentre>
+			<SalesTransaction>
+				<PLU>912</PLU>
+				<Group>2752</Group>
+				<Description>Sancerre 2006</Description>
+				<NetSalesPrice>21.63</NetSalesPrice>
+				<GrossSalesPrice>25.41</GrossSalesPrice>
+				<Quantity>17</Quantity>
+				<NetSales>367.66</NetSales>
+				<GrossSales>432</GrossSales>
+				<VAT>64.34</VAT>
+				<SaleType>1</SaleType>
+			</SalesTransaction>
+			<SalesTransaction>
+				<PLU>443</PLU>
+				<Group>2755</Group>
+				<Description>Double Maker's Mark</Description>
+				<NetSalesPrice>6.81</NetSalesPrice>
+				<GrossSalesPrice>8</GrossSalesPrice>
+				<Quantity>3</Quantity>
+				<NetSales>20.43</NetSales>
+				<GrossSales>24</GrossSales>
+				<VAT>3.57</VAT>
+				<SaleType>1</SaleType>
+			</SalesTransaction>
+			<SalesTransaction>
+				<PLU>443</PLU>
+				<Group>2755</Group>
+				<Description>Double Maker's Mark</Description>
+				<NetSalesPrice>6.81</NetSalesPrice>
+				<GrossSalesPrice>8</GrossSalesPrice>
+				<Quantity>1</Quantity>
+				<NetSales>6.81</NetSales>
+				<GrossSales>8</GrossSales>
+				<VAT>1.19</VAT>
+				<SaleType>8</SaleType>
+			</SalesTransaction>
+		</SalesHeader>
+	</OrganisationHeader>
+</FourthHeader>
+	

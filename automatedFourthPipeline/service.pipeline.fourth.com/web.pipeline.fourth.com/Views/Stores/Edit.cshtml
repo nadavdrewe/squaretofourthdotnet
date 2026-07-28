@@ -1,0 +1,116 @@
+﻿@model data.pipeline.fourth.com.Models.Store
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>Store</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="BrandId" class="control-label">Brand</label>
+                <select asp-for="BrandId" class="form-control" asp-items="ViewBag.BrandId"></select>
+                <span asp-validation-for="BrandId" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Active" /> @Html.DisplayNameFor(model => model.Active)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Timezone" class="control-label"></label>
+                <input asp-for="Timezone" class="form-control" />
+                <span asp-validation-for="Timezone" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@*CREDS AND INTS*@
+<div class="table-responsive">
+    <h4>Integrations For Store</h4>
+    <table id="order-listing" class="table table-dark">
+        <thead>
+            <tr>
+                <th>Integration Type</th>
+                <th>Active</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.StoreIntegrations ?? new List<data.pipeline.fourth.com.Models.StoreIntegration>())
+            {
+                <tr>
+                    <td>@item.IntegrationType</td>
+                    <td>@item.Active </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<br />
+<div class="table-responsive">
+    <h4>Credentials For Store</h4>
+    <table id="order-listing2" class="table table-dark">
+        <thead>
+            <tr>
+                <th>Cred Type</th>
+                <th>Active</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.StoreCredentials ?? new List<data.pipeline.fourth.com.Models.Credentials.BaseCredential>())
+            {
+                <tr>
+                    <td>@item.CredentialType</td>
+                    <td>@item.Active </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $('#order-listing2').DataTable({
+            "aLengthMenu": [
+                [5, 10, 15, -1],
+                [5, 10, 15, "All"]
+            ],
+            "iDisplayLength": 10,
+            "language": {
+                search: ""
+            }
+        });
+
+        console.log("ready!");
+    });
+</script>

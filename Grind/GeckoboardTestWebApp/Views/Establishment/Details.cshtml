@@ -1,0 +1,42 @@
+﻿@model Revel._808nd.com.Classes.Establishment
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>Establishment</h4>
+    	<hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.RevelOrganiationName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.RevelOrganiationName)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.api_key)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.api_key)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.establishment_id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

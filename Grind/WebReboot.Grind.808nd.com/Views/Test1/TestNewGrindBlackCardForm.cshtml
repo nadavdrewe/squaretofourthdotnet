@@ -1,0 +1,186 @@
+﻿@*@model dynamic
+
+    @{
+        ViewBag.Title = "title";
+    Layout = null;
+    }
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+
+    <form id="theForm" method="POST">
+        <label>Email</label>
+        <input name="" id="Email" value="testemail@test.com" />
+        <label>Firstname</label>
+        <input name="" id="FirstName" value="testname" />
+        <label>Lastname</label>
+        <input name="" id="LastName" value="testsurname" />
+        <label>DOB</label>
+        <input name="" id="DOB" value="11/04/1981" />
+        <label>BlackCardNo</label>
+        <input name="" id="BlackCardNo" value="9899999999" />
+        <button type="submit" value="Submit">SUbmit</button>
+    </form>
+
+    <script>
+
+        $("#theForm").on("submit", function (event) {
+
+            var test = "";
+            event.preventDefault();
+
+
+            var cardNumber = $('#BlackCardNo').val();
+            var email = $('#Email').val();
+            var fname = $('#FirstName').val();
+            var lname = $('#LastName').val();
+            var dob = $("#DOB").val();
+
+            var model = {
+                'number': "9998999909",
+                'firstname': "fname",
+                'lastname': "lname",
+                'email': "testemail@test.com",
+                'dob': "11/04/1981"
+            };
+
+
+
+            $.ajax({
+                type: "POST",
+                url: 'https://localhost:44301/api/BlackCardSignups/',
+                data: model,
+                success: function (data) {
+                    $('div#mainContainer').html("<div align='center'><h2>Thank you for registering your black card, it will be active immediately.</h2><h2>Don’t forget to use your card each time you visit.</h2></div>");
+                    $('body').css('height', '200px');
+                },
+
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert(xhr.status);
+                    alert(thrownError);
+                    $('div#mainContainer').html("<div align='center'><h2>Sorry that didn't work. Please check your black card number and try again later.</h2></div>");
+                    $('body').css('height', '200px');
+                }
+            });
+
+        });
+
+    </script>*@
+
+
+
+
+<form id="theForm" method="POST">
+    <label>Email</label>
+    <input type="text" name="" id="Email" value="testemail@test.com" />
+    <label>Firstname</label>
+    <input type="text" name="" id="FirstName" value="testname" />
+    <label>Lastname</label>
+    <input type="text" name="" id="LastName" value="testsurname" />
+    <label>DOB</label>
+    <input type="text" name="" id="DOB" value="11/04/1981" />
+    <label>BlackCardNo</label>
+    <input type="text" name="" id="BlackCardNo" value="9899999999" />
+    <button type="submit" value="Submit">SUbmit</button>
+</form>
+
+
+@section scripts {
+    @* <script>
+                // TODO: Replace with the URL of your WebService app
+                var serviceUrl = 'https://app.grindandco.com/api/blackcardsignups/';
+              /*  var serviceUrl = 'https://130.193.90.122/api/blackcardsignups/';*/
+                /*var serviceUrl = 'https://localhost:44301/api/blackcardsignups/';*/
+
+
+                $("form").on("submit", function(event) {
+                    event.preventDefault();
+
+                    alert("subbing");
+
+                    var allInputs = $(":input");
+                    var elems = $('form').find(':input');
+
+        /*
+                    alert(elems.length);
+                    alert(elems[0].value);
+                    alert(elems[1].value);
+                    alert(elems[2].value);
+                    alert(elems[3].value);
+                    alert(elems[4].value);*/
+
+
+                    $.ajax({
+                        type: 'POST',
+                        data: {
+                            'cardNumber': "98321311",
+                            'cardNumberConfirm': "98321311",
+                            'firstname': "stage",
+                            'lastname': "stage",
+                            'email': "stage",
+                            'dob': '11/11/1981'
+                        },
+
+                        url: serviceUrl
+                    }).done(function(data) {
+                        $('#value1').text(data);
+                    }).error(function(jqXHR, textStatus, errorThrown) {
+                        $('#value1').text(jqXHR.responseText || textStatus);
+                    });
+                });
+            </script>*@
+
+    <script type="text/javascript">
+
+        
+        $(document).ready(function () {
+
+            $("form").submit(function (e) {
+                e.preventDefault();
+
+
+
+                var elems = $('form').find(':input');
+
+                /*
+                      alert(elems.length);
+                     alert(elems[0].value);
+                      alert(elems[1].value);
+                      alert(elems[2].value);
+                      alert(elems[3].value);
+                      alert(elems[4].value);*/
+
+                var serviceUrl = 'https://app.grindandco.com/api/blackcardsignups/';
+                /*  var serviceUrl = 'https://130.193.90.122/api/blackcardsignups/';*/
+           /*     var serviceUrl = 'https://localhost:44301/api/blackcardsignups/';*/
+
+                $.ajax({
+                    type: 'POST',
+                    data: {
+                        'cardNumber': "98321311",
+                        'cardNumberConfirm': "98321311",
+                        'firstname': "stage",
+                        'lastname': "stage",
+                        'email': "stage@stage.com",
+                        'dob': '11/11/1981'
+                    },
+
+                    url: serviceUrl
+                }).done(function (data) {
+                    alert("Thanks! You can start using your black card straight away!!!");
+                }).error(function (jqXHR, textStatus, errorThrown) {
+                    alert("That didn't work. Please check the card details carefully.");
+                });
+
+               /* alert("submitted");*/
+
+                console.log("submitted!");
+
+                /*  }*/
+
+            });
+        });
+
+
+    </script>
+
+}

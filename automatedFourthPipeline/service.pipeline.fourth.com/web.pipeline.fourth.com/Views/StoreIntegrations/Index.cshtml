@@ -1,0 +1,75 @@
+﻿@model IEnumerable<data.pipeline.fourth.com.Models.StoreIntegration>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Store Integrations Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table id="order-listing" class="table ">
+    <thead>
+        <tr>
+            <th></th>
+            <th>
+                Brand
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Store)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Active)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IntegrationType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IntegrationSubType)
+            </th>       
+            <th>
+                @Html.DisplayNameFor(model => model.WhenCreatedUTC)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WhenUpdatedUTC)
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Store.Brand.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Store.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Active)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IntegrationType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IntegrationSubType)
+                </td>               
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.WhenCreatedUTC)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.WhenUpdatedUTC)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

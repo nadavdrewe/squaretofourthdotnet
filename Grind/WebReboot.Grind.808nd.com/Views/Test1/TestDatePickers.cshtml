@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "TestDatePickers";
+
+    Layout = null;
+}
+
+<html>
+<head>
+    @*Jquery*@
+    <script src="~/Bootstrap/bower_components/jquery/dist/jquery.min.js"></script>
+    @*Jquery UI*@
+    <script src="https://code.jquery.com/ui/1.11.2/jquery-ui.min.js"></script>
+    <script src="~/Scripts/uikit-2.24.3/js/uikit.min.js"></script>
+    <script src="~/Scripts/uikit-2.24.3/js/components/datepicker.min.js"></script>
+    <link href="~/Scripts/uikit-2.24.3/css/uikit.gradient.css" rel="stylesheet"/>
+    <link href="~/Scripts/uikit-2.24.3/css/components/datepicker.gradient.css" rel="stylesheet"/>
+</head>
+
+<body>
+    <h2>TestDatePickers</h2>
+    <form class="uk-form">
+        <input type="text" data-uk-datepicker="{format:'DD.MM.YYYY'}">
+    </form>
+</body>
+</html>
+

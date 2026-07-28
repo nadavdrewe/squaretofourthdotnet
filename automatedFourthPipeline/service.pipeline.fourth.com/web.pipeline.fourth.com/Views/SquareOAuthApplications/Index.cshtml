@@ -1,0 +1,51 @@
+@model IEnumerable<data.pipeline.fourth.com.Models.Credentials.SquareOAuthApplication>
+@{
+    ViewData["Title"] = "Square OAuth Applications";
+}
+
+<div class="page-header">
+    <div>
+        <h3 class="page-title">Square OAuth applications</h3>
+        <p class="text-muted mb-0">Choose which Square developer application is used when connecting each client.</p>
+    </div>
+    <a class="btn btn-primary" asp-action="Create">Add Square application</a>
+</div>
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">@TempData["Success"]</div>
+}
+
+<div class="card">
+    <div class="card-body">
+        @if (!Model.Any())
+        {
+            <div class="text-center py-5">
+                <h4>No Square applications configured</h4>
+                <p class="text-muted">Add the application ID, secret, and callback URL from the Square Developer Dashboard.</p>
+                <a class="btn btn-dark" asp-action="Create">Add the first application</a>
+            </div>
+        }
+        else
+        {
+            <div class="table-responsive">
+                <table class="table">
+                    <thead><tr><th>Name</th><th>Environment</th><th>Application ID</th><th>Secret</th><th>Status</th><th></th></tr></thead>
+                    <tbody>
+                    @foreach (var application in Model)
+                    {
+                        <tr>
+                            <td><strong>@application.Name</strong><br /><small class="text-muted">@application.RedirectUri</small></td>
+                            <td>@application.Environment</td>
+                            <td><code>@application.ApplicationId</code></td>
+                            <td><span class="badge badge-success">Configured</span></td>
+                            <td><span class="badge badge-@(application.Active ? "success" : "secondary")">@(application.Active ? "Active" : "Inactive")</span></td>
+                            <td><a class="btn btn-outline-primary btn-sm" asp-action="Edit" asp-route-id="@application.Id">Edit</a></td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,79 @@
+﻿@using WebReboot.Grind._808nd.com.ViewModels
+@model WebReboot.Grind._808nd.com.Models.ViewModels.CardLogPartialModel
+
+@{
+    var prods = Model.Products as List<ProductViewModel>;
+    var orderItems = Model.OrderItems as List<OrderItemViewModel>;
+    var ests = Model.Establishments as List<EstablishmentViewModel>;
+
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <h3>Card Usage</h3>
+        <table class="table display" id="example">
+            <thead>
+                <tr>
+                    <th>
+                        Date
+                    </th>
+
+                    <th>
+                        Store
+                    </th>
+                    <th>
+                        Action
+                    </th>
+                    <th>
+                        Order
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Logs.Count() > 0)
+                {
+                    foreach (var log in Model.Logs)
+                    {
+                        <tr>
+                            <td>
+                                @log.created_date.ToLongDateString()  @log.created_date.ToLongTimeString()
+                            </td>
+
+                            <td>
+                                @ests.Where(x => x.resource_uri.Trim() == log.establishment.Trim()).FirstOrDefault().name
+                            </td>
+                            <td>
+                                @log.type_of_change @log.point
+                            </td>
+                            <td>
+                                @{
+
+                                    var items = orderItems.Where(x => x.parent_order_id.Equals(log.order_id)).ToList();
+
+                                    foreach (var item in items)
+                                    {
+                                        var count = items.Count();
+
+                                        @prods.Where(x => x.product_id == item.product_id).FirstOrDefault().name
+
+                                        var index = items.IndexOf(item);
+                                        if (index < count - 1)
+                                        {
+                                            @Html.Raw(", ");
+                                        }
+
+
+                                    }
+                                }
+
+
+                            </td>
+                        </tr>
+                                        }
+                                    }
+
+            </tbody>
+        </table>
+
+    </div>
+</div>

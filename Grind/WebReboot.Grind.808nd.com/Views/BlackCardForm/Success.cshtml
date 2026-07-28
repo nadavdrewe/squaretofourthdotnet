@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewBag.Title = "Success";
+    Layout = null;
+}
+
+<div align='center'><h2>Thank you for registering your black card, it will be active immediately.</h2><h2>Don’t forget to use your card each time you visit.</h2></div>
+
+
+<script src="https://code.jquery.com/jquery-1.11.3.min.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+    $("form").on("submit", function (event) {
+
+        if ($("form").valid()) {
+
+            alert.$("submitting");
+            event.preventDefault();
+
+
+            var cardNumber = $('#').val();
+
+            var email = $('#email').val();
+            var fname = $('#fname').val();
+            var lname = $('#lname').val();
+            var dob = $("#").val();
+
+            var model = {
+                'number': cardNumber,
+                'firstname': fname,
+                'lastname': lname,
+                'email': email,
+                'dob': dob,
+                'establishment': '/enterprise/Establishment/1/'
+            };
+
+
+            $.ajax({
+                type: "POST",
+                dataType: "jsonp",
+                //url: 'http://localhost:3633/BlackCardForm/Create',
+                url: 'https://localhost/api/',
+                data: model,
+
+                success: function (data) {
+                    $('div#mainContainer').html("<div align='center'><h2>Thank you for registering your black card, it will be active immediately.</h2><h2>Don’t forget to use your card each time you visit.</h2></div>");
+                    $('body').css('height', '200px');
+                },
+
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert(xhr.status);
+                    alert(thrownError);
+                    $('div#mainContainer').html("<div align='center'><h2>Sorry that didn't work. Please check your black card number and try again later.</h2></div>");
+                    $('body').css('height', '200px');
+                }
+            });
+
+        }
+    });
+
+</script>

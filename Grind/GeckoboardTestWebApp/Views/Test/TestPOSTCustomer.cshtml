@@ -1,0 +1,171 @@
+﻿@using System.Configuration
+@{
+    ViewBag.Title = "TestPOSTCustomer";
+    Layout = null;
+}
+
+<h2>TestPOSTCustomer</h2>
+
+<html>
+<head>
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+</head>
+
+<body>
+
+    <form>
+        NAME
+        <input name="fname" type="text" />
+        <input name="lname" type="text" />
+        <input name="email" type="text" />
+        <br />
+        DOB DAY
+        <input name="day" type="text" />
+        <input name="month" type="text" />
+        <input name="year" type="text" />
+        <br />
+        CARD
+        <input name="card1" type="text" />
+        <input name="card2" type="text" />
+
+
+        <input type="submit" />
+
+    </form>
+
+</body>
+
+</html>
+
+
+<script type="text/javascript">
+
+    $("form").on("submit", function (event) {
+
+        /*       alert("Submitting");
+
+               var valid = true;
+               var establishment = "/enterprise/Establishment/1/";
+
+               var form = $("form");
+               var inputs = form.find("input[type=text]");
+
+               var day = inputs[3].value;
+               var month = inputs[4].value;
+               var year = inputs[5].value;
+
+               var cardNumber = inputs[6].value.value;
+
+               var email = document.getElementsByName('email')[0].value;
+               var fname = document.getElementsByName('fname')[0].value;
+               var lname = document.getElementsByName('lname')[0].value;
+
+
+
+               var customer = {
+                   "active": true,
+                   "address": "221 Baker Street",
+                   "addresses": [],
+                   "birth_date": null,
+                   "cc_exp": null,
+                   "cc_first_name": null,
+                   "cc_last_4_digits": null,
+                   "cc_last_name": null,
+                   "cc_number": "",
+                   "city": "London",
+                   "created_by":
+                   "/enterprise/User/14/",
+                   "created_date": "2014-03-27T06:17:43.916409",
+                   "customer_groups": [],
+                   "email": email,
+                   "exp_date": null,
+                   "first_name": fname,
+                   "is_visitor": false,
+                   "last_name": lname,
+                   "lic_number": cardNumber,
+                   "notes": "",
+                   "phone_number": "1234567890",
+                   "picture": "",
+                   "ref_number": cardNumber,
+                   "state": null,
+                   "total_purchases": 0,
+                   "total_visits": 0,
+                   "updated_by": "/enterprise/User/14/",
+                   "updated_date":
+                   "2014-03-27T06:17:43.916409",
+                   "uuid": "",
+                   "zipcode": null
+               }
+
+               var rewardsCard = {
+                   "address": null,
+                   "created_by": "/enterprise/User/5/",
+                   "created_date": "2015-01-16T11:15:22.322096",
+                   "current_points": 0,
+                   "customer": null,
+                   "establishment": establishment,
+                   "number": cardNumber,
+                   "payment_type": 4,
+                   "total_points": 0,
+                   "total_purchases": 0,
+                   "total_visits": 0,
+                   "updated_by": "/enterprise/User/19/",
+                   "updated_date": "2015-01-16T11:15:22.322096"
+               }
+
+
+
+               var customerJSON = JSON.stringify(customer);
+               var rewardsCardJSON = JSON.stringify(rewardsCard);
+
+
+               console.log(customerJSON);
+               console.log(rewardsCardJSON);
+            */
+
+        alert("Making call");
+
+        @{
+            var fullserverPath = ConfigurationManager.AppSettings["RevelBaseURL"] + "resources/Customer/";
+        }
+
+        $.ajax({
+            url: '@fullserverPath',
+            data: JSON.stringify({ "active": true, "address": "221 Baker Street", "addresses": [], "birth_date": null, "cc_exp": null, "cc_first_name": null, "cc_last_4_digits": null, "cc_last_name": null, "cc_number": "", "city": "London", "created_by": "/enterprise/User/14/", "created_date": "2014-03-27T06:17:43.916409", "customer_groups": [], "email": "test@revel.com", "exp_date": null, "first_name": "Test", "is_visitor": false, "last_name": "test", "lic_number": null, "notes": "", "phone_number": "1234567890", "picture": "", "ref_number": "", "state": null, "total_purchases": 0, "total_visits": 0, "updated_by": "/enterprise/User/14/", "updated_date": "2014-03-27T06:17:43.916409", "uuid": "", "zipcode": null }),
+            type: "POST",
+            dataType: 'jsonp',
+            beforeSend: function (request) {
+                request.setRequestHeader("API-AUTHENTICATION", "408d6c05f2864ece90c037333d64f333:9ae943831e7f443b9edf3a6203e66598290fc7d2f3244ca9b69dd67404aa39f2");
+                request.setRequestHeader("Content-Type", "application/json");
+            },
+            success: function (res, status, xhr) {
+                alert("customer submitted");
+
+            },
+
+            error: function () {
+                // error handler
+
+                alert('Error');
+                console.log("error");
+
+            }
+
+
+        });
+
+        //end valid
+
+
+        return false;
+
+    });
+
+
+
+
+
+
+
+</script>

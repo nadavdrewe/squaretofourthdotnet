@@ -1,0 +1,464 @@
+﻿@model Revel._808nd.com.Classes.OrderItem
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body>
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <h4>OrderItem</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.catering_complete)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.catering_complete)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.commission)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.commission)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.cost)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.cost)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.course_number)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.course_number)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.created_by)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.created_by)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.created_date)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.created_date)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.crv_value)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.crv_value)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.cup_qty)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.cup_qty)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.cup_weight)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.cup_weight)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.deleted)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.deleted)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.dining_option)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.dining_option)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.discount)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.discount)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.discount_amount)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.discount_amount)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.discount_reason)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.discount_reason)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.discount_rule_amount)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.discount_rule_amount)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.discount_taxed)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.discount_taxed)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.exchange_discount)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.exchange_discount)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.exchanged)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.exchanged)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.initial_price)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.initial_price)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.is_cold)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.is_cold)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.is_coupon)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.is_coupon)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.is_gift)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.is_gift)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.modifier_amount)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.modifier_amount)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.modifier_cost)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.modifier_cost)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.modifieritems)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.modifieritems)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.on_hold)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.on_hold)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.order)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.order)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.order_local_id)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.order_local_id)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.price)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.price)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.printed)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.printed)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.product)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.product)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.product_name_override)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.product_name_override)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.quantity)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.quantity)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.resource_uri)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.resource_uri)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.shared)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.shared)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.special_request)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.special_request)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.split_parts)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.split_parts)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.split_type)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.split_type)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.split_with_seat)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.split_with_seat)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.station)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.station)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.tax_amount)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.tax_amount)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.tax_rate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.tax_rate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.tax_rebate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.tax_rebate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.taxed_flag)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.taxed_flag)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.temp_sort)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.temp_sort)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.updated_by)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.updated_by)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.updated_date)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.updated_date)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.uuid)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.uuid)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.voided_reason)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.voided_reason)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.weight)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.weight)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.total_price_after_tax)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.total_price_after_tax)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.total_price_after_discount)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.total_price_after_discount)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.parent_order_id)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.parent_order_id)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.product_id)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.product_id)
+            </dd>
+    
+        </dl>
+    
+        @using (Html.BeginForm()) {
+            @Html.AntiForgeryToken()
+    
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
+</body>
+</html>

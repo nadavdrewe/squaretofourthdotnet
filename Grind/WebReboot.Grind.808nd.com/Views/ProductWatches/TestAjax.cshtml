@@ -1,0 +1,45 @@
+﻿@{ var options = new AjaxOptions
+    {
+
+
+        HttpMethod = "POST",
+        OnBegin = "alert('OnBegin')",
+        OnSuccess = "alert('Watch added');",
+        OnFailure = "alert('That didn't work, how embarrassing!');"
+
+    }; }
+
+<form class="testForm" onsubmit="myFunction(1)">
+    @Html.AntiForgeryToken()
+    <input type="hidden" name="ProductID" id="ProductID" value="1" />
+    <input type="submit" class="btn btn-danger" value="Create New Watch" />
+</form>
+
+
+<script>
+    
+    function createProductWatch(productId) {
+      
+        alert("Submitting");      
+        event.preventDefault();
+       
+        $.ajax({
+            url: '@Url.Action("Create", "ProductWatches")',
+            data: { ProductID: productId },
+            error: function() {
+                alert('Sorry that didn\'t work');
+            },
+
+            success: function(data) {
+                alert('Thanks');
+            },
+            type: 'POST'
+        });
+
+    }
+
+
+
+
+
+</script>

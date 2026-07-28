@@ -1,0 +1,50 @@
+﻿@model data.pipeline.fourth.com.Models.BrandIntegration
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>Brand Integration</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="BrandId" class="control-label">Brand</label>
+                <select asp-for="BrandId" class="form-control" asp-items="ViewBag.BrandId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="IntegrationType" class="control-label"></label>
+                <select asp-for="IntegrationType" asp-items="Html.GetEnumSelectList<shared.pipeline.fourth.com.IntegrationTypes>()" class="form-control"></select>
+                <span asp-validation-for="IntegrationType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IntegrationSubType" class="control-label"></label>
+                <select asp-for="IntegrationSubType" asp-items="Html.GetEnumSelectList<shared.pipeline.fourth.com.IntegrationSubTypes>()" class="form-control"></select>
+                <span asp-validation-for="IntegrationSubType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StartBatchQueryTimeUTC" class="control-label">Start Batch Query Time UTC - THIS NEEDS TO BE UTC TIME!!! You need to convert!</label>
+                <input asp-for="StartBatchQueryTimeUTC" class="form-control" />
+                <span asp-validation-for="StartBatchQueryTimeUTC" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Active" /> @Html.DisplayNameFor(model => model.Active)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

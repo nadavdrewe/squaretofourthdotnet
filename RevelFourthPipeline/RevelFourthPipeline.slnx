@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="RevelFourthPipeline.Domain/RevelFourthPipeline.Domain.csproj" />
+  <Project Path="RevelFourthPipeline.Infrastructure/RevelFourthPipeline.Infrastructure.csproj" />
+  <Project Path="RevelFourthPipeline.Tests/RevelFourthPipeline.Tests.csproj" />
+  <Project Path="RevelFourthPipeline.Worker/RevelFourthPipeline.Worker.csproj" />
+</Solution>

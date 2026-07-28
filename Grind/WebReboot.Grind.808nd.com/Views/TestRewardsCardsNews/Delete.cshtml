@@ -1,0 +1,232 @@
+﻿@model Revel._808nd.com.Classes.RewardsCardNew
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>RewardsCardNew</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ResourceUri)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ResourceUri)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.created_by)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.created_by)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.created_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.created_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.current_points)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.current_points)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.customer_revel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.customer_revel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.establishment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.establishment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Revelid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Revelid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.number)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.number)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.payment_type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.payment_type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.resource_uri)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.resource_uri)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.total_points)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.total_points)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.total_purchases)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.total_purchases)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.total_visits)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.total_visits)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.updated_by)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.updated_by)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.updated_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.updated_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.customer_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.customer_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.establishment_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.establishment_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.is_vip_card)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.is_vip_card)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.vip_points_refresh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.vip_points_refresh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.vip_points_last_refreshed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.vip_points_last_refreshed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.notes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.notes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.days_since_last_visit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.days_since_last_visit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.yesterdaysTotalPoints)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.yesterdaysTotalPoints)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.yesterdaysTotalPointsWhenCreated)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.yesterdaysTotalPointsWhenCreated)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pointsMultiplierLastRun)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pointsMultiplierLastRun)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.theAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.theAddress)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

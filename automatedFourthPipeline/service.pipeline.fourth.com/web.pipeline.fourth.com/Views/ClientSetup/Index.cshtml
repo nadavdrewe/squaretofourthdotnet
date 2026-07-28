@@ -1,0 +1,64 @@
+@model web.pipeline.fourth.com.Models.ClientSetupDashboardViewModel
+@{
+    ViewData["Title"] = "Client Setup";
+}
+
+<div class="page-header">
+    <h3 class="page-title">Client setup</h3>
+    <a class="btn btn-primary" asp-controller="Brands" asp-action="Create">Add client</a>
+</div>
+@if (ViewData["OAuthStatus"] != null)
+{
+    <div class="alert alert-success">@ViewData["OAuthStatus"]</div>
+}
+<div class="row">
+    @if (Model.Clients.Count == 0)
+    {
+        <div class="col-12"><div class="card"><div class="card-body">No clients have been added. Create a client, then return here to connect Square.</div></div></div>
+    }
+    @foreach (var client in Model.Clients)
+    {
+        <div class="col-lg-6 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div>
+                            <h4 class="card-title mb-1">@client.BrandName</h4>
+                            <p class="text-muted mb-3">@client.StoreCount store(s) · @client.IntegrationCount active integration(s)</p>
+                        </div>
+                        <span class="badge badge-@(client.Active ? "success" : "secondary")">@(client.Active ? "Active" : "Inactive")</span>
+                    </div>
+                    <h6 class="mb-2">Square connections</h6>
+                    @if (client.SquareConnections.Count == 0)
+                    {
+                        <p class="text-muted">Not connected yet.</p>
+                    }
+                    else
+                    {
+                        <div class="table-responsive">
+                            <table class="table table-sm">
+                                <thead><tr><th>Environment</th><th>Status</th><th>Merchant</th><th></th></tr></thead>
+                                <tbody>
+                                @foreach (var connection in client.SquareConnections)
+                                {
+                                    <tr>
+                                        <td>@connection.Environment</td>
+                                        <td><span class="badge badge-@(connection.Active ? "success" : "secondary")">@(connection.Active ? "Connected" : "Replaced")</span></td>
+                                        <td>@(connection.MerchantId ?? "Pending")</td>
+                                        <td><a class="btn btn-outline-secondary btn-sm" asp-controller="BaseCredentials" asp-action="TestCreds" asp-route-id="@connection.CredentialId">Test</a></td>
+                                    </tr>
+                                }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                    <div class="mt-3 d-flex flex-wrap" style="gap: 8px;">
+                        <a class="btn btn-dark btn-sm" asp-controller="OauthLogin" asp-action="Authorize" asp-route-brandId="@client.BrandId">Connect Square</a>
+                        <a class="btn btn-outline-primary btn-sm" asp-controller="Brands" asp-action="Edit" asp-route-id="@client.BrandId">Configure client</a>
+                        <a class="btn btn-outline-secondary btn-sm" asp-controller="BrandIntegrations" asp-action="CreateNewSquareToFourthSalesIntegration" asp-route-whichBrand="@client.BrandId">Map locations</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

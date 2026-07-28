@@ -1,0 +1,44 @@
+@model IEnumerable<data.pipeline.fourth.com.Models.PipelineRunRecord>
+
+@{
+    ViewData["Title"] = "Pipeline Run Records";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Pipeline Run Records</h1>
+
+<table id="order-listing" class="table table-dark">
+    <thead>
+        <tr>
+            <th>Created UTC</th>
+            <th>Brand</th>
+            <th>Store</th>
+            <th>Data Type</th>
+            <th>Status</th>
+            <th>Rows</th>
+            <th>Transaction Date</th>
+            <th>Fourth Status</th>
+            <th>File</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.WhenCreatedUTC</td>
+                <td>@item.BrandName</td>
+                <td>@item.StoreName</td>
+                <td>@item.DataType</td>
+                <td>@item.Status</td>
+                <td>@item.RowCount</td>
+                <td>@item.TransactionDate.ToString("yyyy-MM-dd")</td>
+                <td>@item.FourthStatusCode</td>
+                <td>@item.OutputFileName</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

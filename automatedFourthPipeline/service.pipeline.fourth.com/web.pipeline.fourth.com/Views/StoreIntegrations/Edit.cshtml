@@ -1,0 +1,163 @@
+﻿@model data.pipeline.fourth.com.Models.StoreIntegration
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>Store Integration @Model.Store.Name</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label class="control-label">Store</label>
+                <select asp-for="StoreId" class="form-control" style="color:grey" asp-items="ViewBag.StoreId"></select>
+                <span asp-validation-for="StoreId" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Active" /> @Html.DisplayNameFor(model => model.Active)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="IntegrationType" class="control-label">Integration Type</label>
+                <select asp-for="IntegrationType" asp-items="Html.GetEnumSelectList<shared.pipeline.fourth.com.IntegrationTypes>()" class="form-control"></select>
+                <span asp-validation-for="IntegrationType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IntegrationSubType" class="control-label">Integration Sub Type</label>
+                <select asp-for="IntegrationSubType" asp-items="Html.GetEnumSelectList<shared.pipeline.fourth.com.IntegrationSubTypes>()" class="form-control"></select>
+                <span asp-validation-for="IntegrationSubType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WhenCreatedUTC" class="control-label"></label>
+                <input asp-for="WhenCreatedUTC" class="form-control" readonly style="color:grey" />
+                <span asp-validation-for="WhenCreatedUTC" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WhenUpdatedUTC" class="control-label"></label>
+                <input asp-for="WhenUpdatedUTC" class="form-control" readonly style="color:grey" />
+                <span asp-validation-for="WhenUpdatedUTC" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@*CREDS AND INTS*@
+<div class="table-responsive">
+    <h4>Square Configs</h4>
+    <table id="order-listing" class="table table-dark">
+        <thead>
+            <tr>
+                <th>Location Id</th>
+                <th>Active</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.SquareStoreConfigs ?? new List<data.pipeline.fourth.com.Models.Configs.Store.SquareStoreConfig>())
+            {
+                <tr>
+                    <td>@item.LocationId</td>
+                    <td>@item.Active </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<br />
+<div class="table-responsive">
+    <h4>Square Employee Mappings</h4>
+    <p>
+        <a asp-controller="SquareEmployeeMappings" asp-action="Create" asp-route-storeIntegrationId="@Model.Id">Create Employee Mapping</a>
+    </p>
+    <table id="employee-mapping-listing" class="table table-dark">
+        <thead>
+            <tr>
+                <th>Square Team Member Id</th>
+                <th>Square Name</th>
+                <th>Fourth Employee Number</th>
+                <th>Active</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.SquareEmployeeMappings ?? new List<data.pipeline.fourth.com.Models.Mappings.SquareEmployeeMapping>())
+            {
+                <tr>
+                    <td>@item.SquareTeamMemberId</td>
+                    <td>@item.SquareDisplayName</td>
+                    <td>@item.FourthEmployeeNumber</td>
+                    <td>@item.Active</td>
+                    <td>
+                        <a asp-controller="SquareEmployeeMappings" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<br />
+<div class="table-responsive">
+    <h4>Fourth Sales Configs</h4>
+    <table id="order-listing2" class="table table-dark">
+        <thead>
+            <tr>
+                <th>Active</th>
+                <th>Site Location Code</th>
+                <th>Unit Id</th>
+                <th>Revenue Center</th>
+                <th>Revenue Center Mapping Type</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.FourthSalesApiStoreConfigs ?? new List<data.pipeline.fourth.com.Models.Configs.Store.FourthSalesApiStoreConfig>())
+            {
+                <tr>
+                    <td>@item.Active </td>
+                    <td>@item.SiteLocationCode </td>
+                    <td>@item.UnitId </td>
+                    <td>@item.RevenueCenter</td>
+                    <td>@item.RevenueCenterMappingType</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $('#order-listing2').DataTable({
+            "aLengthMenu": [
+                [5, 10, 15, -1],
+                [5, 10, 15, "All"]
+            ],
+            "iDisplayLength": 10,
+            "language": {
+                search: ""
+            }
+        });
+
+        console.log("ready!");
+    });
+</script>

@@ -1,0 +1,347 @@
+﻿@model IEnumerable<Revel._808nd.com.Classes.Product>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.active)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.allow_price_override)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.attribute_type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.barcode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.brand)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.category)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.color_code)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.commission)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.created_by)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.created_date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.crv_enabled)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.deleted)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dining_options)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.disable_modifier_popup)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.display_on_kiosk)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.display_online)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ebt_no)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.establishment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.export)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.happy_hour)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.is_cold)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.is_combo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.is_drink)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.kitchen_print_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.lock_enable)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.max_price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.preparation_time)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.price_embedded)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.product_weight_unit)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.productclass)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.resource_uri)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.rti_combo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.sku)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.sold_by_weight)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.sorting)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tare)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tax)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tax_class)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tax_included)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.updated_by)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.updated_date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.uuid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.variable_pricing)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.variable_pricing_by)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.establishment_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.productclass_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tax_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.brand_id)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.active)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.allow_price_override)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.attribute_type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.barcode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.brand)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.category)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.color_code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.commission)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.created_by)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.created_date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.crv_enabled)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.deleted)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dining_options)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.disable_modifier_popup)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.display_on_kiosk)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.display_online)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ebt_no)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.establishment)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.export)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.happy_hour)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.is_cold)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.is_combo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.is_drink)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.kitchen_print_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.lock_enable)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.max_price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.preparation_time)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.price_embedded)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.product_weight_unit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.productclass)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.resource_uri)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.rti_combo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sku)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sold_by_weight)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sorting)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tare)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tax)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tax_class)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tax_included)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.updated_by)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.updated_date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.uuid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.variable_pricing)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.variable_pricing_by)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.establishment_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.productclass_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tax_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.brand_id)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+                @Html.ActionLink("Details", "Details", new { id=item.id }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.id })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

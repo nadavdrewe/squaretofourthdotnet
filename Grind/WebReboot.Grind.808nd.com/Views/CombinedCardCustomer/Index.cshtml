@@ -1,0 +1,184 @@
+﻿@model List<Revel._808nd.com.Classes.RewardsCardNew>
+
+@{
+    ViewBag.Title = "Card Index";
+
+
+}
+
+@Html.Partial("~/PartialViews/BreadcrumbBarPartial.cshtml")
+
+
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>All Cards</h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li>
+                                <a href="#">Config option 1</a>
+                            </li>
+                            <li>
+                                <a href="#">Config option 2</a>
+                            </li>
+                        </ul>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+
+                    <table class="table" id="myDataTable">
+                        <thead>
+                        <tr>
+                            <th>
+                                Card Number
+                            </th>
+                            <th>
+                                Email address
+                            </th>
+                            <th>
+                                Revel ID
+                            </th>
+                            <th>
+                                First Name
+                            </th>
+                            <th>
+                                Last Name
+                            </th>
+                            <th>
+                                Created
+                            </th>
+                            <th>
+                                Current Points
+                            </th>
+
+                            <th>
+                                Lifetime Points
+                            </th>
+                            <th>
+                                Total Purchases
+                            </th>
+                            <th>Gift Balance</th>
+                            <th>
+                                Visits
+                            </th>
+
+                            <th>
+                                Last Visit (days ago)
+                            </th>
+
+                            @*       <th>
+                                        Investor Card
+                                    </th>*@
+
+                            <th>
+                               Refreshable Card
+                            </th>
+                            <th>
+                                Red Card Expiry Date
+                            </th>
+                            <th>
+                                Points Refresh
+                            </th>
+                            <th>
+                                Notes
+                            </th>
+                            <th>
+                                Links
+                            </th>
+                        </tr>
+                        </thead>
+
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function () {
+
+        $('#myDataTable').dataTable({
+            "pageLength": 50,
+            "bServerSide": true,
+            "sAjaxSource": "AjaxHandler",
+            "scrollX": true,
+            "aaSorting": [5, 'desc'],
+            "bProcessing": true,
+            "aoColumns": [
+                { "sName": "number" },
+                 { "sName": "Email" },
+                            { "sName": "Revelid" },
+                            { "sName": "FirstName" },
+                            { "sName": "LastName" },
+                            { "sName": "created_date" },
+                               { "sName": "current_points" },
+                                 { "sName": "total_points" },
+                                 { "sName": "gift_balance" },
+                                { "sName": "total_purchases" },
+                                 { "sName": "total_visits" },
+                                   { "sName": "days_since_last_visit" },
+                                   { "sName": "is_vip_card" },
+                                    { "sName": "ExpiryDate" },
+                                   { "sName": "vip_points_last_refreshed" },
+                                   { "sName": "notes" },
+                                    { "sName": "edit" }
+            ],
+         
+            responsive: true,
+            dom: '<"html5buttons"B>lTfgitp',
+            buttons: [
+                   { extend: 'copy' },
+                   { extend: 'csv' },
+                   { extend: 'excel', title: '@ViewBag.Title' },
+                   { extend: 'pdf', title: '@ViewBag.Title' },
+
+                   {
+                       extend: 'print',
+                       customize: function (win) {
+                           $(win.document.body).addClass('white-bg');
+                           $(win.document.body).css('font-size', '10px');
+
+                           $(win.document.body).find('table')
+                                   .addClass('compact')
+                                   .css('font-size', 'inherit');
+                       }
+                   }
+            ]
+        });
+    });
+</script>
+
+
+
+
+<script type="text/javascript">
+
+
+    $(document).ready(function () {
+
+
+        $('#message').fadeIn(2000);
+        $('#message').delay(2000);
+        $('#message').fadeOut(2000);
+
+    });
+
+</script>
+
+

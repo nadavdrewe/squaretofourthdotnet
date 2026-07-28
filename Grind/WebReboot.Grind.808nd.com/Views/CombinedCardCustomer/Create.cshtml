@@ -1,0 +1,713 @@
+﻿@using System.Activities.Statements
+@using Revel._808nd.com.Classes;
+@using Web.Grind._808nd.com.Controllers
+
+@model Revel._808nd.com.Classes.RewardsCardNew
+
+@{
+    ViewBag.Title = "Create Card";
+
+    var Customer = (Customer)ViewBag.Customer;
+
+
+
+    AjaxOptions options = new AjaxOptions
+    {
+        InsertionMode = InsertionMode.Replace,
+        LoadingElementId = "spinner"
+
+
+    };
+    var insertUser = ViewBag.RevelCardInsertUser;
+    var loyaltyDropdown = ViewBag.DropdownCardType as List<SelectListItem>;
+}
+
+
+@Html.Partial("~/PartialViews/BreadcrumbBarPartial.cshtml")
+
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>Create a New Card</h5>
+                        <div class="ibox-tools">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <i class="fa fa-wrench"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-user">
+                                <li>
+                                    <a href="#">Config option 1</a>
+                                </li>
+                                <li>
+                                    <a href="#">Config option 2</a>
+                                </li>
+                            </ul>
+                            <a class="close-link">
+                                <i class="fa fa-times"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        @using (Html.BeginForm("Create", "CombinedCardCustomer", FormMethod.Post, new { @id = "frmId", @class = "form-inline" }))
+                        {
+                            @Html.AntiForgeryToken()
+
+                            @Html.ValidationSummary(true)
+
+                            @*REWARD CARDS FIELDS*@
+                            @*  @Html.HiddenFor(model => model.DBKEY_rewardscardnew_id)*@
+                            @Html.HiddenFor(model => model.Revelid, new { id = "RewardsCardNew.Revelid", @Name = "RewardsCardNew.Revelid" })
+                            @Html.HiddenFor(model => model.customer_id, new { id = "RewardsCardNew.customer_id", @Name = "RewardsCardNew.customer_id" })
+                            @Html.HiddenFor(model => model.establishment_id, new { id = "RewardsCardNew.establishment_id", @Name = "RewardsCardNew.establishment_id" })
+                            @Html.HiddenFor(model => model.theAddress, new { id = "RewardsCardNew.theAddress", @Name = "RewardsCardNew.theAddress" })
+                            @Html.HiddenFor(model => model.resource_uri, new { id = "RewardsCardNew.resource_uri", @Name = "RewardsCardNew.resource_uri" })
+                            @Html.HiddenFor(model => model.ResourceUri, new { id = "RewardsCardNew.ResourceUri", @Name = "RewardsCardNew.ResourceUri" })
+
+                            @Html.HiddenFor(model => model.created_by, new { id = "RewardsCardNew.created_by", @Name = "RewardsCardNew.created_by", Value = insertUser })
+                            @Html.HiddenFor(model => model.created_date, new { id = "RewardsCardNew.created_date", @Name = "RewardsCardNew.created_date", Value = DateTime.Now })
+                            @Html.HiddenFor(model => model.customer_revel, new { id = "RewardsCardNew.customer_revel", @Name = "RewardsCardNew.customer_revel" })
+                            @Html.HiddenFor(model => model.payment_type, new { id = "RewardsCardNew.payment_type", @Name = "RewardsCardNew.payment_type", Value = 4 })
+                            @Html.HiddenFor(model => model.updated_date, new { id = "RewardsCardNew.updated_date", @Name = "RewardsCardNew.updated_date", Value = DateTime.Now })
+                            @Html.HiddenFor(model => model.updated_by, new { id = "RewardsCardNew.updated_by", @Name = "RewardsCardNew.updated_by", Value = insertUser })
+                            @Html.HiddenFor(model => model.updated_by, new { id = "RewardsCardNew.days_since_last_visit", @Name = "RewardsCardNew.days_since_last_visit", Value = 0 })
+
+
+
+                            @*CUSTOMER*@
+                            @Html.Hidden("Customer.Active", true)
+                            <input type="hidden" value="@insertUser" name="Customer.CreatedBy" id="Customer.CreatedBy" />
+                            @Html.Hidden("Customer.CreatedDate", DateTime.Now)
+                            @Html.Hidden("Customer.UpdatedDate", DateTime.Now)
+                            <input type="hidden" value="@insertUser" name="Customer.UpdatedBy" id="Customer.UpdatedBy" />
+
+
+
+
+                            <table>
+
+                                <tr>
+                                    <td>
+
+
+                                        <div class="row">
+                                            <div class="col-lg-12">
+
+                                                <div class="col-md-3">
+                                                    <label>Grind</label><br />
+                                                    <select name="RewardsCardNew.establishment" class="form-control m-b">
+                                                        <option value="/enterprise/Establishment/1/">Shoreditch</option>
+                                                        <option value="/enterprise/Establishment/3/">Soho</option>
+                                                        <option value="/enterprise/Establishment/5/">Holborn</option>
+                                                        <option value="/enterprise/Establishment/6/">London</option>
+                                                    </select>
+                                                </div>
+
+                                                <div class="col-md-3">
+                                                    <label>Current Points</label>
+                                                    <input class="form-control" type="text" name="RewardsCardNew.current_points" value="0" />
+                                                    @Html.ValidationMessageFor(model => model.current_points)
+                                                </div>
+
+
+                                                <div class="col-md-3">
+                                                    <label style="color: red">CARD NUMBER</label>
+                                                    <input class="form-control" type="text" name="RewardsCardNew.number" />
+                                                    @Html.ValidationMessageFor(model => model.number)
+
+                                                </div>
+
+
+                                                <div class="col-md-3">
+                                                    <label>Lifetime Points</label>
+
+                                                    <input class="form-control" type="text" name="RewardsCardNew.total_points" required value="0" />
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </td>
+                                </tr>
+
+
+
+                                <tr>
+                                    <td>
+
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="col-md-3">
+
+                                                    <label>Total Purchases</label>
+
+                                                    <input type="text" name="RewardsCardNew.total_purchases" value="0" class="form-control" />
+                                                    @Html.ValidationMessageFor(model => model.total_purchases)
+
+                                                </div>
+
+
+
+                                                <div class="col-md-3">
+                                                    <label>Total Visits</label>
+                                                    <input class="form-control" type="text" name="RewardsCardNew.total_visits" value="0" readonly />
+                                                    @Html.ValidationMessageFor(model => model.total_visits)
+
+                                                </div>
+
+
+                                                @if (User.IsInRole("admin"))
+                                                {
+
+
+                                                    <div class="col-md-3">
+                                                        <label>Renewable Card</label>
+                                                        <br />
+
+                                                        @Html.DropDownList("RefreshableCardType", loyaltyDropdown, new { id = "RefreshableCardType", @class = "form-control m-b" })
+
+                                                        @*<select class="form-control m-b" id="is_vip_card" name="RewardsCardNew.is_vip_card">
+                                                                <option>False</option>
+                                                                <option>True</option>
+
+                                                            </select>
+                                                            @Html.ValidationMessageFor(model => model.is_vip_card)*@
+
+                                                    </div>
+
+
+                                                    <div class="col-md-3">
+                                                        <label>Red Card Expiry Date</label>
+                                                        <br />
+                                                        <input class="form-control datepicker datepicker-dropdown" data-uk-datepicker="{format:'DD/MM/YYYY'}" name="RewardsCardNew.ExpiryDate" />
+                                                        @Html.ValidationMessageFor(model => model.ExpiryDate)
+                                                    </div>
+
+
+
+                                                    @*<div class="col-md-3">
+                                                            <label>Red Card</label>
+                                                            <br />
+                                                            <select class="form-control" name="RewardsCardNew.is_vip_card">
+                                                                <option>False</option>
+                                                                <option>True</option>
+
+                                                            </select>
+                                                            @Html.ValidationMessageFor(model => model.is_vip_card)
+
+                                                        </div>
+
+                                                        <div class="col-md-3">
+                                                            <label>Investor Card</label>
+                                                            <br />
+
+                                                            <select class="form-control" id="LoyaltyCardType_id" name="RewardsCardNew.LoyaltyCardType.id">
+                                                                <option value="">-None--</option>
+                                                                <option value="1">Weekly</option>
+                                                                <option value="2">Monthly</option>
+                                                                <option value="4">One-Off (doesn't refresh)</option>
+                                                            </select>
+
+                                                        </div>*@
+
+                                                }
+                                            </div>
+                                        </div>
+
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="col-md-6">
+
+                                                    <label>Notes</label>
+                                                    <br />
+                                                    <textarea class="col-md-12 form-control" name="RewardsCardNew.notes"></textarea>
+
+                                                </div>
+
+                                                @*<div class="col-md-3 ">
+                                                        <label>Red Card Active?</label>
+                                                        <br />
+                                                        <select class="form-control" id="RewardsCardNew.Active" name="RewardsCardNew.Active">
+                                                            <option value="">-None--</option>
+                                                            <option value="false">False</option>
+                                                            <option value="true">True</option>
+                                                        </select>
+                                                        @Html.ValidationMessageFor(model => model.Active)
+                                                    </div>*@
+
+
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="col-md-3">
+                                                    <label>Red/Investor Card Points Refresh</label>
+                                                    <br />
+                                                    <input class="form-control" type="text" name="RewardsCardNew.vip_points_refresh" value="0" />
+                                                    @Html.ValidationMessageFor(model => model.vip_points_refresh)
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <label>Gift Card Balance</label>
+                                                    <input class="form-control" type="text" name="GiftCard.remaining_balance" value="0.00" />
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                            </table>
+                            <br />
+                            <br />
+
+
+
+                            <h4>Customer</h4>
+                            <hr />
+                            <table>
+                                <tr>
+                                    <td>
+
+
+                                        <div class="row">
+                                            <div class="col-lg-12">
+
+                                                <div class="col-md-3">
+                                                    <label>Email</label>
+                                                    <br />
+                                                    <input class="form-control" type="text" name="Customer.Email" />
+                                                </div>
+
+
+
+                                                <div class="col-md-3">
+                                                    <label>DoB</label>
+                                                    <br />
+                                                    <input class="form-control datepicker datepicker-dropdown" type="text" data-uk-datepicker="{format:'DD/MM/YYYY'}" name="Customer.BirthDate" />
+                                                </div>
+
+                                                <div class="col-md-3">
+                                                    <label>First Name</label>
+                                                    <br />
+                                                    <input class="form-control" type="text" name="Customer.FirstName" />
+
+                                                </div>
+
+                                                <div class="col-md-3">
+                                                    <label>Last Name</label>
+                                                    <br />
+                                                    <input class="form-control" type="text" name="Customer.LastName" />
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <div class="row">
+                                            <div class="col-lg-12">
+
+                                                <div class="col-md-3">
+                                                    <label>Address Line 1</label>
+                                                    <br />
+
+                                                    <input class="form-control" type="text" name="Customer.Address" />
+
+
+                                                </div>
+
+
+
+                                                <div class="col-md-3">
+                                                    <label>City</label>
+                                                    <br />
+
+                                                    <input class="form-control" type="text" name="Customer.City" />
+
+                                                </div>
+
+                                                <div class="col-md-3">
+                                                    <label>Postcode</label>
+                                                    <br />
+
+                                                    <input class="form-control" type="text" name="Customer.Zipcode" />
+
+                                                </div>
+
+
+                                                <div class="col-md-3">
+
+                                                </div>
+
+
+
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="col-md-12">
+                                                    <br />
+                                                    <input type="submit" value="Save" class="btn btn-default" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+
+
+
+
+
+                        }
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        @*
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-horizontal">
+                            <h4>Card</h4>
+                            <hr />
+                            @Html.ValidationSummary(true)
+
+                            $1$REWARD CARDS FIELDS#1#
+                            $1$  @Html.HiddenFor(model => model.DBKEY_rewardscardnew_id)#1#
+                            @Html.HiddenFor(model => model.Revelid, new { id = "RewardsCardNew.Revelid", @Name = "RewardsCardNew.Revelid" })
+                            @Html.HiddenFor(model => model.customer_id, new { id = "RewardsCardNew.customer_id", @Name = "RewardsCardNew.customer_id" })
+                            @Html.HiddenFor(model => model.establishment_id, new { id = "RewardsCardNew.establishment_id", @Name = "RewardsCardNew.establishment_id" })
+                            @Html.HiddenFor(model => model.theAddress, new { id = "RewardsCardNew.theAddress", @Name = "RewardsCardNew.theAddress" })
+                            @Html.HiddenFor(model => model.resource_uri, new { id = "RewardsCardNew.resource_uri", @Name = "RewardsCardNew.resource_uri" })
+                            @Html.HiddenFor(model => model.ResourceUri, new { id = "RewardsCardNew.ResourceUri", @Name = "RewardsCardNew.ResourceUri" })
+
+                            @Html.HiddenFor(model => model.created_by, new { id = "RewardsCardNew.created_by", @Name = "RewardsCardNew.created_by", Value = insertUser })
+                            @Html.HiddenFor(model => model.created_date, new { id = "RewardsCardNew.created_date", @Name = "RewardsCardNew.created_date", Value = DateTime.Now })
+                            @Html.HiddenFor(model => model.customer_revel, new { id = "RewardsCardNew.customer_revel", @Name = "RewardsCardNew.customer_revel" })
+                            @Html.HiddenFor(model => model.payment_type, new { id = "RewardsCardNew.payment_type", @Name = "RewardsCardNew.payment_type", Value = 4 })
+                            @Html.HiddenFor(model => model.updated_date, new { id = "RewardsCardNew.updated_date", @Name = "RewardsCardNew.updated_date", Value = DateTime.Now })
+                            @Html.HiddenFor(model => model.updated_by, new { id = "RewardsCardNew.updated_by", @Name = "RewardsCardNew.updated_by", Value = insertUser })
+                            @Html.HiddenFor(model => model.updated_by, new { id = "RewardsCardNew.days_since_last_visit", @Name = "RewardsCardNew.days_since_last_visit", Value = 0 })
+
+
+                            $1$CUSTOMER#1#
+                            @Html.Hidden("Customer.Active", true)
+                            <input type="hidden" value="@insertUser" name="Customer.CreatedBy" id="Customer.CreatedBy" />
+                            @Html.Hidden("Customer.CreatedDate", DateTime.Now)
+                            @Html.Hidden("Customer.UpdatedDate", DateTime.Now)
+                            <input type="hidden" value="@insertUser" name="Customer.UpdatedBy" id="Customer.UpdatedBy" />
+
+
+
+
+                            <table>
+                                <tr>
+                                    <td>
+
+                                        <div class="row">
+                                            <div class="col-lg-12">
+
+
+
+                                                <div class="col-md-3">
+                                                    <label>Grind</label><br />
+                                                    <select name="RewardsCardNew.establishment">
+                                                        <option value="/enterprise/Establishment/1/">Shoreditch</option>
+                                                        <option value="/enterprise/Establishment/3/">Soho</option>
+                                                        <option value="/enterprise/Establishment/5/">Holborn</option>
+                                                        <option value="/enterprise/Establishment/6/">London</option>
+                                                    </select>
+                                                </div>
+
+                                                <div class="col-md-3">
+                                                    <label>Current Points</label>
+                                                    <input type="text" name="RewardsCardNew.current_points" value="0" />
+                                                    @Html.ValidationMessageFor(model => model.current_points)
+                                                </div>
+
+
+                                                <div class="col-md-3">
+                                                    <label style="color: red">CARD NUMBER</label>
+                                                    <input type="text" name="RewardsCardNew.number" />
+                                                    @Html.ValidationMessageFor(model => model.number)
+
+                                                </div>
+
+
+                                                <div class="col-md-3">
+                                                    <label>Lifetime Points</label>
+
+                                                    <input type="text" name="RewardsCardNew.total_points" required value="0" />
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+
+
+                                <tr>
+                                    <td>
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="col-md-3">
+
+                                                    <label>Total Purchases</label>
+
+                                                    <input type="text" name="RewardsCardNew.total_purchases" value="0" />
+                                                    @Html.ValidationMessageFor(model => model.total_purchases)
+
+                                                </div>
+
+
+
+                                                <div class="col-md-3">
+                                                    <label>Total Visits</label>
+                                                    <input type="text" name="RewardsCardNew.total_visits" value="0" readonly />
+                                                    @Html.ValidationMessageFor(model => model.total_visits)
+
+                                                </div>
+
+
+                                                @if (User.IsInRole("admin"))
+                                                {
+                                                    <div class="col-md-3">
+                                                        <label>Red Card</label>
+                                                        <br />
+                                                        <select name="RewardsCardNew.is_vip_card">
+                                                            <option>False</option>
+                                                            <option>True</option>
+
+                                                        </select>
+                                                        @Html.ValidationMessageFor(model => model.is_vip_card)
+
+                                                    </div>
+
+                                                    <div class="col-md-3">
+                                                        <label>Investor Card</label>
+                                                        <br />
+
+                                                        <select id="LoyaltyCardType_id" name="RewardsCardNew.LoyaltyCardType.id">
+                                                            <option value="">-None--</option>
+                                                            <option value="1">Weekly</option>
+                                                            <option value="2">Monthly</option>
+                                                            <option value="4">One-Off (doesn't refresh)</option>
+                                                        </select>
+
+                                                    </div>
+
+                                                }
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="col-md-6">
+
+                                                    <label>Notes</label>
+                                                    <br />
+                                                    <textarea class="col-md-12" name="RewardsCardNew.notes"></textarea>
+
+                                                </div>
+
+                                                <div class="col-md-3 ">
+                                                    <label>Red Card Active?</label>
+                                                    <br />
+                                                    <select id="RewardsCardNew.Active" name="RewardsCardNew.Active">
+                                                        <option value="">-None--</option>
+                                                        <option value="false">False</option>
+                                                        <option value="true">True</option>
+                                                    </select>
+                                                    @Html.ValidationMessageFor(model => model.Active)
+                                                </div>
+
+                                                <div class="col-md-3">
+                                                    <label>Red Card Expiry Date</label>
+                                                    <br />
+                                                    <input type="text" data-uk-datepicker="{format:'DD/MM/YYYY'}" name="RewardsCardNew.ExpiryDate" />
+                                                    @Html.ValidationMessageFor(model => model.ExpiryDate)
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="col-md-3">
+                                                    <label>Red/Investor Card Points Refresh</label>
+                                                    <br />
+                                                    <input type="text" name="RewardsCardNew.vip_points_refresh" value="0" />
+                                                    @Html.ValidationMessageFor(model => model.vip_points_refresh)
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <label>Gift Card Balance</label>
+                                                    <input type="text" name="GiftCard.remaining_balance" value="0.00" />
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                            </table>
+                            <br />
+                            <br />
+
+
+
+                            <h4>Customer</h4>
+                            <hr />
+                            <table>
+                                <tr>
+                                    <td>
+
+
+                                        <div class="row">
+                                            <div class="col-lg-12">
+
+                                                <div class="col-md-3">
+                                                    <label>Email</label>
+                                                    <br />
+                                                    <input type="text" name="Customer.Email" />
+                                                </div>
+
+
+
+                                                <div class="col-md-3">
+                                                    <label>DoB</label>
+                                                    <br />
+                                                    <input type="text" data-uk-datepicker="{format:'DD/MM/YYYY'}" name="Customer.BirthDate" />
+                                                </div>
+
+                                                <div class="col-md-3">
+                                                    <label>First Name</label>
+                                                    <br />
+                                                    <input type="text" name="Customer.FirstName" />
+
+                                                </div>
+
+                                                <div class="col-md-3">
+                                                    <label>Last Name</label>
+                                                    <br />
+                                                    <input type="text" name="Customer.LastName" />
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <div class="row">
+                                            <div class="col-lg-12">
+
+                                                <div class="col-md-3">
+                                                    <label>Address Line 1</label>
+                                                    <br />
+
+                                                    <input type="text" name="Customer.Address" />
+
+
+                                                </div>
+
+
+
+                                                <div class="col-md-3">
+                                                    <label>City</label>
+                                                    <br />
+
+                                                    <input type="text" name="Customer.City" />
+
+                                                </div>
+
+                                                <div class="col-md-3">
+                                                    <label>Postcode</label>
+                                                    <br />
+
+                                                    <input type="text" name="Customer.Zipcode" />
+
+                                                </div>
+
+
+                                                <div class="col-md-3">
+
+                                                </div>
+
+
+
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <div class="row">
+                                            <div class="col-lg-13">
+                                                <div class="col-md-12">
+                                                    <br />
+                                                    <input type="submit" value="Save" class="btn btn-default" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+            }*@
+    </div>
+</div>

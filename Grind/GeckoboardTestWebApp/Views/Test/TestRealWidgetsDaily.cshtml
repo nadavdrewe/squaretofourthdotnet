@@ -1,0 +1,41 @@
+﻿@using Geckoboard._808nd.com;
+@using GeckoboardLibrary.Classes;
+@using GeckoboardLibrary.Classes.WidgetItems;
+@using GeckoboardLibrary.Classes.WidgetSet;
+@using GeckoboardLibrary.Services;
+@using GeckoboardTestWebApp.Models;
+@using Revel._808nd.com;
+@using Revel._808nd.com.Classes;
+@using Revel._808nd.com.Extensions;
+
+
+
+
+@{
+    ViewBag.Title = "TestRealWidgetsDaily";
+
+    List<OrderItem> HotDrinks = ViewBag.HotDrinks;
+    List<OrderItem> Food = ViewBag.Food;
+    HotDrinks = HotDrinks.OrderBy(x => x.id).ToList();
+    
+}
+
+Hot drinks:<br/>
+Count: @HotDrinks.Count <br /><br />
+
+
+@{
+
+    
+    foreach (var item in HotDrinks)
+    {
+        @item.product_id @Html.Raw("|| ")
+        @item.id @Html.Raw("|| ")
+        @item.product_name_override @Html.Raw("|| ")
+        @item.price @Html.Raw("|| ")
+        @item.created_date @Html.Raw("|| ")
+        @item.voided_date @Html.Raw("|| ")
+        @item.voided_reason
+        <br/>
+    }
+}

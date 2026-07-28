@@ -1,0 +1,64 @@
+﻿@using employeeredirect.grind.railgunit.com.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Log in";
+}
+
+<style>
+    .parent {
+        position: relative;
+    }
+
+    .child {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+</style>
+
+<div class="row">
+    @*<diva align="center">
+            <h2>@ViewBag.Title.</h2>
+        </diva>*@
+    <div class="col-xs-12">
+
+        <div style="padding-top:200px;">
+            <div style="padding-top:10px" id="logoImg" align="center">
+                <img src="~/Images/blackLogo.png" style="height:28px;" />
+            </div>
+
+            <div align="center" style="padding-top:25px">
+                @*<section style="text-align:center;padding:10px" id="loginForm">*@
+                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
+                {
+                    @*<h4>Log in with your PIN</h4>
+                        <hr />*@
+                    @Html.AntiForgeryToken()
+                    @Html.TextBoxFor(m => m.PIN, new { @class = "form-control", @style = "display:inline", @placeholder = "Enter your PIN" })
+                    <br />
+                    @Html.ValidationMessageFor(m => m.PIN, "", new { @class = "text-danger" })
+                    <input style="margin-top:10px" type="submit" value="Go" class="btn btn-default" />
+
+
+                    @*<p>
+                            @Html.ActionLink("Register as a new user", "Register")
+                        </p>*@
+                    @* Enable this once you have account confirmation enabled for password reset functionality
+                        <p>
+                            @Html.ActionLink("Forgot your password?", "ForgotPassword")
+                        </p>*@
+                }
+
+                @*</section>*@
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,244 @@
+﻿@model IList<Revel._808nd.com.Classes.Reporting.ProductOrderItemSummary>
+
+@{
+    ViewBag.Title = "Sales Breakdown By User";
+
+    var hasFired = false;
+
+    if (Model != null)
+    {
+        hasFired = true;
+    }
+    var establishmentListItems = (IEnumerable<SelectListItem>)ViewBag.EstablishmentsSelect;
+    var users = (IEnumerable<SelectListItem>)ViewBag.UsersSelect;
+
+}
+
+@Html.Partial("~/PartialViews/BreadcrumbBarPartial.cshtml")
+
+
+
+
+
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>@ViewBag.Title</h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li>
+                                <a href="#">Config option 1</a>
+                            </li>
+                            <li>
+                                <a href="#">Config option 2</a>
+                            </li>
+                        </ul>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+
+                    @using (Html.BeginForm("SalesBreakdownToday", "BI", FormMethod.Post, new { id = "mainForm" }))
+                    {
+
+
+                        <div class="form-block">
+
+                            <div>
+                                <label class="form-label">Which Grind?</label>
+                            </div>
+                            <div>
+
+                                @Html.DropDownList("EstablishmentId", establishmentListItems, new { @class = "form-control datepicker", required = true })
+                            </div>
+                            <div>
+                                <label class="form-label">Which User?</label>
+                            </div>
+                            <div>
+                                @Html.DropDownList("UserURI", users, new { @class = "form-control datepicker" })
+                            </div>
+                            <input type="submit" value="Start" class="btn btn-primary" />
+                        </div>
+
+
+                    }
+
+
+
+
+                    @if (Model != null)
+                    {
+
+                        <table class="myDatatable table">
+                            <thead>
+                                <tr>
+
+                                    <th>
+                                        Category
+                                    </th>
+                                    <th>
+                                        Revel Product ID
+                                    </th>
+                                    <th>
+                                        Name
+                                    </th>
+                                    <th>
+                                        Total Sales
+                                    </th>
+                                    <th>
+                                        Quantity
+                                    </th>
+                                    <th>
+                                        Comps
+                                    </th>
+                                    <th>
+                                        Voided
+                                    </th>
+                                    <th>
+                                        Discount
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.CategoryName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.ProductId)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.ProductIdentifier)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.TotalPureSales)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.TotalQuantity)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.TotalComps)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.TotalVoided)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.TotalDiscount)
+                                        </td>
+                                    </tr>
+
+                                }
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td style="font-weight: bold; color: red">
+                                        Totals
+                                    </td>
+                                    <td style="font-weight: bold">
+                                        @Decimal.Round(Model.Sum(x => x.TotalPureSales),2)
+                                    </td>
+                                    <td style="font-weight: bold">
+                                        @Model.Sum(x => x.TotalQuantity)
+                                    </td>
+                                    <td>
+                                        @Model.Sum(x => x.TotalComps)
+                                    </td>
+                                    <td>
+                                        @Model.Sum(x => x.TotalVoided)
+                                    </td>
+                                    <td>
+                                        @Model.Sum(x => x.TotalDiscount)
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+
+
+                    }
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+<script type="text/javascript">
+
+                        function refreshPageData() {
+                            console.log("Timer expired - Submitting form");
+                            $('#mainForm').submit();
+
+                        }
+
+                        var hasFired = '@hasFired';
+
+                        console.log(hasFired);
+
+                        if (hasFired === 'False') {
+                            console.log("This is the first time page has loaded");
+                            refreshPageData();
+                        }
+                        console.log("Setting Timer");
+                        setInterval("refreshPageData();", 30000);
+
+
+                        $(document).ready(function () {
+
+
+                            $('.myDatatable').DataTable(
+                                {
+                                    "pageLength": 200,
+                                    "order": [[0, "desc"]],
+                                    "deferRender": true,
+                                    responsive: true,
+                                    dom: '<"html5buttons"B>lTfgitp',
+                                    buttons: [
+                                        { extend: 'copy' },
+                                        { extend: 'csv' },
+                                        { extend: 'excel', title: '@ViewBag.Title' },
+                                        { extend: 'pdf', title: '@ViewBag.Title' },
+                                        {
+                                            extend: 'print',
+                                            customize: function (win) {
+                                                $(win.document.body).addClass('white-bg');
+                                                $(win.document.body).css('font-size', '10px');
+
+                                                $(win.document.body).find('table')
+                                                    .addClass('compact')
+                                                    .css('font-size', 'inherit');
+                                            }
+                                        }
+                                    ]
+                                }
+                            );
+                        });
+
+
+
+</script>
+
+
+
+

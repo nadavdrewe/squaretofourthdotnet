@@ -1,0 +1,190 @@
+﻿@model IList<Revel._808nd.com.Classes.Reporting.ProductOrderItemSummary>
+
+@{
+    ViewBag.Title = "Index";
+
+    var users = (IEnumerable<SelectListItem>)ViewBag.UsersSelect;
+    var establishmentListItems = (IEnumerable<SelectListItem>)ViewBag.EstablishmentsSelect;
+
+    Layout = "~/Views/Shared/_BILayout.cshtml";
+}
+
+<h2>Full Product Sales Breakdown</h2>
+
+
+
+@using (Html.BeginForm("ShowFullProductSalesBreakdown", "BI", FormMethod.Post))
+{
+
+    <div class="form-block">
+
+        <div>
+            <label class="form-label">Start</label>
+        </div>
+        <div>
+            <input class="form-control datepicker" type="text" name="start" placeholder="Start Date" required />
+        </div>
+
+        <div>
+            <label class="form-label">Number of Weeks</label>
+        </div>
+        <div>
+
+            <select class="form-control datepicker" type="text" name="noOfWeeks" placeholder="End Date" required>
+                <option selected="selected">1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+
+        </div>
+
+        <div>
+            <label class="form-label">Which Grind?</label>
+        </div>
+        <div>
+
+            @Html.DropDownList("EstablishmentId", establishmentListItems, new {@class = "form-control datepicker", required = true})
+        </div>
+        <div>
+            <label class="form-label">Which User?</label>
+        </div>
+        <div>
+            @Html.DropDownList("UserURI", users, new { @class = "form-control datepicker" })
+        </div>
+        <input type="submit" value="Go" class="btn btn-primary" />
+    </div>
+
+
+}
+
+
+
+
+@if (Model != null)
+{
+
+    <table class="myDatatable table">
+        <thead>
+            <tr>
+                <th>
+                    Period
+                </th>
+                <th>
+                    Category
+                </th>
+                <th>
+                    Revel Product ID
+                </th>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Total Sales
+                </th>
+                <th>
+                    Quantity
+                </th>
+                <th>
+                    Comps
+                </th>
+                <th>
+                    Voided
+                </th>
+                <th>
+                    Discount
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Period) @Html.DisplayFor(modelItem => item.PeriodNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CategoryName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductIdentifier)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TotalPureSales)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TotalQuantity)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TotalComps)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TotalVoided)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TotalDiscount)
+                    </td>
+                </tr>
+
+            }
+        </tbody>
+        <tfoot>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td style="font-weight: bold; color: red">
+                Totals
+            </td>
+            <td style="font-weight: bold">
+                @Model.Sum(x => x.TotalPureSales)
+            </td>
+            <td style="font-weight: bold">
+                @Model.Sum(x => x.TotalQuantity)
+            </td>
+            <td>
+                @Model.Sum(x => x.TotalComps)
+            </td>
+            <td>
+                @Model.Sum(x => x.TotalVoided)
+            </td>
+            <td>
+                @Model.Sum(x => x.TotalDiscount)
+            </td>
+        </tr>
+        </tfoot>
+    </table>
+}
+
+
+
+
+<script type="text/javascript">
+
+
+    $(document).ready(function () {
+        $('.myDatatable').DataTable(
+        {
+            "pageLength": 200
+        }
+        );
+
+
+        $('#message').fadeIn(2000);
+        $('#message').delay(2000);
+        $('#message').fadeOut(2000);
+
+    });
+
+
+
+</script>
+
+
+
+

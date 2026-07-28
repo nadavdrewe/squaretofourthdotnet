@@ -1,0 +1,156 @@
+﻿@model Revel._808nd.com.ReportingModel.OrderItemProductGroupingComparisonList
+
+@{
+    var allProds = new List<int>();
+
+   
+    foreach (var product in Model.Items.OrderByDescending(x => x.TotalPureSales).ToList())
+    {
+        allProds.Add(product.ProductId);
+    }
+
+
+}
+@*<h3>Top Sellers</h3>*@
+<table class="table table-primary">
+    <thead>
+        <tr>
+            <th>
+               Today
+            </th>
+            <th>
+                Last Week
+            </th>
+          
+        </tr>
+    </thead>
+
+    <tbody>
+        @{
+
+            var loop = 0;
+            foreach (var prodID in allProds)
+            {
+
+
+                <tr>
+                   
+                    <td>£@Decimal.Round(Model.Items.Where(x => x.ProductId == prodID).Sum(x => x.TotalPureSales))</td>
+                    <td>£@Decimal.Round(Model.ComparisonItems.Where(x => x.ProductId == prodID).Sum(x => x.TotalPureSales))</td>
+                    <td>
+                        @{
+                            var currentSales = Model.Items.Where(x => x.ProductId == prodID).Sum(x => x.TotalPureSales);
+                            var currentItems = Model.Items.Where(x => x.ProductId == prodID).Sum(x => x.TotalQuantity);
+                            if (currentSales > 0 && currentItems > 0)
+                            {
+                                @("£")@(Decimal.Round(currentSales / currentItems, 2))
+
+
+                            }
+                            else
+                            {
+                                @("£")@Html.Raw("0")
+                            }
+
+                        }
+
+
+                    </td>
+
+
+
+                    <td>
+                        @{
+                            var compareSales = Model.ComparisonItems.Where(x => x.ProductId == prodID).Sum(x => x.TotalPureSales);
+                            var compareItems = Model.ComparisonItems.Where(x => x.ProductId == prodID).Sum(x => x.TotalQuantity);
+
+                            if (compareItems > 0 && compareSales > 0)
+                            {
+                                @("£")@(Decimal.Round(compareSales / compareItems, 2))
+                            }
+                            else
+                            {
+                                @("£")@Html.Raw("0")
+                            }
+                        }
+
+                    </td>
+                </tr>
+                                loop++;
+                            }
+        }
+
+    </tbody>
+</table>
+
+
+
+<script type="text/javascript">
+
+    /*
+
+        var firstFullSet = $(".data-quantity");
+        var secondFullSet = $(".data-compQuantity");
+
+        $(firstFullSet).each(function(index, value) {
+
+            var first = parseInt($(value).text());
+
+           // var second = $(secondFullSet).find("."+)
+
+        });
+
+        function setToGreenIfCompareIsLower(toSet, toCompareTo) {
+
+
+            var firstFullSet = parseInt($(toSet).text());
+            var secondFullSet = parseInt($(toCompareTo).text());
+
+
+
+                if (first > second) {
+                    //green
+                    toCompareTo.css("color", "green");
+                } else {
+                    //red
+                    toCompareTo.css("color", "red");
+                }
+            }
+    */
+
+
+
+
+
+
+    $(document).ready(function () {
+
+        /*  var allIwantToCycleThrough = $(".data-quantity");
+
+          allIwantToCycleThrough.each(function() {
+            //  var allAlternateClass =
+                  var specificOneIWantTOCompareAgainst
+
+          });
+
+          setToGreenIfCompareIsLower($("#quantity"), $("#compQuantity"));*/
+
+
+        $('#salesTodayTable').DataTable(
+        {
+            "pageLength": 50
+        }
+        );
+
+
+        $('#message').fadeIn(2000);
+        $('#message').delay(2000);
+        $('#message').fadeOut(2000);
+
+    });
+
+
+
+</script>
+
+

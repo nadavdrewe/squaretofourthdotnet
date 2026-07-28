@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\com.fourth.pipeline.pos\com.fourth.pipeline.pos.csproj" />
+    <ProjectReference Include="..\shared.pipeline.fouth.com\shared.pipeline.fouth.com.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\Configs\Brand\" />
+    <Folder Include="Models\CredentialTypes\StoreLevel\" />
+    <Folder Include="Exceptions\" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,103 @@
+﻿@model Revel._808nd.com.Classes.RewardsPointsMultiplier
+
+
+@{
+    ViewBag.Title = "Edit Multipliers";
+}
+
+@Html.Partial("~/PartialViews/BreadcrumbBarPartial.cshtml")
+
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>@ViewBag.Title</h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li>
+                                <a href="#">Config option 1</a>
+                            </li>
+                            <li>
+                                <a href="#">Config option 2</a>
+                            </li>
+                        </ul>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-horizontal">
+                            <h4>Reward Card Points Multiplier</h4>
+                            <hr />
+                            @Html.ValidationSummary(true)
+                            @Html.HiddenFor(model => model.id)
+
+                            <div class="form-group">
+                                <label class="control-label col-md-2">Email Suffix</label>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.emailSuffix, new { Placeholder = "e.g. test.com" })
+                                    @Html.ValidationMessageFor(model => model.emailSuffix)
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-2">Multiplier</label>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.multiplier)
+                                    @Html.ValidationMessageFor(model => model.multiplier)
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-2">Active</label>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.active)
+                                    @Html.ValidationMessageFor(model => model.active)
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-2">Expiry Date</label>
+                                <br />
+                                <div class="col-md-10">
+                                    <input type="text" name="expiryDate" id="expiryDate" class="text-box single-line datepicker" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Save" class="btn btn-default" />
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $('#datepicker').datepicker({ dateFormat: 'dd/MM/yyyy ' });
+        $('#expiryDate').val('@Model.expiryDate');
+
+    });
+</script>

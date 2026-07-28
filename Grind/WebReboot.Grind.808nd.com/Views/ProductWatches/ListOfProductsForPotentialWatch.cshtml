@@ -1,0 +1,155 @@
+﻿@using Revel._808nd.com.Classes
+@using Revel._808nd.com.ReportingModel
+@model IEnumerable<WebReboot.Grind._808nd.com.Models.ViewModels.ProductCategoryAndEstablishmentViewModel>
+@{
+
+
+    var ests = ViewData["Establishments"] as List<Establishment>;
+
+    var options = new AjaxOptions
+    {
+
+
+        HttpMethod = "POST",
+        OnSuccess = "alert('Watch added');",
+        OnFailure = "alert('That didn't work, how embarrassing!');"
+
+    };
+
+    var ajaxOptions = new AjaxOptions
+    {
+        UpdateTargetId = "resultDiv",
+        OnBegin = "alert('OnBegin')",
+        HttpMethod = "POST",
+        InsertionMode = InsertionMode.Replace
+
+    };
+}
+
+
+<table class="table myDatatable">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+
+            <th>
+                Price
+            </th>
+            <th>
+                Establishment
+            </th>
+            <th>
+                Category
+            </th>
+
+            <th>
+                Is Active Product?
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Product.name)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Product.price)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.EstablishmentName)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoryName)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Product.active)
+                </td>
+
+                <td>
+
+                    <form class="testForm" onsubmit="createProductWatch(@item.Product.product_id)">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" name="ProductID" id="ProductID" value="@item.Product.product_id" />
+                        <input type="submit" class="btn btn-danger" value="Create New Watch" />
+                    </form>
+
+
+                 @*   @using (Ajax.BeginForm("Create", "ProductWatches", options))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <input type="hidden" name="ProductID" id="ProductID" value="@item.Product.product_id"/>
+                        <input type="submit" class="btn btn-danger" value="Create New Watch"/>
+                    }*@
+
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+
+<script>
+
+    function createProductWatch(productId) {
+
+      
+        event.preventDefault();
+
+        $.ajax({
+            url: '@Url.Action("Create", "ProductWatches")',
+            data: { ProductID: productId },
+            error: function() {
+                alert('Sorry that didn\'t work');
+            },
+
+            success: function(data) {
+                alert('Thanks');
+            },
+            type: 'POST'
+        });
+
+    }
+
+
+
+
+
+</script>
+
+<script type="text/javascript">
+
+
+    $(document).ready(function () {
+        $('.myDatatable').DataTable(
+        {
+            "pageLength": 50
+        }
+        );
+
+
+        $('#message').fadeIn(2000);
+        $('#message').delay(2000);
+        $('#message').fadeOut(2000);
+
+    });
+
+
+
+</script>
+

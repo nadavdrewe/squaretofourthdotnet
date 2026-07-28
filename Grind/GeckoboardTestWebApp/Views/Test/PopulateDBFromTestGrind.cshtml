@@ -1,0 +1,35 @@
+﻿
+@using Revel._808nd.com.Classes;
+@using Revel._808nd.com.Models;
+
+@{
+    
+      
+    Layout = null;
+    List <ProductCategory> theCats = ViewBag.cats;
+    
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>PopulateDBFromTestGrind</title>
+</head>
+<body>
+    <div>
+            @{
+                foreach (var cat in theCats)
+                {
+                    @cat.productcategory_id @cat.name @cat.establishment_id
+                                
+
+
+
+
+                }
+            }
+    </div>
+</body>
+</html>

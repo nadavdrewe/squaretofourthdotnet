@@ -1,0 +1,426 @@
+﻿@model Revel._808nd.com.Classes.Order
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>Order</h4>
+    	<hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.asap)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.asap)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.auto_grat_pct)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.auto_grat_pct)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.bill_number)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.bill_number)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.bills_info)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.bills_info)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.bills_type)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.bills_type)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.call_name)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.call_name)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.closed)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.closed)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.created_at)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.created_at)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.created_by)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.created_by)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.created_date)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.created_date)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.crv_taxed)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.crv_taxed)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.crv_value)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.crv_value)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.dining_option)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.dining_option)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.discount)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.discount)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.discount_amount)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.discount_amount)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.discount_reason)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.discount_reason)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.discount_tax_amount)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.discount_tax_amount)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.establishment)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.establishment)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.exchange_discount)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.exchange_discount)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.exchanged)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.exchanged)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.final_total)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.final_total)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.gift_reward_data)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.gift_reward_data)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.gratuity)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.gratuity)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.gratuity_type)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.gratuity_type)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.has_delivery_info)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.has_delivery_info)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.local_id)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.local_id)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.notes)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.notes)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.notification_email_sent)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.notification_email_sent)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.notification_text_sent)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.notification_text_sent)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.number_of_people)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.number_of_people)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.points_added)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.points_added)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.points_redeemed)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.points_redeemed)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.pos_mode)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.pos_mode)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.prevailing_surcharge)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.prevailing_surcharge)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.prevailing_tax)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.prevailing_tax)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.printed)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.printed)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.remaining_due)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.remaining_due)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.resource_uri)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.resource_uri)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.rounding_delta)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.rounding_delta)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.service_charge)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.service_charge)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.subtotal)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.subtotal)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.surcharge)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.surcharge)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.tax)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.tax)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.tax_country)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.tax_country)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.tax_rebate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.tax_rebate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.updated_by)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.updated_by)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.updated_date)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.updated_date)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.uuid)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.uuid)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.web_order)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.web_order)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.establishment_id)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.establishment_id)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

@@ -1,0 +1,30 @@
+@model data.pipeline.fourth.com.Models.Mappings.SquareEmployeeMapping
+
+@{
+    ViewData["Title"] = "Delete Square Employee Mapping";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Square Employee Mapping</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">Brand</dt>
+        <dd class="col-sm-9">@Model.StoreIntegration?.Store?.Brand?.Name</dd>
+        <dt class="col-sm-3">Store</dt>
+        <dd class="col-sm-9">@Model.StoreIntegration?.Store?.Name</dd>
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.SquareTeamMemberId)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.SquareTeamMemberId)</dd>
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.FourthEmployeeNumber)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.FourthEmployeeNumber)</dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

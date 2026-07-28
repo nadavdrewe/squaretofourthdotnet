@@ -1,0 +1,72 @@
+@model data.pipeline.fourth.com.Models.PipelineEventLog
+
+@{
+    ViewData["Title"] = "Pipeline Event Log Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Pipeline Event Log</h1>
+
+<div>
+    <dl class="row">
+        <dt class="col-sm-3">Created UTC</dt>
+        <dd class="col-sm-9">@Model.WhenCreatedUTC</dd>
+        <dt class="col-sm-3">Correlation</dt>
+        <dd class="col-sm-9">@Model.CorrelationId</dd>
+        <dt class="col-sm-3">Run Record</dt>
+        <dd class="col-sm-9">
+            @if (Model.PipelineRunRecordId.HasValue)
+            {
+                <a asp-controller="PipelineRunRecords" asp-action="Details" asp-route-id="@Model.PipelineRunRecordId">@Model.PipelineRunRecordId</a>
+            }
+        </dd>
+        <dt class="col-sm-3">Brand</dt>
+        <dd class="col-sm-9">@Model.BrandName (@Model.BrandId)</dd>
+        <dt class="col-sm-3">Store</dt>
+        <dd class="col-sm-9">@Model.StoreName (@Model.StoreId)</dd>
+        <dt class="col-sm-3">Store Integration</dt>
+        <dd class="col-sm-9">@Model.StoreIntegrationId</dd>
+        <dt class="col-sm-3">Square Location</dt>
+        <dd class="col-sm-9">@Model.SquareLocationId</dd>
+        <dt class="col-sm-3">Fourth Unit</dt>
+        <dd class="col-sm-9">@Model.FourthUnitId</dd>
+        <dt class="col-sm-3">Fourth Location</dt>
+        <dd class="col-sm-9">@Model.FourthLocationCode</dd>
+        <dt class="col-sm-3">Systems</dt>
+        <dd class="col-sm-9">@Model.SourceSystem to @Model.TargetSystem</dd>
+        <dt class="col-sm-3">Data Type</dt>
+        <dd class="col-sm-9">@Model.DataType</dd>
+        <dt class="col-sm-3">Stage</dt>
+        <dd class="col-sm-9">@Model.Stage</dd>
+        <dt class="col-sm-3">Event</dt>
+        <dd class="col-sm-9">@Model.EventType</dd>
+        <dt class="col-sm-3">Status</dt>
+        <dd class="col-sm-9">@Model.Status</dd>
+        <dt class="col-sm-3">UTC Window</dt>
+        <dd class="col-sm-9">@Model.PeriodStartUtc to @Model.PeriodEndUtc</dd>
+        <dt class="col-sm-3">Transaction Date</dt>
+        <dd class="col-sm-9">@Model.TransactionDate?.ToString("yyyy-MM-dd")</dd>
+        <dt class="col-sm-3">Counts</dt>
+        <dd class="col-sm-9">Items: @Model.ItemCount / Rows: @Model.RowCount</dd>
+        <dt class="col-sm-3">Duration</dt>
+        <dd class="col-sm-9">@Model.DurationMs</dd>
+        <dt class="col-sm-3">HTTP Status</dt>
+        <dd class="col-sm-9">@Model.HttpStatusCode</dd>
+        <dt class="col-sm-3">Output File</dt>
+        <dd class="col-sm-9">@Model.OutputFileName</dd>
+        <dt class="col-sm-3">Output Path</dt>
+        <dd class="col-sm-9">@Model.OutputFullPath</dd>
+        <dt class="col-sm-3">External Reference</dt>
+        <dd class="col-sm-9">@Model.ExternalReference</dd>
+        <dt class="col-sm-3">Message</dt>
+        <dd class="col-sm-9">@Model.Message</dd>
+        <dt class="col-sm-3">Details JSON</dt>
+        <dd class="col-sm-9"><pre>@Model.DetailsJson</pre></dd>
+        <dt class="col-sm-3">Error</dt>
+        <dd class="col-sm-9"><pre>@Model.ErrorMessage</pre></dd>
+    </dl>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

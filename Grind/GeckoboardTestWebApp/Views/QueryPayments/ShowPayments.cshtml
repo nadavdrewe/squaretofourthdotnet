@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Revel._808nd.com.Classes.Payment>
+
+
+@{
+    ViewBag.Title = "ShowPayments";
+}
+
+<h2>ShowPayments</h2>
+
+
+<script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.min.js"></script>
+
+@{
+
+    if (Model != null)
+    {
+        {
+            if (Model.Count() > 0)
+            {
+                var paymentsSumTotal = Model.Sum(x => x.amount);
+                var Count = Model.Count();
+
+
+                <h3>Sum£: @paymentsSumTotal </h3>
+                <h3>Count#:  var Count = @Model.Count();  </h3>
+
+            }
+        }
+
+    }
+
+
+}
+     
+     
+@{ Html.BeginForm("ShowPayments", "QueryPayments", FormMethod.Post); }
+
+<input type="text" name="Start" id="Start" />
+
+<input type="text" name="End" id="End"  />
+
+<input type="submit"/>
+
+@{ Html.EndForm();}
+
+<script type="text/javascript">
+    $("#Start").datepicker();
+    $("#End").datepicker();
+</script>

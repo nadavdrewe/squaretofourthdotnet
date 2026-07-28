@@ -1,0 +1,1229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CaternetTillSales xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <TradingDate>2017-07-20</TradingDate>
+  <TillUnitId>9200</TillUnitId>
+  <TillServiceId>9200</TillServiceId>
+  <Sales>
+    <Entry>
+      <PLU />
+      <Quantity>2</Quantity>
+      <TotalVAT>2.83</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>8.50</GrossSalesPrice>
+      <TotalNetSales>11.34</TotalNetSales>
+      <TotalGrossSales>14.17</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Chilli Mojito*</Notes>
+    </Entry>
+    <Entry>
+      <PLU>100000010129</PLU>
+      <Quantity>7</Quantity>
+      <TotalVAT>4.67</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>4.00</GrossSalesPrice>
+      <TotalNetSales>18.66</TotalNetSales>
+      <TotalGrossSales>23.33</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Cider*</Notes>
+    </Entry>
+    <Entry>
+      <PLU>11121</PLU>
+      <Quantity>5</Quantity>
+      <TotalVAT>7.08</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>8.50</GrossSalesPrice>
+      <TotalNetSales>28.34</TotalNetSales>
+      <TotalGrossSales>35.42</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Clover Club*</Notes>
+    </Entry>
+    <Entry>
+      <PLU>11115</PLU>
+      <Quantity>15</Quantity>
+      <TotalVAT>10</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>4.00</GrossSalesPrice>
+      <TotalNetSales>40</TotalNetSales>
+      <TotalGrossSales>50</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Corona*</Notes>
+    </Entry>
+    <Entry>
+      <PLU />
+      <Quantity>6</Quantity>
+      <TotalVAT>5</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>8.50</GrossSalesPrice>
+      <TotalNetSales>20</TotalNetSales>
+      <TotalGrossSales>25</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Drinki £5 Espresso Martini*</Notes>
+    </Entry>
+    <Entry>
+      <PLU>10000000155</PLU>
+      <Quantity>9</Quantity>
+      <TotalVAT>8.5</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>8.50</GrossSalesPrice>
+      <TotalNetSales>55.25</TotalNetSales>
+      <TotalGrossSales>63.75</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Espresso Martini*</Notes>
+    </Entry>
+    <Entry>
+      <PLU />
+      <Quantity>1</Quantity>
+      <TotalVAT>1.42</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>8.50</GrossSalesPrice>
+      <TotalNetSales>5.66</TotalNetSales>
+      <TotalGrossSales>7.08</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Espresso Old Fashioned*</Notes>
+    </Entry>
+    <Entry>
+      <PLU>100000010358</PLU>
+      <Quantity>5</Quantity>
+      <TotalVAT>7.17</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>0.00</GrossSalesPrice>
+      <TotalNetSales>28.66</TotalNetSales>
+      <TotalGrossSales>35.83</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Gins*</Notes>
+    </Entry>
+    <Entry>
+      <PLU />
+      <Quantity>8</Quantity>
+      <TotalVAT>6</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>8.50</GrossSalesPrice>
+      <TotalNetSales>24</TotalNetSales>
+      <TotalGrossSales>30</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Indy*</Notes>
+    </Entry>
+    <Entry>
+      <PLU />
+      <Quantity>6</Quantity>
+      <TotalVAT>4.5</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>8.50</GrossSalesPrice>
+      <TotalNetSales>20.5</TotalNetSales>
+      <TotalGrossSales>25</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Juicebox ipa*</Notes>
+    </Entry>
+    <Entry>
+      <PLU>11116</PLU>
+      <Quantity>6</Quantity>
+      <TotalVAT>4</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>4.00</GrossSalesPrice>
+      <TotalNetSales>16</TotalNetSales>
+      <TotalGrossSales>20</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Peroni*</Notes>
+    </Entry>
+    <Entry>
+      <PLU>100000010433</PLU>
+      <Quantity>10</Quantity>
+      <TotalVAT>10.83</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>0.00</GrossSalesPrice>
+      <TotalNetSales>43.34</TotalNetSales>
+      <TotalGrossSales>54.17</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Sparkling &amp; Rose*</Notes>
+    </Entry>
+    <Entry>
+      <PLU />
+      <Quantity>2</Quantity>
+      <TotalVAT>2.83</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>8.50</GrossSalesPrice>
+      <TotalNetSales>11.34</TotalNetSales>
+      <TotalGrossSales>14.17</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Strawberry Fields*</Notes>
+    </Entry>
+    <Entry>
+      <PLU />
+      <Quantity>2</Quantity>
+      <TotalVAT>2.83</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>8.50</GrossSalesPrice>
+      <TotalNetSales>11.34</TotalNetSales>
+      <TotalGrossSales>14.17</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Tommys Margarita*</Notes>
+    </Entry>
+    <Entry>
+      <PLU />
+      <Quantity>1</Quantity>
+      <TotalVAT>0.5</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>8.50</GrossSalesPrice>
+      <TotalNetSales>2.0</TotalNetSales>
+      <TotalGrossSales>2.5</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Beetroot*</Notes>
+    </Entry>
+    <Entry>
+      <PLU>11180</PLU>
+      <Quantity>53</Quantity>
+      <TotalVAT>28.53</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>3.00</GrossSalesPrice>
+      <TotalNetSales>114.14</TotalNetSales>
+      <TotalGrossSales>142.67</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Cappucci*</Notes>
+    </Entry>
+    <Entry>
+      <PLU />
+      <Quantity>2</Quantity>
+      <TotalVAT>0.87</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>8.50</GrossSalesPrice>
+      <TotalNetSales>3.46</TotalNetSales>
+      <TotalGrossSales>4.33</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Cortado*</Notes>
+    </Entry>
+    <Entry>
+      <PLU>11206</PLU>
+      <Quantity>2</Quantity>
+      <TotalVAT>0.92</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>2.75</GrossSalesPrice>
+      <TotalNetSales>3.66</TotalNetSales>
+      <TotalGrossSales>4.58</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Earl     Grey*</Notes>
+    </Entry>
+    <Entry>
+      <PLU>11207</PLU>
+      <Quantity>5</Quantity>
+      <TotalVAT>2.29</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>2.75</GrossSalesPrice>
+      <TotalNetSales>9.17</TotalNetSales>
+      <TotalGrossSales>11.46</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>English Breakfast*</Notes>
+    </Entry>
+    <Entry>
+      <PLU>11181</PLU>
+      <Quantity>14</Quantity>
+      <TotalVAT>5.37</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>2.30</GrossSalesPrice>
+      <TotalNetSales>21.46</TotalNetSales>
+      <TotalGrossSales>26.83</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Espresso*</Notes>
+    </Entry>
+    <Entry>
+      <PLU />
+      <Quantity>8</Quantity>
+      <TotalVAT>3.38</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>8.50</GrossSalesPrice>
+      <TotalNetSales>13.50</TotalNetSales>
+      <TotalGrossSales>16.88</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Filter Coffee*</Notes>
+    </Entry>
+    <Entry>
+      <PLU>11185</PLU>
+      <Quantity>55</Quantity>
+      <TotalVAT>28.42</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>3.00</GrossSalesPrice>
+      <TotalNetSales>113.66</TotalNetSales>
+      <TotalGrossSales>142.08</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Flat White*</Notes>
+    </Entry>
+    <Entry>
+      <PLU>11208</PLU>
+      <Quantity>1</Quantity>
+      <TotalVAT>0.46</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>2.75</GrossSalesPrice>
+      <TotalNetSales>1.83</TotalNetSales>
+      <TotalGrossSales>2.29</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Fresh Mint*</Notes>
+    </Entry>
+    <Entry>
+      <PLU>11188</PLU>
+      <Quantity>3</Quantity>
+      <TotalVAT>1.6</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>3.00</GrossSalesPrice>
+      <TotalNetSales>6.4</TotalNetSales>
+      <TotalGrossSales>8</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Hot Choc*</Notes>
+    </Entry>
+    <Entry>
+      <PLU />
+      <Quantity>2</Quantity>
+      <TotalVAT>1.03</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>8.50</GrossSalesPrice>
+      <TotalNetSales>4.14</TotalNetSales>
+      <TotalGrossSales>5.17</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Ice London Fog*</Notes>
+    </Entry>
+    <Entry>
+      <PLU />
+      <Quantity>19</Quantity>
+      <TotalVAT>2.2</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>8.50</GrossSalesPrice>
+      <TotalNetSales>58.8</TotalNetSales>
+      <TotalGrossSales>61</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Iced Black*</Notes>
+    </Entry>
+    <Entry>
+      <PLU>11189</PLU>
+      <Quantity>142</Quantity>
+      <TotalVAT>23.05</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>3.30</GrossSalesPrice>
+      <TotalNetSales>429.50</TotalNetSales>
+      <TotalGrossSales>452.55</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Iced Coffee*</Notes>
+    </Entry>
+    <Entry>
+      <PLU>100000029015</PLU>
+      <Quantity>6</Quantity>
+      <TotalVAT>3</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>3.00</GrossSalesPrice>
+      <TotalNetSales>12</TotalNetSales>
+      <TotalGrossSales>15</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Iced Filter*</Notes>
+    </Entry>
+    <Entry>
+      <PLU />
+      <Quantity>5</Quantity>
+      <TotalVAT>0.58</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>8.50</GrossSalesPrice>
+      <TotalNetSales>12.84</TotalNetSales>
+      <TotalGrossSales>13.42</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Iced Mocha*</Notes>
+    </Entry>
+    <Entry>
+      <PLU />
+      <Quantity>12</Quantity>
+      <TotalVAT>5.5</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>8.50</GrossSalesPrice>
+      <TotalNetSales>22.0</TotalNetSales>
+      <TotalGrossSales>27.5</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Iced Tea*</Notes>
+    </Entry>
+    <Entry>
+      <PLU>11210</PLU>
+      <Quantity>1</Quantity>
+      <TotalVAT>0.46</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>2.75</GrossSalesPrice>
+      <TotalNetSales>1.83</TotalNetSales>
+      <TotalGrossSales>2.29</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Jasmine*</Notes>
+    </Entry>
+    <Entry>
+      <PLU>11191</PLU>
+      <Quantity>53</Quantity>
+      <TotalVAT>26.35</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>3.00</GrossSalesPrice>
+      <TotalNetSales>111.48</TotalNetSales>
+      <TotalGrossSales>137.83</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Latte*</Notes>
+    </Entry>
+    <Entry>
+      <PLU>11211</PLU>
+      <Quantity>1</Quantity>
+      <TotalVAT>0.46</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>2.75</GrossSalesPrice>
+      <TotalNetSales>1.83</TotalNetSales>
+      <TotalGrossSales>2.29</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Lemongrass Ginger*</Notes>
+    </Entry>
+    <Entry>
+      <PLU>11192</PLU>
+      <Quantity>29</Quantity>
+      <TotalVAT>12.35</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>2.50</GrossSalesPrice>
+      <TotalNetSales>49.36</TotalNetSales>
+      <TotalGrossSales>61.71</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Long Black*</Notes>
+    </Entry>
+    <Entry>
+      <PLU>11182</PLU>
+      <Quantity>5</Quantity>
+      <TotalVAT>2.08</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>2.50</GrossSalesPrice>
+      <TotalNetSales>8.34</TotalNetSales>
+      <TotalGrossSales>10.42</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Macch*</Notes>
+    </Entry>
+    <Entry>
+      <PLU>100000026359</PLU>
+      <Quantity>12</Quantity>
+      <TotalVAT>6</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>3.00</GrossSalesPrice>
+      <TotalNetSales>24</TotalNetSales>
+      <TotalGrossSales>30</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Matcha*</Notes>
+    </Entry>
+    <Entry>
+      <PLU>11196</PLU>
+      <Quantity>4</Quantity>
+      <TotalVAT>2.1</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>3.10</GrossSalesPrice>
+      <TotalNetSales>8.4</TotalNetSales>
+      <TotalGrossSales>10.5</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Mocha*</Notes>
+    </Entry>
+    <Entry>
+      <PLU />
+      <Quantity>17</Quantity>
+      <TotalVAT>1.17</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>8.50</GrossSalesPrice>
+      <TotalNetSales>57.16</TotalNetSales>
+      <TotalGrossSales>58.33</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Nitro Cold Brew*</Notes>
+    </Entry>
+    <Entry>
+      <PLU>11197</PLU>
+      <Quantity>3</Quantity>
+      <TotalVAT>1.3</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>2.60</GrossSalesPrice>
+      <TotalNetSales>5.2</TotalNetSales>
+      <TotalGrossSales>6.5</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Piccolo*</Notes>
+    </Entry>
+    <Entry>
+      <PLU>11199</PLU>
+      <Quantity>4</Quantity>
+      <TotalVAT>1.53</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>2.30</GrossSalesPrice>
+      <TotalNetSales>6.14</TotalNetSales>
+      <TotalGrossSales>7.67</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Short Black*</Notes>
+    </Entry>
+    <Entry>
+      <PLU>20010</PLU>
+      <Quantity>39</Quantity>
+      <TotalVAT>0.08</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>0.00</GrossSalesPrice>
+      <TotalNetSales>0.34</TotalNetSales>
+      <TotalGrossSales>0.42</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Staff Coffee*</Notes>
+    </Entry>
+    <Entry>
+      <PLU>100000026366</PLU>
+      <Quantity>1</Quantity>
+      <TotalVAT>0.5</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>3.00</GrossSalesPrice>
+      <TotalNetSales>2.0</TotalNetSales>
+      <TotalGrossSales>2.5</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Turmeric*</Notes>
+    </Entry>
+    <Entry>
+      <PLU />
+      <Quantity>1</Quantity>
+      <TotalVAT>0.04</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>8.50</GrossSalesPrice>
+      <TotalNetSales>0.17</TotalNetSales>
+      <TotalGrossSales>0.21</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>0.25*</Notes>
+    </Entry>
+    <Entry>
+      <PLU />
+      <Quantity>2</Quantity>
+      <TotalVAT>0.83</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>8.50</GrossSalesPrice>
+      <TotalNetSales>3.34</TotalNetSales>
+      <TotalGrossSales>4.17</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>2 Poached Eggs Side*</Notes>
+    </Entry>
+    <Entry>
+      <PLU />
+      <Quantity>2</Quantity>
+      <TotalVAT>0.83</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>8.50</GrossSalesPrice>
+      <TotalNetSales>3.34</TotalNetSales>
+      <TotalGrossSales>4.17</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>2 Sausages Side*</Notes>
+    </Entry>
+    <Entry>
+      <PLU>11226</PLU>
+      <Quantity>8</Quantity>
+      <TotalVAT>0.47</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>2.80</GrossSalesPrice>
+      <TotalNetSales>21.46</TotalNetSales>
+      <TotalGrossSales>21.93</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Almond Croissant*</Notes>
+    </Entry>
+    <Entry>
+      <PLU />
+      <Quantity>2</Quantity>
+      <TotalVAT>0.67</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>8.50</GrossSalesPrice>
+      <TotalNetSales>2.66</TotalNetSales>
+      <TotalGrossSales>3.33</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Bacon Side*</Notes>
+    </Entry>
+    <Entry>
+      <PLU>100000009994</PLU>
+      <Quantity>5</Quantity>
+      <TotalVAT>4.17</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>5.00</GrossSalesPrice>
+      <TotalNetSales>16.66</TotalNetSales>
+      <TotalGrossSales>20.83</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Banana Bread*</Notes>
+    </Entry>
+    <Entry>
+      <PLU>100000009963</PLU>
+      <Quantity>3</Quantity>
+      <TotalVAT>1.5</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>3.00</GrossSalesPrice>
+      <TotalNetSales>6.0</TotalNetSales>
+      <TotalGrossSales>7.5</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Berry Yoghurt Pot*</Notes>
+    </Entry>
+    <Entry>
+      <PLU />
+      <Quantity>11</Quantity>
+      <TotalVAT>12.25</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>8.50</GrossSalesPrice>
+      <TotalNetSales>51.92</TotalNetSales>
+      <TotalGrossSales>64.17</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Breakfast Focaccia*</Notes>
+    </Entry>
+    <Entry>
+      <PLU>100000010372</PLU>
+      <Quantity>1</Quantity>
+      <TotalVAT>0.42</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>2.50</GrossSalesPrice>
+      <TotalNetSales>1.66</TotalNetSales>
+      <TotalGrossSales>2.08</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>C &amp; Tom(Cold)*</Notes>
+    </Entry>
+    <Entry>
+      <PLU>100000010471</PLU>
+      <Quantity>3</Quantity>
+      <TotalVAT>1.48</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>2.95</GrossSalesPrice>
+      <TotalNetSales>5.90</TotalNetSales>
+      <TotalGrossSales>7.38</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>C &amp; Tom(Hot)*</Notes>
+    </Entry>
+    <Entry>
+      <PLU />
+      <Quantity>3</Quantity>
+      <TotalVAT>1.5</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>8.50</GrossSalesPrice>
+      <TotalNetSales>6.0</TotalNetSales>
+      <TotalGrossSales>7.5</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>DEL Bacon Side*</Notes>
+    </Entry>
+    <Entry>
+      <PLU />
+      <Quantity>2</Quantity>
+      <TotalVAT>1.67</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>8.50</GrossSalesPrice>
+      <TotalNetSales>6.66</TotalNetSales>
+      <TotalGrossSales>8.33</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>DEL Banana Bread*</Notes>
+    </Entry>
+    <Entry>
+      <PLU />
+      <Quantity>2</Quantity>
+      <TotalVAT>1</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>8.50</GrossSalesPrice>
+      <TotalNetSales>4</TotalNetSales>
+      <TotalGrossSales>5</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>DEL Feta Cheese Side*</Notes>
+    </Entry>
+    <Entry>
+      <PLU />
+      <Quantity>2</Quantity>
+      <TotalVAT>1</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>8.50</GrossSalesPrice>
+      <TotalNetSales>4</TotalNetSales>
+      <TotalGrossSales>5</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>DEL Mushroom Side*</Notes>
+    </Entry>
+    <Entry>
+      <PLU />
+      <Quantity>2</Quantity>
+      <TotalVAT>1.83</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>8.50</GrossSalesPrice>
+      <TotalNetSales>7.34</TotalNetSales>
+      <TotalGrossSales>9.17</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>DEL Porridge*</Notes>
+    </Entry>
+    <Entry>
+      <PLU />
+      <Quantity>2</Quantity>
+      <TotalVAT>1</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>8.50</GrossSalesPrice>
+      <TotalNetSales>4</TotalNetSales>
+      <TotalGrossSales>5</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>DEL Scrambled Eggs Side*</Notes>
+    </Entry>
+    <Entry>
+      <PLU />
+      <Quantity>12</Quantity>
+      <TotalVAT>16.42</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>8.50</GrossSalesPrice>
+      <TotalNetSales>65.66</TotalNetSales>
+      <TotalGrossSales>82.08</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>DEL Smashed Avo*</Notes>
+    </Entry>
+    <Entry>
+      <PLU />
+      <Quantity>1</Quantity>
+      <TotalVAT>1.5</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>8.50</GrossSalesPrice>
+      <TotalNetSales>6.0</TotalNetSales>
+      <TotalGrossSales>7.5</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>DEL Smoked Salmon, Eggs*</Notes>
+    </Entry>
+    <Entry>
+      <PLU />
+      <Quantity>1</Quantity>
+      <TotalVAT>1.08</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>8.50</GrossSalesPrice>
+      <TotalNetSales>4.34</TotalNetSales>
+      <TotalGrossSales>5.42</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>DEL Smoothie Bowl*</Notes>
+    </Entry>
+    <Entry>
+      <PLU />
+      <Quantity>2</Quantity>
+      <TotalVAT>3.67</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>8.50</GrossSalesPrice>
+      <TotalNetSales>14.66</TotalNetSales>
+      <TotalGrossSales>18.33</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>DEL The Grind*</Notes>
+    </Entry>
+    <Entry>
+      <PLU />
+      <Quantity>2</Quantity>
+      <TotalVAT>1.17</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>8.50</GrossSalesPrice>
+      <TotalNetSales>4.66</TotalNetSales>
+      <TotalGrossSales>5.83</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>DEL Toast, Jam*</Notes>
+    </Entry>
+    <Entry>
+      <PLU />
+      <Quantity>1</Quantity>
+      <TotalVAT>0.42</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>8.50</GrossSalesPrice>
+      <TotalNetSales>1.66</TotalNetSales>
+      <TotalGrossSales>2.08</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>DEL White Pudding Side*</Notes>
+    </Entry>
+    <Entry>
+      <PLU />
+      <Quantity>1</Quantity>
+      <TotalVAT>0.92</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>8.50</GrossSalesPrice>
+      <TotalNetSales>3.66</TotalNetSales>
+      <TotalGrossSales>4.58</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>DEL Yoghurt, Seeds*</Notes>
+    </Entry>
+    <Entry>
+      <PLU />
+      <Quantity>3</Quantity>
+      <TotalVAT>0.67</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>8.50</GrossSalesPrice>
+      <TotalNetSales>4.33</TotalNetSales>
+      <TotalGrossSales>5</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Extra Toast*</Notes>
+    </Entry>
+    <Entry>
+      <PLU>100000010150</PLU>
+      <Quantity>10</Quantity>
+      <TotalVAT>16.67</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>10.00</GrossSalesPrice>
+      <TotalNetSales>66.66</TotalNetSales>
+      <TotalGrossSales>83.33</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Full English*</Notes>
+    </Entry>
+    <Entry>
+      <PLU>100000010303</PLU>
+      <Quantity>4</Quantity>
+      <TotalVAT>0.87</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>2.60</GrossSalesPrice>
+      <TotalNetSales>8.66</TotalNetSales>
+      <TotalGrossSales>9.53</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Ham &amp; C (Cold)*</Notes>
+    </Entry>
+    <Entry>
+      <PLU>100000010488</PLU>
+      <Quantity>13</Quantity>
+      <TotalVAT>6.83</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>3.15</GrossSalesPrice>
+      <TotalNetSales>27.29</TotalNetSales>
+      <TotalGrossSales>34.12</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Ham &amp; C (Hot)*</Notes>
+    </Entry>
+    <Entry>
+      <PLU>11245</PLU>
+      <Quantity>7</Quantity>
+      <TotalVAT>0.73</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>2.20</GrossSalesPrice>
+      <TotalNetSales>13.94</TotalNetSales>
+      <TotalGrossSales>14.67</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Muffin*</Notes>
+    </Entry>
+    <Entry>
+      <PLU />
+      <Quantity>1</Quantity>
+      <TotalVAT>0.17</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>8.50</GrossSalesPrice>
+      <TotalNetSales>0.66</TotalNetSales>
+      <TotalGrossSales>0.83</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Mushroom Side*</Notes>
+    </Entry>
+    <Entry>
+      <PLU />
+      <Quantity>1</Quantity>
+      <TotalVAT>0.58</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>8.50</GrossSalesPrice>
+      <TotalNetSales>2.34</TotalNetSales>
+      <TotalGrossSales>2.92</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Olives*</Notes>
+    </Entry>
+    <Entry>
+      <PLU>11227</PLU>
+      <Quantity>8</Quantity>
+      <TotalVAT>0.37</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>2.20</GrossSalesPrice>
+      <TotalNetSales>16.86</TotalNetSales>
+      <TotalGrossSales>17.23</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Pain au Choc*</Notes>
+    </Entry>
+    <Entry>
+      <PLU>11228</PLU>
+      <Quantity>6</Quantity>
+      <TotalVAT>1.1</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>2.20</GrossSalesPrice>
+      <TotalNetSales>11.0</TotalNetSales>
+      <TotalGrossSales>12.1</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Pain au Raisin*</Notes>
+    </Entry>
+    <Entry>
+      <PLU>11247</PLU>
+      <Quantity>25</Quantity>
+      <TotalVAT>0.6</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>1.80</GrossSalesPrice>
+      <TotalNetSales>43.8</TotalNetSales>
+      <TotalGrossSales>44.4</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Pastel De Nata*</Notes>
+    </Entry>
+    <Entry>
+      <PLU>11229</PLU>
+      <Quantity>8</Quantity>
+      <TotalVAT>0.6</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>1.80</GrossSalesPrice>
+      <TotalNetSales>13.2</TotalNetSales>
+      <TotalGrossSales>13.8</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Plain Croissant*</Notes>
+    </Entry>
+    <Entry>
+      <PLU>100000010006</PLU>
+      <Quantity>4</Quantity>
+      <TotalVAT>3</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>5.00</GrossSalesPrice>
+      <TotalNetSales>12</TotalNetSales>
+      <TotalGrossSales>15</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Porridge*</Notes>
+    </Entry>
+    <Entry>
+      <PLU>100000010198</PLU>
+      <Quantity>9</Quantity>
+      <TotalVAT>9.48</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>6.50</GrossSalesPrice>
+      <TotalNetSales>39.27</TotalNetSales>
+      <TotalGrossSales>48.75</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Quinoa Eggs*</Notes>
+    </Entry>
+    <Entry>
+      <PLU>100000010167</PLU>
+      <Quantity>6</Quantity>
+      <TotalVAT>6.88</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>8.00</GrossSalesPrice>
+      <TotalNetSales>30.62</TotalNetSales>
+      <TotalGrossSales>37.5</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Raw Breakfast Salad*</Notes>
+    </Entry>
+    <Entry>
+      <PLU>100000010013</PLU>
+      <Quantity>5</Quantity>
+      <TotalVAT>3.75</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>4.50</GrossSalesPrice>
+      <TotalNetSales>15.00</TotalNetSales>
+      <TotalGrossSales>18.75</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Seeds, Yoghurt*</Notes>
+    </Entry>
+    <Entry>
+      <PLU>100000010112</PLU>
+      <Quantity>87</Quantity>
+      <TotalVAT>114.58</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>5.50</GrossSalesPrice>
+      <TotalNetSales>458.34</TotalNetSales>
+      <TotalGrossSales>572.92</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Smashed Avocado ONLY*</Notes>
+    </Entry>
+    <Entry>
+      <PLU />
+      <Quantity>2</Quantity>
+      <TotalVAT>0.5</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>8.50</GrossSalesPrice>
+      <TotalNetSales>4.5</TotalNetSales>
+      <TotalGrossSales>5</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Smoked Salmon Side*</Notes>
+    </Entry>
+    <Entry>
+      <PLU>100000010099</PLU>
+      <Quantity>17</Quantity>
+      <TotalVAT>22.67</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>9.50</GrossSalesPrice>
+      <TotalNetSales>90.66</TotalNetSales>
+      <TotalGrossSales>113.33</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Smoked Salmon, Eggs*</Notes>
+    </Entry>
+    <Entry>
+      <PLU />
+      <Quantity>9</Quantity>
+      <TotalVAT>9.75</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>8.50</GrossSalesPrice>
+      <TotalNetSales>39.00</TotalNetSales>
+      <TotalGrossSales>48.75</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Smoothie Bowl*</Notes>
+    </Entry>
+    <Entry>
+      <PLU>100000009987</PLU>
+      <Quantity>5</Quantity>
+      <TotalVAT>2.08</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>3.00</GrossSalesPrice>
+      <TotalNetSales>8.34</TotalNetSales>
+      <TotalGrossSales>10.42</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Toast, Jam*</Notes>
+    </Entry>
+    <Entry>
+      <PLU />
+      <Quantity>4</Quantity>
+      <TotalVAT>2</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>8.50</GrossSalesPrice>
+      <TotalNetSales>8</TotalNetSales>
+      <TotalGrossSales>10</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Vegan Chia Pots*</Notes>
+    </Entry>
+    <Entry>
+      <PLU />
+      <Quantity>3</Quantity>
+      <TotalVAT>0.5</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>8.50</GrossSalesPrice>
+      <TotalNetSales>2.0</TotalNetSales>
+      <TotalGrossSales>2.5</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>£1 Pasteries*</Notes>
+    </Entry>
+    <Entry>
+      <PLU />
+      <Quantity>23</Quantity>
+      <TotalVAT>17.42</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>8.50</GrossSalesPrice>
+      <TotalNetSales>73.62</TotalNetSales>
+      <TotalGrossSales>91.04</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Amber Juice*</Notes>
+    </Entry>
+    <Entry>
+      <PLU />
+      <Quantity>12</Quantity>
+      <TotalVAT>0</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>8.50</GrossSalesPrice>
+      <TotalNetSales>61</TotalNetSales>
+      <TotalGrossSales>61</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Amber Smoothie*</Notes>
+    </Entry>
+    <Entry>
+      <PLU />
+      <Quantity>2</Quantity>
+      <TotalVAT>1.67</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>8.50</GrossSalesPrice>
+      <TotalNetSales>6.66</TotalNetSales>
+      <TotalGrossSales>8.33</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>DEL Amber Juice*</Notes>
+    </Entry>
+    <Entry>
+      <PLU />
+      <Quantity>4</Quantity>
+      <TotalVAT>3.67</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>8.50</GrossSalesPrice>
+      <TotalNetSales>14.66</TotalNetSales>
+      <TotalGrossSales>18.33</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>DEL Amber Smoothie*</Notes>
+    </Entry>
+    <Entry>
+      <PLU />
+      <Quantity>1</Quantity>
+      <TotalVAT>0.83</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>8.50</GrossSalesPrice>
+      <TotalNetSales>3.34</TotalNetSales>
+      <TotalGrossSales>4.17</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>DEL Green Juice*</Notes>
+    </Entry>
+    <Entry>
+      <PLU />
+      <Quantity>3</Quantity>
+      <TotalVAT>2.75</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>8.50</GrossSalesPrice>
+      <TotalNetSales>11.00</TotalNetSales>
+      <TotalGrossSales>13.75</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>DEL Green Smoothie*</Notes>
+    </Entry>
+    <Entry>
+      <PLU />
+      <Quantity>4</Quantity>
+      <TotalVAT>2.67</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>8.50</GrossSalesPrice>
+      <TotalNetSales>10.66</TotalNetSales>
+      <TotalGrossSales>13.33</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>DEL Orange Juice*</Notes>
+    </Entry>
+    <Entry>
+      <PLU />
+      <Quantity>2</Quantity>
+      <TotalVAT>1.67</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>8.50</GrossSalesPrice>
+      <TotalNetSales>6.66</TotalNetSales>
+      <TotalGrossSales>8.33</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>DEL Red Juice*</Notes>
+    </Entry>
+    <Entry>
+      <PLU />
+      <Quantity>1</Quantity>
+      <TotalVAT>0.92</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>8.50</GrossSalesPrice>
+      <TotalNetSales>3.66</TotalNetSales>
+      <TotalGrossSales>4.58</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>DEL Red Smoothie*</Notes>
+    </Entry>
+    <Entry>
+      <PLU />
+      <Quantity>13</Quantity>
+      <TotalVAT>10.29</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>8.50</GrossSalesPrice>
+      <TotalNetSales>41.17</TotalNetSales>
+      <TotalGrossSales>51.46</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Green Juice*</Notes>
+    </Entry>
+    <Entry>
+      <PLU />
+      <Quantity>8</Quantity>
+      <TotalVAT>0</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>8.50</GrossSalesPrice>
+      <TotalNetSales>35</TotalNetSales>
+      <TotalGrossSales>35</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Green Smoothie*</Notes>
+    </Entry>
+    <Entry>
+      <PLU />
+      <Quantity>34</Quantity>
+      <TotalVAT>19.83</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>8.50</GrossSalesPrice>
+      <TotalNetSales>79.34</TotalNetSales>
+      <TotalGrossSales>99.17</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Orange Juice*</Notes>
+    </Entry>
+    <Entry>
+      <PLU />
+      <Quantity>4</Quantity>
+      <TotalVAT>3.17</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>8.50</GrossSalesPrice>
+      <TotalNetSales>12.66</TotalNetSales>
+      <TotalGrossSales>15.83</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Red Juice*</Notes>
+    </Entry>
+    <Entry>
+      <PLU />
+      <Quantity>8</Quantity>
+      <TotalVAT>0</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>8.50</GrossSalesPrice>
+      <TotalNetSales>40</TotalNetSales>
+      <TotalGrossSales>40</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Red Smoothie*</Notes>
+    </Entry>
+    <Entry>
+      <PLU>11286</PLU>
+      <Quantity>12</Quantity>
+      <TotalVAT>3.07</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>1.60</GrossSalesPrice>
+      <TotalNetSales>12.93</TotalNetSales>
+      <TotalGrossSales>16</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Coke*</Notes>
+    </Entry>
+    <Entry>
+      <PLU />
+      <Quantity>3</Quantity>
+      <TotalVAT>1.98</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>8.50</GrossSalesPrice>
+      <TotalNetSales>7.90</TotalNetSales>
+      <TotalGrossSales>9.88</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Cold Brew Bottle*</Notes>
+    </Entry>
+    <Entry>
+      <PLU />
+      <Quantity>1</Quantity>
+      <TotalVAT>0.33</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>8.50</GrossSalesPrice>
+      <TotalNetSales>1.34</TotalNetSales>
+      <TotalGrossSales>1.67</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>DEL Diet Coke*</Notes>
+    </Entry>
+    <Entry>
+      <PLU>11287</PLU>
+      <Quantity>4</Quantity>
+      <TotalVAT>1.07</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>1.60</GrossSalesPrice>
+      <TotalNetSales>4.26</TotalNetSales>
+      <TotalGrossSales>5.33</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Diet Coke*</Notes>
+    </Entry>
+    <Entry>
+      <PLU />
+      <Quantity>2</Quantity>
+      <TotalVAT>1.92</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>8.50</GrossSalesPrice>
+      <TotalNetSales>7.66</TotalNetSales>
+      <TotalGrossSales>9.58</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Garden*</Notes>
+    </Entry>
+    <Entry>
+      <PLU>100000010563</PLU>
+      <Quantity>2</Quantity>
+      <TotalVAT>0.87</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>2.60</GrossSalesPrice>
+      <TotalNetSales>3.46</TotalNetSales>
+      <TotalGrossSales>4.33</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Ginger Beer*</Notes>
+    </Entry>
+    <Entry>
+      <PLU />
+      <Quantity>3</Quantity>
+      <TotalVAT>2.87</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>8.50</GrossSalesPrice>
+      <TotalNetSales>11.51</TotalNetSales>
+      <TotalGrossSales>14.38</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Grove*</Notes>
+    </Entry>
+    <Entry>
+      <PLU>11290</PLU>
+      <Quantity>7</Quantity>
+      <TotalVAT>1.6</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>1.60</GrossSalesPrice>
+      <TotalNetSales>7.73</TotalNetSales>
+      <TotalGrossSales>9.33</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Sparkling*</Notes>
+    </Entry>
+    <Entry>
+      <PLU>11291</PLU>
+      <Quantity>12</Quantity>
+      <TotalVAT>3.2</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>1.60</GrossSalesPrice>
+      <TotalNetSales>12.8</TotalNetSales>
+      <TotalGrossSales>16</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Still*</Notes>
+    </Entry>
+    <Entry>
+      <PLU />
+      <Quantity>1</Quantity>
+      <TotalVAT>0.43</TotalVAT>
+      <NetSalesPrice>0</NetSalesPrice>
+      <GrossSalesPrice>8.50</GrossSalesPrice>
+      <TotalNetSales>1.74</TotalNetSales>
+      <TotalGrossSales>2.17</TotalGrossSales>
+      <SalesTypeRef>0</SalesTypeRef>
+      <Notes>Tonic*</Notes>
+    </Entry>
+  </Sales>
+</CaternetTillSales>

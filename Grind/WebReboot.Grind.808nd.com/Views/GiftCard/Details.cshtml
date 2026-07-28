@@ -1,0 +1,146 @@
+﻿@model Revel._808nd.com.Classes.GiftCard
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>GiftCard</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.created_by)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.created_by)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.created_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.created_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.customer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.customer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.establishment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.establishment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.initial_value)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.initial_value)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.number)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.number)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.payment_type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.payment_type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.remaining_balance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.remaining_balance)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.resource_uri)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.resource_uri)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.updated_by)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.updated_by)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.updated_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.updated_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.theAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.theAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LinkingRevelCustomerID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LinkingRevelCustomerID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LinkingRevelRewardsCardNewID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LinkingRevelRewardsCardNewID)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.giftcard_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,81 @@
+﻿@using System.Diagnostics.Eventing.Reader
+@model Revel._808nd.com.Classes.PaymentSummaries.PaymentSummaryGroup
+
+<div>
+    @using (Html.BeginForm("GetPayments", "PaymentQuery"))
+
+    {
+        <div>
+            <label style="color: red;" class="morris-hover-row-label">Grind</label>
+            <select class="uk-dropdown-grid" style="height: 100px; -webkit-animation-name: feature-text-anim" name="requestedEstablishments" multiple>
+                <option value="0" selected="selected">All</option>
+                <option value="1">Shoreditch</option>
+                <option value="5">Holborn</option>
+                <option value="4">London</option>
+                <option value="3">Soho</option>
+                <option value="7">Stratford</option>
+                <option value="8">Radio</option>
+            </select>
+            <label class="morris-hover-row-label">Start Date</label>
+            <input type="date" required id="start" name="start" />
+      
+            <label class="morris-hover-row-label">How many</label>
+            <select name="howLongUnits">
+                @for (int i = 1; i < 181; i++)
+                {
+                    if (i == 7)
+                    {
+                        @Html.Raw("<option selected value=" + i + ">" + i + "</option>")
+                    }
+                    else
+                    {
+                        @Html.Raw("<option value=" + i + ">" + i + "</option>")
+                    }
+
+
+
+                }
+            </select>
+        
+            <label class="morris-hover-row-label">Time period</label>
+            <select name="requestType">
+                <option>Hours</option>
+                <option>Weeks</option>
+                <option selected="selected">Days</option>
+                <option>Months</option>
+            </select>
+            <input type="submit" value="Query Database">
+        </div>
+
+
+    }
+
+
+</div>
+
+
+@{
+
+    if (Model != null)
+    {
+        @Html.Partial("~/Views/PaymentQuery/PaymentResults.cshtml", Model)
+    }
+
+}
+
+
+<script type="text/javascript">
+
+    var oldDate = new Date();
+    var myDate = nextday = new Date(oldDate.getFullYear(), oldDate.getMonth(), oldDate.getDate() - 7);
+    
+    document.getElementById('start').valueAsDate = myDate;
+
+
+    function addDays(date, days) {
+        var result = new Date(date);
+        result.setDate(result.getDate() + days);
+        return result;
+    }
+</script>
+

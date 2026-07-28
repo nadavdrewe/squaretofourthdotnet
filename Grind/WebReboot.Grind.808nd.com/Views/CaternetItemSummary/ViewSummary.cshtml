@@ -1,0 +1,159 @@
+﻿@model IEnumerable<Revel._808nd.com.Classes.Reporting.Caternet.CaternetItemSummary>
+
+@{
+    ViewBag.Title = "View Caternet Summaries";
+
+    var ests = (List<SelectListItem>)ViewBag.Ests;
+}
+
+
+@Html.Partial("~/PartialViews/BreadcrumbBarPartial.cshtml")
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    Pick a date and Grind to see Caternet Summaries
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li>
+                                <a href="#">Config option 1</a>
+                            </li>
+                            <li>
+                                <a href="#">Config option 2</a>
+                            </li>
+                        </ul>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div style="margin-top: 5px" class="page-header">
+
+                        <div class="row">
+
+
+                            <div class="col-xs-12 col-sm-8">
+                                <form method="post" action="ViewSummary">
+                                    <input class="form-control datepicker datepicker-dropdown hasDatepicker" name="start" type="date" id="start">
+                                    @Html.DropDownList("establishmentId", ests, new { @class = "form-control" })
+
+                                    <input type="submit" class="form-control btn btn-primary    " />
+                                </form>
+                                @if (Model != null)
+                                {
+                                    <table class="table">
+                                        <tr>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.Sku)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.Price)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.Name)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.FinalSalesNet)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.VAT)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.QtySold)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.VoidOrComp)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.Discount)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.DiscountVAT)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.ProductId)
+                                            </th>
+                                            <th></th>
+                                        </tr>
+
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Sku)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Price)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Name)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.FinalSalesNet)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.VAT)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.QtySold)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.VoidOrComp)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Discount)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.DiscountVAT)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.ProductId)
+                                                </td>
+                                                <td>                                                  
+                                                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ })                                               
+                                                </td>
+                                            </tr>
+                                         
+                                        }
+                                        <tr>
+                                            <td>Summary:</td>
+                                            <td>N/A</td>
+                                            <td>N/A</td>
+                                            <td>@Model.Sum(x => x.FinalSalesNet)</td>
+                                            <td>@Model.Sum(x => x.VAT)</td>
+                                            <td>@Model.Sum(x => x.QtySold)</td>
+                                            <td>@Model.Sum(x => x.VoidOrComp)</td>
+                                            <td>@Model.Sum(x => x.Discount)</td>
+                                            <td>@Model.Sum(x => x.DiscountVAT)</td>
+                                            <td></td>
+                                        </tr>
+
+                                    </table>
+                                }
+
+                            </div>
+                        </div>
+                    </div> <!-- / .page-header -->
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+

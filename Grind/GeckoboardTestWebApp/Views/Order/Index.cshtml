@@ -1,0 +1,335 @@
+﻿@model IEnumerable<Revel._808nd.com.Classes.Order>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.asap)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.auto_grat_pct)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.bill_number)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.bills_info)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.bills_type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.call_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.closed)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.created_at)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.created_by)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.created_date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.crv_taxed)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.crv_value)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dining_option)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.discount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.discount_amount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.discount_reason)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.discount_tax_amount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.establishment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.exchange_discount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.exchanged)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.final_total)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.gift_reward_data)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.gratuity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.gratuity_type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.has_delivery_info)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.local_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.notes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.notification_email_sent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.notification_text_sent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.number_of_people)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.points_added)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.points_redeemed)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pos_mode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.prevailing_surcharge)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.prevailing_tax)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.printed)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.remaining_due)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.resource_uri)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.rounding_delta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.service_charge)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.subtotal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.surcharge)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tax)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tax_country)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tax_rebate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.updated_by)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.updated_date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.uuid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.web_order)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.establishment_id)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.asap)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.auto_grat_pct)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.bill_number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.bills_info)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.bills_type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.call_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.closed)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.created_at)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.created_by)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.created_date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.crv_taxed)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.crv_value)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dining_option)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.discount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.discount_amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.discount_reason)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.discount_tax_amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.establishment)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.exchange_discount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.exchanged)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.final_total)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.gift_reward_data)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.gratuity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.gratuity_type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.has_delivery_info)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.local_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.notes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.notification_email_sent)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.notification_text_sent)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.number_of_people)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.points_added)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.points_redeemed)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.pos_mode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.prevailing_surcharge)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.prevailing_tax)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.printed)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.remaining_due)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.resource_uri)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.rounding_delta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.service_charge)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.subtotal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.surcharge)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tax)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tax_country)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tax_rebate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.updated_by)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.updated_date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.uuid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.web_order)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.establishment_id)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+                @Html.ActionLink("Details", "Details", new { id=item.id }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.id })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

@@ -1,0 +1,48 @@
+@model web.pipeline.fourth.com.Models.StaticAdminLoginInputModel
+@{
+    Layout = null;
+    var returnUrl = ViewData["ReturnUrl"]?.ToString() ?? "/ClientSetup";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Admin access | Square to Fourth</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@500&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+        :root { --ink: #16211d; --muted: #65736c; --line: rgba(22,33,29,.14); --green: #126a50; --orange: #d96831; --paper: rgba(255,255,252,.9); }
+        * { box-sizing: border-box; }
+        body { min-height: 100vh; margin: 0; display: grid; place-items: center; padding: 24px; color: var(--ink); font-family: "DM Sans", sans-serif; background: radial-gradient(circle at 10% 10%, #d9eee3, transparent 29rem), radial-gradient(circle at 92% 25%, #f5d8b7, transparent 25rem), #f6f4ec; }
+        .shell { width: min(100%, 460px); }
+        .identity { display: flex; align-items: center; gap: 11px; margin-bottom: 18px; font-weight: 700; }
+        .marks { display: flex; align-items: center; gap: 6px; }.mark { width: 30px; height: 30px; display: grid; place-items: center; border-radius: 8px; color: #fff; font: 500 10px "DM Mono", monospace; }.sq { background: #111; }.fourth { background: var(--orange); }.plus { color: var(--muted); }
+        .card { padding: 34px; border: 1px solid var(--line); border-radius: 24px; background: var(--paper); box-shadow: 0 28px 70px rgba(30,62,49,.14); }.eyebrow { margin: 0 0 12px; color: var(--green); font: 500 12px "DM Mono", monospace; letter-spacing: .1em; text-transform: uppercase; }h1 { margin: 0; font-size: clamp(2rem, 7vw, 3rem); line-height: 1; letter-spacing: -.055em; }.lede { margin: 14px 0 26px; color: var(--muted); line-height: 1.55; }
+        .field { margin-bottom: 17px; }label { display: block; margin-bottom: 7px; font-size: .86rem; font-weight: 700; }input[type="text"], input[type="password"] { width: 100%; min-height: 50px; padding: 0 14px; border: 1px solid var(--line); border-radius: 12px; background: #fff; color: var(--ink); font: inherit; }input:focus { outline: 3px solid rgba(18,106,80,.18); border-color: var(--green); }.remember { display: flex; align-items: center; gap: 9px; margin: 4px 0 21px; color: var(--muted); font-size: .88rem; }.remember label { margin: 0; font-weight: 500; }.button { width: 100%; min-height: 52px; border: 0; border-radius: 13px; background: #111; color: #fff; font: 700 1rem "DM Sans", sans-serif; cursor: pointer; }.button:hover { background: #292929; }.validation { margin-bottom: 16px; color: #9b3428; font-size: .88rem; }.validation ul { margin: 0; padding-left: 18px; }.security { margin: 19px 0 0; padding-top: 17px; border-top: 1px solid var(--line); color: var(--muted); font-size: .82rem; line-height: 1.45; }
+        @@media (max-width: 500px) { body { padding: 14px; }.card { padding: 25px 21px; } }
+    </style>
+</head>
+<body>
+    <main class="shell">
+        <div class="identity"><span class="marks" aria-hidden="true"><span class="mark sq">SQ</span><span class="plus">+</span><span class="mark fourth">4TH</span></span><span>Square to Fourth</span></div>
+        <section class="card">
+            <p class="eyebrow">Protected administration</p>
+            <h1>Admin access</h1>
+            <p class="lede">Sign in before changing clients, Square OAuth applications, mappings, or pipeline settings.</p>
+            <div asp-validation-summary="ModelOnly" class="validation"></div>
+            <form asp-action="Login" method="post">
+                <input type="hidden" name="returnUrl" value="@returnUrl" />
+                <div class="field"><label asp-for="Username"></label><input asp-for="Username" type="text" autocomplete="username" autofocus /><span asp-validation-for="Username" class="validation"></span></div>
+                <div class="field"><label asp-for="Password"></label><input asp-for="Password" autocomplete="current-password" /><span asp-validation-for="Password" class="validation"></span></div>
+                <div class="remember"><input asp-for="RememberMe" /><label asp-for="RememberMe">Keep me signed in on this device</label></div>
+                <button type="submit" class="button">Sign in</button>
+            </form>
+            <p class="security">This protects the integration administration site. Square account owners authenticate separately on Square during OAuth approval.</p>
+        </section>
+    </main>
+    <partial name="_ValidationScriptsPartial" />
+</body>
+</html>

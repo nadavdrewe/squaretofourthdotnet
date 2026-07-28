@@ -1,0 +1,491 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\ArtistsResidence\packages\EntityFramework.6.4.0\build\EntityFramework.props" Condition="Exists('..\..\ArtistsResidence\packages\EntityFramework.6.4.0\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{859053F1-7F43-4373-B0B4-3F8813CEE302}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Revel._808nd.com</RootNamespace>
+    <AssemblyName>Revel.808nd.com</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\..\web.fourth.revel.com\web.fourth.revel.com\</SolutionDir>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <RestorePackages>true</RestorePackages>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Aspose.Email">
+      <HintPath>..\..\ArtistsResidence\SharedBin\Aspose.Email.dll</HintPath>
+    </Reference>
+    <Reference Include="DnsClient, Version=1.0.7.0, Culture=neutral, PublicKeyToken=4574bb5573c51424, processorArchitecture=MSIL">
+      <HintPath>..\packages\DnsClient.1.0.7\lib\net45\DnsClient.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\ArtistsResidence\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\ArtistsResidence\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="extension.railgunit.com, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\sharedBinaries\extension.railgunit.com.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Bson, Version=2.6.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MongoDB.Bson.2.6.1\lib\net45\MongoDB.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver, Version=2.6.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MongoDB.Driver.2.6.1\lib\net45\MongoDB.Driver.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver.Core, Version=2.6.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MongoDB.Driver.Core.2.6.1\lib\net45\MongoDB.Driver.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.3.0\lib\netstandard1.1\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity.Design" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Extensions, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives, Version=4.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Primitives.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.0.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BlackCardSignup.cs" />
+    <Compile Include="CaternetData\ExtensionMethods.cs" />
+    <Compile Include="CaternetData\Factory\CaternetXMLFactory.cs" />
+    <Compile Include="CaternetData\Models\CaternetCsvRow.cs" />
+    <Compile Include="CaternetData\Models\CaternetTillSales.cs" />
+    <Compile Include="CaternetData\Models\Entry.cs" />
+    <Compile Include="CaternetData\XMLMappers\RevelCsVToCaternetTillSalesMapper.cs" />
+    <Compile Include="CaternetFTPClient\CaternetFTPClient.cs" />
+    <Compile Include="ChargeRoomLogs.cs" />
+    <Compile Include="Classes\445Calendar.cs" />
+    <Compile Include="Classes\Address.cs" />
+    <Compile Include="Classes\Alert.cs" />
+    <Compile Include="Classes\AlertType.cs" />
+    <Compile Include="Classes\ApiAuthentication.cs" />
+    <Compile Include="Classes\Brand.cs" />
+    <Compile Include="Classes\BusinessServices\GrindItemSalesPeriod.cs" />
+    <Compile Include="Classes\BusinessServices\GrindItemSalesPeriodService.cs" />
+    <Compile Include="Classes\BusinessServices\Order_OrderItemItemPeriodAggregator.cs" />
+    <Compile Include="Classes\CardCustomerDTO.cs" />
+    <Compile Include="Classes\CashupNotifier.cs" />
+    <Compile Include="Classes\ChargeRoomOrderItemLogs.cs" />
+    <Compile Include="Classes\CustomerGroup.cs" />
+    <Compile Include="Classes\CustomerGroupCustomer.cs" />
+    <Compile Include="Classes\Employee.cs" />
+    <Compile Include="Classes\FourthCreate\CreateFourthRevelStackService.cs" />
+    <Compile Include="Classes\FourthModelMapping\FourthTimeSheetEntry.cs" />
+    <Compile Include="Classes\FourthModelMapping\FourthTimeSheetRoot.cs" />
+    <Compile Include="Classes\FourthModelMapping\RevelSummedOrderItems.cs" />
+    <Compile Include="Classes\Funding.cs" />
+    <Compile Include="Classes\Modifier.cs" />
+    <Compile Include="Classes\ModifierClass.cs" />
+    <Compile Include="Classes\OrderItemExportExcludeCompsAndVoids.cs" />
+    <Compile Include="Classes\OrderV2.cs" />
+    <Compile Include="Classes\OrderV2PatchUpdate.cs" />
+    <Compile Include="Classes\ProductClass.cs" />
+    <Compile Include="Classes\Reporting\Caternet\CaternetItemSummary.cs" />
+    <Compile Include="Classes\Reporting\Caternet\CaternetItemSummaryCategory.cs" />
+    <Compile Include="Classes\Reporting\Caternet\CaternetItemSummaryService.cs" />
+    <Compile Include="Classes\ServiceImplemenations\ChargeRoomLogService.cs" />
+    <Compile Include="Classes\ServiceImplemenations\CustomerGroupCustomerService.cs" />
+    <Compile Include="Classes\ServiceImplemenations\CustomerGroupService.cs" />
+    <Compile Include="Classes\ServiceImplemenations\EmployeeService.cs" />
+    <Compile Include="Classes\ServiceImplemenations\OrderItemClassIdenficationService.cs" />
+    <Compile Include="Classes\ServiceImplemenations\ProductCategoryService.cs" />
+    <Compile Include="Classes\ServiceImplemenations\ProductClassService.cs" />
+    <Compile Include="Classes\ServiceImplemenations\ProductService.cs" />
+    <Compile Include="Classes\ServiceImplemenations\TimesheetEntryService.cs" />
+    <Compile Include="Classes\TimesheetEntry.cs" />
+    <Compile Include="Classes\Utility\Extensions.cs" />
+    <Compile Include="Classes\V2Models\HouseAccount.cs" />
+    <Compile Include="Classes\V2Models\HouseAccountPayment.cs" />
+    <Compile Include="Classes\ICustomer.cs" />
+    <Compile Include="Classes\InvestorCardHolder.cs" />
+    <Compile Include="Classes\LineGraphOrderItemBreakdown.cs" />
+    <Compile Include="Classes\Logging\ILoggableCollection.cs" />
+    <Compile Include="Classes\Logging\IRevelLoggingService.cs" />
+    <Compile Include="Classes\Logging\RevelLoggingService.cs" />
+    <Compile Include="Classes\LoyaltyCardType.cs" />
+    <Compile Include="Classes\Menu.cs" />
+    <Compile Include="Classes\MenuFile.cs" />
+    <Compile Include="Classes\MenuPermissions.cs" />
+    <Compile Include="Classes\MenuType.cs" />
+    <Compile Include="Classes\Objects.cs" />
+    <Compile Include="Classes\OpeningHoursServices\IHaveOpeningHours.cs" />
+    <Compile Include="Classes\OpeningHoursServices\OpeningHoursNotifier.cs" />
+    <Compile Include="Classes\OrderAllInOne.cs" />
+    <Compile Include="Classes\OrderHistory.cs" />
+    <Compile Include="Classes\OrderItemExport.cs" />
+    <Compile Include="Classes\PaymentSummaries\PaymentSummaryForPeriod.cs" />
+    <Compile Include="Classes\PaymentSummaries\PaymentSummaryGroup.cs" />
+    <Compile Include="Classes\Projection.cs" />
+    <Compile Include="Classes\ProjectionType.cs" />
+    <Compile Include="Classes\Reporting\CategoryProductOrderItemSummary.cs" />
+    <Compile Include="Classes\Reporting\CategoryProductOrderItemSummaryQueryContainer.cs" />
+    <Compile Include="Classes\Reporting\OrderItemSummary.cs" />
+    <Compile Include="Classes\Reporting\ProductOrderItemSummary.cs" />
+    <Compile Include="Classes\Reporting\ReportingFactory\ICreateOrderItemReport.cs" />
+    <Compile Include="Classes\Reporting\ReportingFactory\OrderItemReportFactory.cs" />
+    <Compile Include="Classes\Reporting\ReportingFactory\RewardCardLogsReportFactory.cs" />
+    <Compile Include="Classes\Reporting\RewardCardLogPointsTotal.cs" />
+    <Compile Include="Classes\RewardCardLog.cs" />
+    <Compile Include="Classes\ScheduledTaskLog.cs" />
+    <Compile Include="Classes\ServiceImplemenations\BaseService.cs" />
+    <Compile Include="Classes\ServiceImplemenations\CustomerServiceV2.cs" />
+    <Compile Include="Classes\ServiceImplemenations\ExpiryNoficationService.cs" />
+    <Compile Include="Classes\ServiceImplemenations\HouseAccountService.cs" />
+    <Compile Include="Classes\ServiceImplemenations\HouseAccountPaymentService.cs" />
+    <Compile Include="Classes\ServiceImplemenations\OrderAllInOneService.cs" />
+    <Compile Include="Classes\ServiceImplemenations\OrderService.cs" />
+    <Compile Include="Classes\ServiceImplemenations\RewardLogService.cs" />
+    <Compile Include="Classes\ServiceImplemenations\ScheduledTaskFactory.cs" />
+    <Compile Include="Classes\SystemError.cs" />
+    <Compile Include="Classes\SystemLog.cs" />
+    <Compile Include="Classes\Table.cs" />
+    <Compile Include="Classes\TestingDbSet.cs" />
+    <Compile Include="Classes\User.cs" />
+    <Compile Include="Classes\Utility\RewardCardUtility.cs" />
+    <Compile Include="Classes\WifiLogin.cs" />
+    <Compile Include="Helper\CloneClass.cs" />
+    <Compile Include="DTO\CardCustomer.cs" />
+    <Compile Include="DTO\Factory\CardCustomerFactory.cs" />
+    <Compile Include="Extensions\IDbSetExtention.cs" />
+    <Compile Include="FourthClient\FourthClient.cs" />
+    <Compile Include="FourthClient\FourthXmlExtension.cs" />
+    <Compile Include="FourthClient\SalesSubmission.cs">
+      <DependentUpon>SalesSubmission.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202512191545217_initCreATE.cs" />
+    <Compile Include="Migrations\202512191545217_initCreATE.designer.cs">
+      <DependentUpon>202512191545217_initCreATE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Budget2019.cs" />
+    <Compile Include="Models\BudgetContext.cs" />
+    <Compile Include="Models\Interfaces\IIdentifiable.cs" />
+    <Compile Include="Models\Interfaces\IOrderItemsService.cs" />
+    <Compile Include="Classes\ServiceImplemenations\OrderItemsService.cs" />
+    <Compile Include="Classes\ServiceImplemenations\RewardCardPointsTransactionService.cs" />
+    <Compile Include="Classes\Task.cs" />
+    <Compile Include="Extensions\HttpClientPatchExtension.cs" />
+    <Compile Include="Models\Interfaces\IPointsLoggable.cs" />
+    <Compile Include="Classes\RewardCardPointsTransactionLog.cs" />
+    <Compile Include="Classes\ServiceImplemenations\RewardCardDailyPointsService.cs" />
+    <Compile Include="Models\Interfaces\IPointsTimestampable.cs" />
+    <Compile Include="Classes\MailChimp\MailChimpGrind.cs" />
+    <Compile Include="Classes\RewardsCardDailyPoints.cs" />
+    <Compile Include="Classes\BusinessServices\GenericRevelMethods.cs" />
+    <Compile Include="Classes\Customer.cs" />
+    <Compile Include="Classes\DBReader\RevelDBReader.cs" />
+    <Compile Include="Classes\GiftCard.cs" />
+    <Compile Include="Classes\RewardsPointsMultiplier.cs" />
+    <Compile Include="Classes\ServiceImplemenations\GiftCardService.cs" />
+    <Compile Include="Classes\WebserviceWriter\WebserviceDataWriter.cs" />
+    <Compile Include="Classes\WebserviceReader\RevelWebserviceDataReader.cs" />
+    <Compile Include="Classes\DBWriter\RevelDBWriter.cs" />
+    <Compile Include="Classes\Discount.cs" />
+    <Compile Include="Classes\EnumRevelObjectType.cs" />
+    <Compile Include="Classes\EstablishmentBindingTable.cs" />
+    <Compile Include="Classes\FactoryURL.cs" />
+    <Compile Include="Classes\RewardsCardNew.cs" />
+    <Compile Include="Classes\Payment.cs" />
+    <Compile Include="Classes\ServiceImplemenations\CustomerServices.cs" />
+    <Compile Include="Classes\ServiceImplemenations\RewardCardServices.cs" />
+    <Compile Include="Classes\WebserviceWriter\WebServiceDBSyncService.cs" />
+    <Compile Include="Extensions\ExtensionMethods.cs" />
+    <Compile Include="Models\Interfaces\IIntegerFromPrimaryKey.cs" />
+    <Compile Include="Classes\RevelFactoryAsync.cs" />
+    <Compile Include="Classes\PartialClasses\ProductCategoryPartial.cs" />
+    <Compile Include="Classes\PartialClasses\OrderItemPartial.cs" />
+    <Compile Include="Classes\PartialClasses\OrderPartial.cs" />
+    <Compile Include="Classes\PartialClasses\ProductPartial.cs" />
+    <Compile Include="Models\Interfaces\IPrimaryKeyable.cs" />
+    <Compile Include="Models\Interfaces\IRevelAddresssable.cs" />
+    <Compile Include="Models\Interfaces\IRevelCreateable.cs" />
+    <Compile Include="Models\Interfaces\IRevelDBContextable.cs" />
+    <Compile Include="Models\Interfaces\IRevelDeletable.cs" />
+    <Compile Include="Models\Interfaces\IRevelFactoryAsync.cs" />
+    <Compile Include="Models\Interfaces\IRevelTimeable.cs" />
+    <Compile Include="Models\Interfaces\IRevelWriter.cs" />
+    <Compile Include="Classes\Order.cs" />
+    <Compile Include="Classes\OrderItem.cs" />
+    <Compile Include="Classes\Product.cs" />
+    <Compile Include="Classes\ProductCategory.cs" />
+    <Compile Include="Classes\ProductConverter.cs" />
+    <Compile Include="Classes\Establishment.cs" />
+    <Compile Include="Classes\RevelFactory.cs" />
+    <Compile Include="Classes\RevelHelper.cs" />
+    <Compile Include="Classes\RevelOrderandOrderItemWrapper.cs" />
+    <Compile Include="Classes\RevelOrganisation.cs" />
+    <Compile Include="Classes\RevelProductAndCategoryWrapper.cs" />
+    <Compile Include="Extensions\DateTimeExtension.cs" />
+    <Compile Include="Extensions\MemberNameAndInfo.cs" />
+    <Compile Include="Models\Interfaces\IRevelReader.cs" />
+    <Compile Include="Models\Interfaces\IRevelReaderAsync.cs" />
+    <Compile Include="Models\Interfaces\IRevelFactory.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\ArtistsResidenceContext.cs" />
+    <Compile Include="Models\GrindContext.cs" />
+    <Compile Include="Models\GrindContextStage.cs" />
+    <Compile Include="Classes\MiscSettings.cs" />
+    <Compile Include="Models\Interfaces\IChargeRoomLogger.cs" />
+    <Compile Include="Models\PaymentConfiguration.cs" />
+    <Compile Include="Models\RevelContext.cs" />
+    <Compile Include="Models\RevelContextBase.cs" />
+    <Compile Include="Models\ViewModels\CustomerCardViewModel.cs" />
+    <Compile Include="Models\ViewModels\ICustomerCardViewModel.cs" />
+    <Compile Include="Models\ViewModels\MenuFileDTO.cs" />
+    <Compile Include="Models\WebhookModels\Order\WebhookItem.cs" />
+    <Compile Include="Models\WebhookModels\Order\WebhookOrderInfo.cs" />
+    <Compile Include="Models\WebhookModels\Order\WebhookPayload.cs" />
+    <Compile Include="Models\WebhookModels\Order\WebhookPayment.cs" />
+    <Compile Include="NewHttpClient\RevelHttpClient.cs" />
+    <Compile Include="ObjectCreationFactories\GenericFactory.cs" />
+    <Compile Include="ObjectCreationFactories\ICreate.cs" />
+    <Compile Include="OperationsReport\Factory\OpsReportHourlyWrapper.cs" />
+    <Compile Include="OperationsReport\Models\OtherClasses.cs" />
+    <Compile Include="OperationsReport\Mongo\MongoDbNames.cs" />
+    <Compile Include="ProductMix\Models\OtherClasses.cs" />
+    <Compile Include="ProductMix\Models\ProductParentWithModifiers.cs" />
+    <Compile Include="ProductMix\Models\RootObject.cs" />
+    <Compile Include="ProductMix\ProductMixQuery.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReportingModel\ChartModels\ChartData.cs" />
+    <Compile Include="ReportingModel\ChartModels\ChartWeekItemsSales.cs" />
+    <Compile Include="ReportingModel\ChartModels\StackedChartItemGrouping.cs" />
+    <Compile Include="ReportingModel\HourAndSpend.cs" />
+    <Compile Include="ReportingModel\HourAndSpendDayContainer.cs" />
+    <Compile Include="ReportingModel\IReportingItem.cs" />
+    <Compile Include="ReportingModel\OrderItemProductGroupingComparisonList.cs" />
+    <Compile Include="ReportingModel\OrderItemTypeCategoryBreakdown.cs" />
+    <Compile Include="ReportingModel\OrderReportingItem.cs" />
+    <Compile Include="ReportingModel\ProductWatch.cs" />
+    <Compile Include="ReportingModel\OrderItemReportingItem.cs" />
+    <Compile Include="ReportingModel\ReportingExtensionMethods.cs" />
+    <Compile Include="ReportingModel\TopSeller.cs" />
+    <Compile Include="RevelToCaternet\CaternetOrderItemService.cs" />
+    <Compile Include="RevelToCaternet\CaternetOrderService.cs" />
+    <Compile Include="SalesSummaryReport\SalesSummaryReport.cs" />
+    <Compile Include="SelimaFTPClient\SelimaFTPClient.cs" />
+    <Compile Include="Service References\fhAPI\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Services\MailService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Classes\CSVGenerator\" />
+    <Folder Include="Classes\Factories\" />
+    <Folder Include="Classes\Task\" />
+    <Folder Include="Notes\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="FourthClient\SalesSubmission.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\DataSources\System.Data.DataSet.datasource" />
+    <None Include="Properties\DataSources\System.Xml.XmlNode.datasource" />
+    <None Include="Service References\fhAPI\fhapi.wsdl" />
+    <None Include="Service References\fhAPI\Revel._808nd.com.fhAPI.AuthenticationHeader.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\fhAPI\Revel._808nd.com.fhAPI.ExecuteCustomExportResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\fhAPI\Revel._808nd.com.fhAPI.ExportParameter.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\fhAPI\Revel._808nd.com.fhAPI.GetAllUnitsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\fhAPI\Revel._808nd.com.fhAPI.GetCustomExportParametersResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\fhAPI\Revel._808nd.com.fhAPI.GetCustomExportsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\fhAPI\Revel._808nd.com.fhAPI.GetEmployeeDataExtendedResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\fhAPI\Revel._808nd.com.fhAPI.GetEmployeeDataForEPOSResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\fhAPI\Revel._808nd.com.fhAPI.GetEmployeeDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\fhAPI\Revel._808nd.com.fhAPI.GetEmployeeHoursWorkedResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\fhAPI\Revel._808nd.com.fhAPI.GetEPOSScreensResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\fhAPI\Revel._808nd.com.fhAPI.GetImportTypesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\fhAPI\Revel._808nd.com.fhAPI.GetMenuGroupsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\fhAPI\Revel._808nd.com.fhAPI.GetMenuItemsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\fhAPI\Revel._808nd.com.fhAPI.GetMenuItemsSummaryResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\fhAPI\Revel._808nd.com.fhAPI.GetMenuItemsWithEPOSScreenInformationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\fhAPI\Revel._808nd.com.fhAPI.GetSalesDetailedResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\fhAPI\Revel._808nd.com.fhAPI.GetSalesSummaryResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\fhAPI\Revel._808nd.com.fhAPI.GetSessionIDResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\fhAPI\Revel._808nd.com.fhAPI.GetSitesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\fhAPI\Revel._808nd.com.fhAPI.GetStockPeriodDatesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\fhAPI\Revel._808nd.com.fhAPI.SetPasswordResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\fhAPI\Revel._808nd.com.fhAPI.SubmitCMSDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\fhAPI\Revel._808nd.com.fhAPI.SubmitDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\fhAPI\Revel._808nd.com.fhAPI.SubmitProductsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\fhAPI\Revel._808nd.com.fhAPI.SubmitSalesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\fhAPI\Revel._808nd.com.fhAPI.SubmitStockOnHandResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\fhAPI\Revel._808nd.com.fhAPI.SubmitTandAResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\Newtonsoft.Json.dll" />
+    <Content Include="bin\Debug\Newtonsoft.Json.xml" />
+    <Content Include="ExternalDLL\mailservice.railgunit.com.dll" />
+    <Content Include="ExternalDLL\mailservice.railgunit.com.pdb" />
+    <Content Include="Revel.808nd.com.csproj.vspscc" />
+    <None Include="Service References\fhAPI\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\fhAPI\configuration.svcinfo" />
+    <None Include="Service References\fhAPI\configuration91.svcinfo" />
+    <None Include="Service References\fhAPI\fhapi.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\fhAPI\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\ArtistsResidence\mailservice.railgunit.com\mailservice.railgunit.com.csproj">
+      <Project>{90bc94c8-27ff-4db5-ae1e-1d55c2b5522f}</Project>
+      <Name>mailservice.railgunit.com</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202512191545217_initCreATE.resx">
+      <DependentUpon>202512191545217_initCreATE.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  </Target>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+    <Error Condition="!Exists('..\..\ArtistsResidence\packages\EntityFramework.6.4.0\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\ArtistsResidence\packages\EntityFramework.6.4.0\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\..\ArtistsResidence\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\ArtistsResidence\packages\EntityFramework.6.4.0\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\..\ArtistsResidence\packages\EntityFramework.6.4.0\build\EntityFramework.targets" Condition="Exists('..\..\ArtistsResidence\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

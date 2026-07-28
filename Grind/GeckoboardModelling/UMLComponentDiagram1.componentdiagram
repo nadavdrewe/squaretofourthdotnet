@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<componentModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" dslVersion="1.0.0.0" Id="5351b8e1-038f-4254-b7ac-29a04949e3ac" name="UMLComponentDiagram1" linkedPackageId="613fda63-563c-4dbf-ba61-6f399c9a3f61" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ComponentDesigner">
+  <ownedCommentsInternal>
+    <comment Id="ed499f55-1a48-4c29-aef8-2980c4cdcb7b">
+      <elementDefinition Id="ce8540c1-ddb0-471e-8983-bf135c3ced6d" />
+      <body>Pushes out to Geckoboard</body>
+    </comment>
+  </ownedCommentsInternal>
+  <appliedStereotypesInternal>
+    <stereotypeInstance Id="2b0c4b99-3a99-4666-a729-958e91e2bef4" name="namespace" profile="CSharpProfile">
+      <elementDefinition Id="ed411933-f300-4b64-ac51-2425cf22aaf3" />
+      <propertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="8aa95d3e-c41b-4c80-a736-945a76dacb38">
+          <propertyInstance Id="54db0f1f-dd88-44a9-9d6b-54b9ee63b65a" name="BaseName">
+            <elementDefinition Id="e1d7ad52-2651-454b-9928-14c69c2b07bb" />
+          </propertyInstance>
+          <elementDefinition Id="fbfe8769-9b4c-4927-9b10-5372db5c5948" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="954845de-bd51-4a48-a147-7928e23f7487">
+          <propertyInstance Id="86b27865-ac8f-4bbe-b6d5-fcf4454046a6" name="ClrAttributes">
+            <elementDefinition Id="fa659655-798a-4751-a980-56c626805d62" />
+          </propertyInstance>
+          <elementDefinition Id="c04cea73-4f69-42ac-b9ae-9f94faf6eb40" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="003ff084-0f7f-4e25-a976-368840764bbd">
+          <propertyInstance Id="fcdf31d5-712d-4d02-aade-12f8ba547c6f" name="Usings">
+            <elementDefinition Id="2ed0a13f-0a1b-4ab6-b1c4-466d7bef003d" />
+          </propertyInstance>
+          <elementDefinition Id="366054ac-fb10-431a-9519-960347a6a7e2" />
+        </stereotypeInstanceHasPropertyInstances>
+      </propertyInstances>
+    </stereotypeInstance>
+    <stereotypeInstance Id="f32886b3-94d1-4d26-85ea-40125847c53a" name="TextTemplateBindings" profile="TextTemplateBindings">
+      <elementDefinition Id="16509ea7-4c3a-49da-b6df-a18bd4d7cea8" />
+      <propertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="5b981d53-2ba0-44de-a6c6-07f5e63119d6">
+          <propertyInstance Id="ea8fc04a-f689-4949-bdd1-d0d0d587ecca" name="Alias" value="ClassTemplate|EnumTemplate|InterfaceTemplate|StructTemplate">
+            <elementDefinition Id="a7512aab-4875-4ed3-804e-65ebe7d5b438" />
+          </propertyInstance>
+          <elementDefinition Id="3281b749-c7ec-401f-b6e0-0e3b4a507734" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="2c30193f-7a40-482f-8fd7-248bf4cecc60">
+          <propertyInstance Id="741839fc-bccf-412a-8bda-c67acafb0224" name="TemplateFilePath" value="ClassTemplate=E:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 12.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\ClassTemplate.t4|EnumTemplate=E:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 12.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\EnumTemplate.t4|InterfaceTemplate=E:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 12.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\InterfaceTemplate.t4|StructTemplate=E:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 12.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\StructTemplate.t4">
+            <elementDefinition Id="17b9a2f2-1b72-4ea6-8c4e-fef8082de8f9" />
+          </propertyInstance>
+          <elementDefinition Id="43849a16-d9ba-4402-a99c-b6e91a3c2dd8" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="163e0c72-71fb-4c94-bfa8-d833a25a62a2">
+          <propertyInstance Id="24a51f92-13dd-45db-bf55-55736d3730c6" name="ProjectPath" value="ClassTemplate=..\GeckoboardModellingLib\GeckoboardModellingLib.csproj|EnumTemplate=..\GeckoboardModellingLib\GeckoboardModellingLib.csproj|InterfaceTemplate=..\GeckoboardModellingLib\GeckoboardModellingLib.csproj|StructTemplate=..\GeckoboardModellingLib\GeckoboardModellingLib.csproj">
+            <elementDefinition Id="8b7f79e1-72db-4814-85c9-ea575a86851d" />
+          </propertyInstance>
+          <elementDefinition Id="2a6fe34b-8775-4807-a7eb-206b9e041bf7" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="a863e04b-9dda-40fa-8d7a-ca243c4dfd9e">
+          <propertyInstance Id="ec6b6b77-2082-4995-8ba9-62f9a4b5b779" name="TargetDirectory" value="ClassTemplate=GeneratedCode\{PackageStructure}|EnumTemplate=GeneratedCode\{PackageStructure}|InterfaceTemplate=GeneratedCode\{PackageStructure}|StructTemplate=GeneratedCode\{PackageStructure}">
+            <elementDefinition Id="8fa0cd67-6f01-43c8-b2a4-687d286c630a" />
+          </propertyInstance>
+          <elementDefinition Id="b2fdaa77-8c44-44dd-8468-678eb8800b94" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="6f7b19ef-66ea-46a4-b84e-2b91a24b6d2e">
+          <propertyInstance Id="d2cfb3cd-27a2-475a-aaf2-c3df1c978262" name="TargetName" value="ClassTemplate={Name}|EnumTemplate={Name}|InterfaceTemplate={Name}|StructTemplate={Name}">
+            <elementDefinition Id="18a66034-2101-4bb2-a4ca-ba3c024eeb79" />
+          </propertyInstance>
+          <elementDefinition Id="e058bd3f-b0de-4dcb-88e2-ae8358eb4ea8" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="6cfc0e75-f49e-4637-8398-9d9e3201241c">
+          <propertyInstance Id="9e2a4d72-09bf-43e9-9c8f-2ca57f07e9d9" name="Overwrite" value="ClassTemplate=True|EnumTemplate=True|InterfaceTemplate=True|StructTemplate=True">
+            <elementDefinition Id="b68e4dde-6133-4384-8a10-4dd67220af56" />
+          </propertyInstance>
+          <elementDefinition Id="909445f2-7520-4a29-a6ae-8cf05fcefc0e" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="23dc20b5-2283-40aa-b62c-d942ff86d183">
+          <propertyInstance Id="23ba6df0-acec-44ac-9bba-b78526677348" name="Parameters">
+            <elementDefinition Id="272f80c5-25b5-4144-9e54-f562085bc2ea" />
+          </propertyInstance>
+          <elementDefinition Id="754dc824-f353-4f19-9df2-32186a16145c" />
+        </stereotypeInstanceHasPropertyInstances>
+      </propertyInstances>
+    </stereotypeInstance>
+  </appliedStereotypesInternal>
+  <profileInstances>
+    <packageHasProfileInstances Id="d4f0dd06-8370-46bc-bc9f-7218b2f7d762">
+      <profileInstance Id="4013d714-42a5-49dc-abc9-ea433d18ad67" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="23790df9-ce2c-4e92-8eeb-d6d2ab9bc593">
+      <profileInstance Id="f1f931cd-1e8e-4c92-9144-fe62ef522582" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="b90dcc53-bcd5-43b6-a20c-4a84e97604f1">
+      <profileInstance Id="6b8f5e0d-7d52-4d05-a7ca-f9a1ac365f4d" name="CSharpProfile">
+        <elementDefinition Id="a728cc0f-0d89-46cb-8f05-ed930ad14850" />
+      </profileInstance>
+      <elementDefinition Id="3c356f82-b07d-4094-b4b6-d7d176a20e6c" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="08b4892b-879a-4221-a160-6886f13223a5">
+      <profileInstance Id="a542d322-3fd5-45cf-92aa-9e51a545769e" name="TextTemplateBindings">
+        <elementDefinition Id="6fab63d8-6405-4d08-82c0-13bf888646cf" />
+      </profileInstance>
+      <elementDefinition Id="db29c3f7-7cec-4b6a-9270-74731669c6e7" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <componentModelHasComponents>
+      <component Id="32d00cf9-83eb-469f-9262-29fd2f427a47" name="IGeckoboardService" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="fc76d858-8537-47a4-b9d6-89f15a6716bd" />
+        <suppliersInternal>
+          <dependency Id="7cbeadd6-5f1d-4787-92c8-f524de769ec8">
+            <componentMoniker Id="2322f6fb-da56-405a-b461-55b67a852a56" LastKnownName="GeckoboardOrganisation" />
+            <elementDefinition Id="b071000d-35c7-4f28-89de-0cee212b0a1c" />
+          </dependency>
+        </suppliersInternal>
+      </component>
+    </componentModelHasComponents>
+    <componentModelHasComponents>
+      <component Id="2322f6fb-da56-405a-b461-55b67a852a56" name="GeckoboardOrganisation" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="f10276c1-a375-4858-ab30-468800133194" />
+      </component>
+    </componentModelHasComponents>
+    <componentModelHasComponents>
+      <component Id="863a1383-ce65-4b59-b167-e5215d24e84c" name="IGeckoboardableObject" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="d531dbf6-e36f-4e90-b8b6-1a9efc2891b6" />
+        <suppliersInternal>
+          <dependency Id="12d073b1-2c27-4a39-8898-4e4d13adbccf">
+            <componentMoniker Id="32d00cf9-83eb-469f-9262-29fd2f427a47" LastKnownName="IGeckoboardService" />
+            <elementDefinition Id="c5fb27bd-a47a-46de-a17a-373d15fc81c3" />
+          </dependency>
+        </suppliersInternal>
+      </component>
+    </componentModelHasComponents>
+  </packagedElements>
+  <package Id="613fda63-563c-4dbf-ba61-6f399c9a3f61" name="GeckoboardModelling">
+    <elementDefinition Id="70ea40ef-9033-437b-95c7-9c326f76cf47" />
+  </package>
+</componentModel>

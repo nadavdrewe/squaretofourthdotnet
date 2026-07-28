@@ -1,0 +1,152 @@
+﻿
+@{
+    ViewBag.Title = "Transform - Convert Revel To Caternet XML";
+
+
+}
+
+@Html.Partial("~/PartialViews/BreadcrumbBarPartial.cshtml")
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li>
+                                <a href="#">Config option 1</a>
+                            </li>
+                            <li>
+                                <a href="#">Config option 2</a>
+                            </li>
+                        </ul>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+
+
+                    <div style="margin-top: 5px" class="page-header">
+
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-8">
+                                <div class="row">
+
+
+                                    @Scripts.Render("~/bundles/dropzonescripts")
+                                    @Styles.Render("~/bundles/dropzonecss")
+
+                                    <script type="text/javascript">
+                                        Dropzone.autoDiscover = false;
+                                    </script>
+
+
+                                    <div class="form-horizontal">
+                                        <form action="~/CSVImport/ProcessCaternetXML" method="post" enctype="multipart/form-data" class="dropzone" id="theDropzoneForm" style="background: none; border: none; text-align: center">
+                                            <div class="fallback">
+                                                <input name="file" type="file" multiple />
+                                                <input type="submit" value="Convert" />
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <div align="center">
+                                        <a id="fileLink" href="">Click here to download your file</a>
+                                    </div>
+
+
+
+
+                                    @*<form action="~/CSVImport/UploadCSV" method="post" enctype="multipart/form-data"
+                                            class="dropzone"
+                                            id="my-awesome-dropzone">
+                                        </form>*@
+
+
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- / .page-header -->
+
+                    <div class="row">
+
+                        @*BEGIN BODY*@
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+<script type="text/javascript">
+
+    //Dropzone.options.theDropzoneForm = {
+    //    paramName: "file", // The name that will be used to transfer the file
+    //    maxFilesize: 2, // MB
+    //    accept: function (file, done) {
+    //        if (file.name == "justinbieber.jpg") {
+    //            done("Naha, you don't.");
+    //        }
+    //        else { done(); }
+    //    }
+    //};
+
+
+    //$("#theDropzoneForm").dropzone();
+    $('#fileLink').hide();
+
+    var myDropzone = new Dropzone("#theDropzoneForm", {
+
+        dictDefaultMessage: "Drop a Revel CSV here to convert to Caternet XML",
+        dictFallbackMessage: "Your browser does not support drag'n'drop file uploads.",
+        dictFallbackText: "Please use the fallback form below to upload your files like in the olden days"
+    });
+
+
+    var d = new Date();
+    var strDate = d.getFullYear() +  (d.getMonth() + 1) + d.getDate();
+
+    myDropzone.on("success", function (file, data, xhr, test) {
+        //data is reponse data - return URL
+     
+        $('#fileLink').text('Click here to view ' + file.name.split(/[ .]+/).filter(Boolean)[0] + ".xml, or right click and 'save as' to download");
+        $('#fileLink').attr('href', "/CSV/Fourth/" + "latestCaternetXML.xml");
+        $('#fileLink').show();
+
+
+       //window.open("data:text/xml;base64," + window.btoa(data));
+
+
+        /* Maybe display some more file information on your page */
+    });
+
+    //$(document).ready(function () {
+    //    $(".dz-message").find("span").each(function () { this.html('Click here to upload') });
+    //});
+
+
+</script>

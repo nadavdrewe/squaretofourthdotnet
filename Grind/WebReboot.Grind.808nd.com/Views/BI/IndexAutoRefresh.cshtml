@@ -1,0 +1,110 @@
+﻿@model IEnumerable<Revel._808nd.com.ReportingModel.TopSeller>
+
+@{
+    ViewBag.Title = "Index - Auto Refresh";
+
+
+    var establishmentListItems = (IEnumerable<SelectListItem>)ViewBag.EstablishmentsSelect;
+    var users = (IEnumerable<SelectListItem>)ViewBag.UsersSelect;
+    
+    var topSellers = (IEnumerable<Revel._808nd.com.ReportingModel.TopSeller>)ViewBag.TopSellers;
+    var productWatch = (IEnumerable<Revel._808nd.com.ReportingModel.TopSeller>)ViewBag.ProductWatch;
+    var avgBasket = (IEnumerable<Revel._808nd.com.ReportingModel.TopSeller>)ViewBag.AvgBasket;
+    var hourAndSpend = (IEnumerable<Revel._808nd.com.ReportingModel.HourAndSpend>)ViewBag.HourAndSpends;
+
+    var startAndEnd = (IEnumerable<DateTime>)ViewBag.DateRange;
+
+    var hasFired = (bool)ViewBag.HasFired;
+
+}
+
+@if (hasFired)
+{
+    var HowLong = ViewBag.HowLong.ToString();
+    var orders = ViewBag.Orders;
+    var items = ViewBag.Items;
+    var days = ViewBag.Days;
+
+    <h2>Current Reporting Dates: @startAndEnd.First().ToString("dd/MM/yyyy") - @startAndEnd.ElementAt(1).ToString("dd/MM/yyyy") - Query took @HowLong seconds, over @days days, @orders orders and @items individual items</h2>
+}
+@using (Html.BeginForm("IndexAutoRefresh", "BI", FormMethod.Post, new { id = "mainForm" }))
+{
+    <h3>Last Refresh: @DateTime.Now</h3>
+    <div class="form-block">
+        @*
+            <div>
+                <input class="form-control datepicker" type="text" name="start" placeholder="Start Date" required />
+            </div>
+            <div>
+                <input class="form-control datepicker" type="text" name="end" placeholder="End Date" required />
+            </div>*@
+        <div>
+            @Html.ListBox("EstablishmentId", establishmentListItems, new {@class = "form-control datepicker", style = "height:130px;", required = true})
+        </div>
+        <div>
+            @Html.DropDownList("UserURI", users, new { @class = "form-control datepicker" })
+        </div>
+        <input type="submit" value="Go" class="btn btn-primary" />
+    </div>
+
+
+}
+
+@if (hasFired)
+{
+    <div class="row-fluid">
+        @Html.Partial("TopSellersPartial", topSellers.OrderByDescending(x => x.ValuePounds))
+    </div>
+    <div class="row-fluid">
+        @Html.Partial("TopProductsPartial", productWatch.OrderByDescending(x => x.ValuePounds))
+    </div>
+    <div class="row-fluid">
+        @Html.Partial("AvgBasketSizePartial", avgBasket.OrderByDescending(x => x.ValuePounds))
+    </div>
+
+    <div class="row-fluid">
+        @Html.Partial("HourAndSpendsPartial", hourAndSpend.OrderBy(x => x.Date))
+    </div>
+
+}
+
+
+<script type="text/javascript">
+
+    function refreshPageData() {
+        console.log("Timer expired - Submitting form");
+        $('#mainForm').submit();
+
+    }
+
+    var hasFired = '@hasFired';
+
+    console.log(hasFired);
+
+    if (hasFired === 'False') {
+        console.log("This is the first time page has loaded");
+        refreshPageData();
+    }
+    console.log("Setting Timer");
+    setInterval("refreshPageData();", 30000);
+
+
+
+    $(document).ready(function () {
+       
+
+        $('.myDatatable').DataTable(
+        {
+            "pageLength": 50
+        }
+        );
+
+
+        $('#message').fadeIn(2000);
+        $('#message').delay(2000);
+        $('#message').fadeOut(2000);
+    });    
+
+   
+
+</script>

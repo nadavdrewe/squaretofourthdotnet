@@ -1,0 +1,272 @@
+﻿@model IEnumerable<Revel._808nd.com.Classes.Customer>
+
+@{
+    ViewBag.Title = "Index";
+
+    var message = "";
+
+    if (ViewBag.Message != null)
+    {
+        message = ViewBag.Message.ToString();
+    }
+}
+
+<h2>Index</h2>
+@if (message != "")
+{
+    <h3 id="message" style="color:red">@message</h3>
+}
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<table id="example" class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Active)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BirthDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CcExp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CcFirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CcLast4Digits)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CcLastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CcNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExpDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RevelId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsVisitor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LicNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LoyaltyNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LoyaltyRefId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Notes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Picture)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RefNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ResourceUri)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.State)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalPurchases)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalVisits)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UpdatedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UpdatedDate)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.Uuid)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Zipcode)
+            </th>
+          @*  <th>
+                @Html.DisplayNameFor(model => model.customer_revel_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.establishment_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.theAddress)
+            </th>*@
+            <th></th>
+        </tr>
+    </thead>
+    
+    
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Active)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BirthDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CcExp)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CcFirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CcLast4Digits)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CcLastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CcNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.City)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedBy)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ExpDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RevelId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsVisitor)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LicNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LoyaltyNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LoyaltyRefId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Notes)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Picture)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RefNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ResourceUri)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.State)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TotalPurchases)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TotalVisits)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UpdatedBy)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UpdatedDate)
+                </td>
+               @* <td>
+                    @Html.DisplayFor(modelItem => item.Uuid)
+                </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Zipcode)
+                </td>
+               @* <td>
+                    @Html.DisplayFor(modelItem => item.customer_revel_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.establishment_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.theAddress)
+                </td>*@
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.DBKEY_customer_id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.DBKEY_customer_id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.DBKEY_customer_id })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+<script type="text/javascript">
+
+
+    $(document).ready(function () {
+        $('#example').DataTable(
+        {
+            "pageLength": 50
+        }
+        );
+    });
+
+    $('#message').fadeIn(2000);
+    $('#message').delay(2000);
+    $('#message').fadeOut(2000);
+
+
+</script>

@@ -1,0 +1,46 @@
+@model IEnumerable<data.pipeline.fourth.com.Models.Mappings.SquareEmployeeMapping>
+
+@{
+    ViewData["Title"] = "Square Employee Mappings";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Square Employee Mappings</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<table id="order-listing" class="table table-dark">
+    <thead>
+        <tr>
+            <th>Brand</th>
+            <th>Store</th>
+            <th>Square Team Member</th>
+            <th>Square Name</th>
+            <th>Fourth Employee Number</th>
+            <th>Active</th>
+            <th>Updated UTC</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.StoreIntegration?.Store?.Brand?.Name</td>
+                <td>@item.StoreIntegration?.Store?.Name</td>
+                <td>@item.SquareTeamMemberId</td>
+                <td>@item.SquareDisplayName</td>
+                <td>@item.FourthEmployeeNumber</td>
+                <td>@item.Active</td>
+                <td>@item.WhenUpdatedUTC</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

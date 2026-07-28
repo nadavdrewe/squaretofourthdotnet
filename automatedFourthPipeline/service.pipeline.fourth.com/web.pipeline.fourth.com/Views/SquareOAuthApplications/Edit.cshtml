@@ -1,0 +1,22 @@
+@model web.pipeline.fourth.com.Models.SquareOAuthApplicationInputModel
+@{
+    ViewData["Title"] = "Edit Square OAuth Application";
+}
+
+<div class="page-header"><h3 class="page-title">Edit Square OAuth application</h3></div>
+<div class="row"><div class="col-lg-8"><div class="card"><div class="card-body">
+    <form asp-action="Edit" asp-route-id="@Model.Id" method="post">
+        <input asp-for="Id" type="hidden" />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group"><label asp-for="Name"></label><input asp-for="Name" class="form-control" /><span asp-validation-for="Name" class="text-danger"></span></div>
+        <div class="form-group"><label asp-for="Environment"></label><select asp-for="Environment" asp-items="ViewBag.EnvironmentList" class="form-control"></select><span asp-validation-for="Environment" class="text-danger"></span></div>
+        <div class="form-group"><label asp-for="ApplicationId"></label><input asp-for="ApplicationId" class="form-control" autocomplete="off" /><span asp-validation-for="ApplicationId" class="text-danger"></span></div>
+        <div class="form-group"><label asp-for="ClientSecret"></label><input asp-for="ClientSecret" class="form-control" autocomplete="new-password" placeholder="Leave blank to keep the current secret" /><small class="form-text text-muted">The stored secret is never displayed.</small><span asp-validation-for="ClientSecret" class="text-danger"></span></div>
+        <div class="form-group"><label asp-for="RedirectUri"></label><input asp-for="RedirectUri" class="form-control" /><span asp-validation-for="RedirectUri" class="text-danger"></span></div>
+        <div class="form-check mb-4"><input asp-for="Active" class="form-check-input" /><label asp-for="Active" class="form-check-label">Available for new connections</label></div>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+        <a asp-action="Index" class="btn btn-light">Cancel</a>
+    </form>
+</div></div></div></div>
+
+@section Scripts { <partial name="_ValidationScriptsPartial" /> }

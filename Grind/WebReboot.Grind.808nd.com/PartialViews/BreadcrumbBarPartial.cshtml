@@ -1,0 +1,65 @@
+﻿@using WebReboot.Grind._808nd.com.PartialViews
+@inherits System.Web.Mvc.WebViewPage
+@{
+
+    var ourSettings = ViewBag.BreadCrumb as BreadcrumbWrapper;
+    if (ourSettings == null)
+    {
+        ourSettings = new BreadcrumbWrapper
+        {
+            Title = "Grind",
+            Breadcrumbs = new List<Breadcrumb>
+            {
+                new Breadcrumb {Name = "Grind"},
+                new Breadcrumb {Name = "Unknown"}
+            }
+        };
+
+        if (!String.IsNullOrEmpty(ViewBag.Title))
+        {
+            ourSettings.Title = ViewBag.Title;
+            ourSettings.Breadcrumbs.ElementAt(1).Name = ViewBag.Title;
+        }
+    }
+
+
+
+    var crumbCount = ourSettings.Breadcrumbs.Count();
+}
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>@ourSettings.Title</h2>
+        <ol class="breadcrumb">
+
+            @for (int i = 0; i < crumbCount; i++)
+            {
+                var isActive = "";
+                if (crumbCount - 1 == i)
+                {
+                    <li class="@isActive">
+                        <a href="#">@ourSettings.Breadcrumbs.ElementAt(i).Name</a>
+                    </li>
+                }
+                else
+                {
+                    <li class="active">
+                        <strong>@ourSettings.Breadcrumbs.ElementAt(i).Name</strong>
+                    </li>
+                }
+            }
+
+
+          @*  <li>
+                <a href="~/Home/Index">Grind</a>
+            <li>
+                <a href="~/CombinedCardCustomer/Index">Black Cards</a>
+            </li>
+            <li class="active">
+                <strong>Add</strong>
+            </li>*@
+        </ol>
+    </div>
+    <div class="col-lg-2">
+
+    </div>
+</div>

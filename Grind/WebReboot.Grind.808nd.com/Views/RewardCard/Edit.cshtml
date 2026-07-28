@@ -1,0 +1,208 @@
+﻿@model Revel._808nd.com.Classes.RewardsCardNew
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+<form method="POST" action="~/RewardCard/Edit">
+ 
+
+    <div class="form-horizontal">
+        <h4>RewardsCardNew</h4>
+        <hr />
+     
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.DBKEY_rewardscardnew_id)
+        @Html.HiddenFor(model => model.Revelid)
+        @Html.HiddenFor(model => model.customer_id)
+        @Html.HiddenFor(model => model.establishment_id)
+        @Html.HiddenFor(model => model.theAddress)
+        @Html.HiddenFor(model => model.resource_uri)
+        @Html.HiddenFor(model => model.ResourceUri)
+        
+        @Html.HiddenFor(model => model.created_by)
+        @Html.HiddenFor(model => model.created_date)
+        @Html.HiddenFor(model => model.customer_revel)
+        @Html.HiddenFor(model => model.establishment)
+        @Html.HiddenFor(model => model.payment_type)
+
+      
+        @*   <div class="form-group">
+                @Html.LabelFor(model => model.ResourceUri, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ResourceUri)
+                    @Html.ValidationMessageFor(model => model.ResourceUri)
+                </div>
+            </div>*@
+
+    @*    <div class="form-group">
+            @Html.LabelFor(model => model.created_by, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.created_by)
+                @Html.ValidationMessageFor(model => model.created_by)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.created_date, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.created_date)
+                @Html.ValidationMessageFor(model => model.created_date)
+            </div>
+        </div>*@
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.current_points, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.current_points)
+                @Html.ValidationMessageFor(model => model.current_points)
+            </div>
+        </div>
+
+     @*   <div class="form-group">
+            @Html.LabelFor(model => model.customer_revel, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.customer_revel)
+                @Html.ValidationMessageFor(model => model.customer_revel)
+            </div>
+        </div>*@
+@*
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.establishment, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.establishment)
+                @Html.ValidationMessageFor(model => model.establishment)
+            </div>
+        </div>
+*@
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.number, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.number)
+                @Html.ValidationMessageFor(model => model.number)
+            </div>
+        </div>
+
+       @* <div class="form-group">
+            @Html.LabelFor(model => model.payment_type, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.payment_type)
+                @Html.ValidationMessageFor(model => model.payment_type)
+            </div>
+        </div>*@
+
+       @*   <div class="form-group">
+                @Html.LabelFor(model => model.resource_uri, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.resource_uri)
+                    @Html.ValidationMessageFor(model => model.resource_uri)
+                </div>
+            </div>*@
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.total_points, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.total_points)
+                @Html.ValidationMessageFor(model => model.total_points)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.total_purchases, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.total_purchases)
+                @Html.ValidationMessageFor(model => model.total_purchases)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.total_visits, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.total_visits)
+                @Html.ValidationMessageFor(model => model.total_visits)
+            </div>
+        </div>
+
+   @*     <div class="form-group">
+            @Html.LabelFor(model => model.updated_by, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.updated_by)
+                @Html.ValidationMessageFor(model => model.updated_by)
+            </div>
+        </div>
+*@
+        <div class="form-group">
+            @Html.LabelFor(model => model.updated_date, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.updated_date)
+                @Html.ValidationMessageFor(model => model.updated_date)
+            </div>
+        </div>
+
+     @*    <div class="form-group">
+                @Html.LabelFor(model => model.customer_revel_id, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.customer_revel_id)
+                    @Html.ValidationMessageFor(model => model.customer_revel_id)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.establishment_id, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.establishment_id)
+                    @Html.ValidationMessageFor(model => model.establishment_id)
+                </div>
+            </div>*@
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.is_vip_card, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.is_vip_card)
+                @Html.ValidationMessageFor(model => model.is_vip_card)
+            </div>
+        </div>
+
+        @*  <div class="form-group">
+                @Html.LabelFor(model => model.theAddress, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.theAddress)
+                    @Html.ValidationMessageFor(model => model.theAddress)
+                </div>
+            </div>*@
+        <div class="form-group">
+            @Html.LabelFor(model => model.LoyaltyCardType, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.LoyaltyCardType.name)
+                @Html.ValidationMessageFor(model => model.LoyaltyCardType)
+            </div>
+        </div>
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.vip_points_refresh, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.vip_points_refresh)
+                @Html.ValidationMessageFor(model => model.vip_points_refresh)
+            </div>
+        </div>
+        
+        
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+    
+</form>
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

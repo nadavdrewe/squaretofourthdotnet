@@ -1,0 +1,303 @@
+﻿@using System.Drawing
+@using extension.railgunit.com.Color
+@using Revel._808nd.com.ReportingModel.ChartModels
+
+@{
+    Layout = "~/Views/Shared/_BILayout.cshtml";
+
+    var ests = ViewBag.EstablishmentsSelect as List<SelectListItem>;
+    var hasFired = ViewBag.HasFired;
+    var establishment = ViewBag.Establishment;
+
+    //charts
+    var stackedColumnData = ViewBag.ItemStackedColumnData as StackedChartItemGrouping;
+    var noOrdersData = ViewBag.NumberOfOrdersData as List<ChartData>;
+
+    var weeklySalesData = ViewBag.WeeklySalesData as List<ChartData>;
+
+    //tables
+    var table_totalPureSalesEachWeek = ViewBag.Table_TotalPureSales as List<ChartWeekItemSales>;
+    var table_sumOfTotalQuantity = ViewBag.Table_SumOfTotalQuantity as List<ChartWeekItemSales>;
+    var table_AverageItemValue = ViewBag.Table_AverageItemValue as List<ChartWeekItemSales>;
+    var table_AverageNoOfItemsPerOrder = ViewBag.Table_AverageNoOfItemsPerOrder as List<ChartWeekItemSales>;
+    var table_AverageOrderValue = ViewBag.Table_AverageOrderValue as List<ChartWeekItemSales>;
+
+    List<string> randomColoursList = new List<string>();
+
+    Random random;
+    for (int i = 0; i < 50; i++)
+    {
+        random = new Random(i);
+        var color = String.Format("#{0:X6}", random.Next(0x1000000));
+        randomColoursList.Add(color);
+    }
+
+    Random randomGen = new Random();
+    KnownColor[] names = (KnownColor[])Enum.GetValues(typeof(KnownColor));
+
+
+    List<string> colorNames = names.Select(x => x.ToString()).ToList();
+    int numColors = colorNames.Count();
+
+}
+
+@*
+    <script src="~/Content/bootstrap.css"></script>
+    <script src="~/Content/Site.css"></script>
+*@
+
+
+@*
+    <script src="http://cdn.syncfusion.com/js/assets/external/jquery-1.10.2.min.js"></script>
+*@
+
+
+@* <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <script src="~/Scripts/jquery-2.1.4.min.js"></script>
+    <script src="~/Scripts/jquery.easing.1.3.min.js"></script>
+
+
+        <script src="~/Content/ej/web/bootstrap-theme/ej.widgets.all.css"></script>
+        <script src="~/Scripts/ej/ej.web.all.min.js"></script>
+        <script src="~/Scripts/ej/ej.unobtrusive.min.js"></script>
+        <script src="~/Scripts/bootstrap.js"></script>
+        <script src="~/Scripts/respond.js"></script>
+
+        <script src="~/Content/ej/web/bootstrap-theme/ej.theme.min.css"></script>
+        <script src="~/Content/ej/web/ej.widgets.core.bootstrap.min.css"></script>
+
+        <script src="~/Scripts/ej/ej.web.all.intellisense.js"></script>
+
+        <!--Style-->
+        <link href="~/Bootstrap/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+        <!-- JQuery UI CSS -->
+        <link rel="stylesheet" type="text/css" href=" https://code.jquery.com/ui/1.11.2/themes/black-tie/jquery-ui.css">
+        <!-- DataTables CSS -->
+        <link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.4/css/jquery.dataTables.css">
+        <!-- DataTables -->
+        <script type="text/javascript" charset="utf8" src="http://cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"></script>*@
+
+@Html.EJ().ScriptManager()
+
+
+
+    <div class="col-md-12">
+
+        @using (Html.BeginForm("Index", "Charts", FormMethod.Post, new { id = "mainForm" }))
+        {
+            <div align="center">
+                <table style="padding: 10px">
+                    <tr style="padding: 10px;">
+                        <td style="padding: 5px;">
+                            <Label>How Many Weeks?</Label>
+                        <td style="padding: 5px;">
+                            <select class="form-control" id="NoOfWeeks" name="NoOfWeeks">
+                                @for (int i = 12; i >= 1; i--)
+                                {
+                                    <option value="@i">@i</option>
+                                }
+                            </select>
+                        </td>
+                        <td style="padding: 5px;">
+                            <Label>Which Grind?</Label>
+                        </td>
+                        <td style="padding: 5px;">
+                            @Html.DropDownList("EstablishmentId", ests, new { @class = "form-control datepicker", required = true })
+                        </td>
+                        <td>
+                            <input type="submit" value="Go" class="btn btn-primary" />
+                        </td>
+                    </tr>
+                </table>
+
+
+
+
+
+
+
+            </div>
+
+
+        }
+
+
+
+        @if (hasFired != null)
+        {
+        
+
+            <div class="row-fluid">
+                <div class="col-lg-12" align="center">
+                    
+                    @*ITEM BREAKDOWN STACKED COLUMN*@
+                    <div align="center">
+                        <div class="panel colourable">
+                            <div class="panel-heading">
+                                <span class="panel-title">@establishment Grind - Average Sale vs Number of Items</span>
+                            </div>
+                            <div class="panel-body">
+                                @(Html.EJ().Chart("itemBreakdownStackedColumn")
+                                      .PrimaryXAxis(
+                                          //Use categorical scale in primary X axis
+                                          px => px.ValueType(AxisValueType.Category).Title(tl => tl.Text("Category").Font(ft => ft.Color("grey").FontWeight(ChartFontWeight.Bold)
+                                              .FontFamily("Segoe UI")
+                                              .Size("16px"))))
+                                      .PrimaryYAxis(pry => pry.Title(tl => tl.Text("Average Order Size (£)").Font(ft => ft.Color("grey").FontWeight(ChartFontWeight.Bold)
+                                          .FontFamily("Segoe UI")
+                                          .Size("16px"))).LabelFormat("£{value}"))
+                                      .Axes(ax =>
+                                      {
+                                          ax.Name("SecondaryY").Title(tl => tl.Text("Number Of Orders").Font(ft => ft.Color("grey").FontWeight(ChartFontWeight.Bold)
+                                              .FontFamily("Segoe UI")
+                                              .Size("16px"))).OpposedPosition(true).Add();
+                                      })
+
+                                      .CommonSeriesOptions(cso => cso.Type(SeriesType.StackingColumn).EnableAnimation(true))
+                                      .Legend(lgn => lgn.Visible(true))
+                                      .Title(tl => tl.Text("Average Sale Vs Number Of Orders"))
+                                      .Series(sr =>
+                                      {
+                                          //Stacked colums series
+                                          var randy = new Random();
+                                          var seed = randy.Next(0, 300);
+                                          foreach (var currentType in stackedColumnData.Types)
+                                          {
+                                              seed++;
+                                              random = new Random(seed);
+
+                                              var dataOfThisType = stackedColumnData.Data.Where(x => x.Name == currentType).OrderBy(x => x.WeekIdentifier).ToList();
+                                              sr.Points(pt =>
+                                              {
+                                                  foreach (var data in dataOfThisType)
+                                                  {
+                                                      pt.X(data.WeekStart.ToString("dd/MM/yy")).Y(Convert.ToDouble(data.Value)).Add();
+                                                  }
+                                              }).Name(currentType).Fill(colorNames[random.Next(0, numColors)]).Add();
+                                          }
+
+                                          //Line series
+
+                                          sr.YAxisName("SecondaryY").Type(SeriesType.Line).Points(pt =>
+                                          {
+
+                                              foreach (var data in weeklySalesData)
+                                              {
+                                                  pt.X(data.WeekStart.ToString("dd/MM/yy")).Y(Convert.ToInt32(data.Value)).Add();
+                                              }
+
+                                              //...
+                                          }).Name("Number Of Orders").Add();
+
+                                          //line series
+                                      }))
+                            </div>
+                        </div>
+
+
+
+                        <div class="panel colourable">
+                            <div class="panel-heading">
+                                <span class="panel-title">@establishment Grind - Weekly Sales</span>
+                            </div>
+                            <div class="panel-body">
+                                @(Html.EJ().Chart("weeklySales")
+                                      .PrimaryXAxis(
+                                          //Use categorical scale in primary X axis
+                                          px => px.ValueType(AxisValueType.Category))
+                                      .PrimaryYAxis(pry => pry.LabelFormat("£{value}").Title(tl => tl.Text("Sales (£)").Font(ft => ft.Color("grey").FontWeight(ChartFontWeight.Bold)
+                                          .FontFamily("Segoe UI")
+                                          .Size("16px"))))
+                                      .CommonSeriesOptions(cso => cso.Type(SeriesType.Column).EnableAnimation(true))
+                                      .Legend(lgn => lgn.Visible(true))
+                                      .Title(tl => tl.Text("Hour And Spend"))
+                                      .Series(sr =>
+                                      {
+                                          //Stacked colums series
+
+
+                                          sr.Points(pt =>
+                                          {
+                                              foreach (var data in weeklySalesData)
+                                              {
+
+                                                  pt.X(data.WeekStart.ToString("dd/MM/yy")).Y(Convert.ToDouble(data.Value)).Add();
+                                              }
+                                          }).Name("Grand Total").Add();
+
+
+                                      }))
+                            </div>
+                        </div>
+
+
+
+
+
+                        <div class="panel colourable">
+                            <div class="panel-heading">
+                                <span class="panel-title">@establishment Grind - Sum Of Total Pure Sales (£)</span>
+                            </div>
+                            <div class="panel-body">
+                         @Html.Partial("~/Views/Charts/Partial/ChartsWeeklyBreakdownDataTablePartial.cshtml", table_totalPureSalesEachWeek, new ViewDataDictionary { { "title", "Sum Of Total Pure Sales (£)" }, { "showTotals", "Show" } })
+                            </div>
+                        </div>
+
+                        <div class="panel colourable">
+                            <div class="panel-heading">
+                                <span class="panel-title">@establishment Grind - Average Item Value (£)</span>
+                            </div>
+                            <div class="panel-body">
+                                @Html.Partial("~/Views/Charts/Partial/ChartsWeeklyBreakdownDataTablePartial.cshtml", table_AverageItemValue, new ViewDataDictionary { { "title", "Average Item Value (£)" } })
+                            </div>
+                        </div>
+
+                        <div class="panel colourable">
+                            <div class="panel-heading">
+                                <span class="panel-title">@establishment Grind - Average Items Per Order</span>
+                            </div>
+                            <div class="panel-body">
+                                @Html.Partial("~/Views/Charts/Partial/ChartsWeeklyBreakdownDataTablePartial.cshtml", table_AverageNoOfItemsPerOrder, new ViewDataDictionary { { "title", "Average Items Per Order" } })
+                            </div>
+                        </div>
+
+                        <div class="panel colourable">
+                            <div class="panel-heading">
+                                <span class="panel-title">@establishment Grind - Average Order Value (£)</span>
+                            </div>
+                            <div class="panel-body">
+                                @Html.Partial("~/Views/Charts/Partial/ChartsWeeklyBreakdownDataTablePartial.cshtml", table_AverageOrderValue, new ViewDataDictionary { { "title", "Average Order Value (£)" } })
+                            </div>
+                        </div>
+
+
+                       
+
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+
+
+
+
+<script type="text/javascript">
+
+          /*  $(document).ready(function () {
+                $('.dtable').DataTable(
+                {
+                    "pageLength": 50
+                }
+                );
+            });
+
+            $('#message').fadeIn(2000);
+            $('#message').delay(2000);
+            $('#message').fadeOut(2000);*/
+
+
+</script>

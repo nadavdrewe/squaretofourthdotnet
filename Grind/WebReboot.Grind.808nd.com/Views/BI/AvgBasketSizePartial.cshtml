@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Revel._808nd.com.ReportingModel.TopSeller>
+
+<h3>Top Upsellers / Average Basket Size</h3>
+<table class="myDatatable table">
+    <thead>
+        <tr>
+            <th>
+                Staff Member
+            </th>
+            <th>
+                Average Spend Per Order (££)
+            </th>
+            <th>
+                Avg Basket Size (Items)
+            </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @{
+            foreach (var userSummary in Model)
+            {
+                <tr>
+                    <td>@userSummary.Name</td>
+                    <td>@Decimal.Round(userSummary.ValuePounds,2)</td>
+                    <td>@Decimal.Round(Convert.ToDecimal(userSummary.NumberOfItems),2)</td>
+                </tr>
+            }
+          @*  <tr>
+                <td></td>
+                $1$<td>@Model.Sum(x => x.ValuePounds)</td>#1#
+               $1$ <td>@Model.Sum(x => Convert.ToInt32(x.NumberOfItems))</td>#1#
+            </tr>*@
+
+        }
+
+    </tbody>
+</table>
+
+

@@ -1,0 +1,126 @@
+﻿@model data.pipeline.fourth.com.Models.Credentials.BaseCredential
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>Api Credential</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="StoreId" class="control-label">Store</label>
+                <select asp-for="StoreId" class="form-control" asp-items="ViewBag.StoreId">
+                    <option value="">--- NONE ---</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="BrandId" class="control-label">Brand</label>
+                <select asp-for="BrandId" class="form-control" asp-items="ViewBag.BrandId">
+                    <option value="">--- NONE ---</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="CredentialType" class="control-label"></label>
+                <select asp-for="CredentialType" asp-items="Html.GetEnumSelectList<shared.pipeline.fouth.com.Enums.CredentialTypes>()" class="form-control"></select>
+                <span asp-validation-for="CredentialType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Username" class="control-label"></label>
+                <input asp-for="Username" class="form-control" />
+                <span asp-validation-for="Username" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ClientId" class="control-label">OAuth Client ID</label>
+                <input asp-for="ClientId" class="form-control" autocomplete="off" />
+                <span asp-validation-for="ClientId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ClientSecret" class="control-label">OAuth Client Secret</label>
+                <input asp-for="ClientSecret" class="form-control" type="password" autocomplete="new-password" value="@Model.ClientSecret" />
+                <span asp-validation-for="ClientSecret" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BaseEndpoint" class="control-label">Fourth API Base URL</label>
+                <input asp-for="BaseEndpoint" class="form-control" placeholder="https://api-dev.fourth.com/prelive/api/eposgateway/" />
+                <span asp-validation-for="BaseEndpoint" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SupplimentalData1" class="control-label">OAuth Token Endpoint</label>
+                <input asp-for="SupplimentalData1" class="form-control" placeholder="https://api-dev.fourth.com/prelive/oauth/connect/token" />
+                <span asp-validation-for="SupplimentalData1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SupplimentalData2" class="control-label">OAuth Scope</label>
+                <input asp-for="SupplimentalData2" class="form-control" />
+                <span asp-validation-for="SupplimentalData2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LatestAccessToken" class="control-label"></label>
+                <input asp-for="LatestAccessToken" class="form-control" />
+                <span asp-validation-for="LatestAccessToken" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RefreshToken" class="control-label"></label>
+                <input asp-for="RefreshToken" class="form-control" />
+                <span asp-validation-for="RefreshToken" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" type="password" autocomplete="new-password" value="@Model.Password" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="KeySecret" class="control-label"></label>
+                <input asp-for="KeySecret" class="form-control" />
+                <span asp-validation-for="KeySecret" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Active" /> @Html.DisplayNameFor(model => model.Active)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+                <input value="Test Creds" class="btn btn-danger" onclick="testCreds()" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+<script type="text/javascript">
+
+
+    $(document).ready(function () {
+        console.log("ready!");
+    });
+
+    testCreds = () => {            
+
+        $.ajax({
+            data: {
+                "id": @Model.Id
+            },
+            method: "GET",
+            url: "/BaseCredentials/TestCreds"
+        }).done(function () {
+            alert("Yep, that's working!!")
+        }).fail(() => {
+            alert("Awww it didn't work!! Please check the creds")
+        });
+    }
+</script>

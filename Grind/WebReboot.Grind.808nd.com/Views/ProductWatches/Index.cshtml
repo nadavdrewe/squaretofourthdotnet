@@ -1,0 +1,122 @@
+﻿@using Revel._808nd.com.Classes
+@model IEnumerable<Revel._808nd.com.ReportingModel.ProductWatch>
+
+@{
+    ViewBag.Title = "Product Watch Index";
+    var ests = (List<Establishment>)ViewBag.Establishments;
+
+    var prods = (List<Product>)ViewBag.Products;
+}
+
+@Html.Partial("~/PartialViews/BreadcrumbBarPartial.cshtml")
+
+
+
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>@ViewBag.Title</h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li>
+                                <a href="#">Config option 1</a>
+                            </li>
+                            <li>
+                                <a href="#">Config option 2</a>
+                            </li>
+                        </ul>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+
+
+                    <div class="row">
+                        <div class="panel panel-dark-gray panel-dark">
+                            <div class="panel-heading">
+                                <span class="panel-title">Product Watch Index</span>
+                            </div>
+                            <div class="panel-body">
+                                <p>
+                                    @Html.ActionLink("Create New", "Create")
+                                </p>
+
+
+                                <table id="prodWatchTable" class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                Name
+                                            </th>
+                                            <th>
+                                                Establishment
+                                            </th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+                                            var thisProd = prods.Where(x => x.product_id.Equals(item.Revel_Product_Id)).FirstOrDefault();
+
+                                            <tr>
+                                                <td>
+                                                    @thisProd.name
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => ests.FirstOrDefault(x => x.establishment_id == thisProd.establishment_id).name)
+                                                </td>
+                                                <td>
+
+                                                    @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+
+                                </table>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+
+
+
+    $('#prodWatchTable').DataTable(
+    {
+        "pageLength": 50,
+        "order": [[1, "asc"]],
+        "scrollX": true,
+        responsive: true
+    }
+    );
+
+
+
+
+
+
+</script>

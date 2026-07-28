@@ -1,0 +1,301 @@
+﻿@{
+    ViewBag.Title = "TestPOSTCustomer";
+    Layout = null;
+
+
+    var existingCards = (IEnumerable<string>)ViewBag.ExistingCards;
+
+
+
+    <script type="text/javascript">
+
+
+        var array = @Html.Raw(Json.Encode(existingCards));
+
+        for(var i = 0; i < array.length; i++) {
+            // alert(array[i]); // should display "string1" then string2"
+        }
+
+    </script>
+
+
+    var test = "";
+}
+
+
+
+<html>
+<head>
+    <title></title>
+
+    <style>
+        .error {
+            color: red;
+        }
+
+        body, html {
+            background: #ffffff !important;
+        }
+
+        h2 {
+            font-family: "Raleway";
+            font-size: 1em;
+            letter-spacing: .4px;
+            font-weight: 100;
+            color: #333;
+        }
+
+        label {
+            font-family: "Raleway";
+            font-size: 1em;
+            letter-spacing: .4px;
+            font-weight: 100;
+            color: #333;
+        }
+
+        .input-lg {
+            background-color: #fafafa !important;
+        }
+
+        .form-control {
+            border-radius: 2px !important;
+            -webkit-border-radius: 2px !important;
+        }
+
+        .btn-black {
+            background-color: #333;
+            color: #fff;
+            border-radius: 300px !important;
+            -webkit-border-radius: 300px !important;
+            -moz-border-radius: 300px !important;
+            padding: 10px 35px 10px 35px !important;
+        }
+
+        h1 {
+            color: maroon;
+            margin-left: 40px;
+        }
+    </style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+    <title>Grind</title>
+
+
+    <!--Scripts-->
+    @*Jquery*@
+    <script src="~/Bootstrap/bower_components/jquery/dist/jquery.min.js"></script>
+    @*Jquery UI*@
+    <script src="https://code.jquery.com/ui/1.11.2/jquery-ui.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="~/Bootstrap/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    @*Ajax*@
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    @*    <script src="~/Bootstrap/bower_components/metisMenu/dist/metisMenu.min.js"></script>
+        <!-- Morris Charts JavaScript -->
+        <script src="~/Bootstrap/bower_components/raphael/raphael-min.js"></script>
+        <script src="~/Bootstrap/bower_components/morrisjs/morris.min.js"></script>
+        <script src="~/Bootstrap/js/morris-data.js"></script>*@
+
+    <!-- Custom Theme JavaScript -->
+    <script src="~/Bootstrap/js/dist/js/sb-admin-2.js"></script>
+
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+
+    <!--Style-->
+    <link href="~/Bootstrap/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- MetisMenu CSS -->
+    <link href="~/Bootstrap/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+    <!-- Timeline CSS -->
+    <link href="~/Bootstrapdist/css/timeline.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="~/Bootstrap/dist/css/sb-admin-2.css" rel="stylesheet">
+    <!-- Morris Charts CSS -->
+    <link href="~/Bootstrap/bower_components/morrisjs/morris.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="~/Bootstrap/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- JQuery UI CSS -->
+    <link rel="stylesheet" type="text/css" href=" https://code.jquery.com/ui/1.11.2/themes/black-tie/jquery-ui.css">
+    @*   <!-- DataTables CSS -->
+        <link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.4/css/jquery.dataTables.css">
+        <!-- DataTables -->
+        <script type="text/javascript" charset="utf8" src="http://cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"></script>*@
+    <!--Squarespace stylesheet-->
+    <link href="~/Forms/css/cssd90e.css" rel="stylesheet">
+</head>
+
+<body>
+    <br />
+    <br />
+    <div class="container" id="mainContainer">
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+                <form id="theForm" class="form-horizontal">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <label for="FirstName">Name *</label>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control input-lg" id="FirstName" placeholder="e.g. Robert" required>
+                            <small>First name</small>
+                            <br />
+                        </div>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control input-lg" id="LastName" placeholder="e.g. Robertson" required>
+                            <small>Last name</small>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-sm-12">
+                            <label for="DOB">DOB *</label>
+                            <input type="date" class="form-control input-lg" id="DOB" placeholder="e.g. 11/12/1982">
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-sm-12">
+                            <label for="Email">Email address *</label>
+                            <input type="email" class="form-control input-lg" id="Email" placeholder="e.g. robertrobertson@hotmail.com" required>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-sm-12">
+                            <label for="BlackCardNo">Black Card Number *</label>
+                            <input type="text" class="form-control input-lg BlackCardNo" id="BlackCardNo" placeholder="e.g. 00015671" required name="BlackCardNo">
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-sm-12">
+                            <label for="ConfirmBlackCardNo">Confirm Black Card Number *</label>
+                            <input type="text" class="form-control input-lg " id="ConfirmBlackCardNo" placeholder="e.g. 00015671" required name="ConfirmBlackCardNo" data-rule-equalto="input[name=BlackCardNo]" data-msg-required="Please confirm your black card number" data-msg-equalto="Card numbers do not match">
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row form-group">
+                        <div class="col-sm-12">
+                            <button type="submit" class="btn btn-black">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br />
+    <br />
+    <br />
+</body>
+
+</html>
+
+
+<script type="text/javascript">
+
+    function validateID(value, element) {
+        if(array.indexOf(value) > -1) {
+            //value does exist in ids
+            // alert('value does exists');
+        }
+        else {
+            //value does not exist in ids
+            //(maybe add it to ids?)
+            //   alert('value doesnt exists');
+        }
+    }
+
+
+
+    $(document).ready(function () {
+
+        /*        jQuery.validator.addMethod("idRule", function(value, element) {
+                    return this.optional(element) || (array.indexOf(value) > 0);
+                }, "Please use a number that doesn't exist");*/
+
+
+
+        /*        $.validator.addMethod("idRule", validateID, "Please use a number that doesn't exist");     */
+
+        var form = $("#theForm");
+
+        form.validate(
+        {
+            /* rules: {
+                 BlackCardNo: {
+                     idRule: true
+                 }
+             },
+             messages: {
+                 BlackCardNo: "Entered ID already exists",
+
+             },*/
+            ConfirmBlackCardNo: {
+                equalTo: '#BlackCardNo',
+                ignore: ".ignore"
+            }
+
+        });
+
+
+        $("button").click(function () {
+            form.valid();
+            //   $('.error').addClass('popover-content');
+        });
+
+
+
+
+
+        $("#theForm").on("submit", function (event) {
+
+            if ($("#theForm").valid()) {
+
+                event.preventDefault();
+
+
+                var cardNumber = $('#BlackCardNo').val();
+
+                var email = $('#Email').val();
+                var fname = $('#FirstName').val();
+                var lname = $('#LastName').val();
+                var dob = $("#DOB").val();
+
+                var model = {
+                    'number': cardNumber,
+                    'firstname': fname,
+                    'lastname': lname,
+                    'email': email,
+                    'dob': dob,
+                    'establishment': '/enterprise/Establishment/4/'
+                };
+
+
+                $.ajax({
+                    type: "POST",
+                    dataType: "jsonp",
+                    //url: 'http://localhost:3633/BlackCardForm/Create',
+                    url: 'http://46.231.116.202:80/BlackCardForm/Create',
+                    data: model,
+
+                    success: function (data) {
+                        $('div#mainContainer').html("<div align='center'><h2>Thank you for registering your black card, it will be active immediately.</h2><h2>Don’t forget to use your card each time you visit.</h2></div>");
+                        $('body').css('height', '200px');
+                    },
+
+                 
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        alert(xhr.status);
+                        alert(thrownError);
+                        $('div#mainContainer').html("<div align='center'><h2>Sorry that didn't work. Please check your black card number and try again later.</h2></div>");
+                        $('body').css('height', '200px');
+                    }
+                });
+
+            }
+        });
+
+
+
+    });
+</script>

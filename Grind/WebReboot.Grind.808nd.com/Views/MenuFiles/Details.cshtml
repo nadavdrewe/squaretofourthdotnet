@@ -1,0 +1,50 @@
+﻿@model Revel._808nd.com.Classes.MenuFile
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>MenuFile</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.bytes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bytes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.filename)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.filename)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.extension)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.extension)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.url)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.url)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

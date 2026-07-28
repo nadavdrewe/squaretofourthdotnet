@@ -1,0 +1,91 @@
+﻿
+@{
+
+}
+
+
+    <iframe style="border:none;" id="iframe-container" src="http://grindfood.squarespace.com">
+
+
+    </iframe>
+
+
+
+
+<script type="text/javascript">
+    //disappear logo
+    $('#logoImg').hide();
+
+
+    $(document).ready(function () {
+
+        //alert('adding handler now');
+        window.addEventListener("message", receiveMessage, false);
+
+        //setTimeout(function () {
+
+        //    alert('adding handler now');
+        //    window.addEventListener("message", receiveMessage, false);
+        //}, 4000);
+      
+    });
+
+   
+    var setAlready = false;
+    function receiveMessage(event) {
+
+        console.log("Printing data" + JSON.stringify(event.data));
+        console.log(event.origin);
+
+
+        console.log('Inner heeight:' + window.innerHeight);
+        console.log('Inner heeight:' + window.innerWidth);
+        document.getElementById('iframe-container').style.height = window.innerHeight + 'px';
+        document.getElementById('iframe-container').style.width = window.innerWidth + 'px';
+
+        //if (event.data == "") {
+        //    //use source measurements
+        //    console.log('received tier 1');
+
+        //    console.log('Inner heeight:' + window.innerHeight);
+        //    console.log('Inner heeight:' + window.innerWidth);
+
+        //    if (!setAlready) {
+        //        document.getElementById('iframe-container').style.height = window.innerHeight + 'px';
+        //        document.getElementById('iframe-container').style.width = window.innerWidth + 'px';
+        //        setAlready = true;
+        //    }
+         
+        //}
+        //else {
+        //    console.log('received tier 2');
+
+        //    if (!setAlready) {
+        //        document.getElementById('iframe-container').style.height = event.data.h + 'px';
+        //        document.getElementById('iframe-container').style.width = event.data.w + 'px';
+        //        setAlready = true;
+        //    }
+           
+        //}
+      
+      
+      
+    }
+
+
+
+    //window.addEventListener('message', function (e) {
+             
+    //    // message passed can be accessed in "data" attribute of the event object
+
+    //    console.log(JSON.stringify(e));
+
+    //    var scroll_height = e.data;
+
+    //    console.log(JSON.stringify(e.data));
+
+    //    document.getElementById('iframe-container').style.height = scroll_height + 'px';
+
+    //    console.log("Changed frame to " + JSON.stringify(scroll_height));
+    //}, false);
+</script>

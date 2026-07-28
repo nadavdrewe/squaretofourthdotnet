@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<layerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="4aef78e1-4035-430b-880d-5e42112951c5" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/LayerDesigner">
+  <layers>
+    <layer Id="9c561359-000b-4b8f-a9d4-a563accfacd9" name="Presentation&#xD;&#xA;&#xD;&#xA;" />
+  </layers>
+</layerModel>

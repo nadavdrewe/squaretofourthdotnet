@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<componentDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="UMLComponentDiagram1">
+  <componentModelMoniker Id="5351b8e1-038f-4254-b7ac-29a04949e3ac" />
+  <nestedChildShapes>
+    <componentShape Id="586648f6-705a-4714-9a40-651e61e3d92c" absoluteBounds="3.75, 0.5, 2.8750000000000009, 1.7729166666666667" customColor="161, 199, 231" whiteBoxBoundsHeight="0" whiteBoxBoundsWidth="0" blackBoxBoundsHeight="0" blackBoxBoundsWidth="0" whiteBoxTopEdgeShapesCount="0" whiteBoxRightEdgeShapesCount="0" whiteBoxBottomEdgeShapesCount="0" whiteBoxLeftEdgeShapesCount="0" blackBoxTopEdgeShapesCount="0" blackBoxRightEdgeShapesCount="0" blackBoxBottomEdgeShapesCount="0" blackBoxLeftEdgeShapesCount="0">
+      <componentMoniker Id="32d00cf9-83eb-469f-9262-29fd2f427a47" LastKnownName="IGeckoboardService" />
+    </componentShape>
+    <componentShape Id="19f312c8-93ce-4c28-93e1-ed45fb8f4035" absoluteBounds="0.5, 0.75, 2.229166666666667, 1.0541666666666667" customColor="161, 199, 231" whiteBoxBoundsHeight="0" whiteBoxBoundsWidth="0" blackBoxBoundsHeight="0" blackBoxBoundsWidth="0" whiteBoxTopEdgeShapesCount="0" whiteBoxRightEdgeShapesCount="0" whiteBoxBottomEdgeShapesCount="0" whiteBoxLeftEdgeShapesCount="0" blackBoxTopEdgeShapesCount="0" blackBoxRightEdgeShapesCount="0" blackBoxBottomEdgeShapesCount="0" blackBoxLeftEdgeShapesCount="0">
+      <componentMoniker Id="2322f6fb-da56-405a-b461-55b67a852a56" LastKnownName="GeckoboardOrganisation" />
+    </componentShape>
+    <commentShape Id="78467367-71e9-4248-967e-03873aa64e5c" absoluteBounds="6.875, 0.5, 1.25, 0.375" customColor="251, 247, 200">
+      <commentMoniker Id="ed499f55-1a48-4c29-aef8-2980c4cdcb7b" />
+      <relativeChildShapes />
+    </commentShape>
+    <dependencyConnector edgePoints="[(3.75 : 1.38645833333333); (3.375 : 1.38645833333333); (3.375 : 1.27708333333333); (2.72916666666667 : 1.27708333333333)]" fixedFrom="Caller" fixedTo="Caller" customColor="Black">
+      <dependencyMoniker Id="7cbeadd6-5f1d-4787-92c8-f524de769ec8" />
+      <relativeChildShapes />
+      <nodes>
+        <componentShapeMoniker Id="586648f6-705a-4714-9a40-651e61e3d92c" />
+        <componentShapeMoniker Id="19f312c8-93ce-4c28-93e1-ed45fb8f4035" />
+      </nodes>
+    </dependencyConnector>
+    <componentShape Id="aa08e7ba-91d3-4c00-b726-bda0fdd176eb" absoluteBounds="3.875, 3.625, 2.864583333333333, 1.2208333333333337" customColor="161, 199, 231" whiteBoxBoundsHeight="0" whiteBoxBoundsWidth="0" blackBoxBoundsHeight="0" blackBoxBoundsWidth="0" whiteBoxTopEdgeShapesCount="0" whiteBoxRightEdgeShapesCount="0" whiteBoxBottomEdgeShapesCount="0" whiteBoxLeftEdgeShapesCount="0" blackBoxTopEdgeShapesCount="0" blackBoxRightEdgeShapesCount="0" blackBoxBottomEdgeShapesCount="0" blackBoxLeftEdgeShapesCount="0">
+      <componentMoniker Id="863a1383-ce65-4b59-b167-e5215d24e84c" LastKnownName="IGeckoboardableObject" />
+    </componentShape>
+    <dependencyConnector edgePoints="[(5.25 : 3.625); (5.25 : 2.27291666666667)]" fixedFrom="Caller" fixedTo="Caller" customColor="Black">
+      <dependencyMoniker Id="12d073b1-2c27-4a39-8898-4e4d13adbccf" />
+      <relativeChildShapes />
+      <nodes>
+        <componentShapeMoniker Id="aa08e7ba-91d3-4c00-b726-bda0fdd176eb" />
+        <componentShapeMoniker Id="586648f6-705a-4714-9a40-651e61e3d92c" />
+      </nodes>
+    </dependencyConnector>
+  </nestedChildShapes>
+</componentDiagram>

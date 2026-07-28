@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<!-- Sale Submission Schema Definition V1.32
+	 Last Updated By By James Cook 15/10/2008-->
+<!-- Used for multi-organisation per file, replaces all previous versions of XML sales imports-->
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="FourthHeader">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element maxOccurs="unbounded" name="OrganisationHeader">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="OrganisationID" type="xs:string" minOccurs="1" />
+							<xs:element name="UserName" type="xs:string" minOccurs="1" />
+							<xs:element name="Password" type="xs:string" minOccurs="1" />
+							<xs:element maxOccurs="unbounded" name="SalesHeader">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="SalesDate" type="xs:date" minOccurs="1" />
+										<xs:element name="Location" type="xs:string" minOccurs="1" default="1"/>
+										<xs:element name="RevenueCentre" type="xs:string" minOccurs="1" default="1" />
+										<xs:element name="ActionIfDataExists" type="actionide" minOccurs="0" default="2" />
+										<xs:element maxOccurs="unbounded" name="SalesTransaction">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="PLU" type="xs:nonNegativeInteger" minOccurs="1" />
+													<xs:element name="Description" type="xs:string" minOccurs="1" />
+													<xs:element name="Quantity" type="xs:decimal" minOccurs="1" />
+													<xs:element name="VAT" type="xs:decimal" minOccurs="1" />
+													<xs:element name="TotalGrossSales" type="xs:decimal" minOccurs="1" />
+													<xs:element name="NetSalesPrice" type="xs:decimal" minOccurs="0" />
+													<xs:element name="GrossSalesPrice" type="xs:decimal" minOccurs="0" />
+													<xs:element name="TotalNetSales" type="xs:decimal" minOccurs="0" />
+													<xs:element name="CategoryCode" type="xs:string" minOccurs="0" />
+													<xs:element name="SaleType" type="xs:string" minOccurs="0" default="1" />
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<!--Action If Data Exists-->
+	<xs:simpleType name="actionide">
+		<xs:restriction base="xs:integer">
+			<xs:enumeration value="1"/>
+			<!--Overwrite-->
+			<xs:enumeration value="2"/>
+			<!--Append-->	
+			<xs:enumeration value="3"/>
+			<!--Ignore-->
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

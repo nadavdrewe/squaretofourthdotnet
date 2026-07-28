@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "Bash(dotnet build:*)",
+      "WebFetch(domain:developer.squareup.com)",
+      "WebFetch(domain:www.nuget.org)",
+      "WebFetch(domain:github.com)",
+      "Bash(del \"C:\\\\GIT2016\\\\automatedFourthPipeline\\\\service.pipeline.fourth.com\\\\square.pipeline.fourth.com\\\\Services\\\\V1TransactionService.cs\")",
+      "Bash(dotnet tool list:*)",
+      "Bash(findstr:*)",
+      "Bash(dotnet script eval \"var assembly = System.Reflection.Assembly.LoadFrom\\(System.IO.Directory.GetFiles\\(System.Environment.GetFolderPath\\(System.Environment.SpecialFolder.UserProfile\\) + @''\\\\.nuget\\\\packages\\\\square\\\\43.0.0'', ''Square.dll'', System.IO.SearchOption.AllDirectories\\)[0]\\); var t = assembly.GetType\\(''Square.CatalogObject''\\); foreach\\(var p in t.GetProperties\\(\\)\\) Console.WriteLine\\(p.Name + '' : '' + p.PropertyType.Name\\);\")",
+      "Bash(powershell -Command \"$assembly = [System.Reflection.Assembly]::LoadFrom\\(''C:\\\\Users\\\\nadav\\\\.nuget\\\\packages\\\\square\\\\43.0.0\\\\lib\\\\net8.0\\\\Square.dll''\\); $t = $assembly.GetType\\(''Square.CatalogObject''\\); $t.GetProperties\\(\\) | ForEach-Object { Write-Output \\($_Name + '' : '' + $_PropertyType.Name\\) }\")",
+      "Bash(powershell -Command \"$asm = [System.Reflection.Assembly]::LoadFrom\\(''C:\\\\Users\\\\nadav\\\\.nuget\\\\packages\\\\square\\\\43.0.0\\\\lib\\\\net8.0\\\\Square.dll''\\); $type = $asm.GetType\\(''Square.CatalogObject''\\); $type.GetProperties\\(\\) | ForEach-Object { $_Name + '' : '' + $_PropertyType.Name }\")",
+      "Bash(powershell -File - << 'SCRIPT'\n$asm = [System.Reflection.Assembly]::LoadFrom\\(\"C:\\\\Users\\\\nadav\\\\.nuget\\\\packages\\\\square\\\\43.0.0\\\\lib\\\\net8.0\\\\Square.dll\"\\)\n$type = $asm.GetType\\(\"Square.CatalogObject\"\\)\n$type.GetProperties\\(\\) | ForEach-Object { \"$\\($_.Name\\) : $\\($_.PropertyType.Name\\)\" }\nSCRIPT)",
+      "Bash(powershell:*)",
+      "Bash(dotnet-csharp InspectTypes.cs)",
+      "Bash(dotnet run:*)",
+      "Bash(del \"C:\\\\GIT2016\\\\automatedFourthPipeline\\\\service.pipeline.fourth.com\\\\web.pipeline.fourth.com\\\\Views\\\\OauthLogin\\\\Try.cshtml\")"
+    ]
+  }
+}

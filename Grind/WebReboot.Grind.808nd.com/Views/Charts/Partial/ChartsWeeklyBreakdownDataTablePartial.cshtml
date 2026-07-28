@@ -1,0 +1,89 @@
+﻿@using Revel._808nd.com.ReportingModel.ChartModels
+@model IEnumerable<Revel._808nd.com.ReportingModel.ChartModels.ChartWeekItemSales>
+
+@{
+    Layout = null;
+
+
+    var title = ViewData["title"];
+
+    var currentWeekCycle = 1;
+
+    var bigListOfAllData = new List<ChartData>();
+    var listOfAllWeeks = new List<int>();
+
+    foreach (var allData in Model)
+    {
+        bigListOfAllData.AddRange(allData.ChartData);
+    }
+
+    var allDifferentCategories = bigListOfAllData.Select(x => x.Name).Distinct().ToList();
+
+
+    var showTotals = ViewData["showTotals"];
+}
+
+<table class="table dtable">
+    <thead>
+        <tr>
+            <th>
+                @title
+            </th>
+
+            @foreach (var data in Model)
+            {
+                listOfAllWeeks.Add(Convert.ToInt32(data.CategoryName));
+
+                <th>@Convert.ToDateTime(data.WeekDateStart).ToString("dd/MM/yy")</th>
+            }
+
+
+            @{
+                if (showTotals != null)
+                {
+                    <th>
+                        Grand Total
+                    </th>
+                }
+                else { <th></th>}
+            }
+
+
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @{
+
+            foreach (var currentCatName in allDifferentCategories)
+            {
+                <tr>
+                    <td>
+                        @currentCatName
+                    </td>
+                    @foreach (var week in listOfAllWeeks)
+                {
+                        <td>
+                            @Decimal.Round(bigListOfAllData.Where(x => x.Name == currentCatName && x.WeekIdentifier == week).FirstOrDefault().Value, 2)
+                        </td>
+                    }
+
+                    @if (showTotals != null)
+                    {
+                        <td>
+                            @Decimal.Round(bigListOfAllData.Where(x => x.Name == currentCatName).Sum(x => x.Value), 2)
+                        </td>
+                    }
+                    else
+                    {
+                        <th></th>
+                    }
+                </tr>
+            }
+
+        }
+
+
+    </tbody>
+</table>

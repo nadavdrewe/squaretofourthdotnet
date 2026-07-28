@@ -1,0 +1,183 @@
+﻿@model IEnumerable<Revel._808nd.com.Classes.RewardsCardNew>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ResourceUri)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.created_by)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.created_date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.current_points)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.customer_revel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.establishment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Revelid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.number)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.payment_type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.resource_uri)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.total_points)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.total_purchases)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.total_visits)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.updated_by)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.updated_date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.customer_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.establishment_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.is_vip_card)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.vip_points_refresh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.vip_points_last_refreshed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.notes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.days_since_last_visit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.yesterdaysTotalPoints)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.yesterdaysTotalPointsWhenCreated)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pointsMultiplierLastRun)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.theAddress)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ResourceUri)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.created_by)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.created_date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.current_points)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.customer_revel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.establishment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Revelid)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.number)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.payment_type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.resource_uri)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.total_points)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.total_purchases)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.total_visits)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.updated_by)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.updated_date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.customer_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.establishment_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.is_vip_card)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.vip_points_refresh)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.vip_points_last_refreshed)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.notes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.days_since_last_visit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.yesterdaysTotalPoints)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.yesterdaysTotalPointsWhenCreated)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pointsMultiplierLastRun)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.theAddress)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.DBKEY_rewardscardnew_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.DBKEY_rewardscardnew_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.DBKEY_rewardscardnew_id })
+        </td>
+    </tr>
+}
+
+</table>
