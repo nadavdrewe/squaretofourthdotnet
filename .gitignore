@@ -1,0 +1,31 @@
+# Local IDE and build artifacts
+.vs/
+.idea/
+**/[Bb]in/
+**/[Oo]bj/
+**/[Dd]ebug/
+**/[Rr]elease/
+**/publish/
+**/TestResults/
+**/coverage/
+
+# Restorable third-party dependency caches
+**/node_modules/
+**/bower_components/
+**/packages/
+
+# Machine-specific and secret-bearing configuration
+**/appsettings*.json
+**/App.config
+**/app.config
+**/Web.config
+**/web.config
+**/*.pubxml
+**/*.publishsettings
+**/*.pfx
+**/*.user
+**/*.suo
+**/*.log
+**/*.db
+**/*.mdf
+**/*.ldf

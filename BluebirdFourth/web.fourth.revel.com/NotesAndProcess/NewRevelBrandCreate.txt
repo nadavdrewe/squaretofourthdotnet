@@ -1,0 +1,9 @@
+﻿Sequence For Creating new Revel Org
+
+using correct URL, APIKEY:SECRET
+
+- Get brand
+- get establishments
+- get products
+
+

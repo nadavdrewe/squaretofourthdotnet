@@ -1,0 +1,110 @@
+﻿@model IEnumerable<Revel._808nd.com.Classes.OrderItem>
+
+
+<h2> @Model.Count().ToString() items updated!</h2>
+<div id="orderItemContainer">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Created
+                </th>
+                <th>
+                    Product
+                </th>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Quantity
+                </th>
+
+                <th>
+                    Pure Sales
+                </th>
+                <th>
+                    Tax
+                </th>
+
+
+                <th>
+                    Discount
+                </th>
+                <th>
+                    Establishment
+                </th>
+                <th>
+                    Brand
+                </th>
+                <th>
+                    SKU
+                </th>
+
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.created_date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.product)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.product_name_override)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.quantity)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.pure_sales)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.tax_amount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.discount_amount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.establishment)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.brand)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.sku)
+                    </td>
+
+                    <td>
+                        @* @Html.ActionLink("Edit", "Edit", new { id = item.DBKEY_orderitem_id }) |*@
+                        @Html.ActionLink("Details", "Details", new { id = item.DBKEY_orderitem_id })
+                        @*@Html.ActionLink("Delete", "Delete", new { id = item.DBKEY_orderitem_id })*@
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<script>
+
+    /*data tables*/
+    $('.table').DataTable({
+        paging: true,
+        scrollX: true,
+        info: true,
+        ordering: true,
+        searching: true,
+        pageLength: 100,
+    });
+
+    $(".dataTables_wrapper no-footer, .dataTables_info, .dataTables_filter, .dataTables_length, .dataTables_paginate").css("background-color", window.bgColour);
+    $(".quote").css("font-size", "12pt");
+
+</script>
+

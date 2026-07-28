@@ -1,0 +1,128 @@
+﻿@model Revel._808nd.com.Classes.Establishment
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Establishment</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.establishment_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.establishment_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.is_fourth_active)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.is_fourth_active)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.theAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.theAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.brand)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.brand)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.resource_uri)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.resource_uri)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.location_email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.location_email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.time_zone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.time_zone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.effective_from)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.effective_from)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RevelOrganiationName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RevelOrganiationName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

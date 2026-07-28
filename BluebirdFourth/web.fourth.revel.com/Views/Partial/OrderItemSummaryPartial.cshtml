@@ -1,0 +1,29 @@
+﻿@using web.fourth.revel.com.Models
+@model OrderItemSummary
+
+<h3>
+    
+    Store Type:
+    <i style="color:lime">
+        @Model.StoreType
+    </i>
+    Store:
+    <i style="color:red">
+        @Model.StoreIdentifier
+    </i>
+    Sales:
+    <i style="color:red">@Model.TotalPureSales</i>
+    Discount:
+    <i style="color:purple">
+        @Model.TotalDiscount
+    </i>
+    Total Tax:
+    <i style="color:blue">
+        @Model.TotalTax
+    </i>
+    Different Products:
+    @Model.DifferentProducts
+    <br />
+    Date Range: @Model.StartDate To: @Model.EndDate
+
+</h3>

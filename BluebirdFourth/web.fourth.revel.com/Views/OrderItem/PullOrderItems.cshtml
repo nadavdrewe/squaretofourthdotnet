@@ -1,0 +1,120 @@
+﻿@using web.fourth.revel.com.Models
+@model IEnumerable<Revel._808nd.com.Classes.OrderItem>
+
+
+@{
+    ViewBag.Title = "Product Order Item Index";
+
+    var brands = (List<SelectListItem>)ViewBag.Brands;
+    var establishments = (List<SelectListItem>)ViewBag.Establishments;
+
+    var options = new AjaxOptions
+    {
+        InsertionMode = InsertionMode.Replace,        
+        OnBegin = "onBegin",
+        OnComplete = "onComplete",
+        OnSuccess = "alert('All updated successfully!')",
+        OnFailure = "alert('That did not work, sorry')",
+        HttpMethod = "POST",
+        UpdateTargetId = "orderItemContainer"        
+    };
+
+}
+
+
+
+<h2>Refresh Order Items From Revel</h2>
+@ViewBag.Message
+<div>
+    @using (Ajax.BeginForm("PullOrderItems", "OrderItem", options))
+    {
+        <h4> Show Brand @Html.DropDownList("Brands", brands)       @* || Establishments @Html.DropDownList("Establishments", establishments)       ||*@ Start:<input type="date" name="start" required /> ||End: <input type="date" name="end" required /> <button type="submit" value="Go">Go</button></h4>
+    }
+</div>
+
+<div id="orderItemContainer">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Created
+                </th>
+                <th>
+                    Product
+                </th>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Quantity
+                </th>
+
+                <th>
+                    Pure Sales
+                </th>
+                <th>
+                    Tax
+                </th>
+                <th>
+                    Discount
+                </th>
+                <th>
+                    Establishment
+                </th>
+                <th>
+                    Brand
+                </th>
+                <th>
+                    SKU
+                </th>
+
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.created_date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.product)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.product_name_override)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.quantity)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.pure_sales)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.tax_amount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.discount_amount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.establishment)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.brand)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.sku)
+                    </td>
+
+                    <td>
+                        @* @Html.ActionLink("Edit", "Edit", new { id = item.DBKEY_orderitem_id }) |*@
+                        @Html.ActionLink("Details", "Details", new { id = item.DBKEY_orderitem_id })
+                        @*@Html.ActionLink("Delete", "Delete", new { id = item.DBKEY_orderitem_id })*@
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,1530 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://ws.fourthhospitality.com/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://ws.fourthhospitality.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://ws.fourthhospitality.com/">
+      <s:element name="Login">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoginResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoginResult" type="tns:AuthenticationHeader" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="AuthenticationHeader">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="SessionID" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SetPassword">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="newPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oldPassword" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetPasswordResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SetPasswordResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AuthenticationHeader" type="tns:AuthenticationHeader" />
+      <s:element name="GetSessionID">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetSessionIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSessionIDResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCustomExports">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetCustomExportsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCustomExportsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCustomExportParameters">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ExportID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCustomExportParametersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCustomExportParametersResult" type="tns:ArrayOfExportParameter" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfExportParameter">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ExportParameter" type="tns:ExportParameter" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ExportParameter">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Value" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Type" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ExecuteCustomExport">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ExportID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Parameters" type="tns:ArrayOfExportParameter" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExecuteCustomExportResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ExecuteCustomExportResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllUnits">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllUnitsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllUnitsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSites">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UnitID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSitesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSitesResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStockPeriodDates">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SiteID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStockPeriodDatesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetStockPeriodDatesResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMenuGroups">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetMenuGroupsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMenuGroupsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMenuItems">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UnitID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="SiteID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="MenuGroupID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="OnlyMenuItemsChangedSinceLastExport" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMenuItemsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMenuItemsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMenuItemsSummary">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="MenuGroupID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="BrandID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="UnitID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="OnlyMenuItemsChangedSinceLastExport" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMenuItemsSummaryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMenuItemsSummaryResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSalesDetailed">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UnitID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="SiteID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="MenuGroupID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="StartDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="EndDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="PLUNumber" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ImportGroup" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSalesDetailedResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSalesDetailedResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSalesSummary">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UnitID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="SiteID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="MenuGroupID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="StartDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="EndDate" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="ImportGroup" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSalesSummaryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSalesSummaryResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEPOSScreens">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetEPOSScreensResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetEPOSScreensResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEmployeeData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LocationCode" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="ShowFormerEmployees" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEmployeeDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetEmployeeDataResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEmployeeDataExtended">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LocationCode" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="ShowFormerEmployees" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEmployeeDataExtendedResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetEmployeeDataExtendedResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEmployeeHoursWorked">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="StartDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="EndDate" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="StockSiteCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEmployeeHoursWorkedResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetEmployeeHoursWorkedResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEmployeeDataForEPOS">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LocationCode" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="ShowFormerEmployees" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEmployeeDataForEPOSResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetEmployeeDataForEPOSResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMenuItemsWithEPOSScreenInformation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UnitID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="SiteID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="MenuGroupID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="OnlyMenuItemsChangedSinceLastExport" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMenuItemsWithEPOSScreenInformationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMenuItemsWithEPOSScreenInformationResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SubmitSales">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sales">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SubmitSalesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SubmitSalesResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SubmitProducts">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="products">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SubmitProductsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SubmitProductsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SubmitStockOnHand">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="stockOnHand">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SubmitStockOnHandResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SubmitStockOnHandResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SubmitTandA">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="tAndADocument">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SubmitTandAResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SubmitTandAResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SubmitCMSData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="data">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SubmitCMSDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SubmitCMSDataResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SubmitData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="data">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="1" maxOccurs="1" name="ImportTypeID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SubmitDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SubmitDataResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetImportTypes">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetImportTypesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetImportTypesResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetClientDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="GroupCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetClientDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetClientDetailsResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="LoginSoapIn">
+    <wsdl:part name="parameters" element="tns:Login" />
+  </wsdl:message>
+  <wsdl:message name="LoginSoapOut">
+    <wsdl:part name="parameters" element="tns:LoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetPasswordSoapIn">
+    <wsdl:part name="parameters" element="tns:SetPassword" />
+  </wsdl:message>
+  <wsdl:message name="SetPasswordSoapOut">
+    <wsdl:part name="parameters" element="tns:SetPasswordResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetPasswordAuthenticationHeader">
+    <wsdl:part name="AuthenticationHeader" element="tns:AuthenticationHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetSessionIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSessionID" />
+  </wsdl:message>
+  <wsdl:message name="GetSessionIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSessionIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSessionIDAuthenticationHeader">
+    <wsdl:part name="AuthenticationHeader" element="tns:AuthenticationHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomExportsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCustomExports" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomExportsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCustomExportsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomExportsAuthenticationHeader">
+    <wsdl:part name="AuthenticationHeader" element="tns:AuthenticationHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomExportParametersSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCustomExportParameters" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomExportParametersSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCustomExportParametersResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomExportParametersAuthenticationHeader">
+    <wsdl:part name="AuthenticationHeader" element="tns:AuthenticationHeader" />
+  </wsdl:message>
+  <wsdl:message name="ExecuteCustomExportSoapIn">
+    <wsdl:part name="parameters" element="tns:ExecuteCustomExport" />
+  </wsdl:message>
+  <wsdl:message name="ExecuteCustomExportSoapOut">
+    <wsdl:part name="parameters" element="tns:ExecuteCustomExportResponse" />
+  </wsdl:message>
+  <wsdl:message name="ExecuteCustomExportAuthenticationHeader">
+    <wsdl:part name="AuthenticationHeader" element="tns:AuthenticationHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetAllUnitsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllUnits" />
+  </wsdl:message>
+  <wsdl:message name="GetAllUnitsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllUnitsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllUnitsAuthenticationHeader">
+    <wsdl:part name="AuthenticationHeader" element="tns:AuthenticationHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetSitesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSites" />
+  </wsdl:message>
+  <wsdl:message name="GetSitesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSitesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSitesAuthenticationHeader">
+    <wsdl:part name="AuthenticationHeader" element="tns:AuthenticationHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetStockPeriodDatesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetStockPeriodDates" />
+  </wsdl:message>
+  <wsdl:message name="GetStockPeriodDatesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetStockPeriodDatesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetStockPeriodDatesAuthenticationHeader">
+    <wsdl:part name="AuthenticationHeader" element="tns:AuthenticationHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetMenuGroupsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMenuGroups" />
+  </wsdl:message>
+  <wsdl:message name="GetMenuGroupsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMenuGroupsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMenuGroupsAuthenticationHeader">
+    <wsdl:part name="AuthenticationHeader" element="tns:AuthenticationHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetMenuItemsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMenuItems" />
+  </wsdl:message>
+  <wsdl:message name="GetMenuItemsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMenuItemsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMenuItemsAuthenticationHeader">
+    <wsdl:part name="AuthenticationHeader" element="tns:AuthenticationHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetMenuItemsSummarySoapIn">
+    <wsdl:part name="parameters" element="tns:GetMenuItemsSummary" />
+  </wsdl:message>
+  <wsdl:message name="GetMenuItemsSummarySoapOut">
+    <wsdl:part name="parameters" element="tns:GetMenuItemsSummaryResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMenuItemsSummaryAuthenticationHeader">
+    <wsdl:part name="AuthenticationHeader" element="tns:AuthenticationHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetSalesDetailedSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSalesDetailed" />
+  </wsdl:message>
+  <wsdl:message name="GetSalesDetailedSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSalesDetailedResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSalesDetailedAuthenticationHeader">
+    <wsdl:part name="AuthenticationHeader" element="tns:AuthenticationHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetSalesSummarySoapIn">
+    <wsdl:part name="parameters" element="tns:GetSalesSummary" />
+  </wsdl:message>
+  <wsdl:message name="GetSalesSummarySoapOut">
+    <wsdl:part name="parameters" element="tns:GetSalesSummaryResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSalesSummaryAuthenticationHeader">
+    <wsdl:part name="AuthenticationHeader" element="tns:AuthenticationHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetEPOSScreensSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEPOSScreens" />
+  </wsdl:message>
+  <wsdl:message name="GetEPOSScreensSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEPOSScreensResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetEPOSScreensAuthenticationHeader">
+    <wsdl:part name="AuthenticationHeader" element="tns:AuthenticationHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetEmployeeDataSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEmployeeData" />
+  </wsdl:message>
+  <wsdl:message name="GetEmployeeDataSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEmployeeDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetEmployeeDataAuthenticationHeader">
+    <wsdl:part name="AuthenticationHeader" element="tns:AuthenticationHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetEmployeeDataExtendedSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEmployeeDataExtended" />
+  </wsdl:message>
+  <wsdl:message name="GetEmployeeDataExtendedSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEmployeeDataExtendedResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetEmployeeDataExtendedAuthenticationHeader">
+    <wsdl:part name="AuthenticationHeader" element="tns:AuthenticationHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetEmployeeHoursWorkedSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEmployeeHoursWorked" />
+  </wsdl:message>
+  <wsdl:message name="GetEmployeeHoursWorkedSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEmployeeHoursWorkedResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetEmployeeHoursWorkedAuthenticationHeader">
+    <wsdl:part name="AuthenticationHeader" element="tns:AuthenticationHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetEmployeeDataForEPOSSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEmployeeDataForEPOS" />
+  </wsdl:message>
+  <wsdl:message name="GetEmployeeDataForEPOSSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEmployeeDataForEPOSResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetEmployeeDataForEPOSAuthenticationHeader">
+    <wsdl:part name="AuthenticationHeader" element="tns:AuthenticationHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetMenuItemsWithEPOSScreenInformationSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMenuItemsWithEPOSScreenInformation" />
+  </wsdl:message>
+  <wsdl:message name="GetMenuItemsWithEPOSScreenInformationSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMenuItemsWithEPOSScreenInformationResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMenuItemsWithEPOSScreenInformationAuthenticationHeader">
+    <wsdl:part name="AuthenticationHeader" element="tns:AuthenticationHeader" />
+  </wsdl:message>
+  <wsdl:message name="SubmitSalesSoapIn">
+    <wsdl:part name="parameters" element="tns:SubmitSales" />
+  </wsdl:message>
+  <wsdl:message name="SubmitSalesSoapOut">
+    <wsdl:part name="parameters" element="tns:SubmitSalesResponse" />
+  </wsdl:message>
+  <wsdl:message name="SubmitSalesAuthenticationHeader">
+    <wsdl:part name="AuthenticationHeader" element="tns:AuthenticationHeader" />
+  </wsdl:message>
+  <wsdl:message name="SubmitProductsSoapIn">
+    <wsdl:part name="parameters" element="tns:SubmitProducts" />
+  </wsdl:message>
+  <wsdl:message name="SubmitProductsSoapOut">
+    <wsdl:part name="parameters" element="tns:SubmitProductsResponse" />
+  </wsdl:message>
+  <wsdl:message name="SubmitProductsAuthenticationHeader">
+    <wsdl:part name="AuthenticationHeader" element="tns:AuthenticationHeader" />
+  </wsdl:message>
+  <wsdl:message name="SubmitStockOnHandSoapIn">
+    <wsdl:part name="parameters" element="tns:SubmitStockOnHand" />
+  </wsdl:message>
+  <wsdl:message name="SubmitStockOnHandSoapOut">
+    <wsdl:part name="parameters" element="tns:SubmitStockOnHandResponse" />
+  </wsdl:message>
+  <wsdl:message name="SubmitStockOnHandAuthenticationHeader">
+    <wsdl:part name="AuthenticationHeader" element="tns:AuthenticationHeader" />
+  </wsdl:message>
+  <wsdl:message name="SubmitTandASoapIn">
+    <wsdl:part name="parameters" element="tns:SubmitTandA" />
+  </wsdl:message>
+  <wsdl:message name="SubmitTandASoapOut">
+    <wsdl:part name="parameters" element="tns:SubmitTandAResponse" />
+  </wsdl:message>
+  <wsdl:message name="SubmitTandAAuthenticationHeader">
+    <wsdl:part name="AuthenticationHeader" element="tns:AuthenticationHeader" />
+  </wsdl:message>
+  <wsdl:message name="SubmitCMSDataSoapIn">
+    <wsdl:part name="parameters" element="tns:SubmitCMSData" />
+  </wsdl:message>
+  <wsdl:message name="SubmitCMSDataSoapOut">
+    <wsdl:part name="parameters" element="tns:SubmitCMSDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="SubmitCMSDataAuthenticationHeader">
+    <wsdl:part name="AuthenticationHeader" element="tns:AuthenticationHeader" />
+  </wsdl:message>
+  <wsdl:message name="SubmitDataSoapIn">
+    <wsdl:part name="parameters" element="tns:SubmitData" />
+  </wsdl:message>
+  <wsdl:message name="SubmitDataSoapOut">
+    <wsdl:part name="parameters" element="tns:SubmitDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="SubmitDataAuthenticationHeader">
+    <wsdl:part name="AuthenticationHeader" element="tns:AuthenticationHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetImportTypesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetImportTypes" />
+  </wsdl:message>
+  <wsdl:message name="GetImportTypesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetImportTypesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetImportTypesAuthenticationHeader">
+    <wsdl:part name="AuthenticationHeader" element="tns:AuthenticationHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetClientDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetClientDetails" />
+  </wsdl:message>
+  <wsdl:message name="GetClientDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetClientDetailsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="fhAPISoap">
+    <wsdl:operation name="Login">
+      <wsdl:input message="tns:LoginSoapIn" />
+      <wsdl:output message="tns:LoginSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetPassword">
+      <wsdl:input message="tns:SetPasswordSoapIn" />
+      <wsdl:output message="tns:SetPasswordSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSessionID">
+      <wsdl:input message="tns:GetSessionIDSoapIn" />
+      <wsdl:output message="tns:GetSessionIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomExports">
+      <wsdl:input message="tns:GetCustomExportsSoapIn" />
+      <wsdl:output message="tns:GetCustomExportsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomExportParameters">
+      <wsdl:input message="tns:GetCustomExportParametersSoapIn" />
+      <wsdl:output message="tns:GetCustomExportParametersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteCustomExport">
+      <wsdl:input message="tns:ExecuteCustomExportSoapIn" />
+      <wsdl:output message="tns:ExecuteCustomExportSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUnits">
+      <wsdl:input message="tns:GetAllUnitsSoapIn" />
+      <wsdl:output message="tns:GetAllUnitsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSites">
+      <wsdl:input message="tns:GetSitesSoapIn" />
+      <wsdl:output message="tns:GetSitesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStockPeriodDates">
+      <wsdl:input message="tns:GetStockPeriodDatesSoapIn" />
+      <wsdl:output message="tns:GetStockPeriodDatesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMenuGroups">
+      <wsdl:input message="tns:GetMenuGroupsSoapIn" />
+      <wsdl:output message="tns:GetMenuGroupsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMenuItems">
+      <wsdl:input message="tns:GetMenuItemsSoapIn" />
+      <wsdl:output message="tns:GetMenuItemsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMenuItemsSummary">
+      <wsdl:input message="tns:GetMenuItemsSummarySoapIn" />
+      <wsdl:output message="tns:GetMenuItemsSummarySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSalesDetailed">
+      <wsdl:input message="tns:GetSalesDetailedSoapIn" />
+      <wsdl:output message="tns:GetSalesDetailedSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSalesSummary">
+      <wsdl:input message="tns:GetSalesSummarySoapIn" />
+      <wsdl:output message="tns:GetSalesSummarySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEPOSScreens">
+      <wsdl:input message="tns:GetEPOSScreensSoapIn" />
+      <wsdl:output message="tns:GetEPOSScreensSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployeeData">
+      <wsdl:input message="tns:GetEmployeeDataSoapIn" />
+      <wsdl:output message="tns:GetEmployeeDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployeeDataExtended">
+      <wsdl:input message="tns:GetEmployeeDataExtendedSoapIn" />
+      <wsdl:output message="tns:GetEmployeeDataExtendedSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployeeHoursWorked">
+      <wsdl:input message="tns:GetEmployeeHoursWorkedSoapIn" />
+      <wsdl:output message="tns:GetEmployeeHoursWorkedSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployeeDataForEPOS">
+      <wsdl:input message="tns:GetEmployeeDataForEPOSSoapIn" />
+      <wsdl:output message="tns:GetEmployeeDataForEPOSSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMenuItemsWithEPOSScreenInformation">
+      <wsdl:input message="tns:GetMenuItemsWithEPOSScreenInformationSoapIn" />
+      <wsdl:output message="tns:GetMenuItemsWithEPOSScreenInformationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SubmitSales">
+      <wsdl:input message="tns:SubmitSalesSoapIn" />
+      <wsdl:output message="tns:SubmitSalesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SubmitProducts">
+      <wsdl:input message="tns:SubmitProductsSoapIn" />
+      <wsdl:output message="tns:SubmitProductsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SubmitStockOnHand">
+      <wsdl:input message="tns:SubmitStockOnHandSoapIn" />
+      <wsdl:output message="tns:SubmitStockOnHandSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SubmitTandA">
+      <wsdl:input message="tns:SubmitTandASoapIn" />
+      <wsdl:output message="tns:SubmitTandASoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SubmitCMSData">
+      <wsdl:input message="tns:SubmitCMSDataSoapIn" />
+      <wsdl:output message="tns:SubmitCMSDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SubmitData">
+      <wsdl:input message="tns:SubmitDataSoapIn" />
+      <wsdl:output message="tns:SubmitDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetImportTypes">
+      <wsdl:input message="tns:GetImportTypesSoapIn" />
+      <wsdl:output message="tns:GetImportTypesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetClientDetails">
+      <wsdl:input message="tns:GetClientDetailsSoapIn" />
+      <wsdl:output message="tns:GetClientDetailsSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="fhAPISoap" type="tns:fhAPISoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="http://ws.fourthhospitality.com/Login" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetPassword">
+      <soap:operation soapAction="http://ws.fourthhospitality.com/SetPassword" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:SetPasswordAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSessionID">
+      <soap:operation soapAction="http://ws.fourthhospitality.com/GetSessionID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetSessionIDAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomExports">
+      <soap:operation soapAction="http://ws.fourthhospitality.com/GetCustomExports" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetCustomExportsAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomExportParameters">
+      <soap:operation soapAction="http://ws.fourthhospitality.com/GetCustomExportParameters" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetCustomExportParametersAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteCustomExport">
+      <soap:operation soapAction="http://ws.fourthhospitality.com/ExecuteCustomExport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:ExecuteCustomExportAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUnits">
+      <soap:operation soapAction="http://ws.fourthhospitality.com/GetAllUnits" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetAllUnitsAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSites">
+      <soap:operation soapAction="http://ws.fourthhospitality.com/GetSites" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetSitesAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStockPeriodDates">
+      <soap:operation soapAction="http://ws.fourthhospitality.com/GetStockPeriodDates" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetStockPeriodDatesAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMenuGroups">
+      <soap:operation soapAction="http://ws.fourthhospitality.com/GetMenuGroups" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetMenuGroupsAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMenuItems">
+      <soap:operation soapAction="http://ws.fourthhospitality.com/GetMenuItems" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetMenuItemsAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMenuItemsSummary">
+      <soap:operation soapAction="http://ws.fourthhospitality.com/GetMenuItemsSummary" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetMenuItemsSummaryAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSalesDetailed">
+      <soap:operation soapAction="http://ws.fourthhospitality.com/GetSalesDetailed" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetSalesDetailedAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSalesSummary">
+      <soap:operation soapAction="http://ws.fourthhospitality.com/GetSalesSummary" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetSalesSummaryAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEPOSScreens">
+      <soap:operation soapAction="http://ws.fourthhospitality.com/GetEPOSScreens" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetEPOSScreensAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployeeData">
+      <soap:operation soapAction="http://ws.fourthhospitality.com/GetEmployeeData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetEmployeeDataAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployeeDataExtended">
+      <soap:operation soapAction="http://ws.fourthhospitality.com/GetEmployeeDataExtended" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetEmployeeDataExtendedAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployeeHoursWorked">
+      <soap:operation soapAction="http://ws.fourthhospitality.com/GetEmployeeHoursWorked" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetEmployeeHoursWorkedAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployeeDataForEPOS">
+      <soap:operation soapAction="http://ws.fourthhospitality.com/GetEmployeeDataForEPOS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetEmployeeDataForEPOSAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMenuItemsWithEPOSScreenInformation">
+      <soap:operation soapAction="http://ws.fourthhospitality.com/GetMenuItemsWithEPOSScreenInformation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetMenuItemsWithEPOSScreenInformationAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubmitSales">
+      <soap:operation soapAction="http://ws.fourthhospitality.com/SubmitSales" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:SubmitSalesAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubmitProducts">
+      <soap:operation soapAction="http://ws.fourthhospitality.com/SubmitProducts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:SubmitProductsAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubmitStockOnHand">
+      <soap:operation soapAction="http://ws.fourthhospitality.com/SubmitStockOnHand" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:SubmitStockOnHandAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubmitTandA">
+      <soap:operation soapAction="http://ws.fourthhospitality.com/SubmitTandA" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:SubmitTandAAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubmitCMSData">
+      <soap:operation soapAction="http://ws.fourthhospitality.com/SubmitCMSData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:SubmitCMSDataAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubmitData">
+      <soap:operation soapAction="http://ws.fourthhospitality.com/SubmitData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:SubmitDataAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetImportTypes">
+      <soap:operation soapAction="http://ws.fourthhospitality.com/GetImportTypes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetImportTypesAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClientDetails">
+      <soap:operation soapAction="http://ws.fourthhospitality.com/GetClientDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="fhAPISoap12" type="tns:fhAPISoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Login">
+      <soap12:operation soapAction="http://ws.fourthhospitality.com/Login" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetPassword">
+      <soap12:operation soapAction="http://ws.fourthhospitality.com/SetPassword" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:SetPasswordAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSessionID">
+      <soap12:operation soapAction="http://ws.fourthhospitality.com/GetSessionID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetSessionIDAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomExports">
+      <soap12:operation soapAction="http://ws.fourthhospitality.com/GetCustomExports" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetCustomExportsAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomExportParameters">
+      <soap12:operation soapAction="http://ws.fourthhospitality.com/GetCustomExportParameters" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetCustomExportParametersAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteCustomExport">
+      <soap12:operation soapAction="http://ws.fourthhospitality.com/ExecuteCustomExport" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:ExecuteCustomExportAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUnits">
+      <soap12:operation soapAction="http://ws.fourthhospitality.com/GetAllUnits" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetAllUnitsAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSites">
+      <soap12:operation soapAction="http://ws.fourthhospitality.com/GetSites" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetSitesAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStockPeriodDates">
+      <soap12:operation soapAction="http://ws.fourthhospitality.com/GetStockPeriodDates" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetStockPeriodDatesAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMenuGroups">
+      <soap12:operation soapAction="http://ws.fourthhospitality.com/GetMenuGroups" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetMenuGroupsAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMenuItems">
+      <soap12:operation soapAction="http://ws.fourthhospitality.com/GetMenuItems" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetMenuItemsAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMenuItemsSummary">
+      <soap12:operation soapAction="http://ws.fourthhospitality.com/GetMenuItemsSummary" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetMenuItemsSummaryAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSalesDetailed">
+      <soap12:operation soapAction="http://ws.fourthhospitality.com/GetSalesDetailed" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetSalesDetailedAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSalesSummary">
+      <soap12:operation soapAction="http://ws.fourthhospitality.com/GetSalesSummary" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetSalesSummaryAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEPOSScreens">
+      <soap12:operation soapAction="http://ws.fourthhospitality.com/GetEPOSScreens" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetEPOSScreensAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployeeData">
+      <soap12:operation soapAction="http://ws.fourthhospitality.com/GetEmployeeData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetEmployeeDataAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployeeDataExtended">
+      <soap12:operation soapAction="http://ws.fourthhospitality.com/GetEmployeeDataExtended" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetEmployeeDataExtendedAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployeeHoursWorked">
+      <soap12:operation soapAction="http://ws.fourthhospitality.com/GetEmployeeHoursWorked" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetEmployeeHoursWorkedAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployeeDataForEPOS">
+      <soap12:operation soapAction="http://ws.fourthhospitality.com/GetEmployeeDataForEPOS" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetEmployeeDataForEPOSAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMenuItemsWithEPOSScreenInformation">
+      <soap12:operation soapAction="http://ws.fourthhospitality.com/GetMenuItemsWithEPOSScreenInformation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetMenuItemsWithEPOSScreenInformationAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubmitSales">
+      <soap12:operation soapAction="http://ws.fourthhospitality.com/SubmitSales" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:SubmitSalesAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubmitProducts">
+      <soap12:operation soapAction="http://ws.fourthhospitality.com/SubmitProducts" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:SubmitProductsAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubmitStockOnHand">
+      <soap12:operation soapAction="http://ws.fourthhospitality.com/SubmitStockOnHand" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:SubmitStockOnHandAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubmitTandA">
+      <soap12:operation soapAction="http://ws.fourthhospitality.com/SubmitTandA" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:SubmitTandAAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubmitCMSData">
+      <soap12:operation soapAction="http://ws.fourthhospitality.com/SubmitCMSData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:SubmitCMSDataAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubmitData">
+      <soap12:operation soapAction="http://ws.fourthhospitality.com/SubmitData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:SubmitDataAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetImportTypes">
+      <soap12:operation soapAction="http://ws.fourthhospitality.com/GetImportTypes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetImportTypesAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClientDetails">
+      <soap12:operation soapAction="http://ws.fourthhospitality.com/GetClientDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="fhAPI">
+    <wsdl:port name="fhAPISoap" binding="tns:fhAPISoap">
+      <soap:address location="http://ws.fourthhospitality.com/fhapi.asmx" />
+    </wsdl:port>
+    <wsdl:port name="fhAPISoap12" binding="tns:fhAPISoap12">
+      <soap12:address location="http://ws.fourthhospitality.com/fhapi.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

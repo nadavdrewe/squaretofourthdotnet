@@ -1,0 +1,210 @@
+﻿@model Revel._808nd.com.Classes.Brand
+
+@{
+    ViewBag.Title = "Create";
+
+  
+    
+}
+
+<h2>Create a new brand to submit to Fourth</h2>
+<br/>
+@using (Html.BeginForm(new { @class= "form-horizontal form-bordered"} )) 
+{
+    @Html.AntiForgeryToken()
+
+    <h3>Revel Fields</h3>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="example-email-input">Organisation Base Revel URL (e.g. https://victor.revelup.com/)</label>
+        <div class="col-md-9">
+            <input type="text" id="revel_base_url" name="revel_base_url" class="form-control" placeholder="e.g https://victor.revelup.com/">
+            <span class="help-block">Please enter Organisation Base Revel URL (with a '/'at the end)</span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="example-email-input">Organisation Key/Secret</label>
+        <div class="col-md-9">
+            <input type="text" id="key_secret" name="key_secret" class="form-control" placeholder="e.g. 76asdfghag8as78r6sear8yaeraasdfad:ZQdiFfAwer2">
+            <span class="help-block">Please enter Organisation Key/Secret</span>
+        </div>
+    </div>
+
+    <h3>Fourth Fields</h3>
+
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="fourth_username">Fourth Username</label>
+        <div class="col-md-9">
+            <input type="text" id="fourth_username" name="fourth_username" required  class="form-control" placeholder="e.g Babaji_Revel">
+            <span class="help-block">Please enter Fourth Username</span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="fourth_password">Fourth Password</label>
+        <div class="col-md-9">
+            <input type="text" id="fourth_password" name="fourth_password" required  class="form-control" placeholder="e.g. fnb5h0p16125">
+            <span class="help-block">Please enter Forth Password</span>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="fourth_guid">Fourth GUID</label>
+        <div class="col-md-9">
+            <input type="text" id="fourth_guid" name="fourth_guid" class="form-control" required placeholder="e.g AAAF4968-3B73-4A2B-AE6F-53E839F11A7D">
+            <span class="help-block">Please enter Forth GUID</span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="fourth_locationID">Fourth Location ID</label>
+        <div class="col-md-9">
+            <input type="text" id="fourth_locationID" name="fourth_locationID" class="form-control" required  placeholder="e.g Babaji">
+            <span class="help-block">Please enter Forth Location ID</span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="fourth_locationID">Fourth  Revenue Center</label>
+        <div class="col-md-9">
+            <input type="text" id="fourth_RevenueCenter" name="fourth_RevenueCenter" class="form-control" required placeholder="e.g Babaji">
+            <span class="help-block">Please enter Forth Revenue Center</span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="fourth_PushByEstablishment">Would you like to push to Fourth By Establishment? (else by Brand)</label>
+        <div class="col-md-9">
+            <select id="fourth_PushByEstablishment" name="fourth_PushByEstablishment" class="form-control">
+                <option value="false">No</option>
+                <option value="true">Yes</option>
+            </select>
+            <span class="help-block">Please enter Forth Push Type</span>
+        </div>
+    </div>
+
+    <div class="form-group form-actions">
+        <div class="col-md-9 col-md-offset-3">
+            <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-angle-right"></i> Submit</button>
+            <button type="reset" class="btn btn-sm btn-warning"><i class="fa fa-repeat"></i> Reset</button>
+        </div>
+    </div>
+
+}
+   
+                            
+
+
+
+    @*<div class="form-horizontal">
+        <h4>Brand</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        <div class="form-group">
+            @Html.LabelFor(model => model.updated_date, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.updated_date)
+                @Html.ValidationMessageFor(model => model.updated_date)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.name)
+                @Html.ValidationMessageFor(model => model.name)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.company, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.company)
+                @Html.ValidationMessageFor(model => model.company)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.created_date, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.created_date)
+                @Html.ValidationMessageFor(model => model.created_date)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.id, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.id)
+                @Html.ValidationMessageFor(model => model.id)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.call_names, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.call_names)
+                @Html.ValidationMessageFor(model => model.call_names)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.resource_uri, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.resource_uri)
+                @Html.ValidationMessageFor(model => model.resource_uri)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.is_fourth_active, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.is_fourth_active)
+                @Html.ValidationMessageFor(model => model.is_fourth_active)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.revel_base_url, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.revel_base_url)
+                @Html.ValidationMessageFor(model => model.revel_base_url)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.theAddress, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.theAddress)
+                @Html.ValidationMessageFor(model => model.theAddress)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ResourceUri, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ResourceUri)
+                @Html.ValidationMessageFor(model => model.ResourceUri)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.key_secret, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.key_secret)
+                @Html.ValidationMessageFor(model => model.key_secret)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>*@
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

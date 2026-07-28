@@ -1,0 +1,85 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "web.fourth.revel.com", "web.fourth.revel.com\web.fourth.revel.com.csproj", "{F2D16511-9A1A-4AA8-9E23-25BA48F456A1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{EFD08685-EFB6-48D5-B07D-8738EC14E5FF}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tests.fourth.revel.com", "tests.fourth.revel.com\tests.fourth.revel.com.csproj", "{AF372EF5-0077-4C73-B7AB-64A4AD53FA90}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "topshelf.fourth.revel.com", "topshelf.fourth.revel.com\topshelf.fourth.revel.com.csproj", "{2758C324-C23B-4371-BAEC-727CC8D2BFCE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cmd.fourth.revel.com", "cmd.fourth.revel.com\cmd.fourth.revel.com.csproj", "{8C1E73AE-CE39-4E00-AA8E-213DE9D01A49}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "extension.railgunit.com", "..\extension.railgunit.com\extension.railgunit.com\extension.railgunit.com.csproj", "{F52E2CF6-0E14-483C-80D0-FBA0C8C65B08}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Revel.808nd.com", "..\Grind\Revel.808nd.com\Revel.808nd.com.csproj", "{859053F1-7F43-4373-B0B4-3F8813CEE302}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		portugalholidayrentals.com|Any CPU = portugalholidayrentals.com|Any CPU
+		portugalrentalcottages.com|Any CPU = portugalrentalcottages.com|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F2D16511-9A1A-4AA8-9E23-25BA48F456A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2D16511-9A1A-4AA8-9E23-25BA48F456A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2D16511-9A1A-4AA8-9E23-25BA48F456A1}.portugalholidayrentals.com|Any CPU.ActiveCfg = Release|Any CPU
+		{F2D16511-9A1A-4AA8-9E23-25BA48F456A1}.portugalholidayrentals.com|Any CPU.Build.0 = Release|Any CPU
+		{F2D16511-9A1A-4AA8-9E23-25BA48F456A1}.portugalrentalcottages.com|Any CPU.ActiveCfg = Release|Any CPU
+		{F2D16511-9A1A-4AA8-9E23-25BA48F456A1}.portugalrentalcottages.com|Any CPU.Build.0 = Release|Any CPU
+		{F2D16511-9A1A-4AA8-9E23-25BA48F456A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2D16511-9A1A-4AA8-9E23-25BA48F456A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF372EF5-0077-4C73-B7AB-64A4AD53FA90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF372EF5-0077-4C73-B7AB-64A4AD53FA90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF372EF5-0077-4C73-B7AB-64A4AD53FA90}.portugalholidayrentals.com|Any CPU.ActiveCfg = Release|Any CPU
+		{AF372EF5-0077-4C73-B7AB-64A4AD53FA90}.portugalholidayrentals.com|Any CPU.Build.0 = Release|Any CPU
+		{AF372EF5-0077-4C73-B7AB-64A4AD53FA90}.portugalrentalcottages.com|Any CPU.ActiveCfg = Release|Any CPU
+		{AF372EF5-0077-4C73-B7AB-64A4AD53FA90}.portugalrentalcottages.com|Any CPU.Build.0 = Release|Any CPU
+		{AF372EF5-0077-4C73-B7AB-64A4AD53FA90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF372EF5-0077-4C73-B7AB-64A4AD53FA90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2758C324-C23B-4371-BAEC-727CC8D2BFCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2758C324-C23B-4371-BAEC-727CC8D2BFCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2758C324-C23B-4371-BAEC-727CC8D2BFCE}.portugalholidayrentals.com|Any CPU.ActiveCfg = Release|Any CPU
+		{2758C324-C23B-4371-BAEC-727CC8D2BFCE}.portugalholidayrentals.com|Any CPU.Build.0 = Release|Any CPU
+		{2758C324-C23B-4371-BAEC-727CC8D2BFCE}.portugalrentalcottages.com|Any CPU.ActiveCfg = Release|Any CPU
+		{2758C324-C23B-4371-BAEC-727CC8D2BFCE}.portugalrentalcottages.com|Any CPU.Build.0 = Release|Any CPU
+		{2758C324-C23B-4371-BAEC-727CC8D2BFCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2758C324-C23B-4371-BAEC-727CC8D2BFCE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C1E73AE-CE39-4E00-AA8E-213DE9D01A49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C1E73AE-CE39-4E00-AA8E-213DE9D01A49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C1E73AE-CE39-4E00-AA8E-213DE9D01A49}.portugalholidayrentals.com|Any CPU.ActiveCfg = Release|Any CPU
+		{8C1E73AE-CE39-4E00-AA8E-213DE9D01A49}.portugalholidayrentals.com|Any CPU.Build.0 = Release|Any CPU
+		{8C1E73AE-CE39-4E00-AA8E-213DE9D01A49}.portugalrentalcottages.com|Any CPU.ActiveCfg = Release|Any CPU
+		{8C1E73AE-CE39-4E00-AA8E-213DE9D01A49}.portugalrentalcottages.com|Any CPU.Build.0 = Release|Any CPU
+		{8C1E73AE-CE39-4E00-AA8E-213DE9D01A49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C1E73AE-CE39-4E00-AA8E-213DE9D01A49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F52E2CF6-0E14-483C-80D0-FBA0C8C65B08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F52E2CF6-0E14-483C-80D0-FBA0C8C65B08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F52E2CF6-0E14-483C-80D0-FBA0C8C65B08}.portugalholidayrentals.com|Any CPU.ActiveCfg = portugalholidayrentals.com|Any CPU
+		{F52E2CF6-0E14-483C-80D0-FBA0C8C65B08}.portugalholidayrentals.com|Any CPU.Build.0 = portugalholidayrentals.com|Any CPU
+		{F52E2CF6-0E14-483C-80D0-FBA0C8C65B08}.portugalrentalcottages.com|Any CPU.ActiveCfg = portugalrentalcottages.com|Any CPU
+		{F52E2CF6-0E14-483C-80D0-FBA0C8C65B08}.portugalrentalcottages.com|Any CPU.Build.0 = portugalrentalcottages.com|Any CPU
+		{F52E2CF6-0E14-483C-80D0-FBA0C8C65B08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F52E2CF6-0E14-483C-80D0-FBA0C8C65B08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{859053F1-7F43-4373-B0B4-3F8813CEE302}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{859053F1-7F43-4373-B0B4-3F8813CEE302}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{859053F1-7F43-4373-B0B4-3F8813CEE302}.portugalholidayrentals.com|Any CPU.ActiveCfg = Release|Any CPU
+		{859053F1-7F43-4373-B0B4-3F8813CEE302}.portugalholidayrentals.com|Any CPU.Build.0 = Release|Any CPU
+		{859053F1-7F43-4373-B0B4-3F8813CEE302}.portugalrentalcottages.com|Any CPU.ActiveCfg = Release|Any CPU
+		{859053F1-7F43-4373-B0B4-3F8813CEE302}.portugalrentalcottages.com|Any CPU.Build.0 = Release|Any CPU
+		{859053F1-7F43-4373-B0B4-3F8813CEE302}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{859053F1-7F43-4373-B0B4-3F8813CEE302}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

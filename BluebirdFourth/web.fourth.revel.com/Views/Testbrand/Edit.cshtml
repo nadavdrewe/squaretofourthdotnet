@@ -1,0 +1,173 @@
+﻿@model Revel._808nd.com.Classes.Brand
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Brand</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.brand_id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.updated_date, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.updated_date)
+                @Html.ValidationMessageFor(model => model.updated_date)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.name)
+                @Html.ValidationMessageFor(model => model.name)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.company, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.company)
+                @Html.ValidationMessageFor(model => model.company)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.created_date, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.created_date)
+                @Html.ValidationMessageFor(model => model.created_date)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.id, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.id)
+                @Html.ValidationMessageFor(model => model.id)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.call_names, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.call_names)
+                @Html.ValidationMessageFor(model => model.call_names)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.resource_uri, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.resource_uri)
+                @Html.ValidationMessageFor(model => model.resource_uri)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.is_fourth_active, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.is_fourth_active)
+                @Html.ValidationMessageFor(model => model.is_fourth_active)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.revel_base_url, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.revel_base_url)
+                @Html.ValidationMessageFor(model => model.revel_base_url)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.theAddress, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.theAddress)
+                @Html.ValidationMessageFor(model => model.theAddress)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ResourceUri, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ResourceUri)
+                @Html.ValidationMessageFor(model => model.ResourceUri)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.key_secret, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.key_secret)
+                @Html.ValidationMessageFor(model => model.key_secret)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.fourth_username, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.fourth_username)
+                @Html.ValidationMessageFor(model => model.fourth_username)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.fourth_password, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.fourth_password)
+                @Html.ValidationMessageFor(model => model.fourth_password)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.fourth_guid, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.fourth_guid)
+                @Html.ValidationMessageFor(model => model.fourth_guid)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.fourth_locationID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.fourth_locationID)
+                @Html.ValidationMessageFor(model => model.fourth_locationID)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.fourth_RevenueCenter, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.fourth_RevenueCenter)
+                @Html.ValidationMessageFor(model => model.fourth_RevenueCenter)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.fourth_PushByEstablishment, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.fourth_PushByEstablishment)
+                @Html.ValidationMessageFor(model => model.fourth_PushByEstablishment)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

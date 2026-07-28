@@ -1,0 +1,108 @@
+﻿@model IEnumerable<Revel._808nd.com.Classes.Brand>
+
+@{
+    ViewBag.Title = "Brand Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            @*<th>
+                   Last Updated
+                </th>*@
+            <th>
+                Name
+            </th>
+            <th>
+                Company
+            </th>
+            <th>
+                Created
+            </th>
+            <th>
+                Id
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.call_names)
+                </th>*@
+            <th>
+                Resource URI
+            </th>
+            <th>
+                Fourth Active?
+            </th>
+            <th>
+                Push by Establishment
+            </th>
+            <th>
+                Revel Base URL
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.theAddress)
+                </th>*@
+            @*<th>
+                    @Html.DisplayNameFor(model => model.ResourceUri)
+                </th>*@
+            <th>
+                WebAPI Key/Secret
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.updated_date)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.company)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.created_date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.id)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.call_names)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.resource_uri)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.is_fourth_active)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fourth_PushByEstablishment)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.revel_base_url)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.theAddress)
+                    </td>*@
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.ResourceUri)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.key_secret)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.brand_id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.brand_id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.brand_id })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

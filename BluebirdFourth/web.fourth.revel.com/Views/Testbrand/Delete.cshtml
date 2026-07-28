@@ -1,0 +1,168 @@
+﻿@model Revel._808nd.com.Classes.Brand
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Brand</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.updated_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.updated_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.company)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.company)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.created_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.created_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.call_names)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.call_names)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.resource_uri)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.resource_uri)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.is_fourth_active)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.is_fourth_active)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.revel_base_url)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.revel_base_url)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.theAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.theAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ResourceUri)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ResourceUri)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.key_secret)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.key_secret)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fourth_username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fourth_username)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fourth_password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fourth_password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fourth_guid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fourth_guid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fourth_locationID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fourth_locationID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fourth_RevenueCenter)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fourth_RevenueCenter)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fourth_PushByEstablishment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fourth_PushByEstablishment)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

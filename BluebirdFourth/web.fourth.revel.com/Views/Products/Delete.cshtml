@@ -1,0 +1,464 @@
+﻿@model Revel._808nd.com.Classes.Product
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Product</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.active)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.active)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.allow_price_override)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.allow_price_override)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.attribute_type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.attribute_type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.barcode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.barcode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.brand)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.brand)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.category)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.category)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.color_code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.color_code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.commission)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.commission)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cost)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.created_by)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.created_by)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.created_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.created_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.crv_enabled)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.crv_enabled)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.deleted)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.deleted)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dining_options)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dining_options)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.disable_modifier_popup)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.disable_modifier_popup)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.display_on_kiosk)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.display_on_kiosk)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.display_online)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.display_online)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ebt_no)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ebt_no)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.establishment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.establishment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.export)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.export)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.happy_hour)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.happy_hour)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.product_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.product_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.is_cold)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.is_cold)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.is_combo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.is_combo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.is_drink)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.is_drink)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.kitchen_print_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.kitchen_print_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lock_enable)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lock_enable)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.max_price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.max_price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.preparation_time)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.preparation_time)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.price_embedded)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.price_embedded)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.product_weight_unit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.product_weight_unit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.productclass)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.productclass)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.resource_uri)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.resource_uri)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.rti_combo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rti_combo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sku)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sku)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sold_by_weight)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sold_by_weight)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sorting)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sorting)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tare)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tare)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tax)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tax)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tax_class)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tax_class)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tax_included)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tax_included)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.updated_by)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.updated_by)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.updated_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.updated_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.uuid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.uuid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.variable_pricing)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.variable_pricing)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.variable_pricing_by)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.variable_pricing_by)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.establishment_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.establishment_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.productclass_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.productclass_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tax_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tax_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.brand_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.brand_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.categoryID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.categoryID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.theAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.theAddress)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

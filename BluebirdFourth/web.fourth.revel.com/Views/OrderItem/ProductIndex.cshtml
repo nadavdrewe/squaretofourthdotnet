@@ -1,0 +1,119 @@
+﻿@using web.fourth.revel.com.Models
+@model IEnumerable<web.fourth.revel.com.Models.ProductOrderItemSummary>
+
+
+@{
+    ViewBag.Title = "Product Order Item Index";
+
+    var brands = (List<SelectListItem>)ViewBag.Brands;
+    var establishments = (List<SelectListItem>)ViewBag.Establishments;
+
+}
+
+
+
+<h2>Product - Order Item Index</h2>
+@ViewBag.Message
+<div>
+    @using (Html.BeginForm("ProductIndex", "OrderItem"))
+    {
+        <h4>
+            Show Brand @Html.DropDownList("Brands", brands) || Establishments @Html.DropDownList("Establishments", establishments)
+            || Start:<input type="date" name="start" required />
+            ||End: <input type="date" name="end" required />
+            || Voids:<select name="voids" id="voids">
+                <option selected value="0">Include Voids</option>
+                <option value="1">Exclude Voids</option>
+                <option value="2">Show ONLY Voids</option>
+            </select>
+            <input type="submit" />
+        </h4>
+    }
+</div>
+
+<div id="orderItemContainer">
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Store Type
+                </th>
+                <th>
+                    Store Identifier
+                </th>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Identifier
+                </th>
+                <th>
+                    SKU
+                </th>
+                <th>
+                    Total Quantity
+                </th>
+                <th>
+                    Voided Amount
+                </th>
+                <th>
+                    Pure Sales
+                </th>
+                <th>
+                    Item Discount
+                </th>
+                <th>
+                    Tax
+                </th>
+                @* <th>
+                        Item Discount Tax
+                    </th>*@
+
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StoreType)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StoreIdentifier)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductIdentifier)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SKU)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TotalQuantity)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TotalVoided)
+                    </td>
+                    <th>
+                        @Html.DisplayFor(modelItem => item.TotalPureSales)
+                    </th>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TotalDiscount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TotalTax)
+                    </td>
+                    @*  <td>
+                            @Html.DisplayFor(modelItem => item.TotalDiscountTax) (already included in discount)
+                        </td>*@
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,146 @@
+﻿@model Revel._808nd.com.Classes.ScheduledTaskLog
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ScheduledTaskLog</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Message)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Message)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FireTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FireTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ContainerStartDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ContainerStartDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ContainerEndDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ContainerEndDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Detail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Detail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Result)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Result)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Brand)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Brand)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BrandName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BrandName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Establishment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Establishment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EstablishmentName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EstablishmentName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalPounds)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalPounds)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalVAT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalVAT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalItemCount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalItemCount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalItemQuantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalItemQuantity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LogType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LogType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

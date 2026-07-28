@@ -1,0 +1,46 @@
+﻿@model Revel._808nd.com.Classes.Establishment
+
+@{
+    ViewBag.Title = "Edit";
+
+    var options = new AjaxOptions
+    {
+        InsertionMode = InsertionMode.Replace,
+        OnSuccess = "alert('All updated successfully!')",
+        OnFailure = "alert('That did not work, sorry')",
+        HttpMethod = "POST"
+    };
+
+}
+
+<h2>Edit Establishment</h2>
+
+@using (Html.BeginForm(new { @class = "form-horizontal form-bordered" }))
+{
+    @Html.AntiForgeryToken()
+
+
+    <h4>Establishment @Model.name</h4>
+    <hr />
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(model => model.DBKEY_establishment_id)
+
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="example-email-input">Is Fourth Push Active?</label>
+        <div class="col-md-9">
+            <input type="checkbox" id="is_fourth_active" name="is_fourth_active" @if(Model.is_fourth_active == true){ @Html.Raw("checked")    }>
+            <span class="help-block">Is Fourth Push Active?</span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-9 col-md-offset-3">
+            <button type="submit" class="btn btn-sm btn-primary">Save</button>
+            @Ajax.ActionLink("Refresh All Products", "RefreshProductsByEstablishment", "Products", new { estId = Model.DBKEY_establishment_id }, options, new { @class = "btn btn-sm btn-info" })
+         
+        </div>
+    </div>
+}
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>

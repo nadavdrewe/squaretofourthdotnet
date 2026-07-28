@@ -1,0 +1,288 @@
+﻿@model IEnumerable<Revel._808nd.com.Classes.ScheduledTaskLog>
+
+@{
+    ViewBag.Title = "Index";
+    var successFourthLogs = ViewBag.FourthLogs as IEnumerable<Revel._808nd.com.Classes.ScheduledTaskLog>;
+    var failLogs = ViewBag.ErrorLogs as IEnumerable<Revel._808nd.com.Classes.ScheduledTaskLog>;
+
+
+
+}
+
+
+<h2>Errors</h2>
+<div style="overflow:auto">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.LogType)
+                </th>
+                <th>
+                    Run By
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Result)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Detail)
+                </th>
+                <th>
+                    XML
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Message)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FireTime)
+                </th>
+                <th>
+                    Brand ID
+                </th>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Establishment ID
+                </th>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Total Pure Sales
+                </th>
+                <th>
+                    Total VAT
+                </th>
+                <th>
+                    Total Order Items
+                </th>
+                <th>
+                    Total Order Items Quantity
+                </th>
+                <th>
+                    Transaction Container Start Date
+                </th>
+                <th>
+                    Transaction Container End Date
+                </th>
+
+
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in failLogs)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LogType)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.User)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Result)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Detail)
+                    </td>
+                    <td>
+                        @if (!String.IsNullOrEmpty(item.Notes))
+                        {
+                            @Html.ActionLink("View XML", "Download", new { logId = item.Id })
+                        }
+                        else
+                        {
+                            @Html.Raw("No XML to display");
+                        }
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Message)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FireTime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Brand)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BrandName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Establishment)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EstablishmentName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TotalPounds)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TotalVAT)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TotalItemCount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TotalItemQuantity)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ContainerStartDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ContainerEndDate)
+                    </td>
+
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
+
+
+<h2>Fourth Success Logs</h2>
+<div style="overflow:auto">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.LogType)
+                </th>
+                <th>
+                    Run By
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Result)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Detail)
+                </th>
+                <th>
+                    XML
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Message)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FireTime)
+                </th>
+                <th>
+                    Brand ID
+                </th>
+                <th>
+                   Brand Name
+                </th>
+                <th>
+                    Establishment ID
+                </th>
+                <th>
+                    Establishment Name
+                </th>
+                <th>
+                    Total Pure Sales
+                </th>
+                <th>
+                    Total VAT
+                </th>
+                <th>
+                    Total Order Items
+                </th>
+                <th>
+                    Total Order Items Quantity
+                </th>
+                <th>
+                    Transaction Container Start Date
+                </th>
+                <th>
+                    Transaction Container End Date
+                </th>
+
+
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in successFourthLogs)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LogType)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.User)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Result)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Detail)
+                    </td>
+                    <td>
+                        @if (!String.IsNullOrEmpty(item.Notes))
+                        {
+                            @Html.ActionLink("View XML", "Download", new { logId = item.Id })
+                        }
+                        else
+                        {
+                            @Html.Raw("No XML to display");
+                        }
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Message)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FireTime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Brand)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BrandName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Establishment)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EstablishmentName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TotalPounds)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TotalVAT)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TotalItemCount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TotalItemQuantity)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ContainerStartDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ContainerEndDate)
+                    </td>
+
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
+
+
+
+

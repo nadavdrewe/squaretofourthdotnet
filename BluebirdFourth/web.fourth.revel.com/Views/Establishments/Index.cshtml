@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Revel._808nd.com.Classes.Establishment>
+
+@{
+    ViewBag.Title = "Establishment Index";
+}
+
+<h2>Establishment Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <thead>
+        <tr>
+
+            <th>
+                Name
+            </th>
+            <th>
+                Is Fourth Active?
+            </th>
+            <th>
+                Brand
+            </th>
+            <th>
+                Email
+            </th>
+
+
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.is_fourth_active)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.brand)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.email)
+                </td>
+
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.DBKEY_establishment_id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.DBKEY_establishment_id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.DBKEY_establishment_id })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,134 @@
+﻿@model Revel._808nd.com.Classes.Brand
+
+@{
+    ViewBag.Title = "Edit";
+    
+    var options = new AjaxOptions
+    {
+        InsertionMode = InsertionMode.Replace,
+        OnBegin = "onBegin",
+        OnComplete = "onComplete",
+        OnSuccess = "alert('All updated successfully!')",
+        OnFailure = "alert('That did not work, sorry')",
+        HttpMethod = "POST"
+    };
+
+}
+
+
+<h4>Edit Your Brand</h4>
+<hr />
+
+@using (Html.BeginForm("Edit", "Brands", FormMethod.Post, new { @class = "form-horizontal form-bordered" }))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.HiddenFor(model => model.brand_id)
+
+    <h3>Revel Fields</h3>
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="example-email-input">Organisation Base Revel URL (e.g. https://victor.revelup.com/)</label>
+        <div class="col-md-9">
+            <input type="text" id="revel_base_url" name="revel_base_url" class="form-control" value="@Model.revel_base_url" placeholder="e.g https://victor.revelup.com/">
+            <span class="help-block">Please enter Organisation Base Revel URL (with a '/'at the end)</span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="example-email-input">Organisation Key/Secret</label>
+        <div class="col-md-9">
+            <input type="text" id="key_secret" name="key_secret" class="form-control" value="@Model.key_secret" placeholder="e.g. 76asdfghag8as78r6sear8yaeraasdfad:ZQdiFfAwer2">
+            <span class="help-block">Please enter Organisation Key/Secret</span>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="example-email-input">Is Fourth Push Active?</label>
+        <div class="col-md-9">
+            @Html.CheckBoxFor(item => Model.is_fourth_active)
+            <span class="help-block">Is Fourth Push Active?</span>
+        </div>
+    </div>
+
+
+    <h3>Fourth Fields</h3>
+
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="fourth_username">Fourth Username</label>
+        <div class="col-md-9">
+            <input type="text" id="fourth_username" name="fourth_username" class="form-control" placeholder="e.g Babaji_Revel" value="@Model.fourth_username">
+            <span class="help-block">Please enter Fourth Username</span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="fourth_password">Fourth Password</label>
+        <div class="col-md-9">
+            <input type="text" id="fourth_password" name="fourth_password" class="form-control" placeholder="e.g. fnb5h0p16125" value="@Model.fourth_password">
+            <span class="help-block">Please enter Forth Password</span>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="fourth_guid">Fourth GUID</label>
+        <div class="col-md-9">
+            <input type="text" id="fourth_guid" name="fourth_guid" class="form-control" placeholder="e.g AAAF4968-3B73-4A2B-AE6F-53E839F11A7D" value="@Model.fourth_guid">
+            <span class="help-block">Please enter Forth GUID</span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="fourth_locationID">Fourth Location ID</label>
+        <div class="col-md-9">
+            <input type="text" id="fourth_locationID" name="fourth_locationID" class="form-control" placeholder="e.g Babaji" value="@Model.fourth_locationID">
+            <span class="help-block">Please enter Forth Location ID</span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="fourth_locationID">Fourth Revenue Center</label>
+        <div class="col-md-9">
+            <input type="text" id="fourth_RevenueCenter" name="fourth_RevenueCenter" class="form-control" required placeholder="e.g 1" value="@Model.fourth_RevenueCenter">
+            <span class="help-block">Please enter Forth Revenue Center</span>
+        </div>
+    </div>
+
+ @*   <div class="form-group">
+        <label class="col-md-3 control-label" for="fourth_PushByEstablishment">Would you like to push to Fourth By Establishment? (else by Brand)</label>
+        <div class="col-md-9">
+            <select id="fourth_PushByEstablishment" name="fourth_PushByEstablishment" class="form-control" required>
+                <option value="false">No</option>
+                <option value="true">Yes</option>
+            </select>
+            <span class="help-block">Please enter Forth Push Type</span>
+        </div>
+    </div>
+*@
+
+    <div class="form-group">
+        <label class="col-md-3 control-label" for="fourth_PushByEstablishment">Would you like to push to Fourth By Establishment? (else by Brand)</label>
+        <div class="col-md-9">
+            @Html.EditorFor(model => model.fourth_PushByEstablishment)
+            @Html.ValidationMessageFor(model => model.fourth_PushByEstablishment)
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-9 col-md-offset-3">
+            <button type="submit" class="btn btn-sm btn-primary">Save</button>
+            @Ajax.ActionLink("Refresh All Establishments", "RefreshEstablishments", "Establishments", new { brandId = Model.brand_id }, options, new { @class = "btn btn-sm btn-info" })
+            @Ajax.ActionLink("Refresh All Products", "RefreshProductsByBrand", "Products", new { brandId = Model.brand_id }, options, new { @class = "btn btn-sm btn-warning" })
+            @*<button type="submit" class="btn btn-sm btn-info"><i class="fa fa-angle-right"></i> Refresh All Establishments</button>*@
+        </div>
+    </div>
+
+
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+
