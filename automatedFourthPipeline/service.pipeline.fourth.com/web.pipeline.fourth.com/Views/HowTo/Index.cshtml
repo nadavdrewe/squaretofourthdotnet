@@ -1,0 +1,80 @@
+@{
+    ViewData["Title"] = "How To Configure";
+}
+
+<div class="page-header howto-header">
+    <div>
+        <p class="howto-eyebrow">Operator guide</p>
+        <h3 class="page-title">Configure Square to Fourth</h3>
+        <p class="text-muted mb-0">Set up the shared Square app once, then repeat the client connection flow for every brand.</p>
+    </div>
+    <a class="btn btn-primary" asp-controller="ClientSetup" asp-action="Index">Open client setup</a>
+</div>
+
+<div class="howto-note">
+    <i class="mdi mdi-shield-check-outline"></i>
+    <div><strong>Keep developer credentials private.</strong> The Square application ID and secret belong to the integration operator. The client only needs to sign in to their own Square account when asked to authorise access.</div>
+</div>
+
+<div class="row">
+    <div class="col-xl-6 grid-margin stretch-card">
+        <section class="card howto-card">
+            <div class="card-body">
+                <span class="howto-kicker">Part 1</span>
+                <h4>One-time developer setup</h4>
+                <ol class="howto-steps">
+                    <li>Create or select the Production Square Developer application.</li>
+                    <li>In Square, register this redirect URL exactly: <code>https://squaretofourth.store/oauthredirect/accept</code>.</li>
+                    <li>Request the scopes used by this integration: merchant profile, orders, payments, items, employees, and timecards read access.</li>
+                    <li>Open <strong>API Credentials &gt; Square OAuth Applications</strong> and select <strong>Add Square OAuth Application</strong>.</li>
+                    <li>Enter the app name, environment, Square application ID, Square application secret, and the matching redirect URL. Keep it active.</li>
+                    <li>Apply the database migration, deploy the web app and worker against the same production database, and provide runtime connection strings outside source control.</li>
+                </ol>
+                <a class="btn btn-outline-primary btn-sm" asp-controller="SquareOAuthApplications" asp-action="Index">Manage Square applications</a>
+            </div>
+        </section>
+    </div>
+    <div class="col-xl-6 grid-margin stretch-card">
+        <section class="card howto-card">
+            <div class="card-body">
+                <span class="howto-kicker">Part 2</span>
+                <h4>Connect one client</h4>
+                <ol class="howto-steps">
+                    <li>Open <strong>Client Setup</strong> and select <strong>Add client</strong> if the brand is not present.</li>
+                    <li>Set up the client’s Fourth credentials and required stores.</li>
+                    <li>On the client card, select <strong>Connect Square</strong>.</li>
+                    <li>Choose the client and the correct Square OAuth application, then continue.</li>
+                    <li>Ask the client to sign in to their own Square seller account and approve access.</li>
+                    <li>Return to Client Setup. Confirm the merchant ID and <strong>Connected</strong> status, then select <strong>Test</strong>.</li>
+                    <li>Select <strong>Map locations</strong> and configure each Square store against the matching Fourth sales destination.</li>
+                </ol>
+                <a class="btn btn-dark btn-sm" asp-controller="ClientSetup" asp-action="Index">Connect a client</a>
+            </div>
+        </section>
+    </div>
+</div>
+
+<section class="card howto-card howto-lifecycle">
+    <div class="card-body">
+        <span class="howto-kicker">What happens next</span>
+        <h4>Connection and refresh lifecycle</h4>
+        <div class="row">
+            <div class="col-md-4"><div class="howto-lifecycle-item"><span>01</span><strong>Store</strong><p>Square returns an access token and refresh token. They are saved against this client’s brand only.</p></div></div>
+            <div class="col-md-4"><div class="howto-lifecycle-item"><span>02</span><strong>Refresh</strong><p>Before use, the system refreshes the connection when the token is close to expiry or has not been refreshed for seven days.</p></div></div>
+            <div class="col-md-4"><div class="howto-lifecycle-item"><span>03</span><strong>Push</strong><p>The scheduled worker selects the active Square credential for the brand, collects the day’s data, and sends the established Fourth sales output.</p></div></div>
+        </div>
+    </div>
+</section>
+
+<section class="card howto-card">
+    <div class="card-body">
+        <span class="howto-kicker">Before go-live</span>
+        <h4>Use this acceptance checklist for every client</h4>
+        <div class="howto-checklist">
+            <div><i class="mdi mdi-check-circle-outline"></i> Square order count matches the selected trading day.</div>
+            <div><i class="mdi mdi-check-circle-outline"></i> Tender, discount, modifier, and open/close rows appear in the generated output.</div>
+            <div><i class="mdi mdi-check-circle-outline"></i> Fourth accepts the upload using the existing CSV contract.</div>
+            <div><i class="mdi mdi-check-circle-outline"></i> The Square connection remains active after a token refresh and a scheduled run.</div>
+        </div>
+    </div>
+</section>
