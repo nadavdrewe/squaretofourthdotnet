@@ -1,7 +1,11 @@
 using System;
+using System.IO;
+using System.Linq;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.DataProtection;
+using Microsoft.AspNetCore.HttpOverrides;
 using System.Threading.RateLimiting;
 using domain.pipeline.fourth.com.Models;
 using domain.pipeline.fourth.com.Services.Square.Oauth;
@@ -29,7 +33,7 @@ namespace web.pipeline.fourth.com
 
         public IConfiguration Configuration { get; }
 
-        public void ConfigureServices(IServiceCollection services)
+        public void ConfigureServices(IServiceCollection services, IWebHostEnvironment environment)
         {
             services.AddDbContext<FourthPipelineContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("FourthSalesPipelineContext")));
@@ -66,6 +70,42 @@ namespace web.pipeline.fourth.com
                     .RequireAuthenticatedUser()
                     .Build();
             });
+
+            services.AddOptions<StaticAdminOptions>()
+                .Bind(Configuration.GetSection("StaticAdmin"))
+                .Validate(options => !string.IsNullOrWhiteSpace(options.Username),
+                    "StaticAdmin:Username must be configured.")
+                .Validate(options => !string.IsNullOrWhiteSpace(options.PasswordHash) &&
+                                     options.PasswordHash.Length == 64 &&
+                                     options.PasswordHash.All(Uri.IsHexDigit),
+                    "StaticAdmin:PasswordHash must be a SHA-256 hash represented as 64 hexadecimal characters.")
+                .ValidateOnStart();
+
+            var dataProtection = services.AddDataProtection().SetApplicationName("SquareToFourth");
+            var keysDirectory = Configuration["DataProtection:KeysDirectory"];
+            if (string.IsNullOrWhiteSpace(keysDirectory))
+            {
+                if (!environment.IsDevelopment())
+                {
+                    throw new InvalidOperationException(
+                        "DataProtection:KeysDirectory must be configured outside development so admin sessions survive restarts.");
+                }
+            }
+            else
+            {
+                Directory.CreateDirectory(keysDirectory);
+                dataProtection.PersistKeysToFileSystem(new DirectoryInfo(keysDirectory));
+            }
+
+            if (Configuration.GetValue<bool>("ForwardedHeaders:Enabled"))
+            {
+                services.Configure<ForwardedHeadersOptions>(options =>
+                {
+                    options.ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
+                    options.KnownIPNetworks.Clear();
+                    options.KnownProxies.Clear();
+                });
+            }
 
             services.AddControllersWithViews();
             services.AddRazorPages();
@@ -111,6 +151,11 @@ namespace web.pipeline.fourth.com
             {
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
+            }
+
+            if (Configuration.GetValue<bool>("ForwardedHeaders:Enabled"))
+            {
+                app.UseForwardedHeaders();
             }
 
             app.UseHttpsRedirection();

@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.RateLimiting;
+using Microsoft.Extensions.Options;
 using web.pipeline.fourth.com.Models;
 
 namespace web.pipeline.fourth.com.Controllers
@@ -15,9 +16,12 @@ namespace web.pipeline.fourth.com.Controllers
     [EnableRateLimiting("site-login")]
     public class AccessController : Controller
     {
-        private const string AdminUsername = "admin";
-        private static readonly byte[] AdminPasswordHash = Convert.FromHexString(
-            "02f6bbda1cf2e39d5c674d62b14734490783b9654bce5babe028eee954929725");
+        private readonly StaticAdminOptions _adminOptions;
+
+        public AccessController(IOptions<StaticAdminOptions> adminOptions)
+        {
+            _adminOptions = adminOptions.Value;
+        }
 
         [HttpGet]
         [AllowAnonymous]
@@ -46,7 +50,7 @@ namespace web.pipeline.fourth.com.Controllers
 
             var claims = new[]
             {
-                new Claim(ClaimTypes.Name, AdminUsername),
+                new Claim(ClaimTypes.Name, _adminOptions.Username),
                 new Claim(ClaimTypes.Role, "Administrator")
             };
             var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
@@ -72,15 +76,25 @@ namespace web.pipeline.fourth.com.Controllers
             return Url.IsLocalUrl(returnUrl) ? returnUrl : Url.Action("Index", "ClientSetup");
         }
 
-        private static bool CredentialsAreValid(string username, string password)
+        private bool CredentialsAreValid(string username, string password)
         {
-            if (!string.Equals(username, AdminUsername, StringComparison.Ordinal) || string.IsNullOrEmpty(password))
+            if (!string.Equals(username, _adminOptions.Username, StringComparison.Ordinal) ||
+                string.IsNullOrEmpty(password) ||
+                string.IsNullOrWhiteSpace(_adminOptions.PasswordHash))
             {
                 return false;
             }
 
-            var passwordHash = SHA256.HashData(Encoding.UTF8.GetBytes(password));
-            return CryptographicOperations.FixedTimeEquals(passwordHash, AdminPasswordHash);
+            try
+            {
+                var expectedHash = Convert.FromHexString(_adminOptions.PasswordHash);
+                var passwordHash = SHA256.HashData(Encoding.UTF8.GetBytes(password));
+                return CryptographicOperations.FixedTimeEquals(passwordHash, expectedHash);
+            }
+            catch (FormatException)
+            {
+                return false;
+            }
         }
     }
 }
