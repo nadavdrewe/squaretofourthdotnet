@@ -1,94 +1,12 @@
-﻿@model data.pipeline.fourth.com.Models.Credentials.BaseCredential
-
+@model data.pipeline.fourth.com.Models.Credentials.BaseCredential
 @{
-    ViewData["Title"] = "Delete";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Delete API Credential";
+    var isSquareOAuth = Model.CredentialType == shared.pipeline.fouth.com.Enums.CredentialTypes.SquareApi;
 }
 
-<h1>Delete</h1>
-
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>BaseCredential</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Username)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Username)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.LatestAccessToken)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.LatestAccessToken)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.RefreshToken)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.RefreshToken)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.BaseEndpoint)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.BaseEndpoint)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Password)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Password)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.KeySecret)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.KeySecret)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.SupplimentalData1)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.SupplimentalData1)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.SupplimentalData2)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.SupplimentalData2)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.CredentialType)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.CredentialType)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Store)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Store.Id)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Brand)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Brand.Id)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Active)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Active)
-        </dd>
-    </dl>
-    
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
-    </form>
-</div>
+<div class="page-header"><div><h1>Delete API credential</h1><p class="text-muted mb-0">This immediately removes the stored connection material for this record.</p></div></div>
+<section class="card sf-danger-panel"><div class="card-body"><h2>Remove this credential?</h2><p>@Model.CredentialType for <strong>@(Model.Brand?.Name ?? "unassigned client")</strong>@(Model.Store == null ? "" : " / " + Model.Store.Name).</p>
+@if (isSquareOAuth) { <div class="alert alert-warning">Deleting this OAuth connection stops Square token refresh and sales collection for the client until Square is connected again.</div> }
+<dl class="row sf-definition-list"><dt class="col-md-3">API base URL</dt><dd class="col-md-9"><code>@Model.BaseEndpoint</code></dd><dt class="col-md-3">Status</dt><dd class="col-md-9">@(Model.Active ? "Active" : "Inactive")</dd></dl>
+<form asp-action="Delete" method="post"><input asp-for="Id" type="hidden" /><button type="submit" class="btn btn-danger">Delete credential</button><a class="btn btn-light" asp-action="Index">Cancel</a></form>
+</div></section>

@@ -160,6 +160,7 @@ namespace web.pipeline.fourth.com.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var storeIntegration = await _context.StoreIntegrations.FindAsync(id);
+            if (storeIntegration == null) return NotFound();
             _context.StoreIntegrations.Remove(storeIntegration);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));

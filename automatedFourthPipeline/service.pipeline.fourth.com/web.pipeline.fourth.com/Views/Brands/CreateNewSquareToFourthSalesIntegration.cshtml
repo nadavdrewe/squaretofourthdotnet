@@ -1,59 +1,18 @@
-﻿@model IEnumerable<data.pipeline.fourth.com.Models.Brand>
-
+@model IEnumerable<data.pipeline.fourth.com.Models.Brand>
 @{
-    ViewData["Title"] = "CreateNewSquareToFourthSalesIntegration";
+    ViewData["Title"] = "Map Square Locations";
     var brandList = ViewData["BrandList"] as SelectList;
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Set up new Square -> Fourth Sales Integration</h1>
-
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="CreateNewSquareToFourthSalesIntegration" method="post">
-            <div class="form-group">
-                <label class="control-label">Which Brand?</label>
-                <select name="whichBrand" id="whichBrand" class="form-control" asp-items="brandList"></select>
-            </div>
-            <div class="form-group">
-                <label class="control-label">Fourth Unit ID</label>
-                <input id="unitID" name="unitID" class="form-control" />
-            </div>
-            @*<div class="form-group">
-                <label class="control-label">Create Square To Fourth Sales Integrations?</label>
-                <select id="createIntegration" class="form-control" name="createIntegration">
-                    <option value="false">No</option>
-                    <option value="true">Yes</option>
-                </select>
-                <span class="text-danger"></span>
-            </div>*@
-            <div class="form-group">
-                <label class="control-label">Revenue Center Type</label>
-                <select id="revenueCenters" name="revenueCenters" asp-items="Html.GetEnumSelectList<com.fourth.pipeline.pos.Enum.FourthSalesRevenueCenterMappingType>()" class="form-control"></select>
-                <span class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input value="Save" class="btn btn-primary" onclick="createNewIntegration()" />
-            </div>
-        </form>
-    </div>
-</div>
-
-
-<script>
-    createNewIntegration = () => {
-        $.ajax({
-            data: {
-                "whichBrand": $('#whichBrand').val(),
-                "unitID": $('#unitID').val(),                
-                "revenueCenters": $('#revenueCenters').val()
-            },
-            method: "POST",
-            url: "/Brands/CreateNewSquareToFourthSalesIntegration"
-        }).done(function (response) {
-            alert("Done!!! New integration created");
-        }).fail(() => {
-            alert("Awww it didn't work!! Please check the creds");
-        });
-    }
-</script>
+<div class="page-header"><div><h1>Map Square locations to Fourth</h1><p class="text-muted mb-0">This imports the selected client’s Square locations and creates the store, Square location, and Fourth sales mappings required by the sales pipeline.</p></div><a class="btn btn-outline-secondary" asp-controller="ClientSetup" asp-action="Index">Back to client setup</a></div>
+<div class="row"><div class="col-lg-8"><section class="card"><div class="card-body">
+    @if (TempData["Error"] != null) { <div class="alert alert-danger">@TempData["Error"]</div> }
+    @if (TempData["Success"] != null) { <div class="alert alert-success">@TempData["Success"]</div> }
+    <div class="howto-note"><i class="mdi mdi-information-outline"></i><div><strong>Before you continue:</strong><br />The client must have an active Square OAuth connection. Use the same Fourth Unit ID for all imported locations unless Fourth has provided different unit configuration.</div></div>
+    <form asp-action="CreateNewSquareToFourthSalesIntegration" method="post">
+        <div class="form-group"><label for="whichBrand">Client</label><select name="whichBrand" id="whichBrand" class="form-control" asp-items="brandList"></select></div>
+        <div class="form-group"><label for="unitID">Fourth Unit ID</label><input id="unitID" name="unitID" class="form-control" required /><small class="form-text text-muted">Provided by Fourth for the target organisation or unit.</small></div>
+        <div class="form-group"><label for="revenueCenters">Revenue centre mapping</label><select id="revenueCenters" name="revenueCenters" class="form-control"><option value="ByStore">By store</option><option value="SingleRevenueCenter">Single revenue center</option></select><small class="form-text text-muted">Category mapping is not enabled because the current Fourth sales contract has no category-to-revenue-centre configuration.</small></div>
+        <button type="submit" class="btn btn-primary">Create store mappings</button><a class="btn btn-light" asp-controller="ClientSetup" asp-action="Index">Cancel</a>
+    </form>
+</div></section></div></div>

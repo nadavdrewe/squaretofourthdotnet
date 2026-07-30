@@ -36,6 +36,11 @@ namespace web.pipeline.fourth.com.Controllers
                .Include(b => b.Store)
                .FirstOrDefaultAsync(m => m.Id == id);
 
+            if (baseCredential == null)
+            {
+                return NotFound();
+            }
+
             //try and do something with these creds depending on type
             var result = false;
             switch (baseCredential.CredentialType)
@@ -130,6 +135,7 @@ namespace web.pipeline.fourth.com.Controllers
         {
             ViewData["BrandId"] = new SelectList(_context.Brands, "Id", "Name");
             ViewData["StoreId"] = new SelectList(_context.Stores, "Id", "Name");
+            PopulateCredentialTypeList();
             return View();
         }
 
@@ -137,6 +143,12 @@ namespace web.pipeline.fourth.com.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Username,ClientId,ClientSecret,LatestAccessToken,RefreshToken,BaseEndpoint,Password,KeySecret,SupplimentalData1,SupplimentalData2,CredentialType,StoreId,BrandId,Active")] BaseCredential baseCredential)
         {
+            if (baseCredential.CredentialType == shared.pipeline.fouth.com.Enums.CredentialTypes.SquareApi)
+            {
+                ModelState.AddModelError(nameof(baseCredential.CredentialType),
+                    "Square credentials are created and renewed through Client Setup and the Square OAuth flow.");
+            }
+
             if (ModelState.IsValid)
             {
                 AssignCorrectStoreOrBrandNullable(baseCredential);
@@ -148,6 +160,7 @@ namespace web.pipeline.fourth.com.Controllers
             }
             ViewData["BrandId"] = new SelectList(_context.Brands, "Id", "Name", baseCredential.BrandId);
             ViewData["StoreId"] = new SelectList(_context.Stores, "Id", "Name", baseCredential.StoreId);
+            PopulateCredentialTypeList(baseCredential.CredentialType);
             return View(baseCredential);
         }
 
@@ -172,6 +185,7 @@ namespace web.pipeline.fourth.com.Controllers
             if (baseCredential == null) return NotFound();
             ViewData["BrandId"] = new SelectList(_context.Brands, "Id", "Name", baseCredential.BrandId);
             ViewData["StoreId"] = new SelectList(_context.Stores, "Id", "Name", baseCredential.StoreId);
+            PopulateCredentialTypeList(baseCredential.CredentialType);
             return View(baseCredential);
         }
 
@@ -187,16 +201,42 @@ namespace web.pipeline.fourth.com.Controllers
                     var existingCredential = await _context.CredentialsPool.FindAsync(id);
                     if (existingCredential == null) return NotFound();
 
+                    if (existingCredential.CredentialType == shared.pipeline.fouth.com.Enums.CredentialTypes.SquareApi)
+                    {
+                        // OAuth owns these values. Allow an operator to disable the connection, but never overwrite its tokens from a generic form.
+                        existingCredential.Active = baseCredential.Active;
+                        existingCredential.WhenUpdatedUTC = DateTime.UtcNow;
+                        await _context.SaveChangesAsync();
+                        return RedirectToAction(nameof(Index));
+                    }
+
+                    if (baseCredential.CredentialType == shared.pipeline.fouth.com.Enums.CredentialTypes.SquareApi)
+                    {
+                        ModelState.AddModelError(nameof(baseCredential.CredentialType),
+                            "Square credentials must be created through Client Setup and the Square OAuth flow.");
+                        ViewData["BrandId"] = new SelectList(_context.Brands, "Id", "Name", baseCredential.BrandId);
+                        ViewData["StoreId"] = new SelectList(_context.Stores, "Id", "Name", baseCredential.StoreId);
+                        PopulateCredentialTypeList(baseCredential.CredentialType);
+                        return View(baseCredential);
+                    }
+
                     existingCredential.Username = baseCredential.Username;
                     existingCredential.ClientId = baseCredential.ClientId;
-                    existingCredential.ClientSecret = baseCredential.ClientSecret;
-                    existingCredential.LatestAccessToken = baseCredential.LatestAccessToken;
-                    existingCredential.RefreshToken = baseCredential.RefreshToken;
+                    existingCredential.ClientSecret = string.IsNullOrWhiteSpace(baseCredential.ClientSecret)
+                        ? existingCredential.ClientSecret : baseCredential.ClientSecret;
+                    existingCredential.LatestAccessToken = string.IsNullOrWhiteSpace(baseCredential.LatestAccessToken)
+                        ? existingCredential.LatestAccessToken : baseCredential.LatestAccessToken;
+                    existingCredential.RefreshToken = string.IsNullOrWhiteSpace(baseCredential.RefreshToken)
+                        ? existingCredential.RefreshToken : baseCredential.RefreshToken;
                     existingCredential.BaseEndpoint = baseCredential.BaseEndpoint;
-                    existingCredential.Password = baseCredential.Password;
-                    existingCredential.KeySecret = baseCredential.KeySecret;
-                    existingCredential.SupplimentalData1 = baseCredential.SupplimentalData1;
-                    existingCredential.SupplimentalData2 = baseCredential.SupplimentalData2;
+                    existingCredential.Password = string.IsNullOrWhiteSpace(baseCredential.Password)
+                        ? existingCredential.Password : baseCredential.Password;
+                    existingCredential.KeySecret = string.IsNullOrWhiteSpace(baseCredential.KeySecret)
+                        ? existingCredential.KeySecret : baseCredential.KeySecret;
+                    existingCredential.SupplimentalData1 = string.IsNullOrWhiteSpace(baseCredential.SupplimentalData1)
+                        ? existingCredential.SupplimentalData1 : baseCredential.SupplimentalData1;
+                    existingCredential.SupplimentalData2 = string.IsNullOrWhiteSpace(baseCredential.SupplimentalData2)
+                        ? existingCredential.SupplimentalData2 : baseCredential.SupplimentalData2;
                     existingCredential.CredentialType = baseCredential.CredentialType;
                     existingCredential.StoreId = baseCredential.StoreId;
                     existingCredential.BrandId = baseCredential.BrandId;
@@ -216,6 +256,7 @@ namespace web.pipeline.fourth.com.Controllers
             }
             ViewData["BrandId"] = new SelectList(_context.Brands, "Id", "Name", baseCredential.BrandId);
             ViewData["StoreId"] = new SelectList(_context.Stores, "Id", "Name", baseCredential.StoreId);
+            PopulateCredentialTypeList(baseCredential.CredentialType);
             return View(baseCredential);
         }
 
@@ -235,6 +276,7 @@ namespace web.pipeline.fourth.com.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var baseCredential = await _context.CredentialsPool.FindAsync(id);
+            if (baseCredential == null) return NotFound();
             _context.CredentialsPool.Remove(baseCredential);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
@@ -243,6 +285,15 @@ namespace web.pipeline.fourth.com.Controllers
         private bool BaseCredentialExists(int id)
         {
             return _context.CredentialsPool.Any(e => e.Id == id);
+        }
+
+        private void PopulateCredentialTypeList(shared.pipeline.fouth.com.Enums.CredentialTypes? selectedValue = null)
+        {
+            var credentialTypes = Enum.GetValues(typeof(shared.pipeline.fouth.com.Enums.CredentialTypes))
+                .Cast<shared.pipeline.fouth.com.Enums.CredentialTypes>()
+                .Where(x => x != shared.pipeline.fouth.com.Enums.CredentialTypes.SquareApi)
+                .ToList();
+            ViewData["CredentialType"] = new SelectList(credentialTypes, selectedValue);
         }
 
         private static FourthApiService CreateFourthApiService(BaseCredential credential)

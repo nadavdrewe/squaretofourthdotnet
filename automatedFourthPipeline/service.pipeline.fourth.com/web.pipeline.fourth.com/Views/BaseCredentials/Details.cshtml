@@ -1,103 +1,23 @@
-﻿@model data.pipeline.fourth.com.Models.Credentials.BaseCredential
-
+@model data.pipeline.fourth.com.Models.Credentials.BaseCredential
 @{
-    ViewData["Title"] = "Details";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "API Credential Details";
+    var isSquareOAuth = Model.CredentialType == shared.pipeline.fouth.com.Enums.CredentialTypes.SquareApi;
 }
 
-<h1>Details</h1>
+<div class="page-header"><div><h1>API credential details</h1><p class="text-muted mb-0">Configuration summary only. Secret material is never shown.</p></div><div class="sf-actions"><a class="btn btn-outline-primary" asp-action="TestCreds" asp-route-id="@Model.Id">Test connection</a><a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model.Id">Edit</a></div></div>
+<section class="card"><div class="card-body"><dl class="row sf-definition-list">
+    <dt class="col-md-3">Connection type</dt><dd class="col-md-9">@Model.CredentialType @(isSquareOAuth ? "(OAuth managed)" : "")</dd>
+    <dt class="col-md-3">Client</dt><dd class="col-md-9">@(Model.Brand?.Name ?? "Not assigned")</dd>
+    <dt class="col-md-3">Store</dt><dd class="col-md-9">@(Model.Store?.Name ?? "Client-level")</dd>
+    <dt class="col-md-3">Username</dt><dd class="col-md-9">@Model.Username</dd>
+    <dt class="col-md-3">API base URL</dt><dd class="col-md-9"><code>@Model.BaseEndpoint</code></dd>
+    <dt class="col-md-3">Secrets</dt><dd class="col-md-9"><span class="sf-status @(HasStoredSecret() ? "sf-status-live" : "sf-status-muted")">@(HasStoredSecret() ? "Stored" : "None")</span></dd>
+    <dt class="col-md-3">Token state</dt><dd class="col-md-9"><span class="sf-status @(!string.IsNullOrWhiteSpace(Model.LatestAccessToken) ? "sf-status-live" : "sf-status-warn")">@(!string.IsNullOrWhiteSpace(Model.LatestAccessToken) ? "Access token stored" : "No access token")</span></dd>
+    <dt class="col-md-3">Status</dt><dd class="col-md-9"><span class="sf-status @(Model.Active ? "sf-status-live" : "sf-status-muted")">@(Model.Active ? "Active" : "Inactive")</span></dd>
+    <dt class="col-md-3">Last updated</dt><dd class="col-md-9">@Model.WhenUpdatedUTC.ToString("yyyy-MM-dd HH:mm") UTC</dd>
+</dl></div></section>
+<div class="mt-3"><a class="btn btn-light" asp-action="Index">Back to credentials</a></div>
 
-<div>
-    <h4>BaseCredential</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Username)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Username)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.ClientId)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ClientId)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.ClientSecret)
-        </dt>
-        <dd class="col-sm-10">
-            @(string.IsNullOrWhiteSpace(Model.ClientSecret) ? "" : "Stored")
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.RefreshToken)
-        </dt>
-        <dd class="col-sm-10">
-            @(string.IsNullOrWhiteSpace(Model.RefreshToken) ? "" : "Stored")
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.LatestAccessToken)
-        </dt>
-        <dd class="col-sm-10">
-            @(string.IsNullOrWhiteSpace(Model.LatestAccessToken) ? "" : "Stored")
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.BaseEndpoint)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.BaseEndpoint)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Password)
-        </dt>
-        <dd class="col-sm-10">
-            @(string.IsNullOrWhiteSpace(Model.Password) ? "" : "Stored")
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.KeySecret)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.KeySecret)
-        </dd>
-        <dt class="col-sm-2">
-            OAuth Token Endpoint
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.SupplimentalData1)
-        </dd>
-        <dt class="col-sm-2">
-            OAuth Scope
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.SupplimentalData2)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.CredentialType)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.CredentialType)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Store)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Store.Id)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Brand)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Brand.Id)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Active)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Active)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+@functions {
+    private bool HasStoredSecret() => !string.IsNullOrWhiteSpace(Model.ClientSecret) || !string.IsNullOrWhiteSpace(Model.Password) || !string.IsNullOrWhiteSpace(Model.KeySecret) || !string.IsNullOrWhiteSpace(Model.RefreshToken);
+}

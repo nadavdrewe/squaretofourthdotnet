@@ -152,11 +152,12 @@ namespace web.pipeline.fourth.com.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            //delete creds for brand
+            var brand = await _context.Brands.FindAsync(id);
+            if (brand == null) return NotFound();
+
+            // Delete brand-level credentials with the client record; dependent store configuration is protected by database constraints.
             var creds = _context.CredentialsPool.Where(x => x.BrandId == id).ToList();
             _context.CredentialsPool.RemoveRange(creds);
-
-            var brand = await _context.Brands.FindAsync(id);
             _context.Brands.Remove(brand);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
@@ -168,17 +169,35 @@ namespace web.pipeline.fourth.com.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateNewSquareToFourthSalesIntegration(int whichBrand,
             string unitID,
             FourthSalesRevenueCenterMappingType revenueCenters
             )
         {
+            if (string.IsNullOrWhiteSpace(unitID))
+            {
+                TempData["Error"] = "Fourth Unit ID is required.";
+                return RedirectToAction(nameof(CreateNewSquareToFourthSalesIntegration), new { whichBrand });
+            }
+
+            if (revenueCenters != FourthSalesRevenueCenterMappingType.ByStore &&
+                revenueCenters != FourthSalesRevenueCenterMappingType.SingleRevenueCenter)
+            {
+                TempData["Error"] = "Revenue-centre mapping by category is not configured for this sales pipeline. Choose By Store or Single Revenue Center.";
+                return RedirectToAction(nameof(CreateNewSquareToFourthSalesIntegration), new { whichBrand });
+            }
+
             var brand = _context.Brands
                  .Include(x => x.Stores)
                  .Include("Stores.StoreIntegrations.SquareStoreConfigs")
                  .Include("Stores.StoreIntegrations.FourthSalesApiStoreConfigs")
                  .Include(X => X.BrandIntegrations)
-                 .Include(x => x.BrandCredentials).First(x => x.Id == whichBrand);
+                  .Include(x => x.BrandCredentials).FirstOrDefault(x => x.Id == whichBrand);
+            if (brand == null)
+            {
+                return NotFound();
+            }
 
             var squareCredsForBrand = await _context.CredentialsPool
                 .OrderByDescending(x => x.Id)
@@ -189,7 +208,8 @@ namespace web.pipeline.fourth.com.Controllers
                 (String.IsNullOrWhiteSpace(squareCredsForBrand.RefreshToken) &&
                  String.IsNullOrWhiteSpace(squareCredsForBrand.LatestAccessToken)))
             {
-                throw new NoCreditsException("No Square creds exist for this Square brand: " + brand.Name + " or the oauth access token is empty and you need to authorise first.");
+                TempData["Error"] = $"{brand.Name} does not have an active Square OAuth connection. Connect Square from Client Setup before creating mappings.";
+                return RedirectToAction(nameof(CreateNewSquareToFourthSalesIntegration), new { whichBrand });
             }
 
             var accessToken = await _squareCredentialService.GetAccessTokenAsync(squareCredsForBrand);
@@ -308,13 +328,14 @@ namespace web.pipeline.fourth.com.Controllers
             });
 
 
-            return Ok($"Completed. Created {integrationsCreated} store integrations; skipped {integrationsSkipped} existing integrations.");
+            TempData["Success"] = $"Created {integrationsCreated} store integration(s); skipped {integrationsSkipped} existing mapping(s).";
+            return RedirectToAction(nameof(CreateNewSquareToFourthSalesIntegration), new { whichBrand });
         }
 
         [HttpGet]
-        public async Task<IActionResult> CreateNewSquareToFourthSalesIntegration()
+        public async Task<IActionResult> CreateNewSquareToFourthSalesIntegration(int? whichBrand)
         {
-            ViewData["BrandList"] = new SelectList(_context.Brands, "Id", "Name");
+            ViewData["BrandList"] = new SelectList(_context.Brands, "Id", "Name", whichBrand);
             return View(await _context.Brands.ToListAsync());
         }
 

@@ -154,6 +154,7 @@ namespace web.pipeline.fourth.com.Controllers.Configs
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var squareStoreConfig = await _context.SquareStoreConfigs.FindAsync(id);
+            if (squareStoreConfig == null) return NotFound();
             _context.SquareStoreConfigs.Remove(squareStoreConfig);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));

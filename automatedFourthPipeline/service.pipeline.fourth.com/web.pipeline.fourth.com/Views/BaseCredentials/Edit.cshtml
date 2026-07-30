@@ -1,126 +1,44 @@
-﻿@model data.pipeline.fourth.com.Models.Credentials.BaseCredential
-
+@model data.pipeline.fourth.com.Models.Credentials.BaseCredential
 @{
-    ViewData["Title"] = "Edit";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Edit API Credential";
+    var isSquareOAuth = Model.CredentialType == shared.pipeline.fouth.com.Enums.CredentialTypes.SquareApi;
 }
 
-<h1>Edit</h1>
-
-<h4>Api Credential</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="StoreId" class="control-label">Store</label>
-                <select asp-for="StoreId" class="form-control" asp-items="ViewBag.StoreId">
-                    <option value="">--- NONE ---</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label asp-for="BrandId" class="control-label">Brand</label>
-                <select asp-for="BrandId" class="form-control" asp-items="ViewBag.BrandId">
-                    <option value="">--- NONE ---</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label asp-for="CredentialType" class="control-label"></label>
-                <select asp-for="CredentialType" asp-items="Html.GetEnumSelectList<shared.pipeline.fouth.com.Enums.CredentialTypes>()" class="form-control"></select>
-                <span asp-validation-for="CredentialType" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Username" class="control-label"></label>
-                <input asp-for="Username" class="form-control" />
-                <span asp-validation-for="Username" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ClientId" class="control-label">OAuth Client ID</label>
-                <input asp-for="ClientId" class="form-control" autocomplete="off" />
-                <span asp-validation-for="ClientId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ClientSecret" class="control-label">OAuth Client Secret</label>
-                <input asp-for="ClientSecret" class="form-control" type="password" autocomplete="new-password" value="@Model.ClientSecret" />
-                <span asp-validation-for="ClientSecret" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="BaseEndpoint" class="control-label">Fourth API Base URL</label>
-                <input asp-for="BaseEndpoint" class="form-control" placeholder="https://api-dev.fourth.com/prelive/api/eposgateway/" />
-                <span asp-validation-for="BaseEndpoint" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SupplimentalData1" class="control-label">OAuth Token Endpoint</label>
-                <input asp-for="SupplimentalData1" class="form-control" placeholder="https://api-dev.fourth.com/prelive/oauth/connect/token" />
-                <span asp-validation-for="SupplimentalData1" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SupplimentalData2" class="control-label">OAuth Scope</label>
-                <input asp-for="SupplimentalData2" class="form-control" />
-                <span asp-validation-for="SupplimentalData2" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="LatestAccessToken" class="control-label"></label>
-                <input asp-for="LatestAccessToken" class="form-control" />
-                <span asp-validation-for="LatestAccessToken" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="RefreshToken" class="control-label"></label>
-                <input asp-for="RefreshToken" class="form-control" />
-                <span asp-validation-for="RefreshToken" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" class="form-control" type="password" autocomplete="new-password" value="@Model.Password" />
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="KeySecret" class="control-label"></label>
-                <input asp-for="KeySecret" class="form-control" />
-                <span asp-validation-for="KeySecret" class="text-danger"></span>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Active" /> @Html.DisplayNameFor(model => model.Active)
-                </label>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-                <input value="Test Creds" class="btn btn-danger" onclick="testCreds()" />
-            </div>
-        </form>
-    </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+<div class="page-header"><div><h1>Edit API credential</h1><p class="text-muted mb-0">@Model.CredentialType connection for @(Model.Brand?.Name ?? "unassigned client").</p></div><a class="btn btn-outline-secondary" asp-action="Index">Back to credentials</a></div>
+<div class="row"><div class="col-lg-8"><section class="card"><div class="card-body">
+@if (isSquareOAuth)
+{
+    <div class="howto-note"><i class="mdi mdi-shield-lock-outline"></i><div><strong>This is an OAuth-managed Square connection.</strong><br />Access tokens, refresh tokens, application secrets and client assignment are protected from manual editing. Reconnect Square from Client Setup if the account changes.</div></div>
+    <form asp-action="Edit" method="post"><input asp-for="Id" type="hidden" /><div class="form-check mb-4"><input asp-for="Active" class="form-check-input" /><label asp-for="Active" class="form-check-label">Keep this Square connection active</label></div><button type="submit" class="btn btn-primary">Save status</button><a class="btn btn-light" asp-controller="ClientSetup" asp-action="Index">Open client setup</a></form>
+}
+else
+{
+    <p class="text-muted">Leave a secret field blank to retain the stored value. Stored secret values are never displayed.</p>
+    <form asp-action="Edit" method="post">
+        <input asp-for="Id" type="hidden" /><div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+        <div class="row"><div class="col-md-6"><div class="form-group"><label asp-for="BrandId">Client</label><select asp-for="BrandId" class="form-control" asp-items="ViewBag.BrandId"><option value="">Select client</option></select></div></div><div class="col-md-6"><div class="form-group"><label asp-for="StoreId">Store (optional)</label><select asp-for="StoreId" class="form-control" asp-items="ViewBag.StoreId"><option value="">Client-level credential</option></select></div></div></div>
+        <div class="form-group"><label asp-for="CredentialType">Connection type</label><select asp-for="CredentialType" asp-items="ViewBag.CredentialType" class="form-control"></select><span asp-validation-for="CredentialType" class="text-danger"></span></div>
+        <div class="row"><div class="col-md-6"><div class="form-group"><label asp-for="Username">Username</label><input asp-for="Username" class="form-control" autocomplete="off" /></div></div><div class="col-md-6"><div class="form-group"><label asp-for="Password">Password</label><input name="Password" class="form-control" type="password" value="" autocomplete="new-password" placeholder="Leave blank to keep stored" /></div></div></div>
+        <div class="form-group"><label asp-for="BaseEndpoint">API base URL</label><input asp-for="BaseEndpoint" class="form-control" /></div>
+        <div class="row"><div class="col-md-6"><div class="form-group"><label asp-for="ClientId">OAuth client ID (optional)</label><input asp-for="ClientId" class="form-control" autocomplete="off" /></div></div><div class="col-md-6"><div class="form-group"><label asp-for="ClientSecret">OAuth client secret</label><input name="ClientSecret" class="form-control" type="password" value="" autocomplete="new-password" placeholder="Leave blank to keep stored" /></div></div></div>
+        <div class="row"><div class="col-md-6"><div class="form-group"><label asp-for="SupplimentalData1">OAuth token endpoint</label><input asp-for="SupplimentalData1" class="form-control" /></div></div><div class="col-md-6"><div class="form-group"><label asp-for="SupplimentalData2">OAuth scope</label><input asp-for="SupplimentalData2" class="form-control" /></div></div></div>
+        <div class="form-group"><label asp-for="KeySecret">Additional secret</label><input name="KeySecret" class="form-control" type="password" value="" autocomplete="new-password" placeholder="Leave blank to keep stored" /></div>
+        <div class="form-check mb-4"><input asp-for="Active" class="form-check-input" /><label asp-for="Active" class="form-check-label">Make this credential active</label></div>
+        <button type="submit" class="btn btn-primary">Save changes</button><button id="test-credential" type="button" class="btn btn-outline-primary">Test connection</button><a class="btn btn-light" asp-action="Index">Cancel</a>
+    </form>
+}
+</div></section></div></div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
-
-<script type="text/javascript">
-
-
-    $(document).ready(function () {
-        console.log("ready!");
-    });
-
-    testCreds = () => {            
-
-        $.ajax({
-            data: {
-                "id": @Model.Id
-            },
-            method: "GET",
-            url: "/BaseCredentials/TestCreds"
-        }).done(function () {
-            alert("Yep, that's working!!")
-        }).fail(() => {
-            alert("Awww it didn't work!! Please check the creds")
-        });
+    <partial name="_ValidationScriptsPartial" />
+    @if (!isSquareOAuth)
+    {
+        <script>
+            document.getElementById('test-credential')?.addEventListener('click', async function () {
+                const response = await fetch('@Url.Action("TestCreds", new { id = Model.Id })');
+                const body = await response.json().catch(() => ({}));
+                alert(response.ok ? 'Connection test succeeded.' : (body.message || 'Connection test failed. Check the saved configuration.'));
+            });
+        </script>
     }
-</script>
+}

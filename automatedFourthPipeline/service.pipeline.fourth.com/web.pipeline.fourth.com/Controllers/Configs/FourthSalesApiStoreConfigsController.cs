@@ -153,6 +153,7 @@ namespace web.pipeline.fourth.com.Controllers.Configs
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var fourthSalesApiStoreConfig = await _context.FourthSalesApiStoreConfig.FindAsync(id);
+            if (fourthSalesApiStoreConfig == null) return NotFound();
             _context.FourthSalesApiStoreConfig.Remove(fourthSalesApiStoreConfig);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));

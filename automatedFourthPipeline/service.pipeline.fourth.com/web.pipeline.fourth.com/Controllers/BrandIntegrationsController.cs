@@ -15,6 +15,7 @@ using domain.pipeline.fourth.com.Services.Square;
 using System.IO;
 using CsvHelper;
 using web.pipeline.fourth.com.Services;
+using System.Globalization;
 
 namespace web.pipeline.fourth.com.Controllers
 {
@@ -33,29 +34,37 @@ namespace web.pipeline.fourth.com.Controllers
         }
 
         [HttpGet]
+        public IActionResult CreateNewSquareToFourthSalesIntegration(int? whichBrand)
+        {
+            // Kept as a compatibility route for Client Setup links created before the setup wizard was moved to Brands.
+            return RedirectToAction(
+                "CreateNewSquareToFourthSalesIntegration",
+                "Brands",
+                new { whichBrand });
+        }
+
+        [HttpGet]
         public async Task<IActionResult> GenerateTestData(
             int brandIntegrationId,
-           IntegrationTypes integrationType)
+            IntegrationTypes integrationType,
+            DateTime? transactionDate = null)
         {
-            IList<GenerateSquareTestDataResult> results = new List<GenerateSquareTestDataResult>();
-            List<string> errorResults = new List<string>();
-            switch (integrationType)
+            if (integrationType != IntegrationTypes.SquareToFourthPosSales)
             {
-                case IntegrationTypes.None:
-                    break;
-                case IntegrationTypes.SquareToFourthPosSales:
-                    results = await _GenerateSquareTestData(brandIntegrationId);
-                    break;
-                case IntegrationTypes.RevelToFourthPosSales:
-                    break;
-                default:
-                    break;
+                return BadRequest(new { errors = new[] { "Only Square-to-Fourth sales integrations can generate a test CSV." } });
             }
 
-            if (results.Count() > 0)
+            try
+            {
+                var results = await GenerateSquareTestDataAsync(
+                    brandIntegrationId,
+                    transactionDate?.Date ?? DateTime.UtcNow.Date.AddDays(-1));
                 return Ok(results);
-
-            else return BadRequest(errorResults);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { errors = new[] { ex.Message } });
+            }
         }
 
         class GenerateSquareTestDataResult
@@ -63,6 +72,105 @@ namespace web.pipeline.fourth.com.Controllers
             public string csvName { get; set; }
             public string csvString { get; set; }
             public List<string> errors { get; set; }
+        }
+
+        private async Task<IList<GenerateSquareTestDataResult>> GenerateSquareTestDataAsync(
+            int brandIntegrationId,
+            DateTime transactionDate)
+        {
+            var integration = await _context.BrandIntegrations
+                .Include(x => x.Brand)
+                .FirstOrDefaultAsync(x => x.Id == brandIntegrationId);
+            if (integration?.Brand == null)
+            {
+                throw new InvalidOperationException("The selected integration was not found.");
+            }
+
+            if (!integration.Active || integration.IntegrationType != IntegrationTypes.SquareToFourthPosSales)
+            {
+                throw new InvalidOperationException("The selected Square-to-Fourth sales integration is inactive or invalid.");
+            }
+
+            var brand = integration.Brand;
+            var squareCredential = await _context.CredentialsPool.FirstOrDefaultAsync(x =>
+                x.Active && x.BrandId == brand.Id &&
+                x.CredentialType == shared.pipeline.fouth.com.Enums.CredentialTypes.SquareApi);
+            if (squareCredential == null)
+            {
+                throw new NoCreditsException($"No active Square OAuth connection exists for '{brand.Name}'.");
+            }
+
+            var storeIntegrations = await _context.StoreIntegrations
+                .Include(x => x.Store)
+                .Include(x => x.SquareStoreConfigs)
+                .Include(x => x.FourthSalesApiStoreConfigs)
+                .Where(x => x.Active && x.IntegrationType == IntegrationTypes.SquareToFourthPosSales && x.Store.BrandId == brand.Id)
+                .ToListAsync();
+            if (storeIntegrations.Count == 0)
+            {
+                throw new InvalidOperationException("No active store integrations exist for this client.");
+            }
+
+            var accessToken = await _squareCredentialService.GetAccessTokenAsync(squareCredential);
+            var squareClient = await _squareCredentialService.CreateClientAsync(squareCredential);
+            var locations = (await squareClient.Locations.ListAsync()).Locations?.ToList() ?? new List<Location>();
+            var generator = new SquareToFourthCSVGenerator(accessToken, _squareCredentialService.GetApiBaseUrl(squareCredential));
+            await generator.GatherDataForBrand();
+
+            var errors = new List<string>();
+            var results = new List<GenerateSquareTestDataResult>();
+            foreach (var storeIntegration in storeIntegrations)
+            {
+                var squareConfig = storeIntegration.SquareStoreConfigs.FirstOrDefault(x => x.Active);
+                var fourthConfig = storeIntegration.FourthSalesApiStoreConfigs.FirstOrDefault(x => x.Active);
+                if (squareConfig == null || fourthConfig == null)
+                {
+                    errors.Add($"{storeIntegration.Store?.Name ?? "Store"} is missing an active Square or Fourth sales mapping.");
+                    continue;
+                }
+
+                var squareLocation = locations.FirstOrDefault(x => x.Id == squareConfig.LocationId);
+                if (squareLocation == null)
+                {
+                    errors.Add($"Square location '{squareConfig.LocationId}' was not found for {storeIntegration.Store?.Name ?? "the mapped store"}.");
+                    continue;
+                }
+
+                await generator.GatherDataForLocation(transactionDate, transactionDate.AddDays(1), squareLocation);
+                var rows = generator.CreateSalesRows(fourthConfig.UnitId);
+                using var writer = new StringWriter(CultureInfo.InvariantCulture);
+                using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
+                {
+                    csv.WriteRecords(rows);
+                }
+
+                results.Add(new GenerateSquareTestDataResult
+                {
+                    csvName = $"{transactionDate:yyyy_MM_dd}_{ToSafeFileSegment(brand.Name)}_{ToSafeFileSegment(storeIntegration.Store?.Name)}_SquareToFourth_Test.csv",
+                    csvString = writer.ToString(),
+                    errors = new List<string>()
+                });
+            }
+
+            if (results.Count == 0)
+            {
+                throw new InvalidOperationException(string.Join(" ", errors));
+            }
+
+            foreach (var result in results)
+            {
+                result.errors.AddRange(errors);
+            }
+
+            return results;
+        }
+
+        private static string ToSafeFileSegment(string value)
+        {
+            var invalidCharacters = Path.GetInvalidFileNameChars();
+            return string.IsNullOrWhiteSpace(value)
+                ? "Unnamed"
+                : new string(value.Select(character => invalidCharacters.Contains(character) ? '_' : character).ToArray());
         }
 
         private async Task<IList<GenerateSquareTestDataResult>> _GenerateSquareTestData(int brandIntegrationId)
@@ -269,58 +377,84 @@ namespace web.pipeline.fourth.com.Controllers
         public async Task<IActionResult> _VerifyBrandIntegrationStack_SquareToFourth(int brandIntegrationId,
             IntegrationTypes integrationType)
         {
-
-            bool result = false;
-            List<string> errorResults = new List<string>();
-            switch (integrationType)
+            if (integrationType != IntegrationTypes.SquareToFourthPosSales)
             {
-                case IntegrationTypes.None:
-                    break;
-                case IntegrationTypes.SquareToFourthPosSales:
-                    result = _VerifySquareToFourthBrandIntegration(brandIntegrationId, out errorResults);
-                    break;
-                case IntegrationTypes.RevelToFourthPosSales:
-                    break;
-                default:
-                    break;
+                return BadRequest(new[] { "Only Square-to-Fourth sales integrations can be verified here." });
             }
 
-            if (result)
-                return Ok();
+            var errors = await VerifySquareToFourthBrandIntegrationAsync(brandIntegrationId);
+            if (errors.Count == 0)
+            {
+                return Ok(new { message = "Square, store, Fourth mapping and delivery credentials are configured." });
+            }
 
-            else return BadRequest(errorResults);
+            return BadRequest(errors);
         }
 
-        bool _VerifySquareToFourthBrandIntegration(int id, out List<string> errors)
+        private async Task<List<string>> VerifySquareToFourthBrandIntegrationAsync(int id)
         {
-            errors = new List<string>();
-            var integrfation = _context
-                .BrandIntegrations.Find(id);
-
-            var allStoresForBrand = _context
-                .Stores
-                .Where(x => x.BrandId == integrfation.BrandId)
-                .Include(x => x.StoreIntegrations)
-                .ToList();
-
-            foreach (var store in allStoresForBrand)
+            var errors = new List<string>();
+            var integration = await _context.BrandIntegrations.FirstOrDefaultAsync(x => x.Id == id);
+            if (integration == null || integration.IntegrationType != IntegrationTypes.SquareToFourthPosSales)
             {
-                var activeIntegrationOfType = store.StoreIntegrations.Where(x => x.Active).FirstOrDefault(x => x.IntegrationType == IntegrationTypes.SquareToFourthPosSales);
-                if (activeIntegrationOfType == null)
+                errors.Add("The Square-to-Fourth sales integration was not found.");
+                return errors;
+            }
+
+            var hasSquareCredential = await _context.CredentialsPool.AnyAsync(x => x.Active &&
+                x.BrandId == integration.BrandId &&
+                x.CredentialType == shared.pipeline.fouth.com.Enums.CredentialTypes.SquareApi &&
+                !string.IsNullOrWhiteSpace(x.LatestAccessToken));
+            if (!hasSquareCredential)
+            {
+                errors.Add("No active Square OAuth connection exists for this client.");
+            }
+
+            var hasFourthCredential = await _context.CredentialsPool.AnyAsync(x => x.Active &&
+                x.BrandId == integration.BrandId &&
+                x.CredentialType == shared.pipeline.fouth.com.Enums.CredentialTypes.FourthBaseCredential);
+            if (!hasFourthCredential)
+            {
+                errors.Add("No active Fourth sales credential exists for this client.");
+            }
+
+            var stores = await _context.Stores
+                .Where(x => x.Active && x.BrandId == integration.BrandId)
+                .ToListAsync();
+            if (stores.Count == 0)
+            {
+                errors.Add("The client has no active stores.");
+                return errors;
+            }
+
+            var storeIds = stores.Select(x => x.Id).ToList();
+            var storeIntegrations = await _context.StoreIntegrations
+                .Include(x => x.SquareStoreConfigs)
+                .Include(x => x.FourthSalesApiStoreConfigs)
+                .Where(x => x.Active && x.IntegrationType == IntegrationTypes.SquareToFourthPosSales && storeIds.Contains(x.StoreId))
+                .ToListAsync();
+
+            foreach (var store in stores)
+            {
+                var storeIntegration = storeIntegrations.FirstOrDefault(x => x.StoreId == store.Id);
+                if (storeIntegration == null)
                 {
-                    errors.Add(String.Format("There was no active integraton for Store {0} of type {1}", store.Name, IntegrationTypes.SquareToFourthPosSales.ToString()));
+                    errors.Add($"{store.Name} has no active Square-to-Fourth sales integration.");
+                    continue;
                 }
-                else
+
+                if (!storeIntegration.SquareStoreConfigs.Any(x => x.Active && !string.IsNullOrWhiteSpace(x.LocationId)))
                 {
-                    var configForIntSquare = _context.SquareStoreConfigs.FirstOrDefault(x => x.StoreIntegrationId == activeIntegrationOfType.Id);
-                    if (configForIntSquare == null)
-                    {
-                        errors.Add(String.Format("There was no active integraton for Store {0} of type {1}", store.Name, IntegrationTypes.SquareToFourthPosSales.ToString()));
-                    }
+                    errors.Add($"{store.Name} is missing an active Square location mapping.");
+                }
+
+                if (!storeIntegration.FourthSalesApiStoreConfigs.Any(x => x.Active && !string.IsNullOrWhiteSpace(x.UnitId)))
+                {
+                    errors.Add($"{store.Name} is missing an active Fourth sales mapping.");
                 }
             }
 
-            return errors.Count() == 0 ? true : false;
+            return errors;
         }
 
         // GET: BrandIntegrations
@@ -422,6 +556,7 @@ namespace web.pipeline.fourth.com.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var brandIntegration = await _context.BrandIntegrations.FindAsync(id);
+            if (brandIntegration == null) return NotFound();
             _context.BrandIntegrations.Remove(brandIntegration);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
