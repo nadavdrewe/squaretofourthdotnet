@@ -1,78 +1,24 @@
-﻿@model IEnumerable<data.pipeline.fourth.com.Models.Configs.Store.FourthSalesApiStoreConfig>
-
+@model IEnumerable<data.pipeline.fourth.com.Models.Configs.Store.FourthSalesApiStoreConfig>
 @{
-    ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Fourth Sales Mappings";
 }
 
-<h1>Fourth Store Configs Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table id="order-listing" class="table table-dark">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.UnitId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SiteLocationCode)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RevenueCenter)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RevenueCenterMappingType)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StoreIntegration)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Active)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.WhenCreatedUTC)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.WhenUpdatedUTC)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.UnitId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SiteLocationCode)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RevenueCenter)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RevenueCenterMappingType)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StoreIntegration.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Active)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.WhenCreatedUTC)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.WhenUpdatedUTC)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<div class="page-header">
+    <div><h1>Fourth sales mappings</h1><p class="text-muted mb-0">Set the Fourth unit, location and revenue centre values used in the existing Fourth sales upload contract.</p></div>
+    <a class="btn btn-primary" asp-action="Create"><i class="mdi mdi-plus mr-1"></i>Add mapping</a>
+</div>
+<section class="card sf-panel">
+    @if (!Model.Any())
+    {
+        <div class="sf-empty"><i class="mdi mdi-file-delimited" aria-hidden="true"></i><h2>No Fourth sales mappings</h2><p>Add the Fourth destination values for each mapped store before enabling its sales export.</p><a class="btn btn-primary" asp-action="Create">Add mapping</a></div>
+    }
+    else
+    {
+        <div class="sf-table-wrap"><table class="table table-hover"><thead><tr><th>Fourth unit</th><th>Site location</th><th>Revenue centre</th><th>Mapping type</th><th>Store integration</th><th>Status</th><th>Updated UTC</th><th></th></tr></thead><tbody>
+        @foreach (var item in Model)
+        {
+            <tr><td><code>@item.UnitId</code></td><td><code>@item.SiteLocationCode</code></td><td>@item.RevenueCenter</td><td>@item.RevenueCenterMappingType</td><td>@item.StoreIntegration?.Store?.Name</td><td><span class="sf-status @(item.Active ? "sf-status-live" : "sf-status-muted")">@(item.Active ? "Active" : "Inactive")</span></td><td>@item.WhenUpdatedUTC.ToString("yyyy-MM-dd HH:mm")</td><td><div class="sf-actions"><a class="btn btn-outline-primary btn-sm" asp-action="Edit" asp-route-id="@item.Id">Edit</a><a class="btn btn-outline-secondary btn-sm" asp-action="Details" asp-route-id="@item.Id">Details</a><a class="btn btn-outline-danger btn-sm" asp-action="Delete" asp-route-id="@item.Id">Delete</a></div></td></tr>
+        }
+        </tbody></table></div>
+    }
+</section>

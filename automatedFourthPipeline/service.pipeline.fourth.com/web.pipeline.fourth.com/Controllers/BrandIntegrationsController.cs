@@ -181,16 +181,16 @@ namespace web.pipeline.fourth.com.Controllers
 
                         throw new Exception("Brand doesn't have integration of that type");
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         //A single brand failed, go to next, but sound alarm
                     }
                 }
                 throw new Exception("There were no brands!");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw ex;
+                throw;
             }
         }
 

@@ -1,64 +1,24 @@
-﻿@model IEnumerable<data.pipeline.fourth.com.Models.Configs.Store.SquareStoreConfig>
-
+@model IEnumerable<data.pipeline.fourth.com.Models.Configs.Store.SquareStoreConfig>
 @{
-    ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Square Location Mappings";
 }
 
-<h1>Square Store Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table id="order-listing" class="table table-dark">
-    <thead>
-        <tr>
-            <th>Brand</th>
-            <th>Store</th>
-            <th>
-                @Html.DisplayNameFor(model => model.StoreIntegration.IntegrationType)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LocationId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Active)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.WhenCreatedUTC)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.WhenUpdatedUTC)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model) {
-        <tr>
-            <td> @Html.DisplayFor(modelItem => item.StoreIntegration.Store.Brand.Name)</td>
-            <td></td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StoreIntegration.Store.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LocationId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Active)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.WhenCreatedUTC)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.WhenUpdatedUTC)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<div class="page-header">
+    <div><h1>Square location mappings</h1><p class="text-muted mb-0">Match each Square location ID to the store integration that will send its sales data to Fourth.</p></div>
+    <a class="btn btn-primary" asp-action="Create"><i class="mdi mdi-plus mr-1"></i>Add mapping</a>
+</div>
+<section class="card sf-panel">
+    @if (!Model.Any())
+    {
+        <div class="sf-empty"><i class="mdi mdi-map-marker-plus" aria-hidden="true"></i><h2>No Square locations mapped</h2><p>Connect Square first, then add a location mapping for each store.</p><a class="btn btn-primary" asp-action="Create">Add mapping</a></div>
+    }
+    else
+    {
+        <div class="sf-table-wrap"><table class="table table-hover"><thead><tr><th>Client</th><th>Store</th><th>Integration</th><th>Square location ID</th><th>Status</th><th>Updated UTC</th><th></th></tr></thead><tbody>
+        @foreach (var item in Model)
+        {
+            <tr><td>@item.StoreIntegration?.Store?.Brand?.Name</td><td><strong>@item.StoreIntegration?.Store?.Name</strong></td><td>@item.StoreIntegration?.IntegrationType</td><td><code>@item.LocationId</code></td><td><span class="sf-status @(item.Active ? "sf-status-live" : "sf-status-muted")">@(item.Active ? "Active" : "Inactive")</span></td><td>@item.WhenUpdatedUTC.ToString("yyyy-MM-dd HH:mm")</td><td><div class="sf-actions"><a class="btn btn-outline-primary btn-sm" asp-action="Edit" asp-route-id="@item.Id">Edit</a><a class="btn btn-outline-secondary btn-sm" asp-action="Details" asp-route-id="@item.Id">Details</a><a class="btn btn-outline-danger btn-sm" asp-action="Delete" asp-route-id="@item.Id">Delete</a></div></td></tr>
+        }
+        </tbody></table></div>
+    }
+</section>

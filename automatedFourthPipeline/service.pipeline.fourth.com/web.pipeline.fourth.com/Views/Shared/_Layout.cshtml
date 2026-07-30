@@ -1,648 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <title>@ViewData["Title"] - Square to Fourth</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
-    <!-- base:css -->
-    <link rel="stylesheet" href="~/template/vendors/mdi/css/materialdesignicons.min.css">
-    <link rel="stylesheet" href="~/template/vendors/css/vendor.bundle.base.css">
-    <!-- endinject -->
-    <!-- plugin css for this page -->
-    <link rel="stylesheet" href="~/template/vendors/jqvmap/jqvmap.min.css">
-    <link rel="stylesheet" href="~/template/vendors/flag-icon-css/css/flag-icon.min.css">
-    <!-- End plugin css for this page -->
-    <!-- inject:css -->
-    <link rel="stylesheet" href="~/template/css/vertical-layout-dark/style.css">
-    <!-- endinject -->
-    <link rel="stylesheet" href="~/css/square-fourth.css" asp-append-version="true">
-    <link rel="shortcut icon" href="~/template/images/favicon.png" />
-    <!-- plugin css for this page -->
-    <link rel="stylesheet" href="~/template/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js"
-            integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
-            crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="~/template/vendors/mdi/css/materialdesignicons.min.css" />
+    <link rel="stylesheet" href="~/template/vendors/css/vendor.bundle.base.css" />
+    <link rel="stylesheet" href="~/template/vendors/datatables.net-bs4/dataTables.bootstrap4.css" />
+    <link rel="stylesheet" href="~/template/css/vertical-layout-dark/style.css" />
+    <link rel="stylesheet" href="~/css/square-fourth.css" asp-append-version="true" />
 </head>
 <body>
+    <a class="sf-skip-link" href="#main-content">Skip to content</a>
     <div class="container-scroller">
-        <!-- partial:partials/_navbar.html -->
-        <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+        <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row" aria-label="Application header">
             <div class="text-center navbar-brand-wrapper d-flex align-items-center">
-                <a class="navbar-brand brand-logo square-fourth-brand" href="~/Home/Index" aria-label="Square to Fourth home">
+                <a class="navbar-brand brand-logo square-fourth-brand" asp-controller="Home" asp-action="Index" aria-label="Square to Fourth home">
                     <span class="sf-marks" aria-hidden="true"><span class="sf-mark sf-square">SQ</span><span class="sf-plus">+</span><span class="sf-mark sf-fourth">4TH</span></span>
                     <span class="sf-brand-copy"><strong>Square to Fourth</strong><small>Integration control</small></span>
                 </a>
-                <a class="navbar-brand brand-logo-mini square-fourth-brand-mini" href="~/Home/Index" aria-label="Square to Fourth home"><span class="sf-mark sf-square">SQ</span></a>
+                <a class="navbar-brand brand-logo-mini square-fourth-brand-mini" asp-controller="Home" asp-action="Index" aria-label="Square to Fourth home"><span class="sf-mark sf-square">SQ</span></a>
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
-                <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+                <button class="navbar-toggler align-self-center" type="button" data-toggle="minimize" aria-label="Minimise navigation">
                     <span class="mdi mdi-menu"></span>
                 </button>
                 <div class="navbar-context d-none d-lg-flex">Square sales to Fourth</div>
-                <ul class="navbar-nav mr-lg-2 square-fourth-legacy-nav">
-                    <li class="nav-item nav-search d-none d-lg-block">
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="search">
-                                    <i class="mdi mdi-magnify"></i>
-                                </span>
-                            </div>
-                            <input type="text" class="form-control" placeholder="Search for anything..." aria-label="search" aria-describedby="search">
-                        </div>
-                    </li>
-                </ul>
-                <ul class="navbar-nav navbar-nav-right">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link count-indicator dropdown-toggle d-flex justify-content-center align-items-center" id="messageDropdown" href="#" data-toggle="dropdown">
-                            <i class="mdi mdi-email-outline mx-0"></i>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="messageDropdown">
-                            <p class="mb-0 font-weight-normal float-left dropdown-header">Messages</p>
-                            <a class="dropdown-item preview-item">
-                                <div class="preview-thumbnail">
-                                    <img src="https://via.placeholder.com/36x36" alt="image" class="profile-pic">
-                                </div>
-                                <div class="preview-item-content flex-grow">
-                                    <h6 class="preview-subject ellipsis font-weight-normal">
-                                        David Grey
-                                    </h6>
-                                    <p class="font-weight-light small-text text-muted mb-0">
-                                        The meeting is cancelled
-                                    </p>
-                                </div>
-                            </a>
-                            <a class="dropdown-item preview-item">
-                                <div class="preview-thumbnail">
-                                    <img src="https://via.placeholder.com/36x36" alt="image" class="profile-pic">
-                                </div>
-                                <div class="preview-item-content flex-grow">
-                                    <h6 class="preview-subject ellipsis font-weight-normal">
-                                        Tim Cook
-                                    </h6>
-                                    <p class="font-weight-light small-text text-muted mb-0">
-                                        New product launch
-                                    </p>
-                                </div>
-                            </a>
-                            <a class="dropdown-item preview-item">
-                                <div class="preview-thumbnail">
-                                    <img src="https://via.placeholder.com/36x36" alt="image" class="profile-pic">
-                                </div>
-                                <div class="preview-item-content flex-grow">
-                                    <h6 class="preview-subject ellipsis font-weight-normal">
-                                        Johnson
-                                    </h6>
-                                    <p class="font-weight-light small-text text-muted mb-0">
-                                        Upcoming board meeting
-                                    </p>
-                                </div>
-                            </a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link count-indicator dropdown-toggle d-flex align-items-center justify-content-center" id="notificationDropdown" href="#" data-toggle="dropdown">
-                            <i class="mdi mdi-bell-outline mx-0"></i>
-                            <span class="count"></span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
-                            <p class="mb-0 font-weight-normal float-left dropdown-header">Notifications</p>
-                            <a class="dropdown-item preview-item">
-                                <div class="preview-thumbnail">
-                                    <div class="preview-icon bg-success">
-                                        <i class="mdi mdi-information mx-0"></i>
-                                    </div>
-                                </div>
-                                <div class="preview-item-content">
-                                    <h6 class="preview-subject font-weight-normal">Application Error</h6>
-                                    <p class="font-weight-light small-text mb-0 text-muted">
-                                        Just now
-                                    </p>
-                                </div>
-                            </a>
-                            <a class="dropdown-item preview-item">
-                                <div class="preview-thumbnail">
-                                    <div class="preview-icon bg-warning">
-                                        <i class="mdi mdi-settings mx-0"></i>
-                                    </div>
-                                </div>
-                                <div class="preview-item-content">
-                                    <h6 class="preview-subject font-weight-normal">Settings</h6>
-                                    <p class="font-weight-light small-text mb-0 text-muted">
-                                        Private message
-                                    </p>
-                                </div>
-                            </a>
-                            <a class="dropdown-item preview-item">
-                                <div class="preview-thumbnail">
-                                    <div class="preview-icon bg-info">
-                                        <i class="mdi mdi-account-box mx-0"></i>
-                                    </div>
-                                </div>
-                                <div class="preview-item-content">
-                                    <h6 class="preview-subject font-weight-normal">New user registration</h6>
-                                    <p class="font-weight-light small-text mb-0 text-muted">
-                                        2 days ago
-                                    </p>
-                                </div>
-                            </a>
-                        </div>
-                    </li>
-                    <li class="nav-item nav-profile dropdown">
-                        <a class="nav-link" href="#" data-toggle="dropdown" id="profileDropdown">
-                            <img src="https://via.placeholder.com/30x30" alt="profile" />
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-                            <a class="dropdown-item">
-                                <i class="mdi mdi-settings "></i>
-                                Settings
-                            </a>
-                            <a class="dropdown-item">
-                                <i class="mdi mdi-logout"></i>
-                                Logout
-                            </a>
-                        </div>
-                    </li>
-                    <li class="nav-item nav-settings d-none d-lg-flex">
-                        <a class="nav-link" href="#">
-                            <i class="mdi mdi-dots-horizontal"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item square-fourth-access"><partial name="_LoginPartial" /></li>
-                </ul>
-                <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+                <div class="square-fourth-access"><partial name="_LoginPartial" /></div>
+                <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas" aria-label="Open navigation">
                     <span class="mdi mdi-menu"></span>
                 </button>
             </div>
         </nav>
-        <!-- partial -->
+
         <div class="container-fluid page-body-wrapper">
-            <!-- partial:partials/_settings-panel.html -->
-            <div id="right-sidebar" class="settings-panel square-fourth-hidden">
-                <i class="settings-close mdi mdi-close"></i>
-                <ul class="nav nav-tabs" id="setting-panel" role="tablist">
-                    <li class="nav-item">
-                        <a class="nav-link active" id="todo-tab" data-toggle="tab" href="#todo-section" role="tab" aria-controls="todo-section" aria-expanded="true">TO DO LIST</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="chats-tab" data-toggle="tab" href="#chats-section" role="tab" aria-controls="chats-section">CHATS</a>
-                    </li>
-                </ul>
-                <div class="tab-content" id="setting-content">
-                    <div class="tab-pane fade show active scroll-wrapper" id="todo-section" role="tabpanel" aria-labelledby="todo-section">
-                        <div class="add-items d-flex px-3 mb-0">
-                            <form class="form w-100">
-                                <div class="form-group d-flex">
-                                    <input type="text" class="form-control todo-list-input" placeholder="Add To-do">
-                                    <button type="submit" class="add btn btn-primary todo-list-add-btn" id="add-task">Add</button>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="list-wrapper px-3">
-                            <ul class="d-flex flex-column-reverse todo-list">
-                                <li>
-                                    <div class="form-check">
-                                        <label class="form-check-label">
-                                            <input class="checkbox" type="checkbox">
-                                            Team review meeting at 3.00 PM
-                                        </label>
-                                    </div>
-                                    <i class="remove mdi mdi-close-circle-outline"></i>
-                                </li>
-                                <li>
-                                    <div class="form-check">
-                                        <label class="form-check-label">
-                                            <input class="checkbox" type="checkbox">
-                                            Prepare for presentation
-                                        </label>
-                                    </div>
-                                    <i class="remove mdi mdi-close-circle-outline"></i>
-                                </li>
-                                <li>
-                                    <div class="form-check">
-                                        <label class="form-check-label">
-                                            <input class="checkbox" type="checkbox">
-                                            Resolve all the low priority tickets due today
-                                        </label>
-                                    </div>
-                                    <i class="remove mdi mdi-close-circle-outline"></i>
-                                </li>
-                                <li class="completed">
-                                    <div class="form-check">
-                                        <label class="form-check-label">
-                                            <input class="checkbox" type="checkbox" checked>
-                                            Schedule meeting for next week
-                                        </label>
-                                    </div>
-                                    <i class="remove mdi mdi-close-circle-outline"></i>
-                                </li>
-                                <li class="completed">
-                                    <div class="form-check">
-                                        <label class="form-check-label">
-                                            <input class="checkbox" type="checkbox" checked>
-                                            Project review
-                                        </label>
-                                    </div>
-                                    <i class="remove mdi mdi-close-circle-outline"></i>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="events py-4 border-bottom px-3">
-                            <div class="wrapper d-flex mb-2">
-                                <i class="mdi mdi-circle-outline text-primary mr-2"></i>
-                                <span>Feb 11 2018</span>
-                            </div>
-                            <p class="mb-0 font-weight-thin text-gray">Creating component page</p>
-                            <p class="text-gray mb-0">build a js based app</p>
-                        </div>
-                        <div class="events pt-4 px-3">
-                            <div class="wrapper d-flex mb-2">
-                                <i class="mdi mdi-circle-outline text-primary mr-2"></i>
-                                <span>Feb 7 2018</span>
-                            </div>
-                            <p class="mb-0 font-weight-thin text-gray">Meeting with Alisa</p>
-                            <p class="text-gray mb-0 ">Call Sarah Graves</p>
-                        </div>
-                    </div>
-                    <!-- To do section tab ends -->
-                    <div class="tab-pane fade" id="chats-section" role="tabpanel" aria-labelledby="chats-section">
-                        <div class="d-flex align-items-center justify-content-between border-bottom">
-                            <p class="settings-heading border-top-0 mb-3 pl-3 pt-0 border-bottom-0 pb-0">Friends</p>
-                            <small class="settings-heading border-top-0 mb-3 pt-0 border-bottom-0 pb-0 pr-3 font-weight-normal">See All</small>
-                        </div>
-                        <ul class="chat-list">
-                            <li class="list active">
-                                <div class="profile"><img src="https://via.placeholder.com/40x40" alt="image"><span class="online"></span></div>
-                                <div class="info">
-                                    <p>Thomas Douglas</p>
-                                    <p>Available</p>
-                                </div>
-                                <small class="text-muted my-auto">19 min</small>
-                            </li>
-                            <li class="list">
-                                <div class="profile"><img src="https://via.placeholder.com/40x40" alt="image"><span class="offline"></span></div>
-                                <div class="info">
-                                    <div class="wrapper d-flex">
-                                        <p>Catherine</p>
-                                    </div>
-                                    <p>Away</p>
-                                </div>
-                                <div class="badge badge-primary badge-pill my-auto mx-2">4</div>
-                                <small class="text-muted my-auto">23 min</small>
-                            </li>
-                            <li class="list">
-                                <div class="profile"><img src="https://via.placeholder.com/40x40" alt="image"><span class="online"></span></div>
-                                <div class="info">
-                                    <p>Daniel Russell</p>
-                                    <p>Available</p>
-                                </div>
-                                <small class="text-muted my-auto">14 min</small>
-                            </li>
-                            <li class="list">
-                                <div class="profile"><img src="https://via.placeholder.com/40x40" alt="image"><span class="offline"></span></div>
-                                <div class="info">
-                                    <p>James Richardson</p>
-                                    <p>Away</p>
-                                </div>
-                                <small class="text-muted my-auto">2 min</small>
-                            </li>
-                            <li class="list">
-                                <div class="profile"><img src="https://via.placeholder.com/40x40" alt="image"><span class="online"></span></div>
-                                <div class="info">
-                                    <p>Madeline Kennedy</p>
-                                    <p>Available</p>
-                                </div>
-                                <small class="text-muted my-auto">5 min</small>
-                            </li>
-                            <li class="list">
-                                <div class="profile"><img src="https://via.placeholder.com/40x40" alt="image"><span class="online"></span></div>
-                                <div class="info">
-                                    <p>Sarah Graves</p>
-                                    <p>Available</p>
-                                </div>
-                                <small class="text-muted my-auto">47 min</small>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- chat tab ends -->
-                </div>
-            </div>
-            <!-- partial -->
-            <!-- partial:partials/_sidebar.html -->
-            <nav class="sidebar sidebar-offcanvas" id="sidebar">
+            <nav class="sidebar sidebar-offcanvas" id="sidebar" aria-label="Main navigation">
                 <ul class="nav">
+                    <li class="nav-item sf-nav-label"><span>Workspace</span></li>
                     <li class="nav-item">
-                        <a class="nav-link" href="~/Home">
-                            <i class="mdi mdi-airplay menu-icon"></i>
-                            <span class="menu-title">Dashboard</span>
-                        </a>
+                        <a class="nav-link" asp-controller="Home" asp-action="Index"><i class="mdi mdi-view-dashboard-outline menu-icon"></i><span class="menu-title">Overview</span></a>
                     </li>
-                    @*MY ACCOUNT*@
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="collapse" href="#ui-myAccount" aria-expanded="false" aria-controls="ui-myAccount">
-                            <i class="mdi mdi-invert-colors menu-icon"></i>
-                            <span class="menu-title">My Account</span>
-                            <i class="menu-arrow"></i>
-                        </a>
-                        <div class="collapse" id="ui-myAccount">
+                        <a class="nav-link" asp-controller="ClientSetup" asp-action="Index"><i class="mdi mdi-account-multiple menu-icon"></i><span class="menu-title">Client Setup</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="HowTo" asp-action="Index"><i class="mdi mdi-book-open-page-variant menu-icon"></i><span class="menu-title">Setup Guide</span></a>
+                    </li>
+
+                    <li class="nav-item sf-nav-label"><span>Configuration</span></li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#client-config" aria-expanded="false" aria-controls="client-config"><i class="mdi mdi-domain menu-icon"></i><span class="menu-title">Clients</span><i class="menu-arrow"></i></a>
+                        <div class="collapse" id="client-config">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="~/Identity/Account/Manage">Manage</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="~/Identity/Account/Manage/ResetPassword">Reset Password</a></li>
+                                <li class="nav-item"><a class="nav-link" asp-controller="Brands" asp-action="Index">All clients</a></li>
+                                <li class="nav-item"><a class="nav-link" asp-controller="Brands" asp-action="Create">Add client</a></li>
+                                <li class="nav-item"><a class="nav-link" asp-controller="Stores" asp-action="Index">Stores</a></li>
                             </ul>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="collapse" href="#accounts" aria-expanded="false" aria-controls="accounts">
-                            <i class="mdi mdi-emoticon-outline menu-icon"></i>
-                            <span class="menu-title">Accounts</span>
-                            <i class="menu-arrow"></i>
-                        </a>
-                        <div class="collapse" id="accounts">
+                        <a class="nav-link" data-toggle="collapse" href="#square-config" aria-expanded="false" aria-controls="square-config"><i class="mdi mdi-square-outline menu-icon"></i><span class="menu-title">Square</span><i class="menu-arrow"></i></a>
+                        <div class="collapse" id="square-config">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="~/Identity/Account/Register">Register New</a></li>
+                                <li class="nav-item"><a class="nav-link" asp-controller="SquareOAuthApplications" asp-action="Index">OAuth applications</a></li>
+                                <li class="nav-item"><a class="nav-link" asp-controller="SquareStoreConfigs" asp-action="Index">Location mappings</a></li>
+                                <li class="nav-item"><a class="nav-link" asp-controller="SquareEmployeeMappings" asp-action="Index">Team member mappings</a></li>
                             </ul>
                         </div>
                     </li>
-                    @*BRANDS*@
                     <li class="nav-item">
-                        <a class="nav-link" href="~/ClientSetup/Index">
-                            <i class="mdi mdi-account-multiple menu-icon"></i>
-                            <span class="menu-title">Client Setup</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="~/HowTo/Index">
-                            <i class="mdi mdi-book-open-page-variant menu-icon"></i>
-                            <span class="menu-title">How To Configure</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="collapse" href="#ui-brands" aria-expanded="false" aria-controls="ui-brands">
-                            <i class="mdi mdi-cube-outline menu-icon"></i>
-                            <span class="menu-title">Top Level Brands</span>
-                            <i class="menu-arrow"></i>
-                        </a>
-                        <div class="collapse" id="ui-brands">
+                        <a class="nav-link" data-toggle="collapse" href="#fourth-config" aria-expanded="false" aria-controls="fourth-config"><i class="mdi mdi-file-delimited menu-icon"></i><span class="menu-title">Fourth</span><i class="menu-arrow"></i></a>
+                        <div class="collapse" id="fourth-config">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="~/Brands/Create">Add New Brand</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="~/Brands/Index">View Existing Brands</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    @*BRAND SETUPS*@
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="collapse" href="#ui-brandSetup" aria-expanded="false" aria-controls="ui-brandSetup">
-                            <i class="mdi mdi-settings menu-icon"></i>
-                            <span class="menu-title">First Time Brand Setup</span>
-                            <i class="menu-arrow"></i>
-                        </a>
-                        <div class="collapse" id="ui-brandSetup">
-                            <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="~/Brands/CreateNewSquareToFourthSalesIntegration">Add From Square PoS</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    @*BRAND INTEGRATIONS*@
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="collapse" href="#brandIntegrations" aria-expanded="false" aria-controls="brandIntegrations">
-                            <i class="mdi mdi-invert-colors menu-icon"></i>
-                            <span class="menu-title">Brand Integrations</span>
-                            <i class="menu-arrow"></i>
-                        </a>
-                        <div class="collapse" id="brandIntegrations">
-                            <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="~/BrandIntegrations/Create">Create Brand Integration</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="~/BrandIntegrations/Index">View Brand Integrations</a></li>
+                                <li class="nav-item"><a class="nav-link" asp-controller="FourthSalesApiStoreConfigs" asp-action="Index">Sales mappings</a></li>
+                                <li class="nav-item"><a class="nav-link" asp-controller="BrandIntegrations" asp-action="Index">Integration schedules</a></li>
+                                <li class="nav-item"><a class="nav-link" asp-controller="BaseCredentials" asp-action="Index">API credentials</a></li>
                             </ul>
                         </div>
                     </li>
 
-                    @*<li class="nav-item">
-                            <a class="nav-link" data-toggle="collapse" href="#maps" aria-expanded="false" aria-controls="maps">
-                                <i class="mdi mdi-map-outline menu-icon"></i>
-                                <span class="menu-title">Stores and Integrations</span>
-                                <i class="menu-arrow"></i>
-                            </a>
-                            <div class="collapse" id="maps">
-                                <ul class="nav flex-column sub-menu">
-                                    <li class="nav-item"> <a class="nav-link" href="~/Stores/Create">Add New Store </a></li>
-                                    <li class="nav-item"> <a class="nav-link" href="~/Stores">View Existing Store</a></li>
-                                    <li class="nav-item"> <a class="nav-link" href="~/StoreIntegrations/Create">Add New Store Integration</a></li>
-                                    <li class="nav-item"> <a class="nav-link" href="~/StoreIntegrations/Index">View Existing Store Integrations</a></li>
-                                </ul>
-                            </div>
-                        </li>*@
-                    @*INTEGRATIONS*@
+                    <li class="nav-item sf-nav-label"><span>Operations</span></li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="collapse" href="#ui-stores" aria-expanded="false" aria-controls="ui-stores">
-                            <i class="mdi mdi-chart-donut menu-icon"></i>
-                            <span class="menu-title">Stores and Integrations</span>
-                            <i class="menu-arrow"></i>
-                        </a>
-                        <div class="collapse" id="ui-stores">
-                            <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="~/Stores/Create">Add New Store </a></li>
-                                <li class="nav-item"> <a class="nav-link" href="~/Stores">View Existing Stores</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="~/StoreIntegrations/Create">Add Store Integration</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="~/StoreIntegrations/Index">View Store Integrations</a></li>
-                            </ul>
-                        </div>
+                        <a class="nav-link" asp-controller="PipelineRunRecords" asp-action="Index"><i class="mdi mdi-history menu-icon"></i><span class="menu-title">Pipeline Runs</span></a>
                     </li>
-                    @*CREDS*@
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="collapse" href="#ui-creds" aria-expanded="false" aria-controls="ui-creds">
-                            <i class="mdi mdi-cube-outline menu-icon"></i>
-                            <span class="menu-title">API Credentials</span>
-                            <i class="menu-arrow"></i>
-                        </a>
-                        <div class="collapse" id="ui-creds">
-                            <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="~/BaseCredentials/Create">Add New Creds </a></li>
-                                <li class="nav-item"> <a class="nav-link" href="~/BaseCredentials/Index">View Existing Creds</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="~/SquareOAuthApplications">Square OAuth Applications</a></li>
-                            </ul>
-                        </div>
+                        <a class="nav-link" asp-controller="PipelineEventLogs" asp-action="Index"><i class="mdi mdi-text-box-search-outline menu-icon"></i><span class="menu-title">Event Logs</span></a>
                     </li>
-                    @*CONFIGS*@
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
-                            <i class="mdi mdi-grid-large menu-icon"></i>
-                            <span class="menu-title">Integration Store Configs</span>
-                            <i class="menu-arrow"></i>
-                        </a>
-                        <div class="collapse" id="tables">
-                            <ul class="nav flex-column sub-menu">
-                                @*<li class="nav-item"> <a class="nav-link" href="pages/tables/basic-table.html">Store Revel Configs</a></li>*@
-                                <li class="nav-item"> <a class="nav-link" href="~/SquareStoreConfigs/Index">Store Square Configs</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="~/SquareEmployeeMappings/Index">Square Employee Mappings</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="~/RevelStoreConfigs/Index">Store Revel Configs</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="~/FourthSalesApiStoreConfigs/Index">Store Fourth Sales Configs</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="~/LightspeedRestoStoreConfigs/Index">Store LS Resto Sales Configs</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    @*LOGS*@
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="collapse" href="#ui-fourthLogs" aria-expanded="false" aria-controls="ui-fourthLogs">
-                            <i class="mdi mdi-flask-outline menu-icon"></i>
-                            <span class="menu-title">Fourth Logs</span>
-                            <i class="menu-arrow"></i>
-                        </a>
-                        <div class="collapse" id="ui-fourthLogs">
-                            <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="~/PipelineRunRecords/Index">Pipeline Run Records</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="~/PipelineEventLogs/Index">Pipeline Event Logs</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="#">All Logs</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="#">Error Logs</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="#">Revel To Fourth Sales</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="#">Square To Fourth Sales</a></li>
-                            </ul>
-                        </div>
-                    </li>
-
-                    @*CHARTS*@
-                    @*<li class="nav-item">
-                            <a class="nav-link" data-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">
-                                <i class="mdi mdi-chart-donut menu-icon"></i>
-                                <span class="menu-title">Charts</span>
-                                <i class="menu-arrow"></i>
-                            </a>
-                            <div class="collapse" id="charts">
-                                <ul class="nav flex-column sub-menu">
-                                    <li class="nav-item"> <a class="nav-link" href="pages/charts/chartjs.html">ChartJs</a></li>
-                                    <li class="nav-item"> <a class="nav-link" href="pages/charts/morris.html">Morris</a></li>
-                                    <li class="nav-item"> <a class="nav-link" href="pages/charts/flot-chart.html">Flot</a></li>
-                                    <li class="nav-item"> <a class="nav-link" href="pages/charts/google-charts.html">Google charts</a></li>
-                                    <li class="nav-item"> <a class="nav-link" href="pages/charts/sparkline.html">Sparkline js</a></li>
-                                    <li class="nav-item"> <a class="nav-link" href="pages/charts/c3.html">C3 charts</a></li>
-                                    <li class="nav-item"> <a class="nav-link" href="pages/charts/chartist.html">Chartists</a></li>
-                                    <li class="nav-item"> <a class="nav-link" href="pages/charts/justGage.html">JustGage</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
-                                <i class="mdi mdi-grid-large menu-icon"></i>
-                                <span class="menu-title">Tables</span>
-                                <i class="menu-arrow"></i>
-                            </a>
-                            <div class="collapse" id="tables">
-                                <ul class="nav flex-column sub-menu">
-                                    <li class="nav-item"> <a class="nav-link" href="pages/tables/basic-table.html">Basic table</a></li>
-                                    <li class="nav-item"> <a class="nav-link" href="pages/tables/data-table.html">Data table</a></li>
-                                    <li class="nav-item"> <a class="nav-link" href="pages/tables/js-grid.html">Js-grid</a></li>
-                                    <li class="nav-item"> <a class="nav-link" href="pages/tables/sortable-table.html">Sortable table</a></li>
-                                </ul>
-                            </div>
-                        </li>*@
-
-                    @*
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="collapse" href="#general-pages" aria-expanded="false" aria-controls="general-pages">
-                                <i class="mdi mdi-file-outline menu-icon"></i>
-                                <span class="menu-title">General Pages</span>
-                                <i class="menu-arrow"></i>
-                            </a>
-                            <div class="collapse" id="general-pages">
-                                <ul class="nav flex-column sub-menu">
-                                    <li class="nav-item"> <a class="nav-link" href="pages/samples/blank-page.html"> Blank Page </a></li>
-                                    <li class="nav-item"> <a class="nav-link" href="pages/samples/profile.html"> Profile </a></li>
-                                    <li class="nav-item"> <a class="nav-link" href="pages/samples/faq.html"> FAQ </a></li>
-                                    <li class="nav-item"> <a class="nav-link" href="pages/samples/faq-2.html"> FAQ 2 </a></li>
-                                    <li class="nav-item"> <a class="nav-link" href="pages/samples/news-grid.html"> News grid </a></li>
-                                    <li class="nav-item"> <a class="nav-link" href="pages/samples/timeline.html"> Timeline </a></li>
-                                    <li class="nav-item"> <a class="nav-link" href="pages/samples/search-results.html"> Search Results </a></li>
-                                    <li class="nav-item"> <a class="nav-link" href="pages/samples/portfolio.html"> Portfolio </a></li>
-                                    <li class="nav-item"> <a class="nav-link" href="pages/samples/invoice.html"> Invoice </a></li>
-                                    <li class="nav-item"> <a class="nav-link" href="pages/samples/pricing-table.html"> Pricing Table </a></li>
-                                    <li class="nav-item"> <a class="nav-link" href="pages/samples/orders.html"> Orders </a></li>
-                                    <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li>
-                                    <li class="nav-item"> <a class="nav-link" href="pages/samples/login-2.html"> Login 2 </a></li>
-                                    <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register </a></li>
-                                    <li class="nav-item"> <a class="nav-link" href="pages/samples/register-2.html"> Register 2 </a></li>
-                                    <li class="nav-item"> <a class="nav-link" href="pages/samples/lock-screen.html"> Lockscreen </a></li>
-                                    <li class="nav-item"> <a class="nav-link" href="pages/samples/error-404.html"> Error 404 </a></li>
-                                    <li class="nav-item"> <a class="nav-link" href="pages/samples/error-500.html"> Error 500 </a></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="collapse" href="#apps" aria-expanded="false" aria-controls="apps">
-                                <i class="mdi mdi-cube-outline menu-icon"></i>
-                                <span class="menu-title">Apps</span>
-                                <i class="menu-arrow"></i>
-                            </a>
-                            <div class="collapse" id="apps">
-                                <ul class="nav flex-column sub-menu">
-                                    <li class="nav-item"> <a class="nav-link" href="pages/apps/email.html"> Email </a></li>
-                                    <li class="nav-item"> <a class="nav-link" href="pages/apps/calendar.html"> Calendar </a></li>
-                                    <li class="nav-item"> <a class="nav-link" href="pages/apps/todo.html"> Todo List </a></li>
-                                    <li class="nav-item"> <a class="nav-link" href="pages/apps/gallery.html"> Gallery </a></li>
-                                </ul>
-                            </div>
-                        </li>
-                    *@
                 </ul>
             </nav>
-            <!-- partial -->
-            <div class="main-panel">
+
+            <main id="main-content" class="main-panel">
                 <div class="content-wrapper">
                     @RenderBody()
                 </div>
-                <!-- content-wrapper ends -->
-                <!-- partial:partials/_footer.html -->
                 <footer class="footer">
                     <div class="d-sm-flex justify-content-center justify-content-sm-between">
                         <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Square to Fourth integration control</span>
                         <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Square sales data, delivered to Fourth</span>
                     </div>
                 </footer>
-                <!-- partial -->
-            </div>
-            <!-- main-panel ends -->
+            </main>
         </div>
-        <!-- page-body-wrapper ends -->
     </div>
-    <!-- container-scroller -->
-    <!-- base:js -->
+
     <script src="~/template/vendors/js/vendor.bundle.base.js"></script>
-    <!-- endinject -->
-    <!-- Plugin js for this page-->
-    <script src="~/template/vendors/jquery.flot/jquery.flot.js"></script>
-    <script src="~/template/vendors/jquery.flot/jquery.flot.pie.js"></script>
-    <script src="~/template/vendors/jquery.flot/jquery.flot.resize.js"></script>
-    <script src="~/template/vendors/jqvmap/jquery.vmap.min.js"></script>
-    <script src="~/template/vendors/jqvmap/maps/jquery.vmap.world.js"></script>
-    <script src="~/template/vendors/jqvmap/maps/jquery.vmap.usa.js"></script>
-    <script src="~/template/vendors/peity/jquery.peity.min.js"></script>
-    <script src="~/template/js/jquery.flot.dashes.js"></script>
-    <!-- End plugin js for this page-->
-    <!-- inject:js -->
     <script src="~/template/js/off-canvas.js"></script>
     <script src="~/template/js/hoverable-collapse.js"></script>
     <script src="~/template/js/template.js"></script>
-    <script src="~/template/js/settings.js"></script>
-    <script src="~/template/js/todolist.js"></script>
-    <!-- endinject -->
-    <!-- plugin js for this page -->
-    <!-- End plugin js for this page -->
-    <!-- Custom js for this page-->
-    <script src="~/template/js/dashboard.js"></script>
-    <!-- End custom js for this page-->
-    <!-- plugin js for this page -->
     <script src="~/template/vendors/datatables.net/jquery.dataTables.js"></script>
     <script src="~/template/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
-    <!-- End plugin js for this page -->
-    <!-- Custom js for this page-->
-    <script src="~/template/js/data-table.js"></script>
-    <!-- End custom js for this page-->
-
     @RenderSection("Scripts", required: false)
 </body>
-
 </html>
-

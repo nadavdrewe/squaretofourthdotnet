@@ -19,6 +19,7 @@ namespace web.pipeline.fourth.com.Controllers
             _logger = logger;
         }
 
+        [AllowAnonymous]
         public IActionResult Index()
         {
             var clientSetupUrl = Url.Action("Index", "ClientSetup") ?? "/ClientSetup";
@@ -34,6 +35,7 @@ namespace web.pipeline.fourth.com.Controllers
             return View();
         }
 
+        [AllowAnonymous]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

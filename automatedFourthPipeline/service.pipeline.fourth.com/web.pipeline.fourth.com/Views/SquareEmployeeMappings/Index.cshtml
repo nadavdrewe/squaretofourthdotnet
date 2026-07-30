@@ -1,46 +1,24 @@
 @model IEnumerable<data.pipeline.fourth.com.Models.Mappings.SquareEmployeeMapping>
-
 @{
-    ViewData["Title"] = "Square Employee Mappings";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Square Team Member Mappings";
 }
 
-<h1>Square Employee Mappings</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-
-<table id="order-listing" class="table table-dark">
-    <thead>
-        <tr>
-            <th>Brand</th>
-            <th>Store</th>
-            <th>Square Team Member</th>
-            <th>Square Name</th>
-            <th>Fourth Employee Number</th>
-            <th>Active</th>
-            <th>Updated UTC</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
+<div class="page-header">
+    <div><h1>Square team member mappings</h1><p class="text-muted mb-0">Optional mapping from Square team members to Fourth employee numbers for sales attribution.</p></div>
+    <a class="btn btn-primary" asp-action="Create"><i class="mdi mdi-plus mr-1"></i>Add mapping</a>
+</div>
+<section class="card sf-panel">
+    @if (!Model.Any())
+    {
+        <div class="sf-empty"><i class="mdi mdi-account-switch" aria-hidden="true"></i><h2>No team member mappings</h2><p>Sales export works without attribution. Add mappings only where Fourth employee reporting requires them.</p><a class="btn btn-primary" asp-action="Create">Add mapping</a></div>
+    }
+    else
+    {
+        <div class="sf-table-wrap"><table class="table table-hover"><thead><tr><th>Client</th><th>Store</th><th>Square team member</th><th>Square display name</th><th>Fourth employee no.</th><th>Status</th><th>Updated UTC</th><th></th></tr></thead><tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>@item.StoreIntegration?.Store?.Brand?.Name</td>
-                <td>@item.StoreIntegration?.Store?.Name</td>
-                <td>@item.SquareTeamMemberId</td>
-                <td>@item.SquareDisplayName</td>
-                <td>@item.FourthEmployeeNumber</td>
-                <td>@item.Active</td>
-                <td>@item.WhenUpdatedUTC</td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                </td>
-            </tr>
+            <tr><td>@item.StoreIntegration?.Store?.Brand?.Name</td><td>@item.StoreIntegration?.Store?.Name</td><td><code>@item.SquareTeamMemberId</code></td><td><strong>@item.SquareDisplayName</strong></td><td><code>@item.FourthEmployeeNumber</code></td><td><span class="sf-status @(item.Active ? "sf-status-live" : "sf-status-muted")">@(item.Active ? "Active" : "Inactive")</span></td><td>@item.WhenUpdatedUTC.ToString("yyyy-MM-dd HH:mm")</td><td><div class="sf-actions"><a class="btn btn-outline-primary btn-sm" asp-action="Edit" asp-route-id="@item.Id">Edit</a><a class="btn btn-outline-secondary btn-sm" asp-action="Details" asp-route-id="@item.Id">Details</a><a class="btn btn-outline-danger btn-sm" asp-action="Delete" asp-route-id="@item.Id">Delete</a></div></td></tr>
         }
-    </tbody>
-</table>
+        </tbody></table></div>
+    }
+</section>

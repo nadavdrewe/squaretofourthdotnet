@@ -1,48 +1,25 @@
 @model IEnumerable<data.pipeline.fourth.com.Models.PipelineEventLog>
-
 @{
     ViewData["Title"] = "Pipeline Event Logs";
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Pipeline Event Logs</h1>
-
-<table id="order-listing" class="table table-dark">
-    <thead>
-        <tr>
-            <th>Created UTC</th>
-            <th>Correlation</th>
-            <th>Brand</th>
-            <th>Store</th>
-            <th>Data Type</th>
-            <th>Stage</th>
-            <th>Event</th>
-            <th>Status</th>
-            <th>Items</th>
-            <th>Rows</th>
-            <th>HTTP</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
+<div class="page-header">
+    <div><h1>Pipeline event logs</h1><p class="text-muted mb-0">Detailed trace events for collection, CSV generation, and Fourth delivery.</p></div>
+    <a class="btn btn-outline-primary" asp-controller="PipelineRunRecords" asp-action="Index">View pipeline runs</a>
+</div>
+<section class="card sf-panel">
+    @if (!Model.Any())
+    {
+        <div class="sf-empty"><i class="mdi mdi-text-box-search-outline" aria-hidden="true"></i><h2>No events logged yet</h2><p>When the worker processes a sales export, its trace events and errors will be recorded here.</p></div>
+    }
+    else
+    {
+        <div class="sf-table-wrap"><table class="table table-hover"><thead><tr><th>Created UTC</th><th>Client</th><th>Store</th><th>Stage</th><th>Event</th><th>Status</th><th>Items</th><th>Rows</th><th>HTTP</th><th></th></tr></thead><tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>@item.WhenCreatedUTC</td>
-                <td>@item.CorrelationId</td>
-                <td>@item.BrandName</td>
-                <td>@item.StoreName</td>
-                <td>@item.DataType</td>
-                <td>@item.Stage</td>
-                <td>@item.EventType</td>
-                <td>@item.Status</td>
-                <td>@item.ItemCount</td>
-                <td>@item.RowCount</td>
-                <td>@item.HttpStatusCode</td>
-                <td>
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a>
-                </td>
-            </tr>
+            var succeeded = string.Equals(item.Status, "Success", StringComparison.OrdinalIgnoreCase) || (item.HttpStatusCode.HasValue && item.HttpStatusCode.Value < 400);
+            <tr><td>@item.WhenCreatedUTC.ToString("yyyy-MM-dd HH:mm")</td><td>@item.BrandName</td><td>@item.StoreName</td><td><code>@item.Stage</code></td><td>@item.EventType</td><td><span class="sf-status @(succeeded ? "sf-status-live" : "sf-status-warn")">@item.Status</span></td><td>@item.ItemCount</td><td>@item.RowCount</td><td>@item.HttpStatusCode</td><td><a class="btn btn-outline-primary btn-sm" asp-action="Details" asp-route-id="@item.Id">Inspect</a></td></tr>
         }
-    </tbody>
-</table>
+        </tbody></table></div>
+    }
+</section>

@@ -33,7 +33,7 @@ namespace web.pipeline.fourth.com
 
         public IConfiguration Configuration { get; }
 
-        public void ConfigureServices(IServiceCollection services, IWebHostEnvironment environment)
+        public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<FourthPipelineContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("FourthSalesPipelineContext")));
@@ -83,9 +83,12 @@ namespace web.pipeline.fourth.com
 
             var dataProtection = services.AddDataProtection().SetApplicationName("SquareToFourth");
             var keysDirectory = Configuration["DataProtection:KeysDirectory"];
+            var environmentName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")
+                ?? Environment.GetEnvironmentVariable("DOTNET_ENVIRONMENT");
+            var isDevelopment = string.Equals(environmentName, Environments.Development, StringComparison.OrdinalIgnoreCase);
             if (string.IsNullOrWhiteSpace(keysDirectory))
             {
-                if (!environment.IsDevelopment())
+                if (!isDevelopment)
                 {
                     throw new InvalidOperationException(
                         "DataProtection:KeysDirectory must be configured outside development so admin sessions survive restarts.");
@@ -166,7 +169,9 @@ namespace web.pipeline.fourth.com
             app.Use(async (context, next) =>
             {
                 var path = context.Request.Path;
-                var isPublicEndpoint = path.StartsWithSegments("/Access") ||
+                var allowsAnonymous = context.GetEndpoint()?.Metadata.GetMetadata<IAllowAnonymous>() != null;
+                var isPublicEndpoint = allowsAnonymous ||
+                    path.StartsWithSegments("/Access") ||
                     path.StartsWithSegments("/oauthredirect/accept") ||
                     path.StartsWithSegments("/health");
                 if (!isPublicEndpoint && context.User.Identity?.IsAuthenticated != true)

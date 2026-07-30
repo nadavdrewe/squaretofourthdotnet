@@ -1,60 +1,24 @@
-﻿@model IEnumerable<data.pipeline.fourth.com.Models.BrandIntegration>
-
+@model IEnumerable<data.pipeline.fourth.com.Models.BrandIntegration>
 @{
-    ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Integration Schedules";
 }
 
-<h1>Brand Integrations Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table id="order-listing" class="table table-dark">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Brand.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IntegrationType)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IntegrationSubType)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StartBatchQueryTimeUTC)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Active)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Brand.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IntegrationType)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IntegrationSubType)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StartBatchQueryTimeUTC)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Active)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<div class="page-header">
+    <div><h1>Integration schedules</h1><p class="text-muted mb-0">Define which data is delivered for each client and when the scheduled sales export begins.</p></div>
+    <a class="btn btn-primary" asp-action="Create"><i class="mdi mdi-plus mr-1"></i>Add integration</a>
+</div>
+<section class="card sf-panel">
+    @if (!Model.Any())
+    {
+        <div class="sf-empty"><i class="mdi mdi-sync-alert" aria-hidden="true"></i><h2>No integration schedules</h2><p>Create an integration after configuring the client and store mapping.</p><a class="btn btn-primary" asp-action="Create">Add integration</a></div>
+    }
+    else
+    {
+        <div class="sf-table-wrap"><table class="table table-hover"><thead><tr><th>Client</th><th>Source</th><th>Destination</th><th>Batch start UTC</th><th>Status</th><th></th></tr></thead><tbody>
+        @foreach (var item in Model)
+        {
+            <tr><td><strong>@item.Brand?.Name</strong></td><td>@item.IntegrationType</td><td>@item.IntegrationSubType</td><td><code>@item.StartBatchQueryTimeUTC</code></td><td><span class="sf-status @(item.Active ? "sf-status-live" : "sf-status-muted")">@(item.Active ? "Active" : "Inactive")</span></td><td><div class="sf-actions"><a class="btn btn-outline-primary btn-sm" asp-action="Edit" asp-route-id="@item.Id">Edit</a><a class="btn btn-outline-secondary btn-sm" asp-action="Details" asp-route-id="@item.Id">Details</a><a class="btn btn-outline-danger btn-sm" asp-action="Delete" asp-route-id="@item.Id">Delete</a></div></td></tr>
+        }
+        </tbody></table></div>
+    }
+</section>

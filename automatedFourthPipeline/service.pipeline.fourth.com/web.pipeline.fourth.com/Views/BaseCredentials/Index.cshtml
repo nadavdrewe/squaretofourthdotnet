@@ -1,100 +1,26 @@
-﻿@model IEnumerable<data.pipeline.fourth.com.Models.Credentials.BaseCredential>
-
+@model IEnumerable<data.pipeline.fourth.com.Models.Credentials.BaseCredential>
 @{
-    ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "API Credentials";
 }
 
-<h1>Api Credentials Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table id="order-listing" class="table table-dark">
-    <thead>
-        <tr>
-            <th></th>
-            <th>
-                @Html.DisplayNameFor(model => model.Store)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Brand)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CredentialType)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Active)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Username)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ClientId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LatestAccessToken)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RefreshToken)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BaseEndpoint)
-            </th>
-            <th>
-                OAuth Scope
-            </th>
-            <th>
-                OAuth Token Endpoint
-            </th>
-
-
-
-        </tr>
-    </thead>
-    <tbody>
+<div class="page-header">
+    <div><h1>API credentials</h1><p class="text-muted mb-0">Stored connection records. Token values are intentionally never displayed in the control panel.</p></div>
+    <a class="btn btn-outline-primary" asp-action="Create"><i class="mdi mdi-plus mr-1"></i>Add credential</a>
+</div>
+<section class="card sf-panel">
+    @if (!Model.Any())
+    {
+        <div class="sf-empty"><i class="mdi mdi-key-variant" aria-hidden="true"></i><h2>No credentials stored</h2><p>Square OAuth credentials are created when a client completes the Square connection flow.</p><a class="btn btn-dark" asp-controller="ClientSetup" asp-action="Index">Open client setup</a></div>
+    }
+    else
+    {
+        <div class="sf-table-wrap"><table class="table table-hover"><thead><tr><th>Connection</th><th>Client</th><th>Store</th><th>Endpoint</th><th>Token state</th><th>Status</th><th></th></tr></thead><tbody>
         @foreach (var item in Model)
         {
-        <tr>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Store.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Brand.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CredentialType)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Active)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Username)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ClientId)
-            </td>
-            <td>
-                @(string.IsNullOrWhiteSpace(item.LatestAccessToken) ? "" : "Stored")
-            </td>
-            <td>
-                @(string.IsNullOrWhiteSpace(item.RefreshToken) ? "" : "Stored")
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BaseEndpoint)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SupplimentalData2)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SupplimentalData1)
-            </td>
-        </tr>
+            var hasAccessToken = !string.IsNullOrWhiteSpace(item.LatestAccessToken);
+            var hasRefreshToken = !string.IsNullOrWhiteSpace(item.RefreshToken);
+            <tr><td><strong>@item.CredentialType</strong><br /><small class="text-muted">@item.Username</small></td><td>@item.Brand?.Name</td><td>@item.Store?.Name</td><td><code>@item.BaseEndpoint</code></td><td><span class="sf-status @(hasAccessToken && hasRefreshToken ? "sf-status-live" : "sf-status-warn")">@(hasAccessToken && hasRefreshToken ? "Renewable token" : "Needs attention")</span></td><td><span class="sf-status @(item.Active ? "sf-status-live" : "sf-status-muted")">@(item.Active ? "Active" : "Inactive")</span></td><td><div class="sf-actions"><a class="btn btn-outline-primary btn-sm" asp-action="TestCreds" asp-route-id="@item.Id">Test</a><a class="btn btn-outline-secondary btn-sm" asp-action="Edit" asp-route-id="@item.Id">Edit</a><a class="btn btn-outline-danger btn-sm" asp-action="Delete" asp-route-id="@item.Id">Delete</a></div></td></tr>
         }
-    </tbody>
-</table>
+        </tbody></table></div>
+    }
+</section>

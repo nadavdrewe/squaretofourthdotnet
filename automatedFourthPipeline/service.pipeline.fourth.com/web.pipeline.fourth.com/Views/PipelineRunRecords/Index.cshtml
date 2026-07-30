@@ -1,44 +1,25 @@
 @model IEnumerable<data.pipeline.fourth.com.Models.PipelineRunRecord>
-
 @{
-    ViewData["Title"] = "Pipeline Run Records";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Pipeline Runs";
 }
 
-<h1>Pipeline Run Records</h1>
-
-<table id="order-listing" class="table table-dark">
-    <thead>
-        <tr>
-            <th>Created UTC</th>
-            <th>Brand</th>
-            <th>Store</th>
-            <th>Data Type</th>
-            <th>Status</th>
-            <th>Rows</th>
-            <th>Transaction Date</th>
-            <th>Fourth Status</th>
-            <th>File</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
+<div class="page-header">
+    <div><h1>Pipeline runs</h1><p class="text-muted mb-0">A durable record of each generated sales file and its Fourth delivery result.</p></div>
+    <a class="btn btn-outline-primary" asp-controller="PipelineEventLogs" asp-action="Index">View event logs</a>
+</div>
+<section class="card sf-panel">
+    @if (!Model.Any())
+    {
+        <div class="sf-empty"><i class="mdi mdi-history" aria-hidden="true"></i><h2>No pipeline runs yet</h2><p>Completed scheduled or test sales uploads will appear here with their Fourth response.</p></div>
+    }
+    else
+    {
+        <div class="sf-table-wrap"><table class="table table-hover"><thead><tr><th>Created UTC</th><th>Client</th><th>Store</th><th>Data</th><th>Rows</th><th>Sales date</th><th>Fourth result</th><th>File</th><th></th></tr></thead><tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>@item.WhenCreatedUTC</td>
-                <td>@item.BrandName</td>
-                <td>@item.StoreName</td>
-                <td>@item.DataType</td>
-                <td>@item.Status</td>
-                <td>@item.RowCount</td>
-                <td>@item.TransactionDate.ToString("yyyy-MM-dd")</td>
-                <td>@item.FourthStatusCode</td>
-                <td>@item.OutputFileName</td>
-                <td>
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a>
-                </td>
-            </tr>
+            var succeeded = string.Equals(item.Status, "Success", StringComparison.OrdinalIgnoreCase) || item.FourthStatusCode == 200;
+            <tr><td>@item.WhenCreatedUTC.ToString("yyyy-MM-dd HH:mm")</td><td>@item.BrandName</td><td>@item.StoreName</td><td>@item.DataType</td><td>@item.RowCount</td><td>@item.TransactionDate.ToString("yyyy-MM-dd")</td><td><span class="sf-status @(succeeded ? "sf-status-live" : "sf-status-warn")">@(item.FourthStatusCode.HasValue ? item.FourthStatusCode.Value.ToString() : item.Status)</span></td><td><code>@item.OutputFileName</code></td><td><a class="btn btn-outline-primary btn-sm" asp-action="Details" asp-route-id="@item.Id">Inspect</a></td></tr>
         }
-    </tbody>
-</table>
+        </tbody></table></div>
+    }
+</section>
