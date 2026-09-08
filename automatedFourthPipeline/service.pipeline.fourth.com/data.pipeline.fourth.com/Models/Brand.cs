@@ -27,6 +27,7 @@ namespace data.pipeline.fourth.com.Models
         public virtual ICollection<Store> Stores { get; set; }
         public virtual ICollection<BaseCredential> BrandCredentials { get; set; }
         public virtual ICollection<BrandIntegration> BrandIntegrations { get; set; }
+        public virtual ICollection<ClientAccess> ClientAccesses { get; set; }
         public DateTime WhenCreatedUTC { get; set; }
         public DateTime WhenUpdatedUTC { get; set; }
     }

@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.RateLimiting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using web.pipeline.fourth.com.Models;
 
@@ -17,10 +18,12 @@ namespace web.pipeline.fourth.com.Controllers
     public class AccessController : Controller
     {
         private readonly StaticAdminOptions _adminOptions;
+        private readonly UserManager<IdentityUser> _users;
 
-        public AccessController(IOptions<StaticAdminOptions> adminOptions)
+        public AccessController(IOptions<StaticAdminOptions> adminOptions, UserManager<IdentityUser> users)
         {
             _adminOptions = adminOptions.Value;
+            _users = users;
         }
 
         [HttpGet]
@@ -41,18 +44,30 @@ namespace web.pipeline.fourth.com.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(StaticAdminLoginInputModel input, string returnUrl = null)
         {
-            if (!ModelState.IsValid || !CredentialsAreValid(input.Username, input.Password))
+            if (!ModelState.IsValid)
             {
                 ModelState.AddModelError(string.Empty, "Invalid username or password.");
                 ViewData["ReturnUrl"] = returnUrl;
                 return View(input);
             }
 
-            var claims = new[]
+            Claim[] claims;
+            if (CredentialsAreValid(input.Username, input.Password))
             {
-                new Claim(ClaimTypes.Name, _adminOptions.Username),
-                new Claim(ClaimTypes.Role, "Administrator")
-            };
+                claims = new[] { new Claim(ClaimTypes.Name, _adminOptions.Username), new Claim(ClaimTypes.Role, "Administrator") };
+            }
+            else
+            {
+                var username = input.Username?.Trim();
+                var user = string.IsNullOrWhiteSpace(username) ? null : await _users.FindByEmailAsync(username);
+                if (user == null || !user.EmailConfirmed || !await _users.CheckPasswordAsync(user, input.Password))
+                {
+                    ModelState.AddModelError(string.Empty, "Invalid username or password.");
+                    ViewData["ReturnUrl"] = returnUrl;
+                    return View(input);
+                }
+                claims = new[] { new Claim(ClaimTypes.NameIdentifier, user.Id), new Claim(ClaimTypes.Name, user.Email ?? user.UserName), new Claim(ClaimTypes.Email, user.Email ?? string.Empty) };
+            }
             var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
             await HttpContext.SignInAsync(
                 CookieAuthenticationDefaults.AuthenticationScheme,
@@ -69,6 +84,34 @@ namespace web.pipeline.fourth.com.Controllers
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction(nameof(Login));
+        }
+
+        [Authorize]
+        [HttpGet]
+        public IActionResult ChangePassword()
+        {
+            if (User.IsInRole("Administrator")) return BadRequest("The platform administrator password is managed in server configuration.");
+            return View(new ChangePasswordInputModel());
+        }
+
+        [Authorize]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ChangePassword(ChangePasswordInputModel input)
+        {
+            if (User.IsInRole("Administrator")) return BadRequest("The platform administrator password is managed in server configuration.");
+            if (!ModelState.IsValid) return View(input);
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var user = string.IsNullOrWhiteSpace(userId) ? null : await _users.FindByIdAsync(userId);
+            if (user == null) return Challenge();
+            var result = await _users.ChangePasswordAsync(user, input.CurrentPassword, input.NewPassword);
+            if (!result.Succeeded)
+            {
+                foreach (var error in result.Errors) ModelState.AddModelError(string.Empty, error.Description);
+                return View(input);
+            }
+            TempData["Success"] = "Your password has been changed.";
+            return RedirectToAction("Index", "ClientSetup");
         }
 
         private string GetSafeReturnUrl(string returnUrl)

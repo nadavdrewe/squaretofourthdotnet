@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using web.pipeline.fourth.com.Models;
 
 namespace web.pipeline.fourth.com.Controllers
@@ -13,10 +14,12 @@ namespace web.pipeline.fourth.com.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly PublicOnboardingOptions _onboarding;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IOptions<PublicOnboardingOptions> onboarding)
         {
             _logger = logger;
+            _onboarding = onboarding.Value;
         }
 
         [AllowAnonymous]
@@ -26,6 +29,7 @@ namespace web.pipeline.fourth.com.Controllers
             ViewData["ClientSetupUrl"] = clientSetupUrl;
             ViewData["AdminLoginUrl"] = Url.Action("Login", "Access", new { returnUrl = clientSetupUrl })
                 ?? "/Access/Login?returnUrl=%2FClientSetup";
+            ViewData["OnboardingEnabled"] = _onboarding.Enabled;
             return View();
         }
 

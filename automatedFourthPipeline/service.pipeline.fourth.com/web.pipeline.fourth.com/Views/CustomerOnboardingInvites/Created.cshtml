@@ -1,0 +1,6 @@
+@model web.pipeline.fourth.com.Models.CustomerOnboardingInviteCreatedViewModel
+@{ ViewData["Title"] = "Customer key generated"; }
+<h1>Customer phrase generated</h1><p>Give this phrase privately to <strong>@(string.IsNullOrWhiteSpace(Model.CustomerName) ? "the customer" : Model.CustomerName)</strong>@(string.IsNullOrWhiteSpace(Model.Email) ? "." : $" at {Model.Email}.")</p>
+<div class="alert alert-warning"><strong>Copy it now. It cannot be displayed again.</strong><br /><code style="word-break:break-all">@Model.Phrase</code></div>
+<p>Uses: @Model.MaxUses. Expiry: @(Model.ExpiresAtUTC?.ToString("u") ?? "No expiry").</p>
+<a class="btn btn-primary" asp-action="Index">Return to keys</a>

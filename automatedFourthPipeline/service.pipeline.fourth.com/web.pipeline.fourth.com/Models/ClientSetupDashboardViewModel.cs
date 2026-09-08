@@ -5,6 +5,7 @@ namespace web.pipeline.fourth.com.Models
 {
     public sealed class ClientSetupDashboardViewModel
     {
+        public bool IsPlatformAdmin { get; set; }
         public IReadOnlyList<ClientSetupClientViewModel> Clients { get; set; }
     }
 

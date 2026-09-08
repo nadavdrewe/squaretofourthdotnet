@@ -50,6 +50,8 @@
                         <a class="nav-link" asp-controller="HowTo" asp-action="Index"><i class="mdi mdi-book-open-page-variant menu-icon"></i><span class="menu-title">Setup Guide</span></a>
                     </li>
 
+                    @if (User.IsInRole("Administrator"))
+                    {
                     <li class="nav-item sf-nav-label"><span>Configuration</span></li>
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#client-config" aria-expanded="false" aria-controls="client-config"><i class="mdi mdi-domain menu-icon"></i><span class="menu-title">Clients</span><i class="menu-arrow"></i></a>
@@ -57,6 +59,7 @@
                             <ul class="nav flex-column sub-menu">
                                 <li class="nav-item"><a class="nav-link" asp-controller="Brands" asp-action="Index">All clients</a></li>
                                 <li class="nav-item"><a class="nav-link" asp-controller="Brands" asp-action="Create">Add client</a></li>
+                                <li class="nav-item"><a class="nav-link" asp-controller="CustomerOnboardingInvites" asp-action="Index">Customer invitations</a></li>
                                 <li class="nav-item"><a class="nav-link" asp-controller="Stores" asp-action="Index">Stores</a></li>
                             </ul>
                         </div>
@@ -89,6 +92,7 @@
                     <li class="nav-item">
                         <a class="nav-link" asp-controller="PipelineEventLogs" asp-action="Index"><i class="mdi mdi-text-box-search-outline menu-icon"></i><span class="menu-title">Event Logs</span></a>
                     </li>
+                    }
                 </ul>
             </nav>
 
@@ -98,8 +102,8 @@
                 </div>
                 <footer class="footer">
                     <div class="d-sm-flex justify-content-center justify-content-sm-between">
-                        <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Square to Fourth integration control</span>
-                        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Square sales data, delivered to Fourth</span>
+                        <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Square integration administration</span>
+                        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Seller-authorized OAuth connections</span>
                     </div>
                 </footer>
             </main>

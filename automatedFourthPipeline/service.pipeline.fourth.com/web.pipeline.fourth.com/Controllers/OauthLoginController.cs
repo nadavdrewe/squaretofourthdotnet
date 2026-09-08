@@ -27,17 +27,19 @@ namespace web.pipeline.fourth.com.Controllers
 
         private readonly FourthPipelineContext _context;
         private readonly SquareOAuthConfigurationService _squareOAuthConfigurationService;
+        private readonly ClientAccessService _access;
 
-        public OauthLoginController(FourthPipelineContext context, SquareOAuthConfigurationService squareOAuthConfigurationService)
+        public OauthLoginController(FourthPipelineContext context, SquareOAuthConfigurationService squareOAuthConfigurationService, ClientAccessService access)
         {
             _context = context;
             _squareOAuthConfigurationService = squareOAuthConfigurationService;
+            _access = access;
         }
 
         [HttpGet]
         public async Task<IActionResult> Authorize(int? brandId)
         {
-            ViewData["brandList"] = new SelectList(await _context.Brands.OrderBy(x => x.Name).ToListAsync(), "Id", "Name", brandId);
+            ViewData["brandList"] = new SelectList(await (await _access.AccessibleBrandsAsync(User)).OrderBy(x => x.Name).ToListAsync(), "Id", "Name", brandId);
             var applications = await _context.SquareOAuthApplications
                 .Where(x => x.Active)
                 .OrderBy(x => x.Environment)
@@ -54,6 +56,7 @@ namespace web.pipeline.fourth.com.Controllers
         public async Task<IActionResult> Authorize(int brandId, int squareOAuthApplicationId)
         {
             var application = await _squareOAuthConfigurationService.GetApplicationAsync(squareOAuthApplicationId);
+            if (!await _access.CanAccessBrandAsync(User, brandId)) return Forbid();
             if (!_squareOAuthConfigurationService.TryValidate(application, out var settings, out var configurationError))
             {
                 TempData["Error"] = configurationError;

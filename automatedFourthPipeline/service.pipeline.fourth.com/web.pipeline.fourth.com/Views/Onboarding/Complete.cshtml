@@ -1,0 +1,9 @@
+@model web.pipeline.fourth.com.Models.PublicOnboardingResultViewModel
+@{ Layout = "_OnboardingLayout"; ViewData["Title"] = "Integration created"; }
+<h1>Integration created</h1>
+<p>Access for <strong>@Model.ClientName</strong> was created for <strong>@Model.Email</strong>.</p>
+<div class="alert alert-warning"><strong>Save this temporary password now:</strong><br /><code>@Model.TemporaryPassword</code><br />It is shown once and is not stored in readable form.</div>
+<p>@(Model.EmailSent ? "We also sent these login details to your email." : "Email delivery is not configured, so use the credentials shown above.")</p>
+<a class="btn btn-primary" href="/OauthLogin/Authorize?brandId=@Model.BrandId">Connect Square</a>
+<a class="btn btn-outline-secondary ms-2" href="/ClientSetup">Open integration dashboard</a>
+<a class="btn btn-link ms-2" href="/Access/ChangePassword">Change temporary password</a>

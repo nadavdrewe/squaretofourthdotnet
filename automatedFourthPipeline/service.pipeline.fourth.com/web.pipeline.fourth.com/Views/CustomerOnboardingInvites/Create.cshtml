@@ -1,0 +1,10 @@
+@model web.pipeline.fourth.com.Models.CustomerOnboardingInviteInputModel
+@{ ViewData["Title"] = "Generate onboarding key"; }
+<h1>Generate customer phrase</h1><p>Create a different invitation phrase for each customer. Leave the phrase blank to generate a memorable one automatically. Restricting it to their email is optional.</p>
+<form asp-action="Create" method="post" style="max-width:620px"><div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<div class="form-group"><label asp-for="CustomerName"></label><input asp-for="CustomerName" class="form-control" /><span asp-validation-for="CustomerName" class="text-danger"></span></div>
+<div class="form-group"><label asp-for="Phrase"></label><input asp-for="Phrase" class="form-control" autocomplete="off" placeholder="Leave blank to generate" /><small class="form-text text-muted">At least 12 characters if supplied manually. Matching is case-insensitive.</small><span asp-validation-for="Phrase" class="text-danger"></span></div>
+<div class="form-group"><label asp-for="Email"></label><input asp-for="Email" class="form-control" type="email" /><span asp-validation-for="Email" class="text-danger"></span></div>
+<div class="form-group"><label asp-for="MaxUses"></label><input asp-for="MaxUses" class="form-control" /><span asp-validation-for="MaxUses" class="text-danger"></span></div>
+<div class="form-group"><label asp-for="ExpiresAtUTC"></label><input asp-for="ExpiresAtUTC" class="form-control" type="datetime-local" /><span asp-validation-for="ExpiresAtUTC" class="text-danger"></span></div>
+<button class="btn btn-primary" type="submit">Generate phrase</button> <a class="btn btn-link" asp-action="Index">Cancel</a></form>

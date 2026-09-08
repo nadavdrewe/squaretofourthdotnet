@@ -13,7 +13,7 @@ using web.pipeline.fourth.com.Services;
 
 namespace web.pipeline.fourth.com.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Administrator")]
     public class SquareOAuthApplicationsController : Controller
     {
         private readonly FourthPipelineContext _context;

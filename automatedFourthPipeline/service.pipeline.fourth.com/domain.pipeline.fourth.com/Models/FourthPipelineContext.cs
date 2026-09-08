@@ -23,6 +23,8 @@ namespace domain.pipeline.fourth.com.Models
         public DbSet<StoreIntegration> StoreIntegrations { get; set; }
         public DbSet<PipelineRunRecord> PipelineRunRecords { get; set; }
         public DbSet<PipelineEventLog> PipelineEventLogs { get; set; }
+        public DbSet<ClientAccess> ClientAccesses { get; set; }
+        public DbSet<CustomerOnboardingInvite> CustomerOnboardingInvites { get; set; }
 
         /// <summary>
         /// Revel Store Config for Revel integrations
@@ -92,6 +94,16 @@ namespace domain.pipeline.fourth.com.Models
 
             modelBuilder.Entity<PipelineEventLog>()
                 .HasIndex(x => new { x.CorrelationId, x.WhenCreatedUTC });
+
+            modelBuilder.Entity<ClientAccess>()
+                .HasIndex(x => new { x.BrandId, x.UserId })
+                .IsUnique();
+            modelBuilder.Entity<ClientAccess>()
+                .HasIndex(x => new { x.BrandId, x.Email });
+
+            modelBuilder.Entity<CustomerOnboardingInvite>()
+                .HasIndex(x => x.KeyHash)
+                .IsUnique();
         }
 
     }

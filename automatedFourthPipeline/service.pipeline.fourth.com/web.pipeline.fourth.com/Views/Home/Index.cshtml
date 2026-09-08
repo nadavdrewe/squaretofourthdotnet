@@ -5,6 +5,7 @@
     var clientSetupUrl = ViewData["ClientSetupUrl"]?.ToString() ?? "/ClientSetup";
     var adminLoginUrl = ViewData["AdminLoginUrl"]?.ToString() ?? "/Identity/Account/Login?returnUrl=%2FClientSetup";
     var isAuthenticated = User.Identity?.IsAuthenticated == true;
+    var onboardingEnabled = ViewData["OnboardingEnabled"] as bool? == true;
 }
 
 <!DOCTYPE html>
@@ -139,6 +140,10 @@
                     else
                     {
                         <a class="button button-primary" href="@adminLoginUrl">Sign in to start setup</a>
+                        @if (onboardingEnabled)
+                        {
+                            <a class="button button-secondary" href="/Onboarding">Create client access</a>
+                        }
                     }
                     <a class="button button-secondary" href="#connection-flow">How the connection works</a>
                 </div>

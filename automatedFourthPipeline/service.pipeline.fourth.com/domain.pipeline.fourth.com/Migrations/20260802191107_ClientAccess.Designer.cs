@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using domain.pipeline.fourth.com.Models;
 
@@ -11,9 +12,11 @@ using domain.pipeline.fourth.com.Models;
 namespace domain.pipeline.fourth.com.Migrations
 {
     [DbContext(typeof(FourthPipelineContext))]
-    partial class FourthPipelineContextModelSnapshot : ModelSnapshot
+    [Migration("20260802191107_ClientAccess")]
+    partial class ClientAccess
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -407,69 +410,6 @@ namespace domain.pipeline.fourth.com.Migrations
                         .IsUnique();
 
                     b.ToTable("SquareOAuthApplications");
-                });
-
-            modelBuilder.Entity("data.pipeline.fourth.com.Models.CustomerOnboardingInvite", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<bool>("Active")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("CustomerName")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
-
-                    b.Property<string>("Email")
-                        .HasMaxLength(320)
-                        .HasColumnType("nvarchar(320)");
-
-                    b.Property<DateTime?>("ExpiresAtUTC")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("KeyHash")
-                        .IsRequired()
-                        .HasMaxLength(64)
-                        .HasColumnType("nvarchar(64)");
-
-                    b.Property<DateTime?>("LastUsedUTC")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("MaxUses")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("RedeemedBrandId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("RedeemedUserId")
-                        .HasMaxLength(450)
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<byte[]>("RowVersion")
-                        .IsConcurrencyToken()
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("rowversion");
-
-                    b.Property<int>("UseCount")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("WhenCreatedUTC")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("WhenUpdatedUTC")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("KeyHash")
-                        .IsUnique();
-
-                    b.ToTable("CustomerOnboardingInvites");
                 });
 
             modelBuilder.Entity("data.pipeline.fourth.com.Models.Global", b =>

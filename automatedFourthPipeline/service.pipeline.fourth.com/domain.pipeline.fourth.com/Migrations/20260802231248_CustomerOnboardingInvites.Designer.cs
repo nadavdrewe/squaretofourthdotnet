@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using domain.pipeline.fourth.com.Models;
 
@@ -11,9 +12,11 @@ using domain.pipeline.fourth.com.Models;
 namespace domain.pipeline.fourth.com.Migrations
 {
     [DbContext(typeof(FourthPipelineContext))]
-    partial class FourthPipelineContextModelSnapshot : ModelSnapshot
+    [Migration("20260802231248_CustomerOnboardingInvites")]
+    partial class CustomerOnboardingInvites
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

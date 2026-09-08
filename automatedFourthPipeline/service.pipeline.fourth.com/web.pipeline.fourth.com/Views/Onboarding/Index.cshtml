@@ -1,0 +1,16 @@
+@model web.pipeline.fourth.com.Models.PublicOnboardingInputModel
+@{ Layout = "_OnboardingLayout"; ViewData["Title"] = "Create an integration"; }
+<h1>Create your Square integration</h1>
+@if (ViewData["OnboardingEnabled"] as bool? != true)
+{
+    <div class="alert alert-info">New client onboarding is not currently open. Ask the integration administrator to enable it and supply a setup key.</div>
+    <a class="btn btn-outline-secondary" href="/Access/Login">Sign in</a>
+    return;
+}
+<p>Enter the invitation phrase supplied by your integration administrator. After it is validated, you can enter the customer name and owner email.</p>
+<form asp-action="ValidatePhrase" method="post" class="mt-4" style="max-width:520px">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <label asp-for="SetupKey">Invitation phrase</label><input asp-for="SetupKey" class="form-control" type="text" autocomplete="off" autofocus />
+    <span asp-validation-for="SetupKey" class="text-danger"></span>
+    <button class="btn btn-primary mt-4" type="submit">Continue</button>
+</form>

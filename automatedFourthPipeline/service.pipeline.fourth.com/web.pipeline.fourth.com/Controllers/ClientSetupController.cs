@@ -13,15 +13,17 @@ namespace web.pipeline.fourth.com.Controllers
     public class ClientSetupController : Controller
     {
         private readonly FourthPipelineContext _context;
+        private readonly web.pipeline.fourth.com.Services.ClientAccessService _access;
 
-        public ClientSetupController(FourthPipelineContext context)
+        public ClientSetupController(FourthPipelineContext context, web.pipeline.fourth.com.Services.ClientAccessService access)
         {
             _context = context;
+            _access = access;
         }
 
         public async Task<IActionResult> Index(string oauth, int? brandId)
         {
-            var brands = await _context.Brands
+            var brands = await (await _access.AccessibleBrandsAsync(User))
                 .Include(x => x.Stores)
                 .Include(x => x.BrandIntegrations)
                 .Include(x => x.BrandCredentials)
@@ -30,6 +32,7 @@ namespace web.pipeline.fourth.com.Controllers
 
             var model = new ClientSetupDashboardViewModel
             {
+                IsPlatformAdmin = _access.IsPlatformAdmin(User),
                 Clients = brands.Select(brand => new ClientSetupClientViewModel
                 {
                     BrandId = brand.Id,

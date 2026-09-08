@@ -1,0 +1,10 @@
+@model IEnumerable<data.pipeline.fourth.com.Models.CustomerOnboardingInvite>
+@{ ViewData["Title"] = "Customer invitation phrases"; var now = DateTime.UtcNow; }
+<div class="page-header"><h3 class="page-title">Customer invitation phrases</h3><a class="btn btn-primary" asp-action="Create">Generate phrase</a></div>
+@if (TempData["Success"] != null) { <div class="alert alert-success">@TempData["Success"]</div> }
+<div class="card"><div class="card-body"><div class="table-responsive"><table class="table">
+<thead><tr><th>Customer</th><th>Email restriction</th><th>Uses</th><th>Expiry</th><th>Status</th><th></th></tr></thead>
+<tbody>@foreach (var item in Model) { var usable = item.Active && item.UseCount < item.MaxUses && (!item.ExpiresAtUTC.HasValue || item.ExpiresAtUTC > now); <tr>
+<td>@item.CustomerName</td><td>@(item.Email ?? "Any email")</td><td>@item.UseCount / @item.MaxUses</td><td>@(item.ExpiresAtUTC?.ToString("u") ?? "No expiry")</td><td><span class="badge badge-@(usable ? "success" : "secondary")">@(usable ? "Available" : "Closed")</span></td>
+<td>@if (item.Active) { <form asp-action="Revoke" asp-route-id="@item.Id" method="post"><button class="btn btn-outline-danger btn-sm" type="submit">Revoke</button></form> }</td>
+</tr> }</tbody></table></div></div></div>

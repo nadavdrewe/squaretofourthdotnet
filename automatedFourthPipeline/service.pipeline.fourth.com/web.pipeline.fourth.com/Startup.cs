@@ -49,8 +49,11 @@ namespace web.pipeline.fourth.com
                 options.Password.RequireUppercase = false;
                 options.Password.RequiredLength = 6;
                 options.Password.RequiredUniqueChars = 1;
-                options.User.RequireUniqueEmail = false;
+                options.User.RequireUniqueEmail = true;
             }).AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddOptions<PublicOnboardingOptions>()
+                .Bind(Configuration.GetSection("PublicOnboarding"))
+                .ValidateOnStart();
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
@@ -136,11 +139,15 @@ namespace web.pipeline.fourth.com
                             QueueLimit = 0,
                             AutoReplenishment = true
                         }));
+                options.AddPolicy("public-onboarding", context =>
+                    RateLimitPartition.GetFixedWindowLimiter(context.Connection.RemoteIpAddress?.ToString() ?? "unknown", _ => new FixedWindowRateLimiterOptions { PermitLimit = 5, Window = TimeSpan.FromMinutes(10), QueueLimit = 0, AutoReplenishment = true }));
             });
 
             services.AddScoped<SquareOAuthTokenService>();
             services.AddScoped<SquareCredentialService>();
             services.AddScoped<SquareOAuthConfigurationService>();
+            services.AddScoped<ClientAccessService>();
+            services.AddScoped<OnboardingEmailSender>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -173,6 +180,7 @@ namespace web.pipeline.fourth.com
                 var isPublicEndpoint = allowsAnonymous ||
                     path.StartsWithSegments("/Access") ||
                     path.StartsWithSegments("/oauthredirect/accept") ||
+                    path.StartsWithSegments("/Onboarding") ||
                     path.StartsWithSegments("/health");
                 if (!isPublicEndpoint && context.User.Identity?.IsAuthenticated != true)
                 {
@@ -180,6 +188,28 @@ namespace web.pipeline.fourth.com
                     return;
                 }
 
+                await next();
+            });
+            app.Use(async (context, next) =>
+            {
+                if (context.User.Identity?.IsAuthenticated == true && !context.User.IsInRole("Administrator"))
+                {
+                    var path = context.Request.Path;
+                    var isClientEndpoint = path == "/" ||
+                        path.StartsWithSegments("/Home") ||
+                        path.StartsWithSegments("/ClientSetup") ||
+                        path.StartsWithSegments("/OauthLogin") ||
+                        path.StartsWithSegments("/oauthredirect") ||
+                        path.StartsWithSegments("/Access") ||
+                        path.StartsWithSegments("/HowTo") ||
+                        path.StartsWithSegments("/health");
+                    if (!isClientEndpoint)
+                    {
+                        context.Response.StatusCode = StatusCodes.Status403Forbidden;
+                        await context.Response.WriteAsync("This account does not have platform administration access.");
+                        return;
+                    }
+                }
                 await next();
             });
             app.UseAuthorization();
