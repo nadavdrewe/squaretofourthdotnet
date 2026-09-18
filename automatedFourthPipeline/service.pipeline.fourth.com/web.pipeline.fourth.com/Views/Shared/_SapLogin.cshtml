@@ -1,0 +1,11 @@
+@model web.pipeline.fourth.com.Models.StaticAdminLoginInputModel
+<section class="sap-login">
+    <div class="login-story"><p class="eyebrow">Your integration control room</p><h1>A clear view.<br /><em>A connected team.</em></h1><p class="lead">Review customer requirements, resolve open decisions and prepare a considered Square to SAP integration.</p><div class="login-points"><span>01 / Review submissions</span><span>02 / Align decision owners</span><span>03 / Export the agreed brief</span></div><p class="quiet">Filling in customer requirements? You don't need an administrator account.</p><a href="/sap/requirements">Start or resume your workspace &rarr;</a></div>
+    <section class="panel login-card"><p class="eyebrow">Authorised operators</p><h2>Welcome back.</h2><p>Sign in with your existing platform account. Administrator permissions are required to review all submissions.</p>
+    <div asp-validation-summary="ModelOnly" class="validation" role="alert"></div>
+    <form asp-controller="Access" asp-action="Login" method="post"><input type="hidden" name="returnUrl" value="@ViewData["ReturnUrl"]" />
+    <label asp-for="Username"></label><input asp-for="Username" type="text" autocomplete="username" required /><span asp-validation-for="Username" class="validation"></span>
+    <label asp-for="Password"></label><input asp-for="Password" autocomplete="current-password" required /><span asp-validation-for="Password" class="validation"></span>
+    <label class="check"><input asp-for="RememberMe" />Keep me signed in on this device</label><button class="btn primary" type="submit">Sign in to the control room &rarr;</button></form>
+    <p class="login-security">This is your integration portal login, not your Square or SAP password. Square authorisation happens separately on Square.</p></section>
+</section>

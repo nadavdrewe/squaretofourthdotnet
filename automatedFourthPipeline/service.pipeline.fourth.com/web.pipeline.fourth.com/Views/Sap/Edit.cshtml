@@ -1,0 +1,252 @@
+@using System.Linq
+@using System.Text.Json
+@model SapEditor
+@{
+    Layout = "_SapLayout";
+    ViewData["Title"] = Model.Document.Company + " requirements";
+    ViewData["BodyClass"] = "sap-workspace-page";
+    var d = Model.Document;
+    var phases = SapDiscoverySchema.Phases;
+    var review = Model.Step == phases.Length;
+    var assistantConfigured = ViewData["SapAssistantConfigured"] as bool? == true;
+    var applicable = SapDiscoverySchema.Applicable(d).Where(q => q.Required).ToArray();
+    var answered = applicable.Count(q => !string.IsNullOrWhiteSpace(d.Answer(q.Id)));
+    int RequiredFor(SapPhase phase) => phase.Questions.Count(q => q.Required && SapDiscoverySchema.Applies(q, d));
+    int AnsweredFor(SapPhase phase) => phase.Questions.Count(q => q.Required && SapDiscoverySchema.Applies(q, d) && !string.IsNullOrWhiteSpace(d.Answer(q.Id)));
+}
+
+<header class="workspace-heading">
+    <div>
+        <p class="eyebrow">Square to SAP / Requirements workspace</p>
+        <h1>@d.Company</h1>
+        <p>@d.Contact &middot; @d.Email</p>
+    </div>
+    <div class="workspace-status">
+        <span class="pill">@d.Status &middot; v@(d.Revision)</span>
+        <strong>@answered of @applicable.Length required decisions saved</strong>
+        <progress value="@answered" max="@Math.Max(applicable.Length, 1)" aria-label="Required answers completed"></progress>
+        <small>Last saved @d.UpdatedUtc.ToString("dd MMM yyyy, HH:mm 'UTC'")</small>
+    </div>
+</header>
+
+@if (TempData["Saved"] != null)
+{
+    <p class="success" role="status">@TempData["Saved"]</p>
+}
+
+<div class="workspace">
+    <nav class="steps" aria-label="Requirements sections">
+        <div class="step-heading"><span>Discovery path</span><small>Save before changing section</small></div>
+        @for (var i = 0; i < phases.Length; i++)
+        {
+            var required = RequiredFor(phases[i]);
+            var complete = AnsweredFor(phases[i]);
+            <a href="/sap/requirements/@d.Id/@i" class="@(i == Model.Step ? "active" : "") @(required > 0 && complete == required ? "complete" : "")" aria-current="@(i == Model.Step ? "step" : null)">
+                <span class="step-index">@((i + 1).ToString("00"))</span>
+                <span class="step-copy">@phases[i].Title<small>@complete / @required ready</small></span>
+            </a>
+        }
+        <a href="/sap/requirements/@d.Id/@phases.Length" class="review-step @(review ? "active" : "")">
+            <span class="step-index">07</span><span class="step-copy">Review &amp; submit<small>Validate the complete brief</small></span>
+        </a>
+        <div class="workspace-reference"><span>Project reference</span><code>@d.Id</code></div>
+    </nav>
+
+    <section class="panel editor">
+        <div asp-validation-summary="All" class="validation" role="alert"></div>
+        @if (!review)
+        {
+            var phase = phases[Model.Step];
+            var sectionRequired = RequiredFor(phase);
+            var sectionAnswered = AnsweredFor(phase);
+            <div class="section-intro">
+                <div>
+                    <p class="eyebrow">Section @(Model.Step + 1) of @phases.Length</p>
+                    <h2>@phase.Title</h2>
+                    <p>@phase.Description</p>
+                </div>
+                <div class="section-score">
+                    <span>Section readiness</span>
+                    <strong data-section-progress-text>@sectionAnswered / @sectionRequired</strong>
+                    <progress data-section-progress value="@sectionAnswered" max="@Math.Max(sectionRequired, 1)"></progress>
+                </div>
+            </div>
+
+            <form method="post" action="/sap/requirements/@d.Id/@Model.Step" data-discovery-form>
+                @Html.AntiForgeryToken()
+                <input type="hidden" name="revision" value="@d.Revision" />
+                <input type="hidden" name="assistantFields" value="" data-assistant-fields />
+                <div class="form-guidance">
+                    <strong>Work from confirmed facts.</strong>
+                    <p>Use “Not yet confirmed” where available, or record uncertainty under Decision record. Never enter passwords, tokens or customer personal data.</p>
+                </div>
+
+                @foreach (var group in SapDiscoverySchema.GroupsFor(phase))
+                {
+                    var questions = group.FieldIds.Select(id => phase.Questions.Single(q => q.Id == id)).ToArray();
+                    var groupRequired = questions.Count(q => q.Required && SapDiscoverySchema.Applies(q, d));
+                    var groupAnswered = questions.Count(q => q.Required && SapDiscoverySchema.Applies(q, d) && !string.IsNullOrWhiteSpace(d.Answer(q.Id)));
+                    <fieldset class="question-group @(group.Id == "decision" ? "decision-group" : "")" data-question-group>
+                        <legend><span>@group.Title</span></legend>
+                        <div class="group-heading">
+                            <p>@group.Description</p>
+                            <span data-group-progress>@groupAnswered / @groupRequired required</span>
+                        </div>
+                        @foreach (var q in questions)
+                        {
+                            var show = SapDiscoverySchema.Applies(q, d);
+                            var example = SapDiscoverySchema.ExampleFor(q);
+                            <div class="question" data-question-id="@q.Id" data-required="@q.Required.ToString().ToLowerInvariant()" data-when="@q.When" data-equals="@q.EqualsValue" data-not-equals="@q.NotEquals.ToString().ToLowerInvariant()" hidden="@(!show)">
+                                <div class="question-heading">
+                                    <div>
+                                        <label for="@q.Id">@q.Label @if (q.Required) { <span class="required" title="Required before submission">Required</span> }</label>
+                                        <p id="@(q.Id)-help" class="help">@q.Help</p>
+                                    </div>
+                                    @if (assistantConfigured)
+                                    {
+                                        <button type="button" class="field-assistant no-print" data-assistant-field="@q.Id" data-assistant-label="@q.Label">Ask guide</button>
+                                    }
+                                </div>
+                                @if (q.Type == "select")
+                                {
+                                    <select id="@q.Id" name="answers[@q.Id]" aria-describedby="@(q.Id)-help">
+                                        <option value="">Choose an option</option>
+                                        @foreach (var option in q.Options)
+                                        {
+                                            <option value="@option" selected="@(d.Answer(q.Id) == option)">@option</option>
+                                        }
+                                    </select>
+                                }
+                                else if (q.Type == "textarea")
+                                {
+                                    <textarea id="@q.Id" name="answers[@q.Id]" maxlength="8000" rows="4" aria-describedby="@(q.Id)-help" placeholder="@example">@d.Answer(q.Id)</textarea>
+                                }
+                                else
+                                {
+                                    <input id="@q.Id" name="answers[@q.Id]" value="@d.Answer(q.Id)" type="@q.Type" min="@(q.Type == "number" ? "0" : null)" maxlength="8000" aria-describedby="@(q.Id)-help" placeholder="@example" />
+                                }
+                            </div>
+                        }
+                    </fieldset>
+                }
+
+                <div class="save-attribution">
+                    <div><label for="actor">Your name and role for this save</label><p>Recorded in the revision history.</p></div>
+                    <input id="actor" name="actor" required maxlength="200" value="@d.Contact" />
+                </div>
+                <div class="sticky-actions">
+                    <div><strong>Keep this workspace current</strong><span data-dirty role="status">No unsaved changes</span></div>
+                    <button class="btn secondary" name="action" value="save">Save draft</button>
+                    <button class="btn primary" name="action" value="next">Save &amp; continue &rarr;</button>
+                </div>
+            </form>
+        }
+        else
+        {
+            var issues = SapDiscoverySchema.Validate(d, true);
+            var missingByPhase = phases.Select((phase, index) => new
+            {
+                Phase = phase,
+                Index = index,
+                Questions = phase.Questions.Where(q => q.Required && SapDiscoverySchema.Applies(q, d) && string.IsNullOrWhiteSpace(d.Answer(q.Id))).ToArray()
+            }).Where(item => item.Questions.Length > 0).ToArray();
+            var missingMessages = missingByPhase.SelectMany(item => item.Questions.Select(q => q.Label + " is required.")).ToHashSet();
+            var decisionIssues = issues.Where(issue => !missingMessages.Contains(issue)).ToArray();
+            <div class="review-hero">
+                <p class="eyebrow">Consolidated requirements brief</p>
+                <h2>Review the decisions, not just the fields.</h2>
+                <p>Resolve conflicts and open actions with the named SAP, finance and operations owners before submission.</p>
+                <div class="review-metrics">
+                    <div><strong>@answered / @applicable.Length</strong><span>required decisions</span></div>
+                    <div><strong>@issues.Count</strong><span>readiness issues</span></div>
+                    <div><strong>@d.Revision</strong><span>saved revisions</span></div>
+                </div>
+            </div>
+
+            <div class="actions no-print">
+                <a class="btn primary" href="/sap/requirements/@d.Id/export/pdf">Download requirements PDF</a>
+                <a class="btn secondary" href="/sap/requirements/@d.Id/export/json">Structured JSON</a>
+                <a class="btn secondary" href="/sap/requirements/@d.Id/export/csv">Decision log CSV</a>
+                <button class="btn secondary" type="button" data-print>Print summary</button>
+            </div>
+            <p class="quiet">Exports contain saved answers only. Generating an export does not submit or approve the project.</p>
+
+            @if (issues.Count > 0)
+            {
+                <section class="readiness-issues" aria-labelledby="readiness-title">
+                    <div class="issue-heading"><span class="issue-count">@issues.Count</span><div><h3 id="readiness-title">Items need attention</h3><p>These must be resolved before submission.</p></div></div>
+                    <div class="issue-sections">
+                        @foreach (var item in missingByPhase)
+                        {
+                            <a href="/sap/requirements/@d.Id/@item.Index">
+                                <span>@item.Phase.Title</span>
+                                <strong>@item.Questions.Length unanswered</strong>
+                                <small>@string.Join(" · ", item.Questions.Take(3).Select(q => q.Label))@(item.Questions.Length > 3 ? " · …" : "")</small>
+                            </a>
+                        }
+                    </div>
+                    @if (decisionIssues.Length > 0)
+                    {
+                        <div class="decision-issues"><strong>Conflicts and open actions</strong><ol>@foreach (var issue in decisionIssues) { <li>@issue</li> }</ol></div>
+                    }
+                </section>
+            }
+            else
+            {
+                <p class="success"><strong>Ready for submission.</strong> The deterministic checks found no missing or conflicting requirements.</p>
+            }
+
+            <div class="review-phases">
+                @foreach (var phase in phases)
+                {
+                    var phaseRequired = RequiredFor(phase);
+                    var phaseAnswered = AnsweredFor(phase);
+                    <details class="review-section">
+                        <summary><span>@phase.Title</span><small>@phaseAnswered / @phaseRequired required</small></summary>
+                        @foreach (var group in SapDiscoverySchema.GroupsFor(phase))
+                        {
+                            var groupQuestions = group.FieldIds.Select(id => phase.Questions.Single(q => q.Id == id)).Where(q => SapDiscoverySchema.Applies(q, d)).ToArray();
+                            if (groupQuestions.Length > 0)
+                            {
+                                <section class="review-group"><h3>@group.Title</h3><dl>
+                                    @foreach (var q in groupQuestions)
+                                    {
+                                        var value = d.Answer(q.Id);
+                                        <dt>@q.Label</dt><dd class="@(string.IsNullOrWhiteSpace(value) ? "unanswered" : "")">@(string.IsNullOrWhiteSpace(value) ? "Not answered" : value)</dd>
+                                    }
+                                </dl></section>
+                            }
+                        }
+                    </details>
+                }
+            </div>
+
+            <form action="/sap/requirements/@d.Id/@Model.Step" method="post" class="submission-card no-print">
+                @Html.AntiForgeryToken()
+                <input name="revision" type="hidden" value="@d.Revision" />
+                <h3>Submit for integration design review</h3>
+                <p>Submission freezes the current brief for operator review. It does not activate an integration.</p>
+                <label for="reviewer">Your name and role</label>
+                <input id="reviewer" name="actor" required maxlength="200" value="@d.Contact" />
+                <label class="check"><input type="checkbox" name="confirm" value="yes" />I have reviewed these requirements with the named owners and they are ready for design review.</label>
+                <div class="actions">
+                    <button class="btn primary" name="action" value="submit" @(issues.Count > 0 ? "disabled" : null)>Submit for review</button>
+                    <button class="btn secondary" name="action" value="reopen">Return to draft</button>
+                    @if (User.IsInRole("Administrator") && d.Status == "Submitted") { <button class="btn primary" name="action" value="approve">Approve requirements</button> }
+                </div>
+            </form>
+
+            <section class="revision-history">
+                <div><h3>Decision history</h3><p>Each save retains a complete snapshot. Customer editor names are self-declared.</p></div>
+                @foreach (var entry in Model.History ?? Array.Empty<SapRevision>())
+                {
+                    var previous = JsonSerializer.Deserialize<SapDiscovery>(entry.Json);
+                    <details class="history"><summary>v@(entry.Revision) &middot; @entry.Status &middot; @entry.At.ToString("yyyy-MM-dd HH:mm 'UTC'") &middot; @entry.Actor</summary><dl>
+                        @foreach (var answer in previous.Answers) { <dt>@answer.Key</dt><dd>@answer.Value</dd> }
+                    </dl></details>
+                }
+            </section>
+        }
+    </section>
+    <partial name="_Assistant" model="Model" />
+</div>

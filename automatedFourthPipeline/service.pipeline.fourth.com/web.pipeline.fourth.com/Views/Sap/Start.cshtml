@@ -1,0 +1,12 @@
+@{ Layout = "_SapLayout"; ViewData["Title"] = "Customer requirements"; }
+<div class="page-intro"><p class="eyebrow">Your integration workspace</p><h1>Let's get the<br />requirements right.</h1><p class="lead">Start a private questionnaire or pick up where your team left off. Your progress is saved on our server when you choose Save.</p></div>
+<div asp-validation-summary="All" class="validation" role="alert"></div>
+<div class="start-grid"><section class="panel"><span class="eyebrow">New project</span><h2>Create your workspace</h2><form action="/sap/requirements" method="post">@Html.AntiForgeryToken()
+<label for="company">Company / brand</label><input id="company" name="company" maxlength="200" required autocomplete="organization" />
+<label for="contact">Your name</label><input id="contact" name="contact" maxlength="200" required autocomplete="name" />
+<label for="email">Work email</label><input id="email" name="email" type="email" maxlength="254" required autocomplete="email" />
+<p class="quiet">Used to identify your submission and follow up on requirements. No Square or SAP credentials are needed here.</p><button class="btn primary">Create requirements workspace</button></form></section>
+<section class="panel resume"><span class="eyebrow">Already started?</span><h2>Continue your requirements</h2><form action="/sap/resume" method="post">@Html.AntiForgeryToken()
+<label for="reference">Project reference</label><input id="reference" name="reference" maxlength="32" required autocomplete="off" />
+<label for="code">Private access code</label><input id="code" name="code" type="password" maxlength="48" required autocomplete="off" />
+<p class="quiet">Use the reference and code shown when the project was created. Share them only with your project team: they allow access to all its answers and exports.</p><button class="btn secondary">Resume workspace</button></form></section></div>

@@ -54,6 +54,8 @@ namespace web.pipeline.fourth.com
             services.AddOptions<PublicOnboardingOptions>()
                 .Bind(Configuration.GetSection("PublicOnboarding"))
                 .ValidateOnStart();
+            services.AddOptions<SapAssistantOptions>()
+                .Bind(Configuration.GetSection("SapAssistant"));
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
@@ -115,6 +117,7 @@ namespace web.pipeline.fourth.com
 
             services.AddControllersWithViews();
             services.AddRazorPages();
+            services.AddMemoryCache();
             services.Configure<SquareOAuthOptions>(Configuration.GetSection("SquareOAuth"));
             services.AddRateLimiter(options =>
             {
@@ -141,6 +144,17 @@ namespace web.pipeline.fourth.com
                         }));
                 options.AddPolicy("public-onboarding", context =>
                     RateLimitPartition.GetFixedWindowLimiter(context.Connection.RemoteIpAddress?.ToString() ?? "unknown", _ => new FixedWindowRateLimiterOptions { PermitLimit = 5, Window = TimeSpan.FromMinutes(10), QueueLimit = 0, AutoReplenishment = true }));
+                options.AddPolicy("sap-assistant", context =>
+                    RateLimitPartition.GetTokenBucketLimiter(
+                        (context.Request.RouteValues["id"]?.ToString() ?? "unknown") + ":" + (context.Connection.RemoteIpAddress?.ToString() ?? "unknown"),
+                        _ => new TokenBucketRateLimiterOptions
+                        {
+                            TokenLimit = 8,
+                            TokensPerPeriod = 4,
+                            ReplenishmentPeriod = TimeSpan.FromMinutes(1),
+                            QueueLimit = 0,
+                            AutoReplenishment = true
+                        }));
             });
 
             services.AddScoped<SquareOAuthTokenService>();
@@ -148,6 +162,12 @@ namespace web.pipeline.fourth.com
             services.AddScoped<SquareOAuthConfigurationService>();
             services.AddScoped<ClientAccessService>();
             services.AddScoped<OnboardingEmailSender>();
+            services.AddScoped<SapDiscoveryStore>();
+            services.AddHttpClient<SapAssistantService>(client =>
+            {
+                client.BaseAddress = new Uri("https://api.openai.com/v1/");
+                client.Timeout = TimeSpan.FromSeconds(45);
+            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -196,6 +216,7 @@ namespace web.pipeline.fourth.com
                 {
                     var path = context.Request.Path;
                     var isClientEndpoint = path == "/" ||
+                        path.StartsWithSegments("/sap") ||
                         path.StartsWithSegments("/Home") ||
                         path.StartsWithSegments("/ClientSetup") ||
                         path.StartsWithSegments("/OauthLogin") ||

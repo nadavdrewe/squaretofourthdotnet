@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title>@ViewData["Title"] - Square to Fourth</title>
+    <title>@ViewData["Title"] - Square to Fourth Admin</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet" />
@@ -18,17 +18,17 @@
     <div class="container-scroller">
         <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row" aria-label="Application header">
             <div class="text-center navbar-brand-wrapper d-flex align-items-center">
-                <a class="navbar-brand brand-logo square-fourth-brand" asp-controller="Home" asp-action="Index" aria-label="Square to Fourth home">
-                    <span class="sf-marks" aria-hidden="true"><span class="sf-mark sf-square">SQ</span><span class="sf-plus">+</span><span class="sf-mark sf-fourth">4TH</span></span>
-                    <span class="sf-brand-copy"><strong>Square to Fourth</strong><small>Integration control</small></span>
+                <a class="navbar-brand brand-logo square-fourth-brand" asp-controller="Home" asp-action="Index" aria-label="Square to Fourth administration home">
+                    <img class="sf-square-badge" src="https://images.ctfassets.net/1nw4q0oohfju/7ntgEwkWoRRGdTu91jr9yd/62d9d5b8a06107447c15cbbfffd2abb7/brand_black-f67a0600187e707deb22521e86452dd6746851870f815e9e454423b9e5b8a6d3.png" alt="Built with Square" />
+                    <span class="sf-brand-copy"><strong>Square to Fourth</strong><small>Integration Admin</small></span>
                 </a>
-                <a class="navbar-brand brand-logo-mini square-fourth-brand-mini" asp-controller="Home" asp-action="Index" aria-label="Square to Fourth home"><span class="sf-mark sf-square">SQ</span></a>
+                <a class="navbar-brand brand-logo-mini square-fourth-brand-mini" asp-controller="Home" asp-action="Index" aria-label="Square to Fourth administration home"><span class="sf-square-mini">Square</span></a>
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
                 <button class="navbar-toggler align-self-center" type="button" data-toggle="minimize" aria-label="Minimise navigation">
                     <span class="mdi mdi-menu"></span>
                 </button>
-                <div class="navbar-context d-none d-lg-flex">Square sales to Fourth</div>
+                <div class="navbar-context d-none d-lg-flex">Hospitality / Workforce / Inventory</div>
                 <div class="square-fourth-access"><partial name="_LoginPartial" /></div>
                 <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas" aria-label="Open navigation">
                     <span class="mdi mdi-menu"></span>
@@ -58,6 +58,7 @@
                         <div class="collapse" id="client-config">
                             <ul class="nav flex-column sub-menu">
                                 <li class="nav-item"><a class="nav-link" asp-controller="Brands" asp-action="Index">All clients</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/sap/admin">SAP requirements</a></li>
                                 <li class="nav-item"><a class="nav-link" asp-controller="Brands" asp-action="Create">Add client</a></li>
                                 <li class="nav-item"><a class="nav-link" asp-controller="CustomerOnboardingInvites" asp-action="Index">Customer invitations</a></li>
                                 <li class="nav-item"><a class="nav-link" asp-controller="Stores" asp-action="Index">Stores</a></li>
@@ -75,10 +76,10 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="collapse" href="#fourth-config" aria-expanded="false" aria-controls="fourth-config"><i class="mdi mdi-file-delimited menu-icon"></i><span class="menu-title">Fourth</span><i class="menu-arrow"></i></a>
+                        <a class="nav-link" data-toggle="collapse" href="#fourth-config" aria-expanded="false" aria-controls="fourth-config"><i class="mdi mdi-file-delimited menu-icon"></i><span class="menu-title">Fourth Services</span><i class="menu-arrow"></i></a>
                         <div class="collapse" id="fourth-config">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"><a class="nav-link" asp-controller="FourthSalesApiStoreConfigs" asp-action="Index">Sales mappings</a></li>
+                                <li class="nav-item"><a class="nav-link" asp-controller="FourthSalesApiStoreConfigs" asp-action="Index">Hospitality mappings</a></li>
                                 <li class="nav-item"><a class="nav-link" asp-controller="BrandIntegrations" asp-action="Index">Integration schedules</a></li>
                                 <li class="nav-item"><a class="nav-link" asp-controller="BaseCredentials" asp-action="Index">API credentials</a></li>
                             </ul>
@@ -102,8 +103,8 @@
                 </div>
                 <footer class="footer">
                     <div class="d-sm-flex justify-content-center justify-content-sm-between">
-                        <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Square integration administration</span>
-                        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Seller-authorized OAuth connections</span>
+                        <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Square to Fourth integration administration</span>
+                        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hospitality / Workforce / Inventory</span>
                     </div>
                 </footer>
             </main>

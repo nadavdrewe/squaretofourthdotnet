@@ -31,7 +31,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="PDFsharp-MigraDoc" Version="6.2.4" />
     <Folder Include="NewFolder\" />
+    <Compile Include="..\web.pipeline.fourth.com\Models\SapDiscovery.cs" Link="SapDiscoverySchema.cs" />
+    <Compile Include="..\web.pipeline.fourth.com\Models\SapAssistant.cs" Link="SapAssistantModels.cs" />
+    <Compile Include="..\web.pipeline.fourth.com\Services\SapAssistantContext.cs" Link="SapAssistantContext.cs" />
+    <Compile Include="..\web.pipeline.fourth.com\Services\SapAssistantService.cs" Link="SapAssistantService.cs" />
+    <Compile Include="..\web.pipeline.fourth.com\Services\SapRequirementsPdf.cs" Link="SapRequirementsPdf.cs" />
+    <None Include="..\design\sap-assistant-evaluation.json" Link="sap-assistant-evaluation.json" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
 </Project>

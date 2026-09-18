@@ -33,6 +33,7 @@ public sealed class RevelOptions
     public string ApiKeySecret { get; set; } = "";
     public int TimeoutSeconds { get; set; } = 600;
     public string SalesReportSource { get; set; } = "ProductMix";
+    public List<string> ExcludedProductNameContains { get; set; } = [];
 }
 
 public sealed class FourthOptions

@@ -1,0 +1,75 @@
+.assistant-data-note {
+    margin: 13px 0 0;
+    color: #aec5ce !important;
+    font-size: .66rem !important;
+}
+
+.assistant-privacy { margin-top: 12px; }
+.assistant-privacy code { color: #d9edf5; }
+
+.assistant-admin-status {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: -5px 0 26px;
+    padding: 16px 18px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: #fff;
+}
+
+.assistant-admin-status .assistant-mark { background: #18384b; }
+.assistant-admin-status p { margin: 3px 0 0; font-size: .82rem; }
+.assistant-admin-status.ready { border-left: 4px solid #2f936c; }
+.assistant-admin-status.pending { border-left: 4px solid #d18b42; }
+
+.field-assistant {
+    margin: 0 0 12px;
+    padding: 5px 9px;
+    border: 1px solid #aac9d6;
+    border-radius: 20px;
+    background: #f1f8fa;
+    color: #075e85;
+    font: 700 .68rem 'DM Sans', sans-serif;
+    cursor: pointer;
+}
+
+.field-assistant:hover { background: #e1f1f6; }
+.field-assistant:disabled { cursor: wait; opacity: .55; }
+.assistant-quick button:disabled { cursor: wait; opacity: .45; }
+
+.assistant-findings { display: grid; gap: 6px; margin-top: 10px; }
+.assistant-finding { display: grid; grid-template-columns: 68px 1fr; gap: 7px; align-items: start; padding: 7px 8px; border-radius: 7px; background: #ffffff0b; }
+.assistant-finding strong { font-size: .58rem; }
+.assistant-finding span { font-size: .7rem; line-height: 1.4; }
+.assistant-finding.fact { border-left: 2px solid #64cba1; }
+.assistant-finding.assumption { border-left: 2px solid #8cbad0; }
+.assistant-finding.missing { border-left: 2px solid #efb46d; }
+.assistant-finding.conflict { border-left: 2px solid #ef7777; }
+
+.assistant-existing {
+    margin: 8px 0 !important;
+    padding: 7px;
+    border-radius: 6px;
+    background: #eef2f3;
+    color: #5c6f77 !important;
+    text-decoration: line-through;
+}
+
+.assistant-apply.confirm { background: #fff0d8; color: #8a5205; }
+.assistant-undo, .assistant-cancel {
+    margin: 9px 0 0 7px;
+    border: 1px solid currentColor;
+    border-radius: 7px;
+    background: transparent;
+    color: inherit;
+    padding: 6px 9px;
+    font-weight: 700;
+    cursor: pointer;
+}
+.assistant-cancel { margin: 0; color: #c9dce4; }
+
+@media (max-width: 760px) {
+    .field-assistant { min-height: 34px; }
+    .assistant-finding { grid-template-columns: 60px 1fr; }
+}

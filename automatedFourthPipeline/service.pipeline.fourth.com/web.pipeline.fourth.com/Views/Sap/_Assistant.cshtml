@@ -1,0 +1,34 @@
+@model SapEditor
+@{
+    var configured = ViewData["SapAssistantConfigured"] as bool? == true;
+    var review = Model.Step == SapDiscoverySchema.Phases.Length;
+    var section = review ? "the final review" : SapDiscoverySchema.Phases[Model.Step].Title;
+}
+@if (configured)
+{
+<aside class="assistant-panel no-print" data-sap-assistant data-endpoint="/sap/requirements/@Model.Document.Id/@Model.Step/assistant">
+    <div class="assistant-heading"><span class="assistant-mark" aria-hidden="true">AI</span><div><p class="eyebrow">Requirements guide</p><h2>Ask about @(section.ToLowerInvariant())</h2></div></div>
+    <p class="assistant-intro">I can explain the question, surface decisions to confirm and draft answers from information you provide.</p>
+    <div class="assistant-quick" aria-label="Suggested questions">
+        <button type="button" data-assistant-mode="explain" data-assistant-prompt="Explain this section in plain English and tell me who should help answer it.">Explain this section</button>
+        <button type="button" data-assistant-mode="review" data-assistant-prompt="Review the answers currently on this page. What is missing, contradictory or still needs an owner?">Review my answers</button>
+        <button type="button" data-assistant-mode="workshop" data-assistant-prompt="Give me the three most useful questions to ask our SAP or finance owner for this section.">Prepare my workshop</button>
+        @if (review) { <button type="button" data-assistant-mode="readiness" data-assistant-prompt="Run a final readiness check. Separate confirmed facts, assumptions, missing decisions and conflicts that block design review.">Readiness check</button> }
+    </div>
+    <div class="assistant-feed" data-assistant-feed aria-live="polite">
+        <div class="assistant-message guide"><strong>Guide</strong><p>Tell me what you know, or choose a prompt above. I will not save or submit anything.</p></div>
+    </div>
+    <form data-assistant-form>
+        @Html.AntiForgeryToken()
+        <label for="assistant-question">Ask the requirements guide</label>
+        <textarea id="assistant-question" maxlength="1500" rows="3" placeholder="For example: We use S/4HANA Public Cloud. Which release and integration details do I need from our SAP team?"></textarea>
+        <div class="assistant-actions"><span data-assistant-status role="status"></span><button class="btn primary" type="submit">Ask guide &rarr;</button><button class="assistant-cancel" type="button" data-assistant-cancel hidden>Cancel request</button></div>
+    </form>
+    <p class="assistant-data-note">Asking sends your question, this section and relevant saved decisions to OpenAI. Do not include secrets or personal data.</p>
+    <details class="assistant-privacy"><summary>How this works</summary><p>Contact details and named-owner fields are withheld. Response application state is disabled (<code>store:false</code>). OpenAI abuse-monitoring logs may still be retained for up to 30 days. The guide cannot save, submit or approve the form.</p></details>
+</aside>
+}
+else if (User.IsInRole("Administrator"))
+{
+<aside class="assistant-panel assistant-disabled no-print"><span class="assistant-mark" aria-hidden="true">AI</span><p class="eyebrow">Requirements guide</p><h2>Configuration needed</h2><p>Add the server-side OpenAI project key and enable <code>SapAssistant</code>. Customers do not see this setup message.</p></aside>
+}

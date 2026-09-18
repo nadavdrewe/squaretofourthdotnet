@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Plan your Square to SAP integration. Capture your sales, inventory and finance requirements in one guided workspace." />
+<meta name="referrer" content="same-origin" />
+<title>@ViewData["Title"] | Square to SAP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/css/sap.css" asp-append-version="true" />
+<link rel="stylesheet" href="/css/sap-polish.css" asp-append-version="true" />
+<link rel="stylesheet" href="/css/sap-landing-v2.css" asp-append-version="true" />
+<link rel="stylesheet" href="/css/sap-assistant.css" asp-append-version="true" />
+<link rel="stylesheet" href="/css/sap-form-v3.css" asp-append-version="true" />
+</head><body class="@ViewData["BodyClass"]"><a class="skip-link" href="#main-content">Skip to content</a>
+<header class="sap-header"><div class="sap-brand-stack"><a class="sap-brand" href="/sap" aria-label="Square to SAP home"><partial name="_SapBrand" /></a><span>Independent integration discovery workspace</span></div><nav aria-label="Main navigation"><a href="/sap/requirements">Requirements</a><a href="/sap#decision-model">Decision model</a><a href="/sap#resources">Resources</a>@if(User.IsInRole("Administrator")){<a class="nav-admin" href="/sap/admin">Review submissions</a>}else{<a class="nav-admin" href="/Access/Login?returnUrl=%2Fsap%2Fadmin">Operator sign in</a>}<a class="nav-cta" href="/sap/requirements">Start discovery</a></nav></header>
+<main id="main-content" class="sap-shell">@RenderBody()</main>
+<footer class="sap-footer"><div><a class="sap-brand" href="/sap" aria-label="Square to SAP home"><partial name="_SapBrand" /></a><p>From the point of sale to your next business decision.</p><a href="https://squaretofourth.store/">Explore our Fourth integrations &rarr;</a></div><div class="footer-note"><span class="eyebrow">Independent integration service</span><p>Square and SAP names and logos belong to their respective owners. Their use identifies the systems we connect, not an endorsement or certified partnership.</p><a href="/sap/requirements">Start or resume a requirements workspace &rarr;</a></div></footer>
+<script src="/js/sap.js" asp-append-version="true" defer></script>
+</body></html>

@@ -1,0 +1,739 @@
+.sap-brand-stack {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+}
+
+.sap-brand-stack > span {
+    color: #667b89;
+    font-size: .7rem;
+    letter-spacing: .015em;
+}
+
+.brand-connector {
+    color: #536a7a;
+    font-size: 23px;
+}
+
+.nav-cta {
+    padding: 11px 18px !important;
+    border-radius: 8px;
+    background: #0877ef;
+    color: #fff !important;
+    box-shadow: 0 8px 24px #0877ef25;
+}
+
+.nav-cta:hover {
+    background: #0069da !important;
+    color: #fff !important;
+    text-decoration: none !important;
+    transform: translateY(-1px);
+}
+
+html {
+    overflow-x: clip;
+}
+
+.sap-landing-v2 {
+    background: #fafbf9;
+    color: #09162e;
+    overflow-x: clip;
+}
+
+.sap-landing-v2 .sap-header,
+.sap-landing-v2 .sap-shell,
+.sap-landing-v2 .sap-footer {
+    width: min(1400px, calc(100% - 64px));
+}
+
+.sap-landing-v2 .sap-header {
+    min-height: 108px;
+    padding: 20px 0;
+    border-bottom: 0;
+}
+
+.sap-landing-v2 .sap-header nav {
+    gap: 28px;
+}
+
+.sap-landing-v2 .sap-header nav > a:not(.nav-cta) {
+    color: #132743;
+}
+
+.sap-landing-v2 .nav-admin {
+    border: 0;
+    padding: 0;
+}
+
+.sap-landing-v2 .sap-shell {
+    position: relative;
+}
+
+.sap-landing-v2 .sap-brand .brand-square {
+    width: 122px;
+}
+
+.sap-landing-v2 .sap-brand .brand-sap {
+    width: 82px;
+}
+
+.sap-v2-hero {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, .78fr) minmax(650px, 1.22fr);
+    gap: 50px;
+    align-items: center;
+    min-height: 660px;
+    padding: 62px 0 58px;
+}
+
+.sap-v2-hero::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0 calc(50% - 50vw);
+    border-top: 1px solid #eef1f2;
+    border-bottom: 1px solid #d9e3e9;
+    background: linear-gradient(110deg, #fcfcfa 0, #fff 47%, #eef7ff 100%);
+}
+
+.sap-v2-hero::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    right: calc(50% - 50vw);
+    width: 7vw;
+    min-width: 42px;
+    height: 43%;
+    background: #058cf0;
+}
+
+.sap-v2-copy {
+    padding: 24px 0;
+}
+
+.sap-v2-copy .eyebrow {
+    margin: 0 0 28px;
+    color: #0877ef;
+}
+
+.sap-v2-copy h1 {
+    max-width: 650px;
+    margin: 0;
+    color: #07142d;
+    font-size: clamp(3.7rem, 5.4vw, 5.7rem);
+    line-height: .96;
+    letter-spacing: -.062em;
+}
+
+.sap-v2-copy h1 em {
+    display: inline;
+    color: #0877ef;
+    font-style: normal;
+}
+
+.sap-v2-copy .lead {
+    max-width: 610px;
+    margin: 28px 0 0;
+    color: #354d68;
+    font-size: 1.18rem;
+    line-height: 1.62;
+}
+
+.sap-v2-copy .actions {
+    margin: 30px 0;
+}
+
+.sap-v2-copy .btn {
+    min-width: 214px;
+    min-height: 56px;
+}
+
+.sap-v2-copy .primary {
+    background: #0877ef;
+    box-shadow: 0 12px 28px #0877ef25;
+}
+
+.sap-v2-copy .secondary {
+    border-color: #8397b0;
+    background: #fff;
+    color: #132743;
+}
+
+.sap-v2-trust {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 13px 25px;
+    margin: 32px 0 0;
+    padding: 0;
+    color: #3d5570;
+    font-size: .82rem;
+}
+
+.sap-v2-trust li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    list-style: none;
+}
+
+.trust-icon {
+    display: inline-grid;
+    place-items: center;
+    width: 22px;
+    height: 22px;
+    border: 1px solid #a8b8c7;
+    border-radius: 6px;
+    color: #0877ef;
+    font-weight: 700;
+}
+
+.trust-icon svg,
+.output-icon svg,
+.decision-icon svg {
+    width: 17px;
+    height: 17px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.sap-v2-blueprint {
+    position: relative;
+    isolation: isolate;
+    min-height: 548px;
+    padding: 44px 38px 34px;
+    overflow: hidden;
+    border: 1px solid #176b9d;
+    border-radius: 22px;
+    background: linear-gradient(150deg, #06223a, #06182b 72%);
+    box-shadow: 0 30px 70px #071c3030;
+    color: #fff;
+}
+
+.blueprint-grid {
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    opacity: .38;
+    background-image: linear-gradient(#1a7dbb23 1px, transparent 1px), linear-gradient(90deg, #1a7dbb23 1px, transparent 1px);
+    background-size: 54px 54px;
+    mask-image: linear-gradient(to bottom, #000, transparent 95%);
+}
+
+.blueprint-title {
+    margin: 0;
+    color: #b8ddf7;
+    font: 700 .76rem 'Space Grotesk', sans-serif;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+}
+
+.blueprint-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.blueprint-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 7px 11px;
+    border: 1px solid #2477a4;
+    border-radius: 999px;
+    background: #0d3450;
+    color: #bfe8fa;
+    font-size: .61rem;
+    font-weight: 700;
+    letter-spacing: .11em;
+    text-transform: uppercase;
+}
+
+.blueprint-badge::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #54d5ff;
+    box-shadow: 0 0 10px #54d5ff;
+}
+
+.blueprint-flow {
+    display: grid;
+    grid-template-columns: minmax(190px, 1fr) minmax(160px, .82fr) minmax(190px, 1fr);
+    gap: 18px;
+    align-items: center;
+    margin-top: 48px;
+}
+
+.system-card {
+    min-height: 164px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 26px;
+    border: 1px solid #aec1d0;
+    border-radius: 12px;
+    background: #fbfcfb;
+    box-shadow: 0 8px 0 #1b6d9a, 0 18px 35px #0003;
+    color: #081a30;
+}
+
+.system-card img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.square-system img {
+    width: 154px;
+}
+
+.sap-system img {
+    width: 112px;
+}
+
+.system-card span {
+    width: 100%;
+    padding-top: 15px;
+    border-top: 1px solid #d2dbe1;
+    color: #344d68;
+    font-size: .8rem;
+    text-align: center;
+}
+
+.mapping-lines {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 13px 10px;
+    align-items: center;
+    color: #bfeaff;
+    font: 700 .64rem 'DM Sans', sans-serif;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+}
+
+.mapping-lines span {
+    text-align: right;
+}
+
+.mapping-lines i {
+    position: relative;
+    height: 1px;
+    background: linear-gradient(90deg, #12c5f5, #72daff);
+}
+
+.mapping-lines i::before {
+    content: "";
+    position: absolute;
+    top: -3px;
+    left: -2px;
+    width: 7px;
+    height: 7px;
+    border: 1px solid #7ee3ff;
+    border-radius: 50%;
+    background: #123d5c;
+    box-shadow: 0 0 12px #53dbff;
+}
+
+.mapping-lines i::after {
+    content: "";
+    position: absolute;
+    top: -4px;
+    right: 0;
+    width: 8px;
+    height: 8px;
+    border-top: 1px solid #7ee3ff;
+    border-right: 1px solid #7ee3ff;
+    transform: rotate(45deg);
+}
+
+.blueprint-outputs {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    width: 48%;
+    margin: 40px 0 0 auto;
+}
+
+.blueprint-outputs::before {
+    content: "";
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    width: 50%;
+    height: 40px;
+    border-top: 1px solid #32cfff;
+    border-right: 1px solid #32cfff;
+    border-left: 1px solid #32cfff;
+    transform: translateX(-50%);
+}
+
+.blueprint-outputs > div {
+    min-height: 108px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
+    column-gap: 13px;
+    align-content: center;
+    padding: 18px;
+    border: 1px solid #159ed5;
+    border-radius: 10px;
+    background: #092941;
+}
+
+.blueprint-outputs strong {
+    align-self: end;
+}
+
+.blueprint-outputs small {
+    color: #96b7ca;
+    font-size: .67rem;
+}
+
+.output-icon {
+    grid-row: 1 / 3;
+    align-self: center;
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border: 1px solid #4ccfff;
+    border-radius: 9px;
+    color: #63d8ff;
+}
+
+.blueprint-note {
+    position: absolute;
+    bottom: 34px;
+    left: 38px;
+    max-width: 260px;
+    margin: 0;
+    padding: 16px;
+    border: 1px solid #1e6c99;
+    border-radius: 10px;
+    background: #0a2943;
+    color: #a9c4d5;
+    font-size: .72rem;
+    line-height: 1.6;
+}
+
+.sap-v2-decisions {
+    padding: 58px 0 64px;
+}
+
+.decision-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 30px;
+}
+
+.decision-heading > div {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.section-mark {
+    width: 42px;
+    height: 6px;
+    border-radius: 6px;
+    background: #0877ef;
+}
+
+.decision-heading h2 {
+    margin: 0;
+    color: #09162e;
+    font-size: clamp(2rem, 3vw, 3rem);
+}
+
+.decision-heading p {
+    max-width: 500px;
+    margin: 0 0 6px;
+    color: #546b83;
+}
+
+.decision-rail {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 0;
+    margin: 38px 0 0;
+    padding: 0;
+}
+
+.decision-rail li {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-height: 92px;
+    padding: 14px 24px 14px 0;
+    list-style: none;
+    transition: transform .18s ease, background-color .18s ease;
+}
+
+.decision-rail li:hover {
+    background: #f2f8fd;
+    transform: translateY(-3px);
+}
+
+.decision-rail li:not(:last-child) {
+    border-right: 1px solid #d9e2e8;
+}
+
+.decision-rail li:not(:last-child)::after {
+    content: "›";
+    position: absolute;
+    z-index: 2;
+    top: 34px;
+    right: -11px;
+    display: grid;
+    place-items: center;
+    width: 22px;
+    height: 22px;
+    border: 1px solid #d9e2e8;
+    border-radius: 50%;
+    background: #fafbf9;
+    color: #315574;
+    font-size: 1.1rem;
+    line-height: 1;
+}
+
+.decision-icon {
+    flex: 0 0 50px;
+    height: 50px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: #eaf5ff;
+    color: #0877ef;
+    font-size: 1.45rem;
+    transition: background-color .18s ease, color .18s ease, transform .18s ease;
+}
+
+.decision-rail li:hover .decision-icon {
+    background: #0877ef;
+    color: #fff;
+    transform: scale(1.04);
+}
+
+.decision-rail div {
+    display: grid;
+    gap: 3px;
+}
+
+.decision-rail b {
+    color: #0877ef;
+    font-size: .9rem;
+}
+
+.decision-rail strong {
+    color: #12253f;
+    font-size: .84rem;
+    line-height: 1.25;
+}
+
+.sap-v2-resources {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    margin-top: 16px;
+    padding: 54px;
+    border-radius: 18px;
+    background: #071e33;
+    color: #fff;
+}
+
+.sap-v2-resources h2 {
+    max-width: 540px;
+    color: #fff;
+}
+
+.sap-v2-resources p {
+    max-width: 590px;
+    color: #b6cad8;
+}
+
+.sap-v2-resources .eyebrow {
+    color: #5bcfff;
+}
+
+.sap-v2-resources ul {
+    margin: 0;
+    padding: 0;
+}
+
+.sap-v2-resources li {
+    padding: 14px 0;
+    border-bottom: 1px solid #29445a;
+    color: #d8e5ec;
+    list-style: none;
+}
+
+.sap-v2-resources li::before {
+    content: "✓";
+    margin-right: 12px;
+    color: #4bd1ff;
+}
+
+.sap-v2-closing {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    padding: 70px 0;
+}
+
+.sap-v2-closing h2 {
+    margin: .3em 0;
+}
+
+.sap-v2-closing p {
+    margin-bottom: 0;
+}
+
+.sap-v2-closing .btn {
+    min-width: 220px;
+}
+
+.sap-landing-v2 .sap-footer {
+    margin-top: 0;
+}
+
+@media (max-width: 1180px) {
+    .sap-landing-v2 .sap-header nav { gap: 16px; }
+    .sap-v2-hero { grid-template-columns: minmax(0, .78fr) minmax(560px, 1.22fr); gap: 30px; }
+    .sap-v2-copy h1 { font-size: 4.3rem; }
+    .sap-v2-blueprint { padding: 36px 28px 30px; }
+    .blueprint-flow { grid-template-columns: minmax(165px, 1fr) minmax(135px, .7fr) minmax(165px, 1fr); gap: 12px; }
+    .blueprint-note { left: 28px; }
+    .decision-rail li { padding-right: 14px; }
+    .decision-icon { flex-basis: 42px; height: 42px; }
+}
+
+@media (max-width: 1320px) and (min-width: 941px) {
+    .sap-v2-hero {
+        grid-template-columns: minmax(0, .76fr) minmax(570px, 1.24fr);
+        gap: 34px;
+    }
+
+    .sap-v2-copy h1 {
+        font-size: clamp(3.6rem, 5vw, 4.65rem);
+    }
+
+    .sap-v2-copy .lead {
+        font-size: 1.05rem;
+    }
+
+    .sap-v2-blueprint {
+        min-height: 520px;
+        padding: 36px 28px 28px;
+    }
+
+    .blueprint-flow {
+        grid-template-columns: minmax(165px, 1fr) minmax(132px, .72fr) minmax(165px, 1fr);
+        gap: 12px;
+        margin-top: 38px;
+    }
+
+    .system-card {
+        min-height: 150px;
+        padding: 21px;
+    }
+
+    .blueprint-note {
+        bottom: 28px;
+        left: 28px;
+    }
+}
+
+@media (max-width: 940px) {
+    .sap-landing-v2 .sap-header { align-items: flex-start; flex-direction: column; }
+    .sap-landing-v2 .sap-header nav { width: 100%; }
+    .sap-landing-v2 .sap-header nav .nav-cta { margin-left: auto; }
+    .sap-v2-hero { grid-template-columns: 1fr; padding-top: 42px; }
+    .sap-v2-copy { max-width: 760px; }
+    .sap-v2-blueprint { min-height: 530px; }
+    .decision-rail { grid-template-columns: repeat(2, 1fr); gap: 1px; background: #dce5ea; }
+    .decision-rail li { padding: 18px; border: 0 !important; background: #fafbf9; }
+    .decision-rail li::after { display: none; }
+    .sap-v2-resources { gap: 45px; }
+}
+
+@media (max-width: 700px) {
+    .sap-landing-v2 .sap-header,
+    .sap-landing-v2 .sap-shell,
+    .sap-landing-v2 .sap-footer { width: calc(100% - 32px); }
+    .sap-brand-stack > span { font-size: .61rem; }
+    .sap-landing-v2 .sap-header nav > a:not(.nav-cta) { display: none; }
+    .sap-landing-v2 .sap-header nav { justify-content: flex-end; }
+    .sap-v2-hero::after { display: none; }
+    .sap-v2-hero { padding-top: 30px; }
+    .sap-v2-copy h1 { font-size: clamp(3rem, 14vw, 4.2rem); }
+    .sap-v2-copy .lead { font-size: 1.02rem; }
+    .sap-v2-copy .btn { width: 100%; }
+    .sap-v2-trust { display: grid; }
+    .sap-v2-blueprint { min-height: auto; padding: 28px 20px; }
+    .blueprint-flow { grid-template-columns: 1fr; gap: 22px; margin-top: 30px; }
+    .mapping-lines { grid-template-columns: 1fr 1fr; padding: 0 25px; }
+    .mapping-lines span { text-align: left; }
+    .mapping-lines i { transform: rotate(90deg); }
+    .system-card { min-height: 140px; }
+    .blueprint-outputs { width: 100%; margin-top: 45px; }
+    .blueprint-note { position: static; max-width: none; margin-top: 20px; }
+    .decision-heading { align-items: flex-start; flex-direction: column; }
+    .decision-rail { grid-template-columns: 1fr; }
+    .sap-v2-resources { grid-template-columns: 1fr; gap: 25px; padding: 30px 22px; }
+    .sap-v2-closing { align-items: flex-start; flex-direction: column; }
+    .sap-v2-closing .btn { width: 100%; }
+}
+
+@media (max-width: 480px) {
+    .blueprint-heading {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .blueprint-outputs {
+        grid-template-columns: 1fr;
+    }
+
+    .blueprint-outputs::before {
+        left: 50%;
+        width: 1px;
+        border-right: 0;
+        border-left: 1px solid #32cfff;
+    }
+
+    .blueprint-outputs > div {
+        min-height: 94px;
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .mapping-lines i::before { animation: sap-signal 2.7s ease-in-out infinite; }
+    .mapping-lines i:nth-of-type(2)::before { animation-delay: .5s; }
+    .mapping-lines i:nth-of-type(3)::before { animation-delay: 1s; }
+}
+
+@keyframes sap-signal {
+    0%, 100% { left: -2px; opacity: .55; }
+    50% { left: calc(100% - 5px); opacity: 1; }
+}
+
+@media print {
+    .sap-v2-blueprint,
+    .sap-v2-trust { break-inside: avoid; }
+}

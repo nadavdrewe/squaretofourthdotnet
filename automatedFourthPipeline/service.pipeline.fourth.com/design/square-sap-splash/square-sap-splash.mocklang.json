@@ -1,0 +1,111 @@
+{
+  "$schema": "https://example.local/mocklang/v1",
+  "name": "Square to SAP — Integration Discovery Splash",
+  "intent": "A premium enterprise landing page for defining an integration. It is a design workspace, not a live processing dashboard and not an official partnership page.",
+  "viewport": {
+    "desktop": { "width": 1440, "height": 1024, "contentMaxWidth": 1344, "gutter": 48 },
+    "tabletBreakpoint": 1024,
+    "mobileBreakpoint": 720
+  },
+  "tokens": {
+    "color": {
+      "canvas": "#030E18",
+      "canvasRaised": "#071928",
+      "panel": "#082238",
+      "panelStrong": "#0B2C45",
+      "grid": "rgba(46,173,255,0.08)",
+      "line": "rgba(61,184,255,0.36)",
+      "lineStrong": "#36B9FF",
+      "accent": "#16B8FF",
+      "accentBright": "#48C9FF",
+      "text": "#F5F8FA",
+      "textMuted": "#ABC0D1",
+      "textQuiet": "#7896AA",
+      "surfaceLight": "#F7F8F6",
+      "surfaceLightText": "#071A28",
+      "focus": "#FFD166"
+    },
+    "type": {
+      "display": "Space Grotesk, Arial, sans-serif",
+      "body": "DM Sans, Arial, sans-serif",
+      "heroDesktop": "72px/0.98, weight 650, tracking -0.055em",
+      "heroMobile": "48px/1.00, weight 650, tracking -0.045em",
+      "bodyLead": "19px/1.58, weight 400",
+      "eyebrow": "12px/1, weight 700, tracking 0.18em, uppercase"
+    },
+    "radius": { "button": 8, "card": 12, "heroPanel": 22 },
+    "shadow": { "panel": "0 28px 80px rgba(0,0,0,.32)", "glow": "0 0 32px rgba(22,184,255,.22)" },
+    "spacing": { "xs": 8, "sm": 12, "md": 20, "lg": 32, "xl": 48, "xxl": 72 }
+  },
+  "assets": {
+    "squareLogo": "/images/brand/square-official.png",
+    "sapLogo": "/images/brand/sap.svg",
+    "rules": [
+      "Render vendor assets as images; never rebuild either logo with text or CSS.",
+      "Maintain clear space of at least the logo symbol width around each vendor mark.",
+      "Do not add partner, certified, approved or live-status language."
+    ]
+  },
+  "page": [
+    {
+      "id": "header",
+      "height": 112,
+      "layout": "brand lockup left; navigation and outlined CTA right",
+      "brandLockup": ["Square logo", "1px vertical divider", "SAP logo"],
+      "supportingLabel": "Independent integration discovery workspace",
+      "navigation": ["Requirements workspace", "Decision model", "Resources"],
+      "action": "Get started"
+    },
+    {
+      "id": "hero",
+      "layoutDesktop": "12-column grid: copy 5 columns, 1-column gap, blueprint 6 columns",
+      "layoutMobile": "single column: copy, actions, trust line, blueprint",
+      "copy": {
+        "eyebrow": "Square sales. SAP operations.",
+        "headline": ["Every sale.", "A bigger picture."],
+        "description": "Plan the connection between Square sales, SAP inventory and finance — with every decision, owner and mapping in one shared workspace.",
+        "primaryAction": "Define your integration",
+        "secondaryAction": "Explore the decision model",
+        "trustItems": ["Saved drafts", "Private resume code", "Export-ready"]
+      },
+      "blueprint": {
+        "title": "Integration blueprint",
+        "disclaimer": "Illustrative design — final interfaces depend on the approved SAP landscape and business process.",
+        "source": { "logo": "Square", "detail": "Sales · Payments · Returns" },
+        "bridge": ["Map", "Validate", "Reconcile"],
+        "destination": { "logo": "SAP", "label": "Business operations", "children": ["Inventory", "Finance"] },
+        "visualBehavior": "Use fine luminous connector paths with subtle directional pulses; disable animation under prefers-reduced-motion."
+      }
+    },
+    {
+      "id": "decisionModel",
+      "heading": "Five decisions. One shared plan.",
+      "supportingCopy": "Work through the key decisions to shape your integration, step by step.",
+      "steps": [
+        { "number": "01", "label": "SAP landscape", "icon": "database" },
+        { "number": "02", "label": "Sales posting", "icon": "receipt" },
+        { "number": "03", "label": "Inventory ownership", "icon": "cube" },
+        { "number": "04", "label": "Data detail", "icon": "document" },
+        { "number": "05", "label": "Finance & reconciliation", "icon": "ledger" }
+      ]
+    }
+  ],
+  "interaction": {
+    "primaryRoute": "/sap/requirements",
+    "decisionModelAnchor": "#decision-model",
+    "hover": "Raise interactive cards 2px and strengthen the cyan edge; never animate layout size.",
+    "focus": "3px solid focus token with 3px offset",
+    "motion": "180–260ms ease-out; connector pulse 2.8s linear; respect prefers-reduced-motion"
+  },
+  "responsive": {
+    "tablet": "Stack hero copy above blueprint; decision cards wrap 3 + 2.",
+    "mobile": "Hide nonessential nav behind menu; full-width actions; blueprint becomes a vertical source → bridge → SAP flow; decision cards become a vertical numbered list."
+  },
+  "accessibility": {
+    "minimumContrast": "WCAG AA",
+    "logos": "Meaningful alt text: Square and SAP",
+    "diagram": "Use a concise aria-label and preserve the same flow in DOM order.",
+    "decorativeGrid": "aria-hidden=true",
+    "minimumTarget": "44x44px"
+  }
+}

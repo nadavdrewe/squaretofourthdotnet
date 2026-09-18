@@ -25,6 +25,10 @@ namespace web.pipeline.fourth.com.Controllers
         [AllowAnonymous]
         public IActionResult Index()
         {
+            if (Request.Host.Host.Equals("squaresap.store", StringComparison.OrdinalIgnoreCase) ||
+                Request.Host.Host.Equals("www.squaresap.store", StringComparison.OrdinalIgnoreCase))
+                return View("~/Views/Sap/Index.cshtml");
+
             var clientSetupUrl = Url.Action("Index", "ClientSetup") ?? "/ClientSetup";
             ViewData["ClientSetupUrl"] = clientSetupUrl;
             ViewData["AdminLoginUrl"] = Url.Action("Login", "Access", new { returnUrl = clientSetupUrl })

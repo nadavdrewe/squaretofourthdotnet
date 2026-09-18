@@ -2,8 +2,18 @@
 @{
     Layout = null;
     var returnUrl = ViewData["ReturnUrl"]?.ToString() ?? "/ClientSetup";
+    var sap = Context.Request.Host.Host.Equals("squaresap.store", StringComparison.OrdinalIgnoreCase) ||
+        Context.Request.Host.Host.Equals("www.squaresap.store", StringComparison.OrdinalIgnoreCase) ||
+        returnUrl.Equals("/sap", StringComparison.OrdinalIgnoreCase) || returnUrl.StartsWith("/sap/", StringComparison.OrdinalIgnoreCase);
 }
-
+@if (sap)
+{
+    Layout = "_SapLayout";
+    ViewData["Title"] = "Operator sign in";
+    <partial name="_SapLogin" model="Model" />
+}
+else
+{
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,3 +57,4 @@
     <partial name="_ValidationScriptsPartial" />
 </body>
 </html>
+}

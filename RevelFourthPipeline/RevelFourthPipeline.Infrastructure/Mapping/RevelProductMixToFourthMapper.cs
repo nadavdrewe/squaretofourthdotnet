@@ -1,4 +1,6 @@
 using System.Globalization;
+using Microsoft.Extensions.Options;
+using RevelFourthPipeline.Domain.Configuration;
 using RevelFourthPipeline.Domain.Fourth;
 using RevelFourthPipeline.Domain.Pipeline;
 using RevelFourthPipeline.Domain.Revel;
@@ -6,8 +8,15 @@ using RevelFourthPipeline.Infrastructure.Abstractions;
 
 namespace RevelFourthPipeline.Infrastructure.Mapping;
 
-public sealed class RevelProductMixToFourthMapper : IRevelProductMixToFourthMapper
+public sealed class RevelProductMixToFourthMapper(
+    IOptions<RevelFourthPipelineOptions> options) : IRevelProductMixToFourthMapper
 {
+    private readonly string[] _excludedProductNameContains = options.Value.Revel.ExcludedProductNameContains
+        .Where(value => !string.IsNullOrWhiteSpace(value))
+        .Select(value => value.Trim())
+        .Distinct(StringComparer.OrdinalIgnoreCase)
+        .ToArray();
+
     public IReadOnlyList<FourthSalesTransactionDraft> Map(ProductMixReport report, StoreRunContext context)
     {
         if (report.ProductMix.Count == 0)
@@ -17,6 +26,7 @@ public sealed class RevelProductMixToFourthMapper : IRevelProductMixToFourthMapp
 
         return report.ProductMix
             .Where(IsProductRow)
+            .Where(row => !IsExcludedProduct(row))
             .Select(MapProductRow)
             .Where(row => row.Quantity != 0 || row.TotalNetSales != 0 || row.Vat != 0 || row.TotalGrossSales != 0)
             .GroupBy(row => row.Plu, StringComparer.OrdinalIgnoreCase)
@@ -29,6 +39,24 @@ public sealed class RevelProductMixToFourthMapper : IRevelProductMixToFourthMapp
     {
         return string.Equals(row.RowType, "Product", StringComparison.OrdinalIgnoreCase)
                || string.Equals(row.RowType, "Parent_Product", StringComparison.OrdinalIgnoreCase);
+    }
+
+    private bool IsExcludedProduct(ProductMixRow row)
+    {
+        if (_excludedProductNameContains.Length == 0)
+        {
+            return false;
+        }
+
+        return _excludedProductNameContains.Any(exclusion =>
+            ContainsIgnoreCase(row.ProductName, exclusion)
+            || ContainsIgnoreCase(row.ParentProductName, exclusion));
+    }
+
+    private static bool ContainsIgnoreCase(string? value, string match)
+    {
+        return !string.IsNullOrWhiteSpace(value)
+               && value.Contains(match, StringComparison.OrdinalIgnoreCase);
     }
 
     private static FourthSalesTransactionDraft MapProductRow(ProductMixRow row)
